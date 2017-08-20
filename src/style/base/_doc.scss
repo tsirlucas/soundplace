@@ -1,0 +1,20 @@
+%fullscreen {
+  overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+svg {
+  fill: #91979D;
+}
+
+img {
+  max-width: 100%;
+  user-select: none;
+}
+
+blockquote {
+  padding: ($base-spacing 0 2) $base-spacing;
+  border-left: 4px solid md-color("grey", "200");
+}
+

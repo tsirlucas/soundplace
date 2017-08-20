@@ -1,0 +1,40 @@
+@import url( 'https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+	color: $color_raven_approx;
+	background: $color_desert_storm_approx;
+	font-family: $open_sans, $arial, $helvetica, $sans-serif;
+	font-weight: 400;
+	@extend %fullscreen;
+	@include font-smoothing;
+}
+
+h1 {
+	font-size: 25px;
+}
+h2 {
+	font-size: 20px;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 16px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 12px;
+}
+a {
+	color: $primary;
+}
+
+li {
+	margin-bottom: $base-spacing / 2;
+}
+
+p {
+	margin-bottom: $base-spacing / 2;
+}
