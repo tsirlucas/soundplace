@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "description": "Lighthouse CI",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "OAUTH_TOKEN=`cat .oauth_token` node server.js"
+  },
+  "engines": {
+    "node": ">=7.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.8.0",
+    "express": "^4.15.2",
+    "github": "^9.2.0",
+    "node-fetch": "^1.6.3"
+  }
+}
