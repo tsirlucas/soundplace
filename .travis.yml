@@ -23,8 +23,10 @@ branches:
   after_success:
     - if [ "$TRAVIS_PULL_REQUEST" ]; then
       ./node_modules/surge/lib/cli.js ./build -d https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh
+      ./lighthouse-ci/runlighthouse.js https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh
     - if [ "$TRAVIS_PULL_REQUEST" = false ]; then
       ./node_modules/surge/lib/cli.js ./build -d https://sound-place.surge.sh
+      ./lighthouse-ci/runlighthouse.js https://sound-place.surge.sh
 
 install:
   - npm install
