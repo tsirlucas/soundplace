@@ -19,8 +19,8 @@ branches:
     - npm run lint
     - npm test
 #    - SL=true npm test
-    - npm run build
 #    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
+  script: npm run build
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
