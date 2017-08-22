@@ -28,7 +28,7 @@ after_success:
     ./lighthouse-ci/runlighthouse.js https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh; fi'
 
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-    npm run deploy &&
+    surge ./build -d https://sound-place.surge.sh &&
     ./lighthouse-ci/runlighthouse.js https://sound-place.surge.sh; fi'
 
 install:
