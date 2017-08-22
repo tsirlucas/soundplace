@@ -11,6 +11,18 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+  before_script:
+    - npm run lint
+    - npm test
+#    - SL=true npm test
+    - npm build
+#    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
+
+
 install:
   - npm install
 
