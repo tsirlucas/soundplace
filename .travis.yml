@@ -23,7 +23,6 @@ branches:
 #    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
 
 after_success:
-  - 'surge login && echo $SURGE_LOGIN && echo $SURGE_TOKEN'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     surge ./build -d https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh &&
     ./lighthouse-ci/runlighthouse.js https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh; fi'
