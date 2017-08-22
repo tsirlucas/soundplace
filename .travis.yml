@@ -15,6 +15,7 @@ branches:
   only:
     - master
   before_script:
+    - npm install -g surge
     - npm run lint
     - npm test
 #    - SL=true npm test
@@ -22,17 +23,14 @@ branches:
 #    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
 
 after_success:
-  - 'echo after_success call $TRAVIS_PULL_REQUEST'
+  - 'surge login && echo $SURGE_LOGIN && echo $SURGE_TOKEN'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    ./node_modules/surge/lib/cli.js ./build -d https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh &&
-    echo $SURGE_LOGIN && echo $SURGE_PASSWORD &&
+    surge ./build -d https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh &&
     ./lighthouse-ci/runlighthouse.js https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh; fi'
 
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-    ./node_modules/surge/lib/cli.js ./build -d https://sound-place.surge.sh &&
-     echo $SURGE_LOGIN && echo $SURGE_PASSWORD &&
+    npm run deploy &&
     ./lighthouse-ci/runlighthouse.js https://sound-place.surge.sh; fi'
-
 
 install:
   - npm install

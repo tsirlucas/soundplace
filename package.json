@@ -98,8 +98,8 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --progress",
-    "deploy": "npm run -s build && surge ./build -d https://MY_APP_HERE.surge.sh",
-    "staging": "npm run -s build && surge ./build -d https://MY_APP_HERE.surge.sh",
+    "deploy": "npm run -s build && surge ./build -d https://sound-place.surge.sh",
+    "staging": "npm run -s build && surge ./build -d https://staging-sound-place.surge.sh",
     "dev": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server",
     "prebuild": "rm -rf build mkdirp build",
     "prestart": "npm run -s build",
