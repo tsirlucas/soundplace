@@ -24,11 +24,11 @@ branches:
 script: npm run build
 
 after_success:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    surge ./build -d https://sound-place-$TRAVIS_PULL_REQUEST.surge.sh &&
-    node ./node_modules/lighthouse-ci/runlighthouse.js https://sound-place-9.surge.sh --runner=chrome --score=70; fi'
+  - 'if [ "TRAVIS_EVENT_TYPE" = "pull_request" ]; then
+    surge ./build -d https://sound-place-prs.surge.sh &&
+    node ./node_modules/lighthouse-ci/runlighthouse.js https://sound-place-prs.surge.sh --runner=chrome --score=90; fi'
 
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+  - 'if [ "TRAVIS_EVENT_TYPE" != "pull_request" ]; then
     surge ./build -d https://sound-place.surge.sh; fi'
 
 install:
