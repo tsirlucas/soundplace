@@ -29,7 +29,7 @@ script:
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     surge ./build -d https://sound-place-prs.surge.sh &&
-    node ./node_modules/lighthouse-ci/runlighthouse.js https://sound-place-prs.surge.sh --runner=chrome --score=90; fi'
+    node ./node_modules/lighthouse-ci/runlighthouse.js https://sound-place-prs.surge.sh --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
     surge ./build -d https://sound-place.surge.sh; fi'
