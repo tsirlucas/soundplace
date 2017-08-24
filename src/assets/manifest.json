@@ -1,6 +1,6 @@
 {
   "name": "SoundPlace",
-  "short_name": "SoundPlace",
+  "short_name": "SPlace",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#fff", // MY_APP_HERE
-  "background_color": "#fff" // MY_APP_HERE
+  "theme_color": "#fff",
+  "background_color": "#fff"
 }
