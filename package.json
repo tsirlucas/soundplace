@@ -41,6 +41,7 @@
     "babel-register": "^6.24.0",
     "browser-sync": "^2.18.12",
     "browser-sync-webpack-plugin": "^1.2.0",
+    "bundlesize": "^0.13.2",
     "chai": "^4.1.1",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
@@ -113,6 +114,7 @@
     "start": "superstatic build -p 9999 --host 0.0.0.0 --gzip -c '{\"rewrites\": [{\"source\":\"**\",\"destination\":\"index.html\"}],\"headers\":[{\"source\":\"**\",\"headers\":[{\"key\":\"Cache-Control\",\"value\":\"max-age=86400\"}]}]}'",
     "test": "karma start test/karma.conf.js --single-run",
     "lint": "eslint src/**/*.js test/**/*.js",
-    "test:watch": "karma start test/karma.conf.js --auto-watch"
+    "test:watch": "karma start test/karma.conf.js --auto-watch",
+    "bundlesize": "bundlesize"
   }
 }
