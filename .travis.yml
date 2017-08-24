@@ -23,7 +23,6 @@ branches:
 
 script:
   - npm run build
-  - gzip -k build/*
   - gzip -k build/**/*
   - npm run bundlesize
 
