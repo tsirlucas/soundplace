@@ -100,7 +100,7 @@
   "main": "index.js",
   "bundlesize": [
     {
-      "path": "./build/index.html.gz",
+      "path": "build/index.html.gz",
       "maxSize": "100 kB"
     }
   ],

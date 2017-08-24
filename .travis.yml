@@ -23,7 +23,8 @@ branches:
 
 script:
   - npm run build
-  - gzip -k build/**/* && npm run bundlesize
+  - find ./build -type f ! -name '*.gz' -exec gzip -k "{}" \;
+  - npm run bundlesize
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
