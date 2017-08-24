@@ -12,7 +12,7 @@ const envLoaders = ENV === 'development' ? devLoaders : prodLoaders;
 
 module.exports = {
   entry: {
-    app: [
+    bundle: [
       'react-hot-loader/patch',
       './src/index.js'
     ]
@@ -20,7 +20,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: '[name].[hash:8].js',
+    filename: '[name].js',
     chunkFilename: '[id].[hash:8].chunk.js',
     publicPath: '/'
   },

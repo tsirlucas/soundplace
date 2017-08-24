@@ -1,6 +1,8 @@
 import webpack from 'webpack';
 import Dashboard from 'webpack-dashboard/plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 export const devPlugins = [
   new BrowserSyncPlugin({
@@ -12,6 +14,36 @@ export const devPlugins = [
   new Dashboard(),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NamedModulesPlugin(),
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    title: 'SoundPlace',
+    filename:'200.html',
+    removeRedundantAttributes: true,
+    inject: false,
+    manifest: 'manifest.json',
+    favicon: './src/assets/img/favicon.ico',
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true
+    },
+    themeColor: '#fff' //MY_APP_HERE
+  }),
+  new ScriptExtHtmlWebpackPlugin({defaultAttribute: "async"}),
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    title: 'SoundPlace',
+    filename:'index.html',
+    removeRedundantAttributes: true,
+    inject: false,
+    manifest: 'manifest.json',
+    favicon: './src/assets/img/favicon.ico',
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true
+    },
+    themeColor: '#fff' //MY_APP_HERE
+  }),
+  new ScriptExtHtmlWebpackPlugin({defaultAttribute: "async"}),
 ];
 
 export const devServerconfig = {
