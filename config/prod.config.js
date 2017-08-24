@@ -55,6 +55,21 @@ export const prodPlugins = [
     },
     themeColor: '#fff' //MY_APP_HERE
   }),
+  new HtmlWebpackInlineSourcePlugin(),
+  new HtmlWebpackPlugin({
+    template: './src/prod-index.html',
+    filename: '200.html',
+    title: 'SoundPlace',
+    excludeChunks: ['admin'],
+    inlineSource: '(bundle.js|style.css)',
+    removeRedundantAttributes: true,
+    manifest: 'manifest.json',
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true
+    },
+    themeColor: '#fff' //MY_APP_HERE
+  }),
   new HtmlWebpackInlineSourcePlugin()
 ];
 

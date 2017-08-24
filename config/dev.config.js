@@ -29,6 +29,21 @@ export const devPlugins = [
     themeColor: '#fff' //MY_APP_HERE
   }),
   new ScriptExtHtmlWebpackPlugin({defaultAttribute: "async"}),
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    title: 'SoundPlace',
+    filename:'index.html',
+    removeRedundantAttributes: true,
+    inject: false,
+    manifest: 'manifest.json',
+    favicon: './src/assets/img/favicon.ico',
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true
+    },
+    themeColor: '#fff' //MY_APP_HERE
+  }),
+  new ScriptExtHtmlWebpackPlugin({defaultAttribute: "async"}),
 ];
 
 export const devServerconfig = {
