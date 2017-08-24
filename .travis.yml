@@ -16,12 +16,16 @@ branches:
     - master
   before_script:
     - npm install -g surge
+    - npm install -g bundlesize
     - npm run lint
     - npm test
 #    - SL=true npm test
 #    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
 
-script: npm run build
+script:
+  - npm run build
+  - gzip -k build/index.html
+  - bundlesize
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then

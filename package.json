@@ -42,7 +42,6 @@
     "browser-sync": "^2.18.12",
     "browser-sync-webpack-plugin": "^1.2.0",
     "chai": "^4.1.1",
-    "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",
@@ -98,6 +97,12 @@
     "yarn"
   ],
   "main": "index.js",
+  "bundlesize": [
+    {
+      "path": "./build/index.html.gz",
+      "maxSize": "100 kB"
+    }
+  ],
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "deploy": "npm run -s build && surge ./build -d https://sound-place.surge.sh",
