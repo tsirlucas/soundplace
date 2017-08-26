@@ -35,7 +35,8 @@ after_success:
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
-    npm run deploy; fi'
+    URL=$(now ./build -n soundplace --token $NOW_TOKEN --static --public -f) &&
+    now alias $URL soundplace --token $NOW_TOKEN -f; fi'
 
 install:
   - npm install
