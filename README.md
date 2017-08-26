@@ -8,3 +8,6 @@ Preact/Redux/redux-observable PWA template (Lighthouse-CI enabled)
 Supports modern browsers and IE9+:
 
 [![Browsers](https://saucelabs.com/browser-matrix/soundplace.svg)](https://saucelabs.com/u/soundplace)
+
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/tsirlucas/soundplace.svg?token=e89f78d8d624e9199c4384185ba87645ef4309023ffbaaeee1133b0183921fd6&ts=1503788364535)](https://greenkeeper.io/)
