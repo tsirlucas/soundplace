@@ -25,6 +25,7 @@ script:
   - npm run build
   - find ./build -type f ! -name '*.gz' -exec gzip -k "{}" \;
   - npm run bundlesize
+  - now login -t $NOW_TOKEN
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
