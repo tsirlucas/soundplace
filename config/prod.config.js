@@ -71,7 +71,7 @@ export const prodPlugins = [
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new CnameWebpackPlugin({
-    domain: 'soundplace.io',
+    domain: 'www.soundplace.io',
   }),
 ];
 
