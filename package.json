@@ -24,8 +24,7 @@
     "redux": "^3.6.0",
     "redux-observable": "^0.16.0",
     "redux-pure-subscribe": "^0.1.4",
-    "rxjs": "^5.4.2",
-    "surge": "^0.19.0"
+    "rxjs": "^5.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -71,6 +70,7 @@
     "mkdirp": "^0.5.1",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
+    "now": "^7.4.0",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.3",
     "script-ext-html-webpack-plugin": "^1.7.1",
@@ -86,7 +86,7 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.1",
     "webpack-hot-middleware": "^2.18.2",
-    "webpack-manifest-plugin": "^1.1.0",
+    "webpack-manifest-plugin": "^1.1.0"
   },
   "keywords": [
     "preact",
@@ -105,8 +105,10 @@
   ],
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --progress",
-    "deploy": "npm run -s build && surge ./build -d https://sound-place.surge.sh",
-    "staging": "npm run -s build && surge ./build -d https://staging-sound-place.surge.sh",
+    "prestaging": "rm -rf build mkdirp build && npm run -s build",
+    "predeploy": "rm -rf build mkdirp build && npm run -s build",
+    "deploy": "URL=$(now ./build -n sound-place -t $NOW_TOKEN --static --public) && now alias $URL sound-place",
+    "staging": "URL=$(now ./build -n staging-sound-place -t $NOW_TOKEN --static --public) && now alias $URL staging-sound-place",
     "dev": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server",
     "prebuild": "rm -rf build mkdirp build",
     "prestart": "npm run -s build",
