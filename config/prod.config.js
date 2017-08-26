@@ -1,8 +1,7 @@
 import webpack from 'webpack';
-import OfflinePlugin from 'offline-plugin';
+import SWPrecache from 'sw-precache-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import {CriticalPlugin} from 'webpack-plugin-critical';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 
@@ -18,19 +17,18 @@ export const prodPlugins = [
       to: './img'
     }
   ]),
-  // new CriticalPlugin({src: 'index.html', inline: true, minify: true, dest:
-  // 'index.html'}),
-  new OfflinePlugin({
-    relativePaths: false,
-    publicPath: '/',
-    updateStrategy: 'all',
-    safeToUseOptionalCaches: true,
-    caches: 'all',
-    ServiceWorker: {
-      navigateFallbackURL: '/',
-      events: true
-    },
-    AppCache: false
+  new SWPrecache({
+    runtimeCaching: [
+      {
+        urlPattern: /^https:\/\/example\.com\//,
+        handler: 'cacheFirst'
+      }
+    ],
+    filename: 'sw.js',
+    // importScripts: ['./service-worker.js'], only script changes are necessary
+    dontCacheBustUrlsMatching: /./,
+    navigateFallback: 'index.html',
+    staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/]
   }),
   new webpack.optimize.UglifyJsPlugin({
     output: {

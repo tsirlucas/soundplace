@@ -15,7 +15,7 @@ branches:
   only:
     - master
   before_script:
-    - npm install -g surge
+    - npm install -g now
     - npm run lint
     - npm test
 #    - SL=true npm test
@@ -28,11 +28,13 @@ script:
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    surge ./build -d https://sound-place-prs.surge.sh &&
-    node ./node_modules/lighthouse-ci/runlighthouse.js https://sound-place-prs.surge.sh --runner=chrome --score=100; fi'
+    URL=$(now ./build -n staging-sound-place --token $NOW_TOKEN --static --public) &&
+    now alias $URL prs-sound-place --token $NOW_TOKEN &&
+    node ./node_modules/lighthouse-ci/runlighthouse.js https://prs-sound-place.now.sh --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-    surge ./build -d https://sound-place.surge.sh; fi'
+    URL=$(now ./build -n sound-place --token $NOW_TOKEN --static --public) &&
+    now alias $URL sound-place --token $NOW_TOKEN; fi'
 
 install:
   - npm install
