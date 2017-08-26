@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import SWPrecache from 'sw-precache-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import CnameWebpackPlugin from 'cname-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 
@@ -68,7 +69,10 @@ export const prodPlugins = [
     },
     themeColor: '#fff' //MY_APP_HERE
   }),
-  new HtmlWebpackInlineSourcePlugin()
+  new HtmlWebpackInlineSourcePlugin(),
+  new CnameWebpackPlugin({
+    domain: 'soundplace.io',
+  }),
 ];
 
 export const prodLoaders = [

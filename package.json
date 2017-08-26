@@ -42,6 +42,7 @@
     "browser-sync-webpack-plugin": "^1.2.0",
     "bundlesize": "^0.14.1",
     "chai": "^4.1.1",
+    "cname-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",
