@@ -23,6 +23,7 @@ branches:
 
 script:
   - npm run build
+  - find ./build -type f ! -name '*.gz' -exec gzip -k "{}" \;
   - npm run bundlesize
 
 after_success:
