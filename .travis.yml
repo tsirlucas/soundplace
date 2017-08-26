@@ -29,12 +29,12 @@ script:
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     URL=$(now ./build -n staging-sound-place --token $NOW_TOKEN --static --public) &&
-    now alias $URL prs-sound-place &&
+    now alias $URL prs-sound-place --token $NOW_TOKEN &&
     node ./node_modules/lighthouse-ci/runlighthouse.js https://prs-sound-place.now.sh --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
     URL=$(now ./build -n sound-place --token $NOW_TOKEN --static --public) &&
-    now alias $URL sound-place; fi'
+    now alias $URL sound-place --token $NOW_TOKEN; fi'
 
 install:
   - npm install
