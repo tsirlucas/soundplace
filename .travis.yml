@@ -14,6 +14,7 @@ before_install:
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
   before_script:
     - npm install -g now
     - npm run lint
@@ -33,7 +34,7 @@ after_success:
     echo Running lighthouse tests on: $URL &&
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+  - 'if [ "TRAVIS_BRANCH" = "master" ]; then
     npm run deploy; fi'
 
 install:
