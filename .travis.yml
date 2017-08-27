@@ -17,6 +17,7 @@ branches:
     - /^greenkeeper/.*$/
   before_script:
     - npm install -g now
+    - npm install -g gh-pages
     - npm run lint
     - npm test
 #    - SL=true npm test
@@ -35,9 +36,7 @@ after_success:
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
-    now switch soundplace --token $NOW_TOKEN &&
-    URL=$(now ./build -n soundplace --token $NOW_TOKEN --static --public -f) &&
-    now alias $URL soundplace --token $NOW_TOKEN -f; fi'
+    gh-pages -d build; fi'
 
 install:
   - npm install
