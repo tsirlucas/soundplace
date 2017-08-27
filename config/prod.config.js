@@ -63,6 +63,7 @@ export const prodPlugins = [
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
     manifest: 'manifest.json',
+    favicon: 'img/favicon.ico',
     minify: {
       collapseWhitespace: true,
       removeComments: true
