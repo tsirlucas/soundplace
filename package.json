@@ -101,7 +101,7 @@
   "main": "index.js",
   "bundlesize": [
     {
-      "path": "build/index.html.gz",
+      "path": "build/bundlesize.gz",
       "maxSize": "100 kB"
     }
   ],
@@ -118,6 +118,8 @@
     "test": "karma start test/karma.conf.js --single-run",
     "lint": "eslint src/**/*.js test/**/*.js",
     "test:watch": "karma start test/karma.conf.js --auto-watch",
-    "bundlesize": "bundlesize"
+    "prebundlesize": "gzip -c build/index.html > build/bundlesize.gz",
+    "bundlesize": "bundlesize",
+    "postbundlesize": "rm -rf build/bundlesize.gz"
   }
 }
