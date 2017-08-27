@@ -20,8 +20,8 @@ export const devPlugins = [
     filename:'200.html',
     removeRedundantAttributes: true,
     inject: false,
-    manifest: 'manifest.json',
-    favicon: './src/assets/img/favicon.ico',
+    manifest: './assets/manifest.json',
+    favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
       removeComments: true
@@ -35,8 +35,8 @@ export const devPlugins = [
     filename:'index.html',
     removeRedundantAttributes: true,
     inject: false,
-    manifest: 'manifest.json',
-    favicon: './src/assets/img/favicon.ico',
+    manifest: './assets/manifest.json',
+    favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
       removeComments: true

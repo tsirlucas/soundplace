@@ -11,11 +11,8 @@ export const prodPlugins = [
   new webpack.NoEmitOnErrorsPlugin(),
   new CopyWebpackPlugin([
     {
-      from: './src/assets/manifest.json',
-      to: './'
-    }, {
-      from: './src/assets/img',
-      to: './img'
+      from: './assets',
+      to: './assets'
     }
   ]),
   new SWPrecache({
@@ -47,7 +44,8 @@ export const prodPlugins = [
     excludeChunks: ['admin'],
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
-    manifest: 'manifest.json',
+    manifest: './assets/manifest.json',
+    favicon: "./assets/img/favicon.ico",
     minify: {
       collapseWhitespace: true,
       removeComments: true
@@ -62,8 +60,8 @@ export const prodPlugins = [
     excludeChunks: ['admin'],
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
-    manifest: 'manifest.json',
-    favicon: 'img/favicon.ico',
+    manifest: './assets/manifest.json',
+    favicon: "./assets/img/favicon.ico",
     minify: {
       collapseWhitespace: true,
       removeComments: true
