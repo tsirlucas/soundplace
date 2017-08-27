@@ -1,4 +1,6 @@
-Preact/Redux/redux-observable PWA template (Lighthouse-CI enabled)
+# Sound Place
+
+A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Spotify and Youtube playlists and songs.
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/tsirlucas/soundplace.svg?token=e89f78d8d624e9199c4384185ba87645ef4309023ffbaaeee1133b0183921fd6&ts=1503787912194)](https://greenkeeper.io/)
 [![build status](https://travis-ci.com/tsirlucas/soundplace.svg?token=ZNhrvg7GyFkRokuwtw6s&branch=master)](https://travis-ci.com/tsirlucas/soundplace) 
@@ -8,3 +10,15 @@ Preact/Redux/redux-observable PWA template (Lighthouse-CI enabled)
 Supports modern browsers and IE9+:
 
 [![Browsers](https://saucelabs.com/browser-matrix/soundplace.svg)](https://saucelabs.com/u/soundplace)
+
+## Phoenix backend
+
+Our backend is a Phoenix application running on a Docker container
+[See the project here](https://github.com/lucasmedeirosleite/sound_place)
+
+## Running locally
+
+1. Clone the repository: `git clone https://github.com/tsirlucas/soundplace.git`
+2. `cd soundplace`
+3. `npm install`
+4. `npm run dev`
