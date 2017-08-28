@@ -1,7 +1,9 @@
-import {h} from 'preact';
+import { h } from 'preact';
+
+import Player from '../components/Player';
 
 const Page1 = () => (
-  <h1>Hello world</h1>
+  <Player/>
 );
 
 export default Page1;
