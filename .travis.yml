@@ -35,7 +35,14 @@ after_success:
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
-    gh-pages -d build; fi'
+    gh-pages -d build; &&
+    echo Purging Cloudflare cache... &&
+    curl -X DELETE "https://api.cloudflare.com/client/v4/zones/eba0370f80f740b516c1f1ea9612940d/purge_cache" \
+        -H "X-Auth-Email: tsirlucas@gmail.com" \
+        -H "X-Auth-Key: 2be67ed35ae20b0b84d6460c8cdfdaa70f7f3" \
+        -H "Content-Type: application/json" \
+        --data '{"purge_everything":true}' &&
+        echo Cache purged! fi'
 
 install:
   - npm install
