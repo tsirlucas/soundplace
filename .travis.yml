@@ -36,13 +36,13 @@ after_success:
 
   - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
     gh-pages -d build &&
-    echo Purging Cloudflare cache... &&
+    echo && echo Purging Cloudflare cache... && echo &&
     curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache"
         -H "X-Auth-Email: tsirlucas@gmail.com"
         -H "X-Auth-Key: $CLOUDFLARE_TOKEN"
         -H "Content-Type: application/json"
         --data "{\"purge_everything\":true}" &&
-    echo Cache purged!; fi'
+    echo && echo Cache purged!; fi'
 
 install:
   - npm install
