@@ -38,8 +38,7 @@ const publicRoutes = {
   childRoutes: [
     {
       path: '/login',
-      exact: true,
-      render: Login
+      component: Login
     }
   ]
 };

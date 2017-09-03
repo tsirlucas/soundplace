@@ -4,6 +4,8 @@ import {browserHistory} from './routes.config';
 
 const handleDirectAccess = () => {
 	const {pathname} = window.location;
+	const search = window.location.search;
+
 	if(pathname !== '/') {
 		const splitedPath = pathname.split('/').filter((item) => item !== '' );
 		browserHistory.replace('/');
@@ -12,7 +14,7 @@ const handleDirectAccess = () => {
 			browserHistory.push(currPath);
 			return currPath.concat('/' + nextPath);
 		});
-		browserHistory.push(pathname);
+		browserHistory.push(pathname + search);
 	}
 };
 
