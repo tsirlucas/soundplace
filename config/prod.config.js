@@ -18,7 +18,7 @@ export const prodPlugins = [
   new SWPrecache({
     runtimeCaching: [
       {
-        urlPattern: /^https:\/\/example\.com\//,
+        urlPattern: /^https:\/\/verkat\.free\.fr\//,
         handler: 'cacheFirst'
       }
     ],
