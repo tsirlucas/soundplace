@@ -39,7 +39,7 @@ function onStateChange(installingWorker) {
       console.log('Service worker updated! Removing old cache...');
       clearCache().then(() => {
         console.log('Done! Reloading page...');
-        window.location.reload();
+        window.location.reload(true);
       });
     }
   };
