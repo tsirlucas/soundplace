@@ -30,7 +30,7 @@ export default class Player extends Component {
       <div id='player'>
         <h1>This is our temporary player</h1> <br/>
         <audio controls>
-          <source src="http://verkat.free.fr/files/Guitar%20Hero%20OST%20-%20Complete%20Soundtrack%20By%20Snake/Franz%20Ferdinand%20-%20Take%20Me%20Out.mp3" type="audio/mpeg"/>
+          <source src="https://verkat.free.fr/files/Guitar%20Hero%20OST%20-%20Complete%20Soundtrack%20By%20Snake/Franz%20Ferdinand%20-%20Take%20Me%20Out.mp3" type="audio/mpeg"/>
           Your browser does not support the audio element.
         </audio>
       </div>
