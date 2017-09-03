@@ -42,7 +42,7 @@ after_success:
         -H "X-Auth-Key: $CLOUDFLARE_TOKEN"
         -H "Content-Type: application/json"
         --data "{\"purge_everything\":true}" &&
-        echo Cache purged! fi'
+    echo Cache purged!; fi'
 
 install:
   - npm install
