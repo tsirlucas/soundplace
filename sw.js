@@ -285,6 +285,8 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
+toolbox.router.get(/^https:\/\/soundplace\.io\//, toolbox.cacheFirst, {});
+toolbox.router.get(/^https:\/\/staging-soundplace\.now\.sh\//, toolbox.cacheFirst, {});
 toolbox.router.get(/^https:\/\/verkat\.free\.fr\//, toolbox.cacheFirst, {});
 
 
