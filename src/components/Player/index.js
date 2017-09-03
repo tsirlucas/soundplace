@@ -14,8 +14,9 @@ export default class Player extends Component {
   };
 
   componentDidMount() {
-    const audioAPI = document.querySelector('#player');
     const { store } = this.context;
+    const audioAPI = document.querySelector('#player');
+
     this.unsubscribe = pureSubscribe(store, this.syncState);
   }
 
