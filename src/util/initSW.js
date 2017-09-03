@@ -23,11 +23,24 @@ function onUpdateFound(reg) {
   };
 }
 
+function clearCache() {
+  return caches.keys().then((cacheNames) => {
+    return Promise.all(
+      cacheNames.map(function (cacheName) {
+        return caches.delete(cacheName);
+      })
+    );
+  })
+}
+
 function onStateChange(installingWorker) {
   return () => {
     if (installingWorker.state === 'activated' && navigator.serviceWorker && navigator.serviceWorker.controller) {
-      console.log('Done! Reloading page...');
-      window.location.reload();
+      console.log('Service worker updated! Removing old cache...');
+      clearCache().then(() => {
+        console.log('Done! Reloading page...');
+        window.location.reload();
+      });
     }
   };
 }
