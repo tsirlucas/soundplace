@@ -18,7 +18,7 @@ export const prodPlugins = [
   new SWPrecache({
     runtimeCaching: [
       {
-        urlPattern: /^https:\/\/soundplace\.io\//,
+        urlPattern: /^https:\/\/www\.soundplace\.io\//,
         handler: 'cacheFirst'
       },
       {
