@@ -3,7 +3,7 @@ sudo: false
 language: node_js
 
 node_js:
-  - '6'
+  - 6
 
 # Make chrome browser available for testing
 before_install:
@@ -34,14 +34,14 @@ after_success:
     echo Running lighthouse tests on: $URL &&
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
-  - 'if [ "$TRAVIS_BRANCH" = "master" ]; then \
-    gh-pages -d build; && \
-    echo Purging Cloudflare cache... && \
-    curl -X DELETE "https://api.cloudflare.com/client/v4/zones/eba0370f80f740b516c1f1ea9612940d/purge_cache" \
-        -H "X-Auth-Email: tsirlucas@gmail.com" \
-        -H "X-Auth-Key: 2be67ed35ae20b0b84d6460c8cdfdaa70f7f3" \
-        -H "Content-Type: application/json" \
-        --data "{\"purge_everything\":true}" && \
+  - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
+    gh-pages -d build; &&
+    echo Purging Cloudflare cache... &&
+    curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache"
+        -H "X-Auth-Email: tsirlucas@gmail.com"
+        -H "X-Auth-Key: $CLOUDFLARE_TOKEN"
+        -H "Content-Type: application/json"
+        --data "{\"purge_everything\":true}" &&
         echo Cache purged! fi'
 
 install:
@@ -50,15 +50,3 @@ install:
 cache:
   directories:
     - node_modules
-
-# Necessary to compile native modules for io.js v3 or Node.js v4
-env:
-  - CXX=g++-4.8
-
-# Necessary to compile native modules for io.js v3 or Node.js v4
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
