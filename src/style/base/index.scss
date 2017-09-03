@@ -1,4 +1,6 @@
-@import 'reset';
+@import "../../node_modules/normalize.css/normalize.css";
 @import 'doc';
 @import 'forms';
+@import 'reset';
 @import 'typography.scss';
+@import "bootstrap";

@@ -26,7 +26,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.scss'],
     alias: {
       'react': 'preact-compat',
       'react-dom': 'preact-compat',

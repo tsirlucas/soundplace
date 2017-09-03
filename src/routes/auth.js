@@ -13,7 +13,7 @@ export const checkAuth = (Route, isPrivate) => {
   }
   //If route is private, user is redirected to app's public root, else user proceeds.
   return isPrivate
-    ? <Redirect to='/'/>
+    ? <Redirect to='/login'/>
     : Route;
 };
 

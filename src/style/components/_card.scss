@@ -1,0 +1,9 @@
+@import "../config/variables";
+
+.card {
+  display: inline-block;
+  padding: 7px;
+  border: 1px solid $gray;
+  border-radius: 7px;
+  box-shadow: 0 2px 10px rgba(black, 0.1);
+}

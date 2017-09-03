@@ -9,3 +9,6 @@ export const ERRORS_MAP = {
   401: SESSION_ERROR,
   428: PRECONDITION_REQUIRED
 };
+
+// ENDPOINTS
+export const SPOTIFY_AUTH = `${SERVER_URL}/auth/spotify`;

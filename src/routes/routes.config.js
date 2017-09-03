@@ -6,6 +6,7 @@ import { store } from '../main.js';
 
 import Page1 from '../pages/Page1';
 import Page2 from '../pages/Page2';
+import Login from '../pages/Login';
 
 export const browserHistory = createBrowserHistory();
 
@@ -36,9 +37,9 @@ browserHistory.listen(() => {
 const publicRoutes = {
   childRoutes: [
     {
-      path: '/',
+      path: '/login',
       exact: true,
-      render: Page1
+      render: Login
     }
   ]
 };

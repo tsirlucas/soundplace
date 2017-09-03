@@ -13,6 +13,7 @@
     "history": "^4.6.3",
     "immutable-merge-operators": "1.0.1",
     "lodash.throttle": "^4.1.1",
+    "normalize.css": "^7.0.0",
     "postcss": "^6.0.9",
     "postcss-cssnext": "^3.0.2",
     "preact": "^8.1.0",
