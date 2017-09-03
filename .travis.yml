@@ -35,7 +35,7 @@ after_success:
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
   - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
-    gh-pages -d build; &&
+    gh-pages -d build &&
     echo Purging Cloudflare cache... &&
     curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache"
         -H "X-Auth-Email: tsirlucas@gmail.com"
