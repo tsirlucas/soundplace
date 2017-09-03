@@ -26,11 +26,11 @@ function onUpdateFound(reg) {
 function clearCache() {
   return caches.keys().then((cacheNames) => {
     return Promise.all(
-      cacheNames.map(function (cacheName) {
+      cacheNames.map((cacheName) => {
         return caches.delete(cacheName);
       })
     );
-  })
+  });
 }
 
 function onStateChange(installingWorker) {
