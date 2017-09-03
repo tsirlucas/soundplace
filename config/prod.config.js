@@ -18,15 +18,26 @@ export const prodPlugins = [
   new SWPrecache({
     runtimeCaching: [
       {
+        urlPattern: /^https:\/\/soundplace\.io\//,
+        handler: 'cacheFirst'
+      },
+      {
+        urlPattern: /^https:\/\/staging-soundplace\.now\.sh\//,
+        handler: 'cacheFirst'
+      },
+      {
         urlPattern: /^https:\/\/verkat\.free\.fr\//,
         handler: 'cacheFirst'
       }
     ],
     filename: 'sw.js',
-    // importScripts: ['./service-worker.js'], only script changes are necessary
+    // importScripts: ['./service-worker.js'], only if script changes are necessary
     dontCacheBustUrlsMatching: /./,
     navigateFallback: 'index.html',
-    staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/]
+    staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/],
+    options: {
+      cacheId: 'soundplace'
+    }
   }),
   new webpack.optimize.UglifyJsPlugin({
     output: {
