@@ -1,9 +1,10 @@
 const getEnvURL = () => {
   switch (process.env.NODE_ENV) {
-    case 'production':
-      return 'soundplace.io';
-    case 'staging':
-      return 'staging-soundplace.io';
+    // this is temporary
+    // case 'production':
+    //   return 'https://soundplace.io';
+    // case 'staging':
+    //   return 'https://staging-soundplace.io';
     default:
       return 'https://boiling-plateau-96706.herokuapp.com';
   }
