@@ -80,6 +80,22 @@ export const prodPlugins = [
     themeColor: '#fff' //MY_APP_HERE
   }),
   new HtmlWebpackInlineSourcePlugin(),
+  new HtmlWebpackPlugin({
+    template: './src/prod-index.html',
+    filename: '404.html',
+    title: 'SoundPlace',
+    excludeChunks: ['admin'],
+    inlineSource: '(bundle.js|style.css)',
+    removeRedundantAttributes: true,
+    manifest: './assets/manifest.json',
+    favicon: "./assets/img/favicon.ico",
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true
+    },
+    themeColor: '#fff' //MY_APP_HERE
+  }),
+  new HtmlWebpackInlineSourcePlugin(),
   new CnameWebpackPlugin({
     domain: 'www.soundplace.io',
   }),
