@@ -39,7 +39,7 @@ function clearCache() {
 function onStateChange(installingWorker) {
   return () => {
     if (installingWorker.state === 'activated' && navigator.serviceWorker && navigator.serviceWorker.controller) {
-      console.log('Done! Reloading page...');
+      console.log('Service worker updated! Reloading page...');
       window.location.reload(true);
     }
   };
