@@ -135,7 +135,7 @@ var urlsToCacheKeys = new Map(
     var relativeUrl = item[0];
     var hash = item[1];
     var absoluteUrl = new URL(relativeUrl, self.location);
-    var cacheKey = createCacheKey(absoluteUrl, hashParamName, hash, /./);
+    var cacheKey = createCacheKey(absoluteUrl, hashParamName, hash, false);
     return [absoluteUrl.toString(), cacheKey];
   })
 );
@@ -282,12 +282,6 @@ self.addEventListener('fetch', function(event) {
 // *** End of auto-included sw-toolbox code. ***
 
 
-
-// Runtime cache configuration, using the sw-toolbox library.
-
-toolbox.router.get(/^https:\/\/www\.soundplace\.io\//, toolbox.cacheFirst, {});
-toolbox.router.get(/^https:\/\/staging-soundplace\.now\.sh\//, toolbox.cacheFirst, {});
-toolbox.router.get(/^https:\/\/verkat\.free\.fr\//, toolbox.cacheFirst, {});
 
 
 
