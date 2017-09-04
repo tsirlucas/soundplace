@@ -16,10 +16,13 @@ function registerSuccess(reg) {
 
 function onUpdateFound(reg) {
   return () => {
-    console.log('Updating service worker...');
-    const installingWorker = reg.installing;
+    console.log('Service worker update found! Removing old cache before install...');
+    clearCache().then(() => {
+      console.log('Done! Updating service worker...');
+      const installingWorker = reg.installing;
 
-    installingWorker.onstatechange = onStateChange(installingWorker);
+      installingWorker.onstatechange = onStateChange(installingWorker);
+    });
   };
 }
 
@@ -36,11 +39,8 @@ function clearCache() {
 function onStateChange(installingWorker) {
   return () => {
     if (installingWorker.state === 'activated' && navigator.serviceWorker && navigator.serviceWorker.controller) {
-      console.log('Service worker updated! Removing old cache...');
-      clearCache().then(() => {
-        console.log('Done! Reloading page...');
-        window.location.reload(true);
-      });
+      console.log('Done! Reloading page...');
+      window.location.reload(true);
     }
   };
 }
