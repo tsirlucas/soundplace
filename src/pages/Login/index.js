@@ -5,9 +5,9 @@ import Cookies from 'js-cookie';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { SPOTIFY_AUTH } from '../../core/api/api.constants';
-import {browserHistory} from '../../routes/routes.config';
+import { browserHistory } from '../../routes/routes.config';
 
-const cookies = Cookies.withConverter((value) => value);
+const secure = process.env.NODE_ENV === 'production';
 
 export default class Login extends Component {
 
@@ -15,7 +15,9 @@ export default class Login extends Component {
     const { route } = this.context.router;
     const params = queryString.parse(route.location.search);
     if (params.success) {
-      cookies.set('token', params['access_token'], { secure: true, expires: params['exp'] });
+      
+      // TODO Ask Lucas for the exp time
+      Cookies.set('token', params['access_token'], { secure, expires: 30 });
       browserHistory.push('page2');
     }
   }
