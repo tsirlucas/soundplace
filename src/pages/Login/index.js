@@ -15,10 +15,10 @@ export default class Login extends Component {
     const { route } = this.context.router;
     const params = queryString.parse(route.location.search);
     if (params.success) {
-      
+
       // TODO Ask Lucas for the exp time
       Cookies.set('token', params['access_token'], { secure, expires: 30 });
-      browserHistory.push('page2');
+      browserHistory.push('/page2');
     }
   }
 
