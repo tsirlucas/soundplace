@@ -47,7 +47,8 @@ const privateRoutes = Routes.privatizeRoutes({
   layout: Routes.App,
   childRoutes: [
     {
-      path: '/page2',
+      path: '/',
+      exact: true,
       render: Page2
     }
   ]
