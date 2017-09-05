@@ -1,11 +1,13 @@
 import { h } from 'preact';
 
 import Redirect from 'react-router/Redirect';
+import Cookie from 'js-cookie';
 
 export const checkAuth = (Route, isPrivate) => {
-  const isAuthenticated = false;
+  const isAuthenticated = Cookie.get('token');
 
   if (isAuthenticated) {
+    console.log(`Authenticated with token ${isAuthenticated}`);
     //If route is private, user proceeds, else route is public, redirect user to private root.
     return isPrivate
       ? Route
