@@ -18,7 +18,7 @@ export default class Login extends Component {
 
       // TODO Ask Lucas for the exp time
       Cookies.set('token', params['access_token'], { secure, expires: 30 });
-      browserHistory.push('/page2');
+      window.location.reload();
     }
   }
 
