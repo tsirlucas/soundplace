@@ -1,3 +1,8 @@
-@import "config/variables";
+// BASE
 @import 'base/index';
-@import "pages/login";
+
+// COMPONENTS
+@import "components/index";
+
+// PAGES
+@import "pages/index";

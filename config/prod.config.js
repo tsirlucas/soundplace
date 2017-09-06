@@ -16,23 +16,9 @@ export const prodPlugins = [
     }
   ]),
   new SWPrecache({
-    runtimeCaching: [
-      {
-        urlPattern: /^https:\/\/www\.soundplace\.io\//,
-        handler: 'cacheFirst'
-      },
-      {
-        urlPattern: /^https:\/\/staging-soundplace\.now\.sh\//,
-        handler: 'cacheFirst'
-      },
-      {
-        urlPattern: /^https:\/\/verkat\.free\.fr\//,
-        handler: 'cacheFirst'
-      }
-    ],
+    runtimeCaching: [],
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary
-    dontCacheBustUrlsMatching: /./,
     navigateFallback: 'index.html',
     staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/],
     options: {

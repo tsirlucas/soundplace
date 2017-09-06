@@ -1,16 +1,25 @@
 import { h, Component } from 'preact';
 import queryString from 'query-string';
+import Cookies from 'js-cookie';
 
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { SPOTIFY_AUTH } from '../../core/api/api.constants';
+import { browserHistory } from '../../routes/routes.config';
+
+const secure = process.env.NODE_ENV === 'production';
 
 export default class Login extends Component {
 
   componentWillMount() {
-    const {route} = this.context.router;
+    const { route } = this.context.router;
     const params = queryString.parse(route.location.search);
-    console.log(params);
+    if (params.success) {
+
+      // TODO Ask Lucas for the exp time
+      Cookies.set('token', params['access_token'], { secure, expires: 30 });
+      window.location.reload();
+    }
   }
 
   render(props, state) {
