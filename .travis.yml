@@ -16,7 +16,6 @@ branches:
     - master
     - /^greenkeeper/.*$/
   before_script:
-    - npm install -g now
     - npm install -g gh-pages
     - npm run lint
     - npm test
@@ -29,8 +28,8 @@ script:
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    now switch soundplace --token $NOW_TOKEN &&
-    URL=$(now ./build -n prs-soundplace --token $NOW_TOKEN --static --public -f) &&
+    node_modules/now/download/dist/now switch soundplace --token $NOW_TOKEN &&
+    URL=$(node_modules/now/download/dist/now ./build -n prs-soundplace --token $NOW_TOKEN --static --public -f) &&
     echo Running lighthouse tests on: $URL &&
     node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
 
