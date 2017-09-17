@@ -1,41 +1,21 @@
 import { h, Component } from 'preact';
+import { connect } from 'preact-redux';
 
 import Card from './components/PlaylistCard';
+import { getPlaylists } from '../../core/playlists/playlists.actions';
 
-const mockedPlaylists = [
-  {
-    name: 'The Mob',
-    cover: 'kfldksjflksjafd',
-    id: 123
-  },
-  {
-    name: 'Rap Vaviá',
-    cover: 'kfldksjflksjafd',
-    id: 123
-  },
-  {
-    name: 'Trap Nation',
-    cover: 'kfldksjflksjafd',
-    id: 123
-  },
-  {
-    name: '90s Alternative Rock',
-    cover: 'kfldksjflksjafd',
-    id: 123
-  },
-  {
-    name: 'Musicas de bad pra chorar pensando no ex',
-    cover: 'kfldksjflksjafd',
-    id: 123
-  }
-];
-
+@connect(({playlists}) => ({ playlists }))
 export default class PlaylistPage extends Component {
+
+  componentDidMount() {
+    const { store } = this.context;
+    store.dispatch(getPlaylists());
+  }
 
   render(props, state) {
     return (
       <section id="playlists">
-        {mockedPlaylists.map((playlist) => <Card item={playlist}/>)}
+        {props.playlists.map((playlist) => <Card item={playlist}/>)}
       </section>
     );
   }
