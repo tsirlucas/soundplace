@@ -25,13 +25,11 @@ export default class Login extends Component {
   render(props, state) {
     return (
       <section className="section full-height" id="login">
-        <Card>
-          <Button
-            href={SPOTIFY_AUTH}
-            className="button-spotify">
-            Conecte-se com Spotify
-          </Button>
-        </Card>
+        <Button
+          href={SPOTIFY_AUTH}
+          className="button-spotify">
+          Conecte-se com Spotify
+        </Button>
       </section>
     );
   }
