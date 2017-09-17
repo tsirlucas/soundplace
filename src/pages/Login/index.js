@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import queryString from 'query-string';
-import Cookies from 'js-cookie';
+import Cookie from 'js-cookie';
 
 import Card from '../../components/Card';
 import Button from '../../components/Button';
@@ -17,7 +17,7 @@ export default class Login extends Component {
     if (params.success) {
 
       // TODO Ask Lucas for the exp time. Its ms, do the math.
-      Cookies.set('token', params['access_token'], { secure, expires: 30 });
+      Cookie.set('token', params['access_token'], { secure, expires: 30 });
       window.location.reload();
     }
   }
