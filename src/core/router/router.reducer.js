@@ -5,7 +5,7 @@ const initialState = {
   action: 'replace'
 };
 
-export const RoutesReducer = (state = initialState, action) => {
+const RoutesReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_ROUTE:
       return state.$merge({
@@ -26,3 +26,5 @@ export const RoutesReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default RoutesReducer;

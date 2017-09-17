@@ -19,3 +19,4 @@ export const AjaxRequest = (method, url, data, baseURL = '') => {
 
 };
 
+export const getPlaylists = () => AjaxRequest('GET', '/api/me/playlists');

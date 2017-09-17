@@ -1,6 +1,7 @@
 import {combineEpics} from 'redux-observable';
 
 import apiEpics from './core/api/api.epics';
+import playlistsEpics from './core/playlists/playlists.epics';
 import serviceWorkerEpics from './core/service-worker/service-worker.epics';
 
 import {store} from './main';
@@ -18,6 +19,7 @@ const handleUncaughtErrors = (error, stream) => {
 
 export const epics = (action$, store) => combineEpics(
   apiEpics,
+  playlistsEpics,
   serviceWorkerEpics
 )(action$, store)
   .catch(handleUncaughtErrors);
