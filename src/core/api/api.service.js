@@ -1,19 +1,23 @@
-import {getCurrentState} from '../../store';
-import {ajax} from 'rxjs/observable/dom/ajax';
-import {SERVER_URL} from './api.constants';
+import Cookie from 'js-cookie';
+import { ajax } from 'rxjs/observable/dom/ajax';
 
-export const AjaxRequest = (method, url, data, baseURL = '') => {
+import { getCurrentState } from '../../store';
+import { SERVER_URL } from './api.constants';
+
+export const AjaxRequest = (method, url, data) => {
 
   const state = getCurrentState();
+  const token = Cookie.get('token');
 
   return ajax({
     method,
     timeout: 10000,
     body: data || null,
     responseType: 'json',
-    url: baseURL + url,
+    url: SERVER_URL + url,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     }
   });
 
