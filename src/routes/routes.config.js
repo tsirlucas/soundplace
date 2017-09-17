@@ -4,8 +4,7 @@ import * as Routes from './index';
 
 import { store } from '../main.js';
 
-import Page1 from '../pages/Page1';
-import Page2 from '../pages/Page2';
+import Playlist from '../pages/Playlists';
 import Login from '../pages/Login';
 
 export const browserHistory = createBrowserHistory();
@@ -49,7 +48,7 @@ const privateRoutes = Routes.privatizeRoutes({
     {
       path: '/',
       exact: true,
-      render: Page2
+      component: Playlist
     }
   ]
 });
