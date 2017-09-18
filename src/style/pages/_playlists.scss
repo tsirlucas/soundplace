@@ -1,17 +1,22 @@
 #playlists {
   padding: 50px;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-left: -30px;
+  margin-top: -30px;
+  justify-content: center;
 
   .playlist-item {
-    display: inline-flex;
     text-align: center;
-    width: 200px;
     height: 250px;
     text-overflow: ellipsis;
     box-shadow: 0 3px 15px 0 rgba(black, 0.1);
     background-color: white;
     cursor: pointer;
+    display: flex;
+    width: 200px;
+    margin-left: 30px;
+    margin-top: 30px;
 
     figure {
       margin: 0;
