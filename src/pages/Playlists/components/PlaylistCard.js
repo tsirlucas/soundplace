@@ -3,7 +3,7 @@ import { h } from 'preact';
 const PlaylistCard = ({ item }) => (
   <div className="playlist-item" onClick={() => console.log('ola')}>
     <figure>
-      <img src={item.cover} alt={item.name} width="200" height="200" />
+      <img src={item.cover} alt={item.name}/>
       <figcaption>
         <span>{item.name}</span>
       </figcaption>
