@@ -29,6 +29,7 @@
     }
 
     figcaption {
+      padding: 10px;
       font-weight: 100;
       font-size: 15px;
       height: 40px;
@@ -38,7 +39,6 @@
     }
 
     span {
-      word-break: break-all;
       display: -webkit-box;
       max-width: 200px;
       -webkit-line-clamp: 2;
@@ -46,26 +46,30 @@
       overflow: hidden;
     }
   }
+}
 
-  @media (max-width: 545px) {
+@media (max-width: 545px) {
+  #playlists {
+    padding: 30px;
+
     .playlist-item {
-      width: 120px;
-      height: 170px;
+      width: 140px;
+      height: 190px;
     }
 
     img {
-      height: 120px;
-      width: 120px;
-      max-width: 120px;
-      max-height: 120px;
+      height: 140px;
+      width: 140px;
+      max-width: 140px;
+      max-height: 140px;
     }
 
     figure {
-      max-width: 120px !important;
+      max-width: 140px !important;
     }
 
     span {
-      width: 120px;
+      width: 140px;
     }
   }
 }
