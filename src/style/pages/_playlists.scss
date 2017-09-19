@@ -51,10 +51,14 @@
 @media (max-width: 545px) {
   #playlists {
     padding: 30px;
+    margin-left: -20px;
+    margin-top: -20px;
 
     .playlist-item {
       width: 140px;
       height: 190px;
+      margin-left: 20px;
+      margin-top: 20px;
     }
 
     img {
