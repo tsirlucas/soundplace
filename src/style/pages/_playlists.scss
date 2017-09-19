@@ -49,23 +49,23 @@
 
   @media (max-width: 545px) {
     .playlist-item {
-      width: 100px;
-      height: 150px;
+      width: 120px;
+      height: 170px;
     }
 
     img {
-      height: 100px;
-      width: 100px;
-      max-width: 100px;
-      max-height: 100px;
+      height: 120px;
+      width: 120px;
+      max-width: 120px;
+      max-height: 120px;
     }
 
     figure {
-      max-width: 100px !important;
+      max-width: 120px !important;
     }
 
     span {
-      width: 100px;
+      width: 120px;
     }
   }
 }
