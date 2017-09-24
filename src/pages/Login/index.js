@@ -1,14 +1,25 @@
+import Cookie from 'js-cookie';
 import { h, Component } from 'preact';
 import queryString from 'query-string';
-import Cookie from 'js-cookie';
+import { connect } from 'preact-redux';
+import { bindActionCreators } from 'redux';
 
-import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { SPOTIFY_AUTH } from '../../core/api/api.constants';
-import { browserHistory } from '../../routes/routes.config';
+import { importUserData } from '../../core/user/user.actions';
 
 const secure = process.env.NODE_ENV === 'production';
 
+
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators({ importUserData }, dispatch) };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Login extends Component {
 
   componentWillMount() {
@@ -18,7 +29,7 @@ export default class Login extends Component {
 
       // TODO Ask Lucas for the exp time. Its ms, do the math.
       Cookie.set('token', params['access_token'], { secure, expires: 30 });
-      window.location.reload();
+      this.props.actions.importUserData('/');
     }
   }
 
