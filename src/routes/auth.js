@@ -5,17 +5,19 @@ import Cookie from 'js-cookie';
 
 export const checkAuth = (Route, isPrivate) => {
   const isAuthenticated = Cookie.get('token');
+  const { pathname } = window.location;
 
   if (isAuthenticated) {
-    console.log(`Authenticated with token ${isAuthenticated}`);
-    //If route is private, user proceeds, else route is public, redirect user to private root.
-    return isPrivate
-      ? Route
-      : <Redirect to='/'/>;
+
+    //If route is private and user is not on / already, user proceeds, else route is public, redirect user to private root.
+    if (isPrivate) {
+      return Route;
+    } else if (pathname !== '/') return <Redirect to='/'/>;
   }
 
-  //If route is private, user is redirected to app's public root, else user proceeds.
-  return isPrivate
+  const needToRedirect = pathname !== '/login';
+  //If route is private and his not on /login already, user is redirected to app's public root, else user proceeds.
+  return isPrivate && needToRedirect
     ? <Redirect to='/login'/>
     : Route;
 };
