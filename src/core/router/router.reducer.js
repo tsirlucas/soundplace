@@ -1,4 +1,4 @@
-import {CHANGE_ROUTE, REPLACE_ROUTE, PREV_ROUTE} from './router.constants';
+import { CHANGE_ROUTE, REPLACE_ROUTE, PREV_ROUTE } from './router.constants';
 
 const initialState = {
   path: '/',
