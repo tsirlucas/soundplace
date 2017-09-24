@@ -21,7 +21,7 @@ export const updateRoute = () => {
 export const updateState = () => {
   const routeStatus = store.getState().route;
   if (window.location.pathname !== routeStatus.path) {
-    Routes.goTo(window.location.pathname);
+    store.dispatch(Routes.changeRoute(window.location.pathname));
   }
 };
 
