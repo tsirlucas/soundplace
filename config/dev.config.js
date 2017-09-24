@@ -8,16 +8,16 @@ export const devPlugins = [
   new BrowserSyncPlugin({
     host: 'localhost',
     port: 9000,
-    notify:false,
+    notify: false,
     proxy: 'http://localhost:9100/'
-  }, {reload: false}),
+  }, { reload: false }),
   new Dashboard(),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NamedModulesPlugin(),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     title: 'SoundPlace',
-    filename:'200.html',
+    filename: '200.html',
     removeRedundantAttributes: true,
     inject: false,
     manifest: './assets/manifest.json',
@@ -28,11 +28,11 @@ export const devPlugins = [
     },
     themeColor: '#fff' //MY_APP_HERE
   }),
-  new ScriptExtHtmlWebpackPlugin({defaultAttribute: "async"}),
+  new ScriptExtHtmlWebpackPlugin({ defaultAttribute: "async" }),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     title: 'SoundPlace',
-    filename:'index.html',
+    filename: 'index.html',
     removeRedundantAttributes: true,
     inject: false,
     manifest: './assets/manifest.json',
@@ -43,7 +43,7 @@ export const devPlugins = [
     },
     themeColor: '#fff' //MY_APP_HERE
   }),
-  new ScriptExtHtmlWebpackPlugin({defaultAttribute: "async"}),
+  new ScriptExtHtmlWebpackPlugin({ defaultAttribute: "async" }),
 ];
 
 export const devServerconfig = {
@@ -60,6 +60,6 @@ export const devServerconfig = {
 export const devLoaders = [
   {
     test: /\.(scss|css)$/,
-    loader: 'style-loader!css-loader?sourceMap!postcss-loader!sass-loader?sourceMap'
+    use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap']
   }
 ];
