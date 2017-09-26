@@ -1,21 +1,29 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
+import { bindActionCreators } from 'redux';
 
 import Card from './components/PlaylistCard';
 import { getPlaylists } from '../../core/playlists/playlists.actions';
 
-@connect(({ playlists }) => ({ playlists }))
+function mapStateToProps({ playlists }) {
+  return { playlists };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators({ getPlaylists }, dispatch) };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class PlaylistPage extends Component {
 
   componentDidMount() {
-    const { store } = this.context;
-    store.dispatch(getPlaylists());
+    this.props.actions.getPlaylists();
   }
 
-  render(props, state) {
+  render({ playlists }, state) {
     return (
       <section id="playlists">
-        {props.playlists.map((playlist) => <Card item={playlist}/>)}
+        {playlists.map((playlist) => <Card item={playlist}/>)}
       </section>
     );
   }

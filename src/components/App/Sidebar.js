@@ -1,15 +1,23 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
+import { bindActionCreators } from 'redux';
 
-import { store } from '../../main';
 import { getUser } from '../../core/user/user.actions';
 import { privateRoutes } from '../../routes/routes.config';
 
-@connect(({ user }) => ({ user }))
+function mapStateToProps({ user }) {
+  return { user };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators({ getUser }, dispatch) };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Sidebar extends Component {
 
   componentDidMount() {
-    store.dispatch(getUser());
+    this.props.actions.getUser();
   }
 
   render() {
