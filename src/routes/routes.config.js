@@ -42,11 +42,17 @@ const publicRoutes = {
   ]
 };
 
-const privateRoutes = Routes.privatizeRoutes({
+export const privateRoutes = Routes.privatizeRoutes({
   layout: Routes.App,
   childRoutes: [
     {
       path: '/',
+      header: 'Home',
+      component: Playlist
+    },
+    {
+      path: '/playlists',
+      header: 'Playlists',
       exact: true,
       component: Playlist
     }

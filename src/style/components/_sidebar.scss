@@ -1,0 +1,50 @@
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 20%;
+  height: 100%;
+  background: $black-dark;
+
+  #brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 150px;
+
+    .brand-img {
+      display: inline-block;
+      border-radius: 50%;
+    }
+
+    .brand-name {
+      color: white;
+    }
+  }
+
+  .brand-nav {
+
+    .brand-nav-item {
+      display: block;
+      margin: 0;
+      padding: 15px;
+      border-bottom: 1px solid rgba(white, 0.1);
+      color: white;
+      cursor: pointer;
+      transition: background-color 100ms linear;
+
+      &:first-child {
+        border-top: 1px solid rgba(white, 0.1);
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      &:hover {
+        background-color: rgba(white, 0.1);
+      }
+    }
+  }
+}

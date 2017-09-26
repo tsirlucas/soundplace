@@ -18,3 +18,10 @@ html, body {
 #application, #application > main, .full-height {
   min-height: 100vh;
 }
+
+#application #content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+}

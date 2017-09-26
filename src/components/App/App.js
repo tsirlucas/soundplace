@@ -2,8 +2,8 @@ import {h} from 'preact';
 
 export default function(props) {
 	return (
-		<div>
+		<section id="content">
 			{props.children}
-		</div>
+		</section>
 	);
 }
