@@ -47,13 +47,13 @@ export const privateRoutes = Routes.privatizeRoutes({
   childRoutes: [
     {
       path: '/',
+      exact: true,
       header: 'Home',
       component: Playlist
     },
     {
       path: '/playlists',
       header: 'Playlists',
-      exact: true,
       component: Playlist
     }
   ]

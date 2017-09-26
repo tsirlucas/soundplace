@@ -4,7 +4,7 @@ import { connect } from 'preact-redux';
 import Card from './components/PlaylistCard';
 import { getPlaylists } from '../../core/playlists/playlists.actions';
 
-@connect(({playlists}) => ({ playlists }))
+@connect(({ playlists }) => ({ playlists }))
 export default class PlaylistPage extends Component {
 
   componentDidMount() {
