@@ -3,7 +3,7 @@ import { h } from 'preact';
 import Redirect from 'react-router/Redirect';
 import Cookie from 'js-cookie';
 
-export const checkAuth = (Route, isPrivate) => {
+export const checkAuth = (Route, isPrivate, path) => {
   const isAuthenticated = Cookie.get('token');
   const { pathname } = window.location;
 
@@ -12,7 +12,8 @@ export const checkAuth = (Route, isPrivate) => {
     //If route is private and user is not on / already, user proceeds, else route is public, redirect user to private root.
     if (isPrivate) {
       return Route;
-    } else if (pathname !== '/') return <Redirect to='/'/>;
+    }
+    return <Redirect from={path} to='/'/>;
   }
 
   const needToRedirect = pathname !== '/login';

@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import Route from 'react-router/Route';
+import Switch from 'react-router/Switch';
 
 import { checkAuth } from './auth';
 
@@ -17,7 +18,7 @@ const checkLayout = (route) => {
 
 const renderChild = (routes) => (
   routes.map((route, i) =>
-    checkAuth(<Route key={i} {...route}>{checkLayout(route)}</Route>, route.isPrivate)
+    checkAuth(<Route key={i} {...route}>{checkLayout(route)}</Route>, route.isPrivate, route.path)
   ));
 
 const renderRoutes = (routes) => {
@@ -25,7 +26,11 @@ const renderRoutes = (routes) => {
 
   return routes ? (
     <Layout>
-      {renderChild(routes.childRoutes)}
+      <Switch>
+        {routes.childRoutes.map((route, i) =>
+          checkLayout(route)
+        )}
+      </Switch>
     </Layout>
   ) : null;
 };
