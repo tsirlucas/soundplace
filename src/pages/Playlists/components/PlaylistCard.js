@@ -6,9 +6,11 @@ const PlaylistCard = ({ item }) => (
       <div className="playlist-item-cover">
         <img src={item.cover || 'http://via.placeholder.com/200x200'} alt={item.name}/>
       </div>
-      <figcaption>
-        <span>{item.name}</span>
-      </figcaption>
+      <div className="playlist-item-title">
+        <figcaption>
+          <span>{item.name}</span>
+        </figcaption>
+      </div>
     </figure>
   </div>
 );

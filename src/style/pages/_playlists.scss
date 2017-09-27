@@ -46,10 +46,18 @@
       overflow: hidden;
     }
   }
+
   .playlist-item-cover {
     min-height: 185px;
     display: flex;
     align-items: center;
+  }
+
+  .playlist-item-title {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -70,6 +78,13 @@
       min-height: 140px;
       display: flex;
       align-items: center;
+    }
+
+    .playlist-item-title {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     img {
