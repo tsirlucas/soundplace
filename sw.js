@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/200.html","338873a6ede5220dfa262c692bc04bfb"],["/404.html","338873a6ede5220dfa262c692bc04bfb"],["/CNAME","b53a7ae9dac2cc6ff355829a79c1dfa4"],["/asset-manifest.json","78ca8c232df22c65f7167321e0a50660"],["/assets/img/android-chrome-192x192.png","59e221032ab061cad83b6ce2bcddbde8"],["/assets/img/android-chrome-512x512.png","cf3fdf7af60a294d6d3f48cb7ad82488"],["/assets/img/apple-touch-icon.png","a0e46feb3cc577478b127936e739dd08"],["/assets/img/favicon-16x16.png","d712b605ed58419c7e6d4ab885d147b7"],["/assets/img/favicon-32x32.png","2f7ce797cf8f198dedb9a9f38b7ef13b"],["/assets/img/favicon.ico","53ac170e970ad034a55ee15ce198708c"],["/assets/img/mstile-150x150.png","ba817517b2c4e1ba1ce802c4d4fafdb4"],["/assets/manifest.json","e7f7832f2ee2c344f7c998f9eabcb448"],["/bundle.js","2c41378b18da8004396a2b288c1e5158"],["/favicon.ico","53ac170e970ad034a55ee15ce198708c"],["/index.html","338873a6ede5220dfa262c692bc04bfb"],["/style.css","714dcfb58170b091dbffbd45ec2152d3"]];
+var precacheConfig = [["/200.html","062af87d8329da641aaaed86ab1479b2"],["/404.html","062af87d8329da641aaaed86ab1479b2"],["/CNAME","b53a7ae9dac2cc6ff355829a79c1dfa4"],["/asset-manifest.json","78ca8c232df22c65f7167321e0a50660"],["/assets/img/android-chrome-192x192.png","59e221032ab061cad83b6ce2bcddbde8"],["/assets/img/android-chrome-512x512.png","cf3fdf7af60a294d6d3f48cb7ad82488"],["/assets/img/apple-touch-icon.png","a0e46feb3cc577478b127936e739dd08"],["/assets/img/favicon-16x16.png","d712b605ed58419c7e6d4ab885d147b7"],["/assets/img/favicon-32x32.png","2f7ce797cf8f198dedb9a9f38b7ef13b"],["/assets/img/favicon.ico","53ac170e970ad034a55ee15ce198708c"],["/assets/img/mstile-150x150.png","ba817517b2c4e1ba1ce802c4d4fafdb4"],["/assets/manifest.json","e7f7832f2ee2c344f7c998f9eabcb448"],["/bundle.js","9ea6499a131607abfcb48f7adbb45290"],["/favicon.ico","53ac170e970ad034a55ee15ce198708c"],["/index.html","062af87d8329da641aaaed86ab1479b2"],["/style.css","714dcfb58170b091dbffbd45ec2152d3"]];
 var cacheName = 'sw-precache-v3-sw-precache-webpack-plugin-' + (self.registration ? self.registration.scope : '');
 
 
@@ -282,6 +282,11 @@ self.addEventListener('fetch', function(event) {
 // *** End of auto-included sw-toolbox code. ***
 
 
+
+// Runtime cache configuration, using the sw-toolbox library.
+
+toolbox.router.get(/^https:\/\/scontent\.xx\.fbcdn\.net\//, toolbox.cacheFirst, {});
+toolbox.router.get(/^https:\/\/*\.scdn\.fbcdn\.co\//, toolbox.cacheFirst, {});
 
 
 
