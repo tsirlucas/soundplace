@@ -22,15 +22,15 @@ export const prodPlugins = [
         handler: 'cacheFirst'
       },
       {
-        urlPattern: /^https:\/\/mosaic\.scdn\.fbcdn\.co\//,
+        urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
         handler: 'cacheFirst'
       },
       {
-        urlPattern: /^https:\/\/pl\.scdn\.fbcdn\.co\//,
+        urlPattern: /^https:\/\/i\.scdn\.co\//,
         handler: 'cacheFirst'
       },
       {
-        urlPattern: /^https:\/\/i\.scdn\.fbcdn\.co\//,
+        urlPattern: /^https:\/\/pl\.scdn\.co\//,
         handler: 'cacheFirst'
       }
     ],
