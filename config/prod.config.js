@@ -16,7 +16,16 @@ export const prodPlugins = [
     }
   ]),
   new SWPrecache({
-    runtimeCaching: [],
+    runtimeCaching: [
+      {
+        urlPattern: /^https:\/\/scontent\.xx\.fbcdn\.net\//,
+        handler: 'cacheFirst'
+      },
+      {
+        urlPattern: /^https:\/\/*\.scdn\.fbcdn\.co\//,
+        handler: 'cacheFirst'
+      }
+    ],
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary
     navigateFallback: 'index.html',
