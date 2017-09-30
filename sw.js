@@ -286,7 +286,9 @@ self.addEventListener('fetch', function(event) {
 // Runtime cache configuration, using the sw-toolbox library.
 
 toolbox.router.get(/^https:\/\/scontent\.xx\.fbcdn\.net\//, toolbox.cacheFirst, {});
-toolbox.router.get(/^https:\/\/*\.scdn\.fbcdn\.co\//, toolbox.cacheFirst, {});
+toolbox.router.get(/^https:\/\/mosaic\.scdn\.fbcdn\.co\//, toolbox.cacheFirst, {});
+toolbox.router.get(/^https:\/\/pl\.scdn\.fbcdn\.co\//, toolbox.cacheFirst, {});
+toolbox.router.get(/^https:\/\/i\.scdn\.fbcdn\.co\//, toolbox.cacheFirst, {});
 
 
 
