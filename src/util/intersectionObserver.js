@@ -20,12 +20,12 @@ export const lazyLoadImages = () => {
 
   if ('IntersectionObserver' in window) {
 
-    const io = new IntersectionObserver(onChange, { threshold: 1.0 });
+    const io = new IntersectionObserver(onChange, { threshold: 0.8 });
 
     /* eslint-disable no-inner-declarations */
     function onChange(changes) {
       changes.forEach((change) => {
-        if (change.isIntersecting && change.intersectionRatio >= 1) {
+        if (change.isIntersecting && change.intersectionRatio >= 0.8) {
           change.target.src = change.target.dataset.src;
           io.unobserve(change.target);
         }
