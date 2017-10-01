@@ -1,0 +1,100 @@
+.bottom-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: table;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-top: 1px solid black;
+  background-color: $black-dark;
+  font-size: 17px;
+  font-weight: 400;
+  z-index: 1;
+}
+
+.bottom-bar-item {
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  width: auto;
+  border-radius: 0;
+  font-size: 17px;
+  font-weight: 400;
+
+  > input {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    opacity: 0.001;
+    border: 0;
+    outline: none;
+    appearance: none;
+  }
+}
+
+.bottom-bar-button {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: 49px;
+  margin: 0;
+  padding: 0;
+  cursor: default;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  color: $color_mountain_mist_approx;
+  border: none;
+  border-top: none;
+  background-color: transparent;
+  background-clip: padding-box;
+  box-shadow: none;
+  text-shadow: 0 1px none;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 49px;
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  &:focus {
+    z-index: 1;
+    border-top: none;
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+:checked + .bottom-bar-button {
+  svg {
+    fill: $white;
+  }
+  span {
+    color: $white
+  }
+  border-top: none;
+  box-shadow: none;
+}
