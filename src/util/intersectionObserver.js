@@ -25,7 +25,7 @@ export const lazyLoadImages = () => {
     /* eslint-disable no-inner-declarations */
     function onChange(changes) {
       changes.forEach((change) => {
-        if (change.isIntersecting && change.intersectionRatio > 1) {
+        if (change.isIntersecting && change.intersectionRatio >= 1) {
           change.target.src = change.target.dataset.src;
           io.unobserve(change.target);
         }
