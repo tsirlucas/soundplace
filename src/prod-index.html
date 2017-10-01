@@ -8,12 +8,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-title" content="SoundPlace">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#242424">
   <meta name="msapplication-starturl" content="./?utm_source=web_app_manifest&utm_medium=web_app_manifest">
 
   <!-- Open Graph data -->
   <meta property="og:title" content="SoundPlace" />
   <meta property="og:type" content="website" />
   <meta property="og:image" itemprop="image" content="/img/logo.png" />
+  <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="/img/logo.png">
 
   <% if ( htmlWebpackPlugin.options.manifest) { %>
   <link rel="manifest" href="<%= htmlWebpackPlugin.options.manifest %>">
