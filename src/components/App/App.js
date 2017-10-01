@@ -17,9 +17,9 @@ export default class App extends Component {
 
     return (
       <section id="layout">
+        {width > 765 ? <Sidebar /> : <Bottombar/>}
+        {width <= 765 && <Topbar/>}
         <div id="content">
-          {width > 765 ? <Sidebar /> : <Bottombar/>}
-          {width <= 765 && <Topbar/>}
           {children}
         </div>
       </section>
