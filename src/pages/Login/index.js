@@ -33,6 +33,14 @@ export default class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    document.querySelector('.button-spotify').onclick = function (e) {
+      if (e) e.preventDefault();
+      window.location = this.getAttribute("href");
+      return false
+    }
+  }
+
   render(props, state) {
     return (
       <section className="section full-height" id="login">
