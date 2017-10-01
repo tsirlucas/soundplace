@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import { Observable } from '../../util/RXImports';
 
 import {SESSION_ERROR} from './api.constants';
 import {changeRoute} from '../router/router.actions';

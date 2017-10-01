@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from '../../util/RXImports';
 import { ajax } from 'rxjs/observable/dom/ajax';
 
 import { getCurrentState } from '../../store';

@@ -1,5 +1,5 @@
 import { combineEpics } from 'redux-observable';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from '../../util/RXImports';
 
 import { onResize } from './window.actions';
 import { WATCH_RESIZE } from './window.constants';

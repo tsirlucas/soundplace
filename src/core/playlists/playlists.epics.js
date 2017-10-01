@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs/Observable';
-
 import { REQUEST_PLAYLISTS } from './playlists.constants';
 import { getPlaylists } from '../api/api.service';
 import { requestPlaylistsSuccess } from './playlists.actions';
