@@ -64,7 +64,7 @@ export const prodPlugins = [
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackPlugin({
@@ -80,7 +80,7 @@ export const prodPlugins = [
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackPlugin({
@@ -96,7 +96,7 @@ export const prodPlugins = [
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new CnameWebpackPlugin({
