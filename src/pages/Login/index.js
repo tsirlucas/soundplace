@@ -37,8 +37,8 @@ export default class Login extends Component {
     document.querySelector('.button-spotify').onclick = function (e) {
       if (e) e.preventDefault();
       window.location = this.getAttribute("href");
-      return false
-    }
+      return false;
+    };
   }
 
   render(props, state) {
