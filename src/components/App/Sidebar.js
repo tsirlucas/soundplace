@@ -6,13 +6,14 @@ import { bindActionCreators } from 'redux';
 import Icon from '../Icons/Icons';
 import { getUser } from '../../core/user/user.actions';
 import { privateRoutes } from '../../routes/routes.config';
+import { changeRoute } from '../../core/router/router.actions';
 
-function mapStateToProps({ user }) {
-  return { user };
+function mapStateToProps({ user, route }) {
+  return { user, route };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ getUser }, dispatch) };
+  return { actions: bindActionCreators({ getUser, changeRoute }, dispatch) };
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -24,6 +25,7 @@ class Sidebar extends Component {
 
   render() {
     const { user } = this.props;
+    const { changeRoute } = this.props.actions;
 
     return (
       <aside id="sidebar">
@@ -32,7 +34,10 @@ class Sidebar extends Component {
           <h3 className="brand-name">{user.name}</h3>
         </div>
         <Navigation>
-          { privateRoutes.childRoutes.map((route) => <NavigationItem header={route.header} icon={route.icon}/>)}
+          { privateRoutes.childRoutes.map((route) => <NavigationItem onClick={() => changeRoute(route.path)}
+                                                                     header={route.header}
+                                                                     icon={route.icon}
+                                                                     active={route.path === location.pathname}/>)}
         </Navigation>
       </aside>
     );
@@ -45,12 +50,12 @@ const Navigation = ({ children }) => (
   </ul>
 );
 
-const NavigationItem = ({ header, icon }) => (
-  <li className="brand-nav-item">
+const NavigationItem = ({ header, icon, active, onClick }) => (
+  <li className="brand-nav-item" onClick={onClick}>
     <div className="brand-nav-icon">
-      <Icon icon={icon} size={34}/>
+      <Icon icon={icon} size={34} color={active ? 'white' : null}/>
     </div>
-    <span>{header}</span>
+    <span style={active ? 'color: white' : null}>{header}</span>
   </li>
 );
 
