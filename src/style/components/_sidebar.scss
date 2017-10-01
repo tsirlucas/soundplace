@@ -28,13 +28,14 @@
   .brand-nav {
 
     .brand-nav-item {
-      display: block;
+      display: flex;
       margin: 0;
-      padding: 15px;
+      padding: 12px;
       border-bottom: 1px solid rgba(white, 0.1);
       color: white;
       cursor: pointer;
       transition: background-color 100ms linear;
+      align-items: center;
 
       &:first-child {
         border-top: 1px solid rgba(white, 0.1);
@@ -47,6 +48,14 @@
       &:hover {
         background-color: rgba(white, 0.1);
       }
+    }
+
+    .brand-nav-icon {
+      margin-right: 10px;
+    }
+
+    span {
+      line-height: 12px;
     }
   }
 }

@@ -14,9 +14,9 @@ const Icon = props => {
   return (
     <svg
       style={styles.svg}
-      width={`${props.size}px`}
-      height={`${props.size}px`}
-      viewBox="0 0 32 32"
+      width={`${props.size}`}
+      height={`${props.size}`}
+      viewBox={`0 0 24 24`}
       xmlns="http://www.w3.org/2000/svg"
       fill-rule="evenodd"
       clip-rule="evenodd"

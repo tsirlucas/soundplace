@@ -28,7 +28,7 @@ export const updateState = () => {
 browserHistory.listen(() => {
   const pageElement = document.querySelector('#content');
   if (pageElement) {
-    pageElement.scrollIntoView(true);
+    document.querySelector('body').scrollTop = 0;
   }
   updateState();
 });
@@ -49,10 +49,12 @@ export const privateRoutes = Routes.privatizeRoutes({
       path: '/',
       exact: true,
       header: 'Home',
+      icon: 'HOME',
       component: Playlist
     },
     {
       path: '/playlists',
+      icon: 'PLAYLISTS',
       header: 'Playlists',
       component: Playlist
     }

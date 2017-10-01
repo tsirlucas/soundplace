@@ -19,16 +19,17 @@ html, body {
   min-height: 100vh;
 }
 
-#application #content {
+#application #layout {
   padding: 40px;
   margin-left: 250px;
 }
 
 @media (max-width: 765px) {
-  #application #content {
+  #application #layout {
     padding: 4vh 4vw;
     margin-left: 0;
     margin-bottom: 50px;
+    margin-top: 60px;
     box-sizing: border-box;
   }
 }
