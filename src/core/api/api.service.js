@@ -23,12 +23,18 @@ export const AjaxRequest = (method, url, data = null) => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-  }).map((res) => {
-    if (method === 'GET') {
-      Cookie.set(`${url}_${JSON.stringify(data)}`, JSON.stringify(res), { secure });
-    }
-    return res;
-  });
+  })
+    .catch((err) => {
+      console.log('Ajax error, retrying...');
+      return Observable.throw(err);
+    })
+    .retry(3)
+    .map((res) => {
+      if (method === 'GET') {
+        Cookie.set(`${url}_${JSON.stringify(data)}`, JSON.stringify(res), { secure });
+      }
+      return res;
+    });
 
   if (cached) {
     return Observable.concat(
