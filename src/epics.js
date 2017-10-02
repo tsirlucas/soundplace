@@ -3,7 +3,6 @@ import { combineEpics } from 'redux-observable';
 import apiEpics from './core/api/api.epics';
 import userEpics from './core/user/user.epics';
 import routeEpics from './core/router/router.epics';
-import windowEpics from './core/window/window.epics.js';
 import playlistsEpics from './core/playlists/playlists.epics';
 import serviceWorkerEpics from './core/service-worker/service-worker.epics';
 
@@ -24,7 +23,6 @@ export const epics = (action$, store) => combineEpics(
   apiEpics,
   userEpics,
   routeEpics,
-  windowEpics,
   playlistsEpics,
   serviceWorkerEpics
 )(action$, store)

@@ -3,7 +3,7 @@ import { h } from 'preact';
 import Routes from './routes/Routes';
 import { Provider } from 'preact-redux';
 import { configureStore } from './store';
-import { watchResize, onResize } from './core/window/window.actions';
+import { onResize } from './core/window/window.actions';
 import configureDevTools from './util/configureDevTools';
 
 import './util/RXImports';
@@ -13,7 +13,7 @@ import 'immutable-merge-operators';
 export const store = configureStore();
 
 store.dispatch(onResize({ target: window }));
-store.dispatch(watchResize());
+window.addEventListener('resize', (e) => store.dispatch(onResize(e)));
 
 configureDevTools();
 
