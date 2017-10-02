@@ -4,6 +4,7 @@ import apiEpics from './core/api/api.epics';
 import userEpics from './core/user/user.epics';
 import routeEpics from './core/router/router.epics';
 import playlistsEpics from './core/playlists/playlists.epics';
+import artistsEpics from './core/artists/artists.epics';
 import serviceWorkerEpics from './core/service-worker/service-worker.epics';
 
 import { store } from './main';
@@ -24,6 +25,7 @@ export const epics = (action$, store) => combineEpics(
   userEpics,
   routeEpics,
   playlistsEpics,
+  artistsEpics,
   serviceWorkerEpics
 )(action$, store)
   .catch(handleUncaughtErrors);

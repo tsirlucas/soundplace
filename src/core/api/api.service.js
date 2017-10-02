@@ -46,3 +46,5 @@ export const importUserData = () => AjaxRequest('POST', '/api/me/import');
 export const getUser = () => AjaxRequest('GET', '/api/me');
 
 export const getPlaylists = () => AjaxRequest('GET', '/api/me/playlists');
+
+export const getArtists = () => AjaxRequest('GET', '/api/me/artists');

@@ -4,8 +4,9 @@ import * as Routes from './index';
 
 import { store } from '../main.js';
 
-import Playlist from '../pages/Playlists';
 import Login from '../pages/Login';
+import Artists from '../pages/Artists';
+import Playlist from '../pages/Playlists';
 
 export const browserHistory = createBrowserHistory();
 
@@ -57,6 +58,12 @@ export const privateRoutes = Routes.privatizeRoutes({
       icon: 'PLAYLISTS',
       header: 'Playlists',
       component: Playlist
+    },
+    {
+      path: '/artists',
+      icon: 'ARTISTS',
+      header: 'Artists',
+      component: Artists
     }
   ]
 });
