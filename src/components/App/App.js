@@ -14,11 +14,12 @@ export default class App extends Component {
 
   render({ children }) {
     const { width } = this.props.window;
+    const isDesktop = width > 765;
 
     return (
       <section id="layout">
-        {width > 765 ? <Sidebar /> : <Bottombar/>}
-        {width <= 765 && <Topbar/>}
+        {isDesktop ? <Sidebar /> : <Bottombar/>}
+        {!isDesktop && <Topbar/>}
         <div id="content">
           {children}
         </div>
