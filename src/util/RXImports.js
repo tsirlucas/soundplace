@@ -2,6 +2,7 @@ import { map } from 'rxjs/add/operator/map';
 import { of } from 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/add/operator/delay';
+import { retry } from 'rxjs/add/operator/retry';
 import { concat } from 'rxjs/add/observable/concat';
 import { mergeMap } from 'rxjs/add/operator/mergeMap';
 import { concatMap } from 'rxjs/add/operator/concatMap';
@@ -15,6 +16,7 @@ export {
   of,
   map,
   delay,
+  retry,
   concat,
   forkJoin,
   mergeMap,
