@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 import { bindActionCreators } from 'redux';
 
-import Card from './components/PlaylistCard';
+import CardList from '../../components/CardList';
 import { lazyLoadImages } from '../../util/intersectionObserver';
 import { getPlaylists } from '../../core/playlists/playlists.actions';
 
@@ -26,10 +26,6 @@ export default class PlaylistPage extends Component {
   }
 
   render({ playlists }, state) {
-    return (
-      <section id="playlists">
-        {playlists.map((playlist) => <Card item={playlist}/>)}
-      </section>
-    );
+    return <CardList items={playlists} />;
   }
 }
