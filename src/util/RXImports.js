@@ -1,4 +1,5 @@
 import { map } from 'rxjs/add/operator/map';
+import { mapTo } from 'rxjs/add/operator/mapTo';
 import { of } from 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/add/operator/delay';
@@ -15,6 +16,7 @@ import { finally as observableFinally } from 'rxjs/add/operator/finally';
 export {
   of,
   map,
+  mapTo,
   delay,
   retry,
   concat,
