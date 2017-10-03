@@ -73,7 +73,7 @@
     "karma-webpack": "^2.0.3",
     "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
     "mkdirp": "^0.5.1",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.0",
     "ngrok": "^2.2.21",
     "node-sass": "^4.5.2",
     "now": "^8.0.2",
