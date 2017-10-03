@@ -15,12 +15,16 @@ export const SERVER_URL = getEnvURL();
 // ENDPOINTS
 export const SPOTIFY_AUTH = `${SERVER_URL}/auth/spotify`;
 
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+
 export const NETWORK_ERROR = 'NETWORK_ERROR';
 export const SESSION_ERROR = 'SESSION_ERROR';
+export const NOT_FOUND_ERROR = 'NOT_FOUND_ERROR';
 export const PRECONDITION_REQUIRED = 'PRECONDITION_REQUIRED';
 
 export const ERRORS_MAP = {
   0: NETWORK_ERROR,
   401: SESSION_ERROR,
+  404: NOT_FOUND_ERROR,
   428: PRECONDITION_REQUIRED
 };
