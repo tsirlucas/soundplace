@@ -4,7 +4,7 @@
   animation-direction: normal;
   animation-iteration-count: 1;
   animation-delay: 100ms;
-  animation-duration: 800ms;
+  animation-duration: 4s;
 }
 
 .status-bar {
@@ -22,31 +22,19 @@
     animation-name: showStatusBar;
     @extend %animation-properties;
   }
-
-  &.hide {
-    animation-name: hideStatusBar;
-    @extend %animation-properties;
-  }
 }
 
 @keyframes showStatusBar {
-  from {
+  0%,
+  100% {
     opacity: 0;
     transform: translateX(120%);
   }
-  to {
-    opacity: 1;
-    transform: translateX(0%);
-  }
-}
 
-@keyframes hideStatusBar {
-  from {
+  25%,
+  50%,
+  60% {
     opacity: 1;
     transform: translateX(0%);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(120%);
   }
 }
