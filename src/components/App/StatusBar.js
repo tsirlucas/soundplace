@@ -17,7 +17,7 @@ export default class StatusBar extends Component {
 
   render() {
     const { error } = this.props;
-    const showStatusBar = error !== "" ? 'show' : 'hide';
+    const showStatusBar = error ? 'show' : 'hide';
 
     return (
       <section className={`status-bar ${showStatusBar}`}>
