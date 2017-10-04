@@ -1,4 +1,4 @@
-%animation-properties {
+@mixin animation-properties {
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
   animation-direction: normal;
@@ -20,8 +20,31 @@
 
   &.show {
     animation-name: showStatusBar;
-    @extend %animation-properties;
+    @include animation-properties;
   }
+}
+
+@media (max-width: 545px) {
+  .status-bar {
+    position: absolute;
+    top: inherit;
+    height: $bottomBarHeight;
+    width: 100%;
+    bottom: $bottomBarHeight;
+    left: 0;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background-color: $red;
+    opacity: 0;
+    transform: translateX(120%);
+
+    &.show {
+      animation-name: showStatusBarMobile;
+      @include animation-properties;
+    }
+  }
+
 }
 
 @keyframes showStatusBar {
@@ -36,5 +59,20 @@
   60% {
     opacity: 1;
     transform: translateX(0%);
+  }
+}
+
+@keyframes showStatusBarMobile {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  25%,
+  50%,
+  60% {
+    opacity: 1;
+    transform: translateY(0%);
   }
 }
