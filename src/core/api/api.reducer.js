@@ -4,7 +4,7 @@ import {
   CLEAR_ERROR
 } from './api.constants';
 
-const ApiReducer = (state = [], action) => {
+const ApiReducer = (state = {}, action) => {
   switch (action.type) {
     case NETWORK_ERROR:
       return { message: 'Houve um problema de conexão. Tente novamente.' };

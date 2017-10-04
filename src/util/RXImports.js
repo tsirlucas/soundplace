@@ -6,6 +6,7 @@ import { delay } from 'rxjs/add/operator/delay';
 import { retry } from 'rxjs/add/operator/retry';
 import { concat } from 'rxjs/add/observable/concat';
 import { mergeMap } from 'rxjs/add/operator/mergeMap';
+import { startWith } from 'rxjs/add/operator/startWith';
 import { concatMap } from 'rxjs/add/operator/concatMap';
 import { forkJoin } from 'rxjs/add/observable/forkJoin';
 import { fromEvent } from 'rxjs/add/observable/fromEvent';
@@ -24,6 +25,7 @@ export {
   mergeMap,
   fromEvent,
   concatMap,
+  startWith,
   Observable,
   observableCatch,
   observableThrow,
