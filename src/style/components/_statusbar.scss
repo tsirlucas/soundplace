@@ -25,6 +25,9 @@
 
 @media (max-width: 765px) {
   .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: auto;
     height: $bottombar-height;
@@ -36,10 +39,6 @@
     color: white;
     background-color: $red;
     opacity: 0;
-
-    span {
-      font-size: 12px;
-    }
 
     &.show {
       animation-name: showStatusBarMobile;

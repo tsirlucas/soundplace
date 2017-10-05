@@ -14,6 +14,11 @@ import 'immutable-merge-operators';
 export const store = configureStore();
 
 store.dispatch(onResize({ target: window }));
+
+if (!window.navigator.onLine) {
+  store.dispatch(onOffline());
+}
+
 window.addEventListener('resize', (e) => store.dispatch(onResize(e)));
 window.addEventListener('offline', (e) => store.dispatch(onOffline(e)));
 window.addEventListener('online', (e) => store.dispatch(onOnline(e)));

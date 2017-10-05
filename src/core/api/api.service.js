@@ -13,6 +13,8 @@ export const AjaxRequest = (method, url, data = null) => {
   const token = Cookie.get('token');
   const cached = Cookie.get(`${url}_${JSON.stringify(data)}`);
 
+  if (api.hasNetwork === false) return Observable.of(JSON.parse(cached || null));
+
   const request = () => ajax({
     method,
     timeout: 10000,
@@ -39,7 +41,7 @@ export const AjaxRequest = (method, url, data = null) => {
   if (cached) {
     return Observable.concat(
       Observable.of(JSON.parse(cached)),
-      api.hasNetwork ? request() : Observable.of()
+      request()
     );
   }
 
