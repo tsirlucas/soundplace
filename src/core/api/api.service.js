@@ -13,7 +13,8 @@ export const AjaxRequest = (method, url, data = null) => {
   const token = Cookie.get('token');
   const cached = Cookie.get(`${url}_${JSON.stringify(data)}`);
 
-  if (api.hasNetwork === false) return Observable.of(JSON.parse(cached || null));
+  if (api.hasNetwork === false) return cached ?
+    Observable.of(JSON.parse(cached)) : Observable.empty();
 
   const request = () => ajax({
     method,
