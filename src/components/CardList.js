@@ -9,10 +9,10 @@ const CardList = ({ items }) => (
 const CardListItem = ({ item }) => (
   <div className="cardlist-item" onClick={() => console.log('ola')}>
     <figure>
-      <div className="list-item-cover">
+      <div className="cardlist-item-cover">
         <img data-src={item.cover || 'http://via.placeholder.com/200x200'} alt={item.name}/>
       </div>
-      <div className="list-item-title">
+      <div className="cardlist-item-title">
         <figcaption>
           <span>{item.name}</span>
         </figcaption>
