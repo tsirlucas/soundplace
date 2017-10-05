@@ -16,7 +16,6 @@
   color: white;
   background-color: $red;
   opacity: 0;
-  transform: translateX(120%);
 
   &.show {
     animation-name: showStatusBar;
@@ -24,20 +23,23 @@
   }
 }
 
-@media (max-width: 545px) {
+@media (max-width: 765px) {
   .status-bar {
     position: absolute;
-    top: inherit;
-    height: $bottomBarHeight;
+    top: auto;
+    height: $bottombar-height;
     width: 100%;
-    bottom: $bottomBarHeight;
+    bottom: $bottombar-height;
     left: 0;
-    padding: 20px;
+    padding: 5px 20px;
     text-align: center;
     color: white;
     background-color: $red;
     opacity: 0;
-    transform: translateX(120%);
+
+    span {
+      font-size: 12px;
+    }
 
     &.show {
       animation-name: showStatusBarMobile;
@@ -51,7 +53,7 @@
   0%,
   100% {
     opacity: 0;
-    transform: translateX(120%);
+    transform: translateX(100%);
   }
 
   25%,

@@ -1,0 +1,80 @@
+@mixin network-animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-duration: 0.3s;
+}
+
+.network-bar {
+  position: absolute;
+  top: 0;
+  padding: 5px;
+  padding-left: $sidebar-width;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: $red;
+  opacity: 0;
+
+  &.show {
+    animation-name: showNetworkBar;
+    @include network-animation-properties;
+  }
+
+  &.hide {
+    animation-name: hideNetworkBar;
+    @include network-animation-properties;
+  }
+}
+
+@media (max-width: 765px) {
+  .network-bar {
+    position: absolute;
+    top: $topbar-height;
+    padding: 5px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: white;
+    background-color: $red;
+    opacity: 0;
+
+    &.show {
+      animation-name: showNetworkBar;
+      @include network-animation-properties;
+    }
+
+    &.hide {
+      animation-name: hideNetworkBar;
+      @include network-animation-properties;
+    }
+  }
+
+}
+
+@keyframes showNetworkBar {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes hideNetworkBar {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}

@@ -4,7 +4,8 @@ import { connect } from 'preact-redux';
 import Topbar from './Topbar';
 import Sidebar from './Sidebar';
 import Bottombar from './Bottombar';
-import StatusBar from './StatusBar';
+import StatusBar from './Statusbar';
+import Networkbar from './Networkbar';
 
 function mapStateToProps({ window }) {
   return { window };
@@ -21,8 +22,9 @@ export default class App extends Component {
       <section id="layout">
         {isDesktop ? <Sidebar /> : <Bottombar/>}
         {!isDesktop && <Topbar/>}
+        <StatusBar />
+        <Networkbar/>
         <div id="content">
-          <StatusBar />
           {children}
         </div>
       </section>

@@ -9,7 +9,7 @@ const secure = process.env.NODE_ENV === 'production';
 
 export const AjaxRequest = (method, url, data = null) => {
 
-  const state = getCurrentState();
+  const { api } = getCurrentState();
   const token = Cookie.get('token');
   const cached = Cookie.get(`${url}_${JSON.stringify(data)}`);
 
@@ -39,7 +39,7 @@ export const AjaxRequest = (method, url, data = null) => {
   if (cached) {
     return Observable.concat(
       Observable.of(JSON.parse(cached)),
-      request()
+      api.hasNetwork ? request() : Observable.of()
     );
   }
 
