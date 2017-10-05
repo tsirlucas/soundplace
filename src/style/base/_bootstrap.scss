@@ -1,3 +1,12 @@
+@mixin layout-animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-duration: 0.3s;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -22,6 +31,16 @@ html, body {
 #application #layout {
   padding: 40px;
   margin-left: 250px;
+
+  &.network {
+    animation-name: increasePaddingForNetworkBar;
+    @include layout-animation-properties;
+  }
+
+  &.without-network {
+    animation-name: decreasePaddingForNetworkBar;
+    @include layout-animation-properties;
+  }
 }
 
 @media (max-width: 765px) {
@@ -32,4 +51,54 @@ html, body {
     margin-top: 60px;
     box-sizing: border-box;
   }
+
+  &.network {
+    animation-name: increasePaddingForNetworkBarMobile;
+    @include layout-animation-properties;
+  }
+
+  &.without-network {
+    animation-name: decreasePaddingForNetworkBarMobile;
+    @include layout-animation-properties;
+  }
 }
+
+@keyframes increasePaddingForNetworkBar {
+  0% {
+  }
+
+  100% {
+    padding-top: 68px;
+  }
+}
+
+@keyframes decreasePaddingForNetworkBar {
+  0% {
+    padding-top: 68px;
+  }
+
+  100% {
+  }
+}
+
+@keyframes increasePaddingForNetworkBarMobile {
+  0% {
+    padding-top: 4vh;
+  }
+
+  100% {
+    padding-top: calc(4vh + 28px);
+  }
+}
+
+@keyframes decreasePaddingForNetworkBarMobile {
+  0% {
+    padding-top: calc(4vh + 28px);
+  }
+
+  100% {
+    padding-top: 4vh;
+  }
+}
+
+

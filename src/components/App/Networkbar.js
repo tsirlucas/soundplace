@@ -1,35 +1,14 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
+import { h } from 'preact';
 
-function mapStateToProps({ api }) {
-  return { hasNetwork: api.hasNetwork };
-}
+const Networkbar = ({ networkClass, width, isDesktop, scrollbarWidth }) => {
+  const parsedWidth = isDesktop ? width - 250 - scrollbarWidth : width;
+  const style = `width: ${parsedWidth}px;`;
 
-function mapDispatchToProps() {
-  return {};
-}
+  return (
+    <section className={`network-bar ${networkClass}`} style={style}>
+      <span>Você está offline!</span>
+    </section>
+  );
+};
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class StatusBar extends Component {
-
-  getBarstatus = (hasNetwork) => {
-    switch (hasNetwork) {
-      case true:
-        return 'hide';
-      case false:
-        return 'show';
-      default:
-        return '';
-    }
-  };
-
-  render() {
-    const { hasNetwork } = this.props;
-
-    return (
-      <section className={`network-bar ${this.getBarstatus(hasNetwork)}`}>
-        <span>Você está offline!</span>
-      </section>
-    );
-  }
-}
+export default Networkbar;

@@ -11,20 +11,18 @@
   position: absolute;
   top: 0;
   padding: 5px;
-  padding-left: $sidebar-width;
-  right: 0;
-  width: 100%;
+  left: $sidebar-width;
   text-align: center;
   color: white;
   background-color: $red;
   opacity: 0;
 
-  &.show {
+  &.network {
     animation-name: showNetworkBar;
     @include network-animation-properties;
   }
 
-  &.hide {
+  &.without-network {
     animation-name: hideNetworkBar;
     @include network-animation-properties;
   }
@@ -35,19 +33,18 @@
     position: absolute;
     top: $topbar-height;
     padding: 5px;
-    width: 100%;
     left: 0;
     text-align: center;
     color: white;
     background-color: $red;
     opacity: 0;
 
-    &.show {
+    &.network {
       animation-name: showNetworkBar;
       @include network-animation-properties;
     }
 
-    &.hide {
+    &.without-network {
       animation-name: hideNetworkBar;
       @include network-animation-properties;
     }
