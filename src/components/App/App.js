@@ -27,13 +27,10 @@ export default class App extends Component {
 
   render({ children }) {
     const { hasNetwork } = this.props;
-    const { width } = this.props.window;
+    const { width, scrollbarWidth } = this.props.window;
 
     const isDesktop = width > 765;
     const networkClass = this.getNetworkClass(hasNetwork);
-
-    const child = document.querySelector("#application");
-    const scrollbarWidth = width - child.offsetWidth;
 
     return (
       <section id="layout" className={networkClass}>
