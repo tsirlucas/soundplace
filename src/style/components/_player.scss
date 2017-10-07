@@ -1,0 +1,65 @@
+@mixin player-animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-duration: 300ms;
+}
+
+#player {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: $sidebar-width;
+  padding: 5px;
+  height: 60px;
+  background-color: tomato;
+  justify-content: space-around;
+  align-items: center;
+
+
+  &.showing-player {
+    animation-name: showPlayer;
+    @include player-animation-properties;
+  }
+
+  &.hiding-player {
+    animation-name: showPlayer;
+    @include player-animation-properties;
+  }
+}
+
+#player-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+#playing-details {
+  width: 200px;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+@keyframes showPlayer {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes hidePlayer {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}

@@ -7,6 +7,10 @@
   animation-duration: 0.3s;
 }
 
+html {
+  overflow: hidden;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -39,6 +43,11 @@ html, body {
 
   &.without-network {
     animation-name: decreasePaddingForNetworkBar;
+    @include layout-animation-properties;
+  }
+
+  &.showing-player {
+    animation-name: increasePaddingForPlayer;
     @include layout-animation-properties;
   }
 }
@@ -98,6 +107,17 @@ html, body {
 
   100% {
     padding-top: 4vh;
+  }
+}
+
+@keyframes increasePaddingForPlayer {
+  0% {
+    padding: 40px;
+  }
+
+  100% {
+    padding: 40px;
+    padding-bottom: 100px;
   }
 }
 

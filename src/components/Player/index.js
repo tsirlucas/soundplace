@@ -1,38 +1,59 @@
+import Cookie from 'js-cookie';
 import { h, Component } from 'preact';
+import { connect } from 'preact-redux';
+import { bindActionCreators } from 'redux';
 
-import pureSubscribe from 'redux-pure-subscribe';
-import pure from '../../util/pure-decorator';
-@pure()
+import { toggle, next, previous } from '../../core/player/player.actions';
+import Icon from '../Icons/Icons';
+
+const secure = process.env.NODE_ENV === 'production';
+
+function mapStateToProps(state) {
+  return { player: state.player };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators({ toggle, next, previous }, dispatch) };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Player extends Component {
-
-  state = {
-    status: 'paused'
-  };
-
-  syncState = (state) => {
-
-  };
-
-  componentDidMount() {
-    const { store } = this.context;
-    const audioAPI = document.querySelector('#player');
-
-    this.unsubscribe = pureSubscribe(store, this.syncState);
+  componentWillReceiveProps(nextProps) {
+    Cookie.set('playerState', JSON.stringify(nextProps.player), { secure });
   }
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+  hasPrevious = (currIndex) => {
+    return currIndex !== 0;
+  };
 
-  render(props, state) {
+  hasNext = (currIndex) => {
+    return currIndex < this.props.player.tracklist.length - 1;
+  };
+
+  render({ isDesktop, scrollbarWidth, width, player, actions }, state) {
+    const parsedWidth = isDesktop ? width - 250 - scrollbarWidth : width;
+    const style = `width: ${parsedWidth}px;`;
 
     return (
-      <div id='player'>
-        <h1>This is our player</h1> <br/>
-        <audio controls>
-          <source src="http://verkat.free.fr/files/Guitar%20Hero%20OST%20-%20Complete%20Soundtrack%20By%20Snake/Franz%20Ferdinand%20-%20Take%20Me%20Out.mp3" type="audio/mpeg"/>
-          Your browser does not support the audio element.
-        </audio>
+      <div id='player' style={style} className={player.hiding ? 'hiding-player' : 'showing-player'}>
+        <div id='playing-details'>
+          <div className='music'>{player.currentlyPlaying.name}</div>
+          <div className='artist'>{player.currentlyPlaying.artist}</div>
+        </div>
+        <div id='player-controls'>
+          <div className='prev-button'
+               onClick={this.hasPrevious(player.currentIndex) ? actions.previous : () => null}>
+            <Icon icon='PREVIOUS_BUTTON' size='24'/>
+          </div>
+          <div className='toggle-button' onClick={actions.toggle}>
+            {player.isPlaying ? <Icon icon='PAUSE_BUTTON' size='24'/> :
+              <Icon icon='PLAY_BUTTON' size='24'/>}
+            </div>
+          <div className='next-button'
+               onClick={this.hasNext(player.currentIndex) ? actions.next : () => null}>
+            <Icon icon='SKIP_BUTTON' size='24'/>
+          </div>
+        </div>
       </div>
     );
   }

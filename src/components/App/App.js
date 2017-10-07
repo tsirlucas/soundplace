@@ -1,17 +1,25 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
+import { bindActionCreators } from 'redux';
 
 import Topbar from './Topbar';
+import Player from '../Player';
 import Sidebar from './Sidebar';
 import Bottombar from './Bottombar';
 import StatusBar from './Statusbar';
 import Networkbar from './Networkbar';
 
-function mapStateToProps({ window, api }) {
-  return { window, hasNetwork: api.hasNetwork };
+import { initPlayer } from '../../core/player/player.actions';
+
+function mapStateToProps({ window, api, player }) {
+  return { window, hasNetwork: api.hasNetwork, showPlayer: player };
 }
 
-@connect(mapStateToProps)
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators({ initPlayer }, dispatch) };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
 
   getNetworkClass = (hasNetwork) => {
@@ -25,15 +33,18 @@ export default class App extends Component {
     }
   };
 
-  render({ children }) {
-    const { hasNetwork } = this.props;
-    const { width, scrollbarWidth } = this.props.window;
+  componentWillMount() {
+    this.props.actions.initPlayer();
+  }
+
+  render({ children, hasNetwork, showPlayer, window }) {
+    const { width, scrollbarWidth } = window;
 
     const isDesktop = width > 765;
     const networkClass = this.getNetworkClass(hasNetwork);
 
     return (
-      <section id="layout" className={networkClass}>
+      <section id="layout" className={`${networkClass} ${showPlayer ? 'showing-player' : ''}`}>
         {isDesktop ? <Sidebar /> : <Bottombar/>}
         {!isDesktop && <Topbar/>}
         <StatusBar />
@@ -41,6 +52,7 @@ export default class App extends Component {
         <div id="content">
           {children}
         </div>
+        {showPlayer && isDesktop && <Player width={width} isDesktop={isDesktop} scrollbarWidth={scrollbarWidth}/>}
       </section>
     );
   }
