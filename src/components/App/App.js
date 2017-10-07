@@ -44,7 +44,7 @@ export default class App extends Component {
     const networkClass = this.getNetworkClass(hasNetwork);
 
     return (
-      <section id="layout" className={`${networkClass} ${showPlayer ? 'showing-player' : ''}`}>
+      <section id="layout" className={`${networkClass} ${showPlayer && isDesktop ? 'showing-player' : ''}`}>
         {isDesktop ? <Sidebar /> : <Bottombar/>}
         {!isDesktop && <Topbar/>}
         <StatusBar />
