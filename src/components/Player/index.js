@@ -59,8 +59,10 @@ export default class Player extends Component {
 
       navigator.mediaSession.setActionHandler('play', this.props.actions.toggle);
       navigator.mediaSession.setActionHandler('pause', this.props.actions.toggle);
-      navigator.mediaSession.setActionHandler('previoustrack', this.props.actions.previous);
-      navigator.mediaSession.setActionHandler('nexttrack', this.props.actions.next);
+      navigator.mediaSession.setActionHandler('previoustrack',
+        this.hasPrevious(player.currentIndex) ? this.props.actions.previous : null);
+      navigator.mediaSession.setActionHandler('nexttrack',
+        this.hasNext(player.currentIndex) ? this.props.actions.next : null);
     }
   };
 
