@@ -41,6 +41,7 @@ const PlayerReducer = (state = null, action) => {
     case PLAYER_NEXT:
       return {
         ...state,
+        isPlaying: true,
         currentTime: null,
         currentIndex: state.currentIndex + 1,
         currentlyPlaying: state.tracklist[state.currentIndex + 1]
@@ -48,6 +49,7 @@ const PlayerReducer = (state = null, action) => {
     case PLAYER_PREVIOUS:
       return {
         ...state,
+        isPlaying: true,
         currentTime: null,
         currentIndex: state.currentIndex - 1,
         currentlyPlaying: state.tracklist[state.currentIndex - 1]
