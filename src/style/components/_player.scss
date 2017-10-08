@@ -44,6 +44,32 @@
   min-width: 200px;
 }
 
+@media (max-width: 765px) {
+  #player {
+    position: absolute;
+    display: flex;
+    bottom: $bottombar-height;
+    left: 0;
+    padding: 5px;
+    height: $bottombar-height;
+    background-color: tomato;
+    justify-content: space-around;
+    align-items: center;
+
+
+    &.showing-player {
+      animation-name: showPlayer;
+      @include player-animation-properties;
+    }
+
+    &.hiding-player {
+      animation-name: showPlayer;
+      @include player-animation-properties;
+    }
+  }
+
+}
+
 @keyframes showPlayer {
   0% {
     transform: translateY(100%);

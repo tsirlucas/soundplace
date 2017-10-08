@@ -59,16 +59,21 @@ html, body {
     margin-bottom: 50px;
     margin-top: 60px;
     box-sizing: border-box;
-  }
 
-  &.network {
-    animation-name: increasePaddingForNetworkBarMobile;
-    @include layout-animation-properties;
-  }
+    &.network {
+      animation-name: increasePaddingForNetworkBarMobile;
+      @include layout-animation-properties;
+    }
 
-  &.without-network {
-    animation-name: decreasePaddingForNetworkBarMobile;
-    @include layout-animation-properties;
+    &.without-network {
+      animation-name: decreasePaddingForNetworkBarMobile;
+      @include layout-animation-properties;
+    }
+
+    &.showing-player {
+      animation-name: increasePaddingForPlayerMobile;
+      @include layout-animation-properties;
+    }
   }
 }
 
@@ -118,6 +123,17 @@ html, body {
   100% {
     padding: 40px;
     padding-bottom: 100px;
+  }
+}
+
+@keyframes increasePaddingForPlayerMobile {
+  0% {
+    padding: 40px;
+  }
+
+  100% {
+    padding: 40px;
+    padding-bottom: 90px;
   }
 }
 

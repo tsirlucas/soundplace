@@ -7,6 +7,15 @@
   animation-duration: 4s;
 }
 
+@mixin animation-properties-over-player {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 100ms;
+  animation-duration: 8s;
+}
+
 .status-bar {
   position: absolute;
   top: 25px;
@@ -31,8 +40,8 @@
     position: absolute;
     top: auto;
     height: $bottombar-height;
-    width: 100%;
     bottom: $bottombar-height;
+    width: 100%;
     left: 0;
     padding: 5px 20px;
     text-align: center;
@@ -43,6 +52,11 @@
     &.show {
       animation-name: showStatusBarMobile;
       @include animation-properties;
+    }
+
+    &.show-over-player {
+      animation-name: showStatusBarOverPlayer;
+      @include animation-properties-over-player;
     }
   }
 
@@ -75,5 +89,20 @@
   60% {
     opacity: 1;
     transform: translateY(0%);
+  }
+}
+
+@keyframes showStatusBarOverPlayer {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  25%,
+  50%,
+  60% {
+    opacity: 1;
+    transform: translateY(-100%);
   }
 }

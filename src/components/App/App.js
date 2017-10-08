@@ -44,7 +44,7 @@ export default class App extends Component {
     const networkClass = this.getNetworkClass(hasNetwork);
 
     return (
-      <section id="layout" className={`${networkClass} ${showPlayer && isDesktop ? 'showing-player' : ''}`}>
+      <section id="layout" className={`${networkClass} ${showPlayer ? 'showing-player' : ''}`}>
         {isDesktop ? <Sidebar /> : <Bottombar/>}
         {!isDesktop && <Topbar/>}
         <StatusBar />
@@ -52,7 +52,7 @@ export default class App extends Component {
         <div id="content">
           {children}
         </div>
-        {showPlayer && isDesktop && <Player width={width} isDesktop={isDesktop} scrollbarWidth={scrollbarWidth}/>}
+        {showPlayer && <Player width={width} isDesktop={isDesktop} scrollbarWidth={scrollbarWidth}/>}
       </section>
     );
   }
