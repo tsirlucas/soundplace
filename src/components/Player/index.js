@@ -37,10 +37,38 @@ export default class Player extends Component {
   setPlayer = (player) => {
     const playerElement = document.querySelector('#player-element');
 
+    this.setMediaSession();
+
     playerElement.addEventListener('ended', this.onEnded);
     playerElement.addEventListener('timeupdate', this.onTimeUpdate);
 
     player.isPlaying ? playerElement.play() : playerElement.pause();
+  };
+
+  setMediaSession = () => {
+    if ('mediaSession' in navigator) {
+      const { player } = this.props;
+      const { currentlyPlaying } = player;
+
+      navigator.mediaSession.metadata = new window.MediaMetadata({
+        title: currentlyPlaying.name,
+        artist: currentlyPlaying.artist,
+        album: currentlyPlaying.artist,
+        artwork: [
+          { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
+          { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
+          { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
+          { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
+          { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
+          { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' }
+        ]
+      });
+
+      navigator.mediaSession.setActionHandler('play', this.props.actions.toggle);
+      navigator.mediaSession.setActionHandler('pause', this.props.actions.toggle);
+      navigator.mediaSession.setActionHandler('previoustrack', this.props.actions.previous);
+      navigator.mediaSession.setActionHandler('nexttrack', this.props.actions.next);
+    }
   };
 
   onTimeUpdate = (e) => {
