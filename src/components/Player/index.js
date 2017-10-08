@@ -18,9 +18,20 @@ function mapDispatchToProps(dispatch) {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Player extends Component {
+
   componentWillReceiveProps(nextProps) {
     Cookie.set('playerState', JSON.stringify(nextProps.player), { secure });
   }
+
+  componentDidUpdate() {
+    this.setPlayer(this.props.player);
+  }
+
+  setPlayer = (player) => {
+    const playerElement = document.querySelector('#player-element');
+
+    player.isPlaying ? playerElement.play() : playerElement.pause();
+  };
 
   hasPrevious = (currIndex) => {
     return currIndex !== 0;
@@ -48,12 +59,13 @@ export default class Player extends Component {
           <div className='toggle-button' onClick={actions.toggle}>
             {player.isPlaying ? <Icon icon='PAUSE_BUTTON' size='24'/> :
               <Icon icon='PLAY_BUTTON' size='24'/>}
-            </div>
+          </div>
           <div className='next-button'
                onClick={this.hasNext(player.currentIndex) ? actions.next : () => null}>
             <Icon icon='SKIP_BUTTON' size='24'/>
           </div>
         </div>
+        <audio id='player-element' src={player.currentlyPlaying.url}/>
       </div>
     );
   }

@@ -9,11 +9,26 @@ import { initPlayerSuccess } from './player.actions';
 const mockedState = {
   isPlaying: false,
   currentIndex: 0,
-  currentlyPlaying: { name: 'titulo mockado', artist: 'artista mockado' },
+  currentlyPlaying: {
+    name: 'titulo mockado', artist: 'artista mockado',
+    url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
+  },
   tracklist: [
-    { name: 'titulo mockado', artist: 'artista mockado' },
-    { name: 'titulo mockado 2', artist: 'artista mockado 2' },
-    { name: 'titulo mockado 3', artist: 'artista mockado 3' }
+    {
+      name: 'titulo mockado',
+      artist: 'artista mockado',
+      url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
+    },
+    {
+      name: 'titulo mockado 2',
+      artist: 'artista mockado 2',
+      url: 'https://ia800703.us.archive.org/3/items/mythium/BS_TF.mp3'
+    },
+    {
+      name: 'titulo mockado 3',
+      artist: 'artista mockado 3',
+      url: 'https://ia800703.us.archive.org/3/items/mythium/SSB12_28_03_T.mp3'
+    }
   ]
 };
 
