@@ -44,7 +44,7 @@
 
 @media (max-width: 765px) {
   #player {
-    position: absolute;
+    position: fixed;
     display: flex;
     bottom: $bottombar-height;
     left: 0;

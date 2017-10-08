@@ -11,23 +11,28 @@ const mockedState = {
   currentIndex: 0,
   lastCurrentTime: 4.184037,
   currentlyPlaying: {
-    name: 'titulo mockado', artist: 'artista mockado',
+    name: 'titulo mockado',
+    artist: 'artista mockado',
+    album: 'album mockado',
     url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
   },
   tracklist: [
     {
       name: 'titulo mockado',
       artist: 'artista mockado',
+      album: 'album mockado',
       url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
     },
     {
       name: 'titulo mockado 2',
       artist: 'artista mockado 2',
+      album: 'album mockado',
       url: 'https://ia800703.us.archive.org/3/items/mythium/BS_TF.mp3'
     },
     {
       name: 'titulo mockado 3',
       artist: 'artista mockado 3',
+      album: 'album mockado',
       url: 'https://ia800703.us.archive.org/3/items/mythium/SSB12_28_03_T.mp3'
     }
   ]
