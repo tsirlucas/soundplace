@@ -13,7 +13,8 @@ const PlayerReducer = (state = null, action) => {
     case INIT_PLAYER_SUCCESS:
       return {
         ...action.payload,
-        isPlaying: false
+        isPlaying: false,
+        currentTime: action.payload.lastCurrentTime
       };
     case PLAYER_CLEAR:
       return {
@@ -26,6 +27,7 @@ const PlayerReducer = (state = null, action) => {
       return {
         ...state,
         isPlaying: true,
+        currentTime: null,
         currentIndex: action.payload.trackIndex,
         currentlyPlaying: action.payload.tracklist[action.payload.trackIndex],
         tracklist: action.payload.tracklist
@@ -33,17 +35,20 @@ const PlayerReducer = (state = null, action) => {
     case PLAYER_TOGGLE:
       return {
         ...state,
+        currentTime: null,
         isPlaying: !state.isPlaying
       };
     case PLAYER_NEXT:
       return {
         ...state,
+        currentTime: null,
         currentIndex: state.currentIndex + 1,
         currentlyPlaying: state.tracklist[state.currentIndex + 1]
       };
     case PLAYER_PREVIOUS:
       return {
         ...state,
+        currentTime: null,
         currentIndex: state.currentIndex - 1,
         currentlyPlaying: state.tracklist[state.currentIndex - 1]
       };

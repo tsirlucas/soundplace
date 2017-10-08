@@ -23,6 +23,13 @@ export default class Player extends Component {
     Cookie.set('playerState', JSON.stringify(nextProps.player), { secure });
   }
 
+  componentDidMount() {
+    const playerElement = document.querySelector('#player-element');
+    const { player } = this.props;
+
+    player.currentTime ? playerElement.currentTime = player.currentTime : null;
+  }
+
   componentDidUpdate() {
     this.setPlayer(this.props.player);
   }
@@ -30,7 +37,23 @@ export default class Player extends Component {
   setPlayer = (player) => {
     const playerElement = document.querySelector('#player-element');
 
+    playerElement.addEventListener('ended', this.onEnded);
+    playerElement.addEventListener('timeupdate', this.onTimeUpdate);
+
     player.isPlaying ? playerElement.play() : playerElement.pause();
+  };
+
+  onTimeUpdate = (e) => {
+    Cookie.set('playerState', JSON.stringify({
+      ...this.props.player.player,
+      lastCurrentTime: e.target.currentTime
+    }), { secure });
+  };
+
+  onEnded = () => {
+    if (this.hasNext(this.props.player.currentIndex)) {
+      this.props.actions.next();
+    }
   };
 
   hasPrevious = (currIndex) => {

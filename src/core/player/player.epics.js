@@ -9,6 +9,7 @@ import { initPlayerSuccess } from './player.actions';
 const mockedState = {
   isPlaying: false,
   currentIndex: 0,
+  lastCurrentTime: 4.184037,
   currentlyPlaying: {
     name: 'titulo mockado', artist: 'artista mockado',
     url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
