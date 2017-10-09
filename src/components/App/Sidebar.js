@@ -23,12 +23,11 @@ class Sidebar extends Component {
     this.props.actions.getUser();
   }
 
-  render() {
-    const { user } = this.props;
+  render({ height, playerClass, user }) {
     const { changeRoute } = this.props.actions;
 
     return (
-      <aside id="sidebar">
+      <aside id="sidebar" className={playerClass}>
         <div id="brand">
           <img src={user.image} width="60" height="60" alt={user.name} className="brand-img"/>
           <h3 className="brand-name">{user.name}</h3>

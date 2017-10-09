@@ -1,5 +1,14 @@
 $sidebar-width: 250px;
 
+@mixin sidebar-animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-duration: 300ms;
+}
+
 #sidebar {
   position: fixed;
   top: 0;
@@ -60,4 +69,33 @@ $sidebar-width: 250px;
       line-height: 12px;
     }
   }
+
+  &.showing-player {
+    animation-name: decreasePaddingForPlayer;
+    @include sidebar-animation-properties;
+  }
+
+  &.hiding-player {
+    animation-name: increasePaddingForPlayer;
+    @include sidebar-animation-properties;
+  }
 }
+
+@keyframes decreaseHeightForPlayer {
+  0% {
+  }
+
+  100% {
+    padding-bottom: 80px
+  }
+}
+
+@keyframes increaseHeightForPlayer {
+  0% {
+    padding-bottom: 80px
+  }
+
+  100% {
+  }
+}
+

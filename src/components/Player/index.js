@@ -87,12 +87,12 @@ export default class Player extends Component {
     return currIndex < this.props.player.tracklist.length - 1;
   };
 
-  render({ isDesktop, scrollbarWidth, width, player, actions }, state) {
-    const parsedWidth = isDesktop ? width - 250 - scrollbarWidth : width;
+  render({ isDesktop, scrollbarWidth, width, player, actions, playerClass }, state) {
+    const parsedWidth = isDesktop ? width - scrollbarWidth : width;
     const style = `width: ${parsedWidth}px;`;
 
     return (
-      <div id='player' style={style} className={player.hiding ? 'hiding-player' : 'showing-player'}>
+      <div id='player' style={style} className={playerClass}>
         <div id='playing-details'>
           <div className='music'>{player.currentlyPlaying.name}</div>
           <div className='artist'>{player.currentlyPlaying.artist}</div>
@@ -100,15 +100,15 @@ export default class Player extends Component {
         <div id='player-controls'>
           <div className='prev-button'
                onClick={this.hasPrevious(player.currentIndex) ? actions.previous : () => null}>
-            <Icon icon='PREVIOUS_BUTTON' size='24'/>
+            <Icon icon='PREVIOUS_BUTTON' size='24' color="white"/>
           </div>
           <div className='toggle-button' onClick={actions.toggle}>
             {player.isPlaying ? <Icon icon='PAUSE_BUTTON' size='24'/> :
-              <Icon icon='PLAY_BUTTON' size='24'/>}
+              <Icon icon='PLAY_BUTTON' size='24' color="white"/>}
           </div>
           <div className='next-button'
                onClick={this.hasNext(player.currentIndex) ? actions.next : () => null}>
-            <Icon icon='SKIP_BUTTON' size='24'/>
+            <Icon icon='SKIP_BUTTON' size='24' color="white"/>
           </div>
         </div>
         <audio id='player-element' src={player.currentlyPlaying.url}/>

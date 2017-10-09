@@ -11,12 +11,14 @@
   position: absolute;
   display: flex;
   bottom: 0;
-  left: $sidebar-width;
+  left: 0;
+  z-index: 2;
   padding: 5px;
-  height: 60px;
-  background-color: tomato;
+  height: 80px;
+  background-color: #282828;
   justify-content: space-around;
   align-items: center;
+  color: white;
 
 
   &.showing-player {
@@ -25,7 +27,7 @@
   }
 
   &.hiding-player {
-    animation-name: showPlayer;
+    animation-name: hidePlayer;
     @include player-animation-properties;
   }
 }
@@ -50,7 +52,7 @@
     left: 0;
     padding: 5px;
     height: $bottombar-height;
-    background-color: tomato;
+    background-color: #282828;
     justify-content: space-around;
     align-items: center;
 
@@ -61,7 +63,7 @@
     }
 
     &.hiding-player {
-      animation-name: showPlayer;
+      animation-name: hidePlayer;
       @include player-animation-properties;
     }
   }

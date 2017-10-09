@@ -33,26 +33,39 @@ export default class App extends Component {
     }
   };
 
+  getPlayerClass = (player) => {
+    switch (true) {
+      case player && player.hiding:
+        return 'hiding-player';
+      case player && !player.hiding:
+        return 'showing-player';
+      default:
+        return '';
+    }
+  };
+
   componentWillMount() {
     this.props.actions.initPlayer();
   }
 
   render({ children, hasNetwork, showPlayer, window }) {
-    const { width, scrollbarWidth } = window;
+    const { width, height, scrollbarWidth } = window;
 
     const isDesktop = width > 765;
     const networkClass = this.getNetworkClass(hasNetwork);
+    const playerClass = this.getPlayerClass(showPlayer);
 
     return (
       <section id="layout" className={`${networkClass} ${showPlayer ? 'showing-player' : ''}`}>
-        {isDesktop ? <Sidebar /> : <Bottombar/>}
+        {isDesktop ? <Sidebar height={height} playerClass={playerClass}/> : <Bottombar/>}
         {!isDesktop && <Topbar/>}
         <StatusBar />
         <Networkbar networkClass={networkClass} width={width} isDesktop={isDesktop} scrollbarWidth={scrollbarWidth}/>
         <div id="content">
           {children}
         </div>
-        {showPlayer && <Player width={width} isDesktop={isDesktop} scrollbarWidth={scrollbarWidth}/>}
+        {showPlayer &&
+        <Player width={width} isDesktop={isDesktop} scrollbarWidth={scrollbarWidth} playerClass={playerClass}/>}
       </section>
     );
   }
