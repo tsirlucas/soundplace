@@ -16,7 +16,8 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   background-color: $gray-light;
-  box-sizing: border-box
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *, ::before, ::after {

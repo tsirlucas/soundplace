@@ -32,16 +32,53 @@
   }
 }
 
+#playing-cover {
+  min-width: 60px;
+  min-height: 60px;
+  background-size: cover !important;
+  background-position: 50%;
+}
+
 #player-controls {
   display: flex;
   justify-content: space-between;
   width: 200px;
   max-width: 200px;
+
+  .prev-button, .toggle-button, .next-button {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+
+    &.disabled {
+      &:hover {
+        cursor: inherit;
+        border-radius: 0;
+        background-color: inherit;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #404040;
+    }
+
+    svg {
+      margin: 0 auto;
+      display: block;
+    }
+  }
 }
 
 #playing-details {
   width: 200px;
   max-width: 200px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (max-width: 765px) {
@@ -68,6 +105,53 @@
     }
   }
 
+  #playing-cover {
+    min-width: 30px;
+    min-height: 30px;
+    background-size: cover!important;
+    background-position: 50%;
+  }
+
+  #playing-details {
+    width: 150px;
+    max-width: 150px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  #player-controls {
+    max-width: 130px;
+
+    .prev-button, .toggle-button, .next-button {
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+
+      &.disabled {
+        &:hover {
+          animation-name: controlsDisabledAnimation;
+          @include player-animation-properties;
+        }
+      }
+
+      &:hover {
+        animation-name: controlsAnimation;
+        @include player-animation-properties;
+      }
+
+      svg {
+        margin: 0 auto;
+        display: block;
+
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+  }
+
 }
 
 @keyframes showPlayer {
@@ -87,5 +171,26 @@
 
   100% {
     transform: translateY(100%);
+  }
+}
+
+@keyframes controlsAnimation {
+  0% {
+    background-color: #404040;
+  }
+
+  100% {
+    background-color: inherit;
+  }
+}
+
+
+@keyframes controlsDisabledAnimation {
+  0% {
+    background-color: inherit;
+  }
+
+  100% {
+    background-color: inherit;
   }
 }
