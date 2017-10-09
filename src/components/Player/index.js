@@ -97,7 +97,7 @@ export default class Player extends Component {
     return (
       <div id='player' style={style} className={playerClass}>
         <div id='playing-details'>
-          <div id='playing-cover' style={`background-image: url(${player.currentlyPlaying.artwork[1].src});`}/>
+          <div id='playing-cover' style={`background-image: url(${player.currentlyPlaying.artwork[0].src});`}/>
           <div id='playing-data'>
             <div className='music'>{player.currentlyPlaying.name}</div>
             <div className='artist'>{player.currentlyPlaying.artist}</div>
