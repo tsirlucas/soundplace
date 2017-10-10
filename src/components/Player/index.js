@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { toggle, next, previous } from '../../core/player/player.actions';
 import Icon from '../Icons/Icons';
+import PlayerProgress from './Progressbar';
 
 const secure = process.env.NODE_ENV === 'production';
 
@@ -24,10 +25,10 @@ export default class Player extends Component {
   }
 
   componentDidMount() {
-    const playerElement = document.querySelector('#player-element');
+    this.playerElement = document.querySelector('#player-element');
     const { player } = this.props;
 
-    player.currentTime ? playerElement.currentTime = player.currentTime : null;
+    player.currentTime ? this.playerElement.currentTime = player.currentTime : null;
   }
 
   componentDidUpdate() {
@@ -35,14 +36,14 @@ export default class Player extends Component {
   }
 
   setPlayer = (player) => {
-    const playerElement = document.querySelector('#player-element');
+    this.playerElement = document.querySelector('#player-element');
 
     this.setMediaSession();
 
-    playerElement.addEventListener('ended', this.onEnded);
-    playerElement.addEventListener('timeupdate', this.onTimeUpdate);
+    this.playerElement.addEventListener('ended', this.onEnded);
+    this.playerElement.addEventListener('timeupdate', this.onTimeUpdate);
 
-    player.isPlaying ? playerElement.play() : playerElement.pause();
+    player.isPlaying ? this.playerElement.play() : this.playerElement.pause();
   };
 
   setMediaSession = () => {
@@ -96,6 +97,7 @@ export default class Player extends Component {
 
     return (
       <div id='player' style={style} className={playerClass}>
+        <PlayerProgress player={this.playerElement}/>
         <div id='playing-details'>
           <div id='playing-cover' style={`background-image: url(${player.currentlyPlaying.artwork[0].src});`}/>
           <div id='playing-data'>

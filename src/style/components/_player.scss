@@ -20,7 +20,6 @@
   align-items: center;
   color: white;
 
-
   &.showing-player {
     animation-name: showPlayer;
     @include player-animation-properties;
@@ -30,6 +29,18 @@
     animation-name: hidePlayer;
     @include player-animation-properties;
   }
+}
+
+#player-progress-bar {
+  border-top: 3px solid #0072BA;
+  position: absolute;
+  bottom: 77px;
+  left: 0;
+
+  -moz-transition: width 1.5s ease-in;
+  -webkit-transition: width 1.5s ease-in;
+  -o-transition: width 1.5s ease-in;
+  transition: width 1.5s ease-in;
 }
 
 #playing-cover {
@@ -93,7 +104,6 @@
     justify-content: space-around;
     align-items: center;
 
-
     &.showing-player {
       animation-name: showPlayer;
       @include player-animation-properties;
@@ -105,10 +115,15 @@
     }
   }
 
+  #player-progress-bar {
+    bottom: 48px;
+    border-top: 2px solid #0072BA;
+  }
+
   #playing-cover {
     min-width: 30px;
     min-height: 30px;
-    background-size: cover!important;
+    background-size: cover !important;
     background-position: 50%;
   }
 
@@ -183,7 +198,6 @@
     background-color: inherit;
   }
 }
-
 
 @keyframes controlsDisabledAnimation {
   0% {
