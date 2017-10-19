@@ -17,6 +17,7 @@ branches:
     - /^greenkeeper/.*$/
   before_script:
     - npm install -g gh-pages
+    - npm install -g lighthouse-badges
     - npm run lint
     - npm test
 #    - SL=true npm test
@@ -41,7 +42,11 @@ after_success:
         -H "X-Auth-Key: $CLOUDFLARE_TOKEN"
         -H "Content-Type: application/json"
         --data "{\"purge_everything\":true}" &&
-    echo && echo Cache purged!; fi'
+    echo && echo Cache purged! && echo &&
+    cd build &&
+    lighthouse-badges --urls https://www.soundplace.io/ &&
+    gh-pages &&
+    fi'
 
 install:
   - npm install

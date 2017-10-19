@@ -8,6 +8,13 @@ A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Spot
 [![gzip size](http://img.badgesize.io/https://www.soundplace.io/index.html?compression=gzip)](https://www.soundplace.io/index.html)
 [![coveralls](https://img.shields.io/coveralls/tsirlucas/soundplace/master.svg)](https://coveralls.io/github/tsirlucas/soundplace)
 
+Lighthouse scores
+
+[![Lighthouse Progressive Web App Badge](https://www.soundplace.io/lighthouse_progressive_web_app.svg)](https://github.com/emazzotta/lighthouse-badges)
+[![Lighthouse Performance Badge](https://www.soundplace.io/lighthouse_performance.svg)](https://github.com/emazzotta/lighthouse-badges)
+[![Lighthouse Accessibility Badge](https://www.soundplace.io/lighthouse_accessibility.svg)](https://github.com/emazzotta/lighthouse-badges)
+[![Lighthouse Best Practices Badge](https://www.soundplace.io/lighthouse_best_practices.svg)](https://github.com/emazzotta/lighthouse-badges)
+
 Supports modern browsers and IE9+:
 
 [![Browsers](https://saucelabs.com/browser-matrix/soundplace.svg)](https://saucelabs.com/u/soundplace)
