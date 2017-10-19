@@ -19,6 +19,38 @@ Supports modern browsers and IE9+:
 
 [![Browsers](https://saucelabs.com/browser-matrix/soundplace.svg)](https://saucelabs.com/u/soundplace)
 
+## Features and toolbelt
+
+- [x] [Preact](https://github.com/developit/preact) as [React](https://github.com/facebook/react) alternative
+- [x] [React Router](https://github.com/ReactTraining/react-router) with some proper logics to create plain-routes even on v4, resulting in only 80kb (not minified and with browser-history included)
+- [x] [Redux](http://redux.js.org/) to manage application state
+- [x] [redux-observable](https://github.com/redux-observable/redux-observable) as middleware
+- [x] [RxJS](https://github.com/Reactive-Extensions/RxJS) to use observable collections
+- [x] Built with [Webpack](https://github.com/webpack/webpack)
+- [x] Transpiled with [Babel](https://babeljs.io/)
+- [x] [Sass](https://github.com/sass/sass) as css preprocessor
+- [x] [gh-pages](https://pages.github.com/) to deploy production environment
+- [x] [Zeit/Now](https://zeit.co/now) to deploy staging and test environments
+- [x] [Cloudflare](https://www.cloudflare.com) as CDN
+- [x] [Travis](https://travis-ci.com/) Integration
+- [x] [Lighthouse Badges](https://github.com/emazzotta/lighthouse-badges) Always updated to latest build
+- [x] [Greenkeeper](https://greenkeeper.io/) Dependency Manager
+- [x] [BundleSize](https://github.com/siddharthkp/bundlesize) < 100kb automatic check on PRs
+- [x] [Lighthouse-CI](https://github.com/ebidel/lighthouse-ci) 100 score automatic check on PRs
+- [x] [Code Climate](https://codeclimate.com/) automatic check on PRs
+- [x] [ESLint](https://github.com/eslint/eslint) as Ecmascript linter
+- [ ] [Coveralls](https://coveralls.io/) to automatic test coverage reports
+- [ ] [SauceLabs](https://saucelabs.com/) to automatic browser support reports
+- [x] [Sentry](https://sentry.io/) for error tracking
+- [x] [SW-Precache](https://github.com/GoogleChrome/sw-precache) to generate service-worker and runtime caching
+- [x] Offline strategy using observables to concat cache and API results (first show cached, then automatically updates from network in real-time)
+- [ ] Offline strategy to cache songs and let user select what to cache
+- [x] Offline bar to tell users when they're running offline
+- [x] No requests when there's no connection (falls back to cache-only)
+
+
+
+
 ## Phoenix backend
 
 Our backend is a Phoenix application running on a Docker container
