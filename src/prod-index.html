@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html  lang="pt-br" <% if( htmlWebpackPlugin.files.manifest) { %> manifest="<%=  htmlWebpackPlugin.files.manifest %>"<% }  %> >
+<html
+  lang="pt-br" <% if( htmlWebpackPlugin.files.manifest) { %> manifest="<%=  htmlWebpackPlugin.files.manifest %>"<% }  %> >
 <head>
   <meta charset="utf-8">
   <title><%= htmlWebpackPlugin.options.title %></title>
@@ -12,9 +13,9 @@
   <meta name="msapplication-starturl" content="./?utm_source=web_app_manifest&utm_medium=web_app_manifest">
 
   <!-- Open Graph data -->
-  <meta property="og:title" content="SoundPlace" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" itemprop="image" content="/assets/img/android-chrome-512x512.png" />
+  <meta property="og:title" content="SoundPlace"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" itemprop="image" content="/assets/img/android-chrome-512x512.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/android-chrome-192x192.png">
   <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/img/apple-touch-icon.png">
 
@@ -34,5 +35,7 @@
   <h2> This application does'nt work without Javascript</h2>
   <h5> See <a href="http://enable-javascript.com/" target="_blank">Allow Javascript</a> and refresh your browser</h5>
 </noscript>
+<script src="https://cdn.ravenjs.com/3.19.1/raven.min.js"
+        crossorigin="anonymous"></script>
 </body>
 </html>
