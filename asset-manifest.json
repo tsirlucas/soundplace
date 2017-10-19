@@ -1,5 +1,4 @@
 {
   "bundle.css": "style.css",
-  "bundle.js": "bundle.js",
-  "raven.js": "raven.js"
+  "bundle.js": "bundle.js"
 }
