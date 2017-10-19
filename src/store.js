@@ -16,7 +16,7 @@ let middlewares;
 if (isProd) {
   window.Raven.config('https://e4cb32dd9e394feda33301bd8321f134@sentry.io/208859').install();
   const ravenMiddleware = isProd ? createRavenMiddleware(window.Raven, {
-    // Optionally pass some options here.
+    breadcrumbDataFromAction: (action) => action
   }) : undefined;
 
   middlewares = applyMiddleware(
