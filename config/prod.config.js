@@ -13,6 +13,10 @@ export const prodPlugins = [
     {
       from: './assets',
       to: './assets'
+    },
+    {
+      from: './node_modules/raven-js/dist/raven.min.js',
+      to: '.'
     }
   ]),
   new SWPrecache({

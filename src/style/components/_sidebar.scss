@@ -25,9 +25,13 @@ $sidebar-width: 250px;
     padding: 0 10%;
 
     .brand-img {
-      display: inline-block;
+      display: block;
       border-radius: 50%;
       margin-right: 10%;
+      max-width: 60px;
+      max-height: 60px;
+      width: auto;
+      height: auto;
     }
 
     .brand-name {

@@ -23,7 +23,10 @@
     }
 
     img {
-      width: 200px;
+      display: block;
+      max-width: 185px;
+      width: auto;
+      height: auto;
     }
 
     figcaption {
@@ -68,6 +71,14 @@
     .cardlist-item {
       width: 140px;
       height: 190px;
+
+      img {
+        display: block;
+        max-width: 140px;
+        max-height: 140px;
+        width: auto;
+        height: auto;
+      }
     }
 
     .cardlist-item-cover {
@@ -81,13 +92,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    img {
-      height: 140px;
-      width: 140px;
-      max-width: 140px;
-      max-height: 140px;
     }
 
     figure {
