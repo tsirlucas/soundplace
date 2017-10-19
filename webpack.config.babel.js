@@ -12,11 +12,11 @@ const envLoaders = ENV === 'development' ? devLoaders : prodLoaders;
 
 module.exports = {
   entry: {
+    raven: './node_modules/raven-js/dist/raven.js',
     bundle: [
       'react-hot-loader/patch',
       './src/index.js'
-    ],
-    raven: './node_modules/raven-js/dist/raven.js'
+    ]
   },
 
   output: {
