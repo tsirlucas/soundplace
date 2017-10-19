@@ -26,7 +26,7 @@ class Topbar extends Component {
     return (
       <div class="top-bar">
         <div id="brand">
-          <img src={user.image} width="40" height="40" alt={user.name} className="brand-img"/>
+          <img src={user.image} alt={user.name} className="brand-img"/>
           <h3 className="brand-name">{user.name}</h3>
           <Icon icon="MENU" size={36} color="white"/>
         </div>

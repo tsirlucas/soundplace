@@ -30,7 +30,7 @@ class Sidebar extends Component {
     return (
       <aside id="sidebar">
         <div id="brand">
-          <img src={user.image} width="60" height="60" alt={user.name} className="brand-img"/>
+          <img src={user.image} alt={user.name} className="brand-img"/>
           <h3 className="brand-name">{user.name}</h3>
         </div>
         <Navigation>
