@@ -21,6 +21,7 @@
     "preact-compat": "^3.17.0",
     "preact-redux": "^2.0.2",
     "query-string": "^5.0.0",
+    "raven-for-redux": "^1.1.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-router": "4.2.0",
     "react-router-config": "^1.0.0-beta.3",
