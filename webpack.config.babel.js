@@ -1,8 +1,8 @@
 import path from 'path';
-import { loaders } from './config/loaders';
-import { plugins } from './config/common.config';
-import { devPlugins, devServerconfig, devLoaders } from './config/dev.config';
-import { prodPlugins, prodLoaders } from './config/prod.config';
+import {loaders} from './config/loaders';
+import {plugins} from './config/common.config';
+import {devPlugins, devServerconfig, devLoaders} from './config/dev.config';
+import {prodPlugins, prodLoaders} from './config/prod.config';
 
 const ENV = process.env.NODE_ENV || 'development';
 
@@ -12,7 +12,6 @@ const envLoaders = ENV === 'development' ? devLoaders : prodLoaders;
 
 module.exports = {
   entry: {
-    raven: './node_modules/raven-js/dist/raven.js',
     bundle: [
       'react-hot-loader/patch',
       './src/index.js'

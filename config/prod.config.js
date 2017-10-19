@@ -13,6 +13,10 @@ export const prodPlugins = [
     {
       from: './assets',
       to: './assets'
+    },
+    {
+      from: './node_modules/raven-js/dist/raven.min.js',
+      to: '.'
     }
   ]),
   new SWPrecache({
@@ -55,7 +59,7 @@ export const prodPlugins = [
     template: './src/prod-index.html',
     filename: 'index.html',
     title: 'SoundPlace',
-    excludeChunks: ['admin', 'raven'],
+    excludeChunks: ['admin'],
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
     manifest: './assets/manifest.json',
@@ -71,7 +75,7 @@ export const prodPlugins = [
     template: './src/prod-index.html',
     filename: '200.html',
     title: 'SoundPlace',
-    excludeChunks: ['admin', 'raven'],
+    excludeChunks: ['admin'],
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
     manifest: './assets/manifest.json',
