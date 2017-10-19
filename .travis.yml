@@ -16,8 +16,7 @@ branches:
     - master
     - /^greenkeeper/.*$/
   before_script:
-    - npm install -g gh-pages
-    - npm install -g lighthouse-badges
+    - npm install -g gh-pages lighthouse-badges
     - npm run lint
     - npm test
 #    - SL=true npm test
