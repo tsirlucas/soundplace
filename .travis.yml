@@ -45,7 +45,8 @@ after_success:
     echo && echo Cache purged! && echo &&
     cd build &&
     lighthouse-badges --urls https://www.soundplace.io/ &&
-    gh-pages -d .;
+    cd .. &&
+    gh-pages -d build;
     fi'
 
 install:
