@@ -23,11 +23,11 @@ const mockedState = {
       name: 'Place',
       artist: 'Lucy Rose',
       album: 'Like I Used To',
-      artwork: {
+      artwork: [{
         src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
         sizes: '220x220',
         type: 'image/jpg'
-      },
+      }],
       url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/YYkrtSp8baE'
     },
     tracklist: [
@@ -35,33 +35,33 @@ const mockedState = {
         name: 'Place',
         artist: 'Lucy Rose',
         album: 'Like I Used To',
-        artwork: {
+        artwork: [{
           src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
           sizes: '220x220',
           type: 'image/jpg'
-        },
+        }],
         url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/YYkrtSp8baE'
       },
       {
         name: 'Castle On The Hill',
         artist: 'Ed Sheeran',
         album: 'Divide',
-        artwork: {
+        artwork: [{
           src: 'https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png',
           sizes: '300x300',
           type: 'image/png'
-        },
+        }],
         url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/7Qp5vcuMIlk'
       },
       {
         name: 'Landslide',
         artist: 'Oh Wonder',
         album: 'Oh Wonder',
-        artwork: {
+        artwork: [{
           src: 'https://upload.wikimedia.org/wikipedia/ru/thumb/d/da/Oh_Wonder_album.jpg/230px-Oh_Wonder_album.jpg',
           sizes: '230x230',
           type: 'image/jpg'
-        },
+        }],
         url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/PiGt9C76U0s'
       }
     ]
