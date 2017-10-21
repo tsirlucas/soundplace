@@ -39,7 +39,10 @@ export const prodPlugins = [
       },
       {
         urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//,
-        handler: 'cacheFirst'
+        handler: 'cacheFirst',
+        options: {
+          successResponses: 200
+        }
       },
     ],
     filename: 'sw.js',
