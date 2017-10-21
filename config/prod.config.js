@@ -36,7 +36,11 @@ export const prodPlugins = [
       {
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
         handler: 'cacheFirst'
-      }
+      },
+      {
+        urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//,
+        handler: 'cacheFirst'
+      },
     ],
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary

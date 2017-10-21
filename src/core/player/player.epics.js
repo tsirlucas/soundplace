@@ -18,7 +18,6 @@ const mockedArtwork = [
 const mockedState = {
     isPlaying: false,
     currentIndex: 0,
-    lastCurrentTime: 4.184037,
     currentlyPlaying: {
       name: 'Place',
       artist: 'Lucy Rose',
