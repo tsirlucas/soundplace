@@ -63,7 +63,7 @@ const mockedState = {
           type: 'image/jpg'
         },
         url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/PiGt9C76U0s'
-      },
+      }
     ]
   }
 ;
