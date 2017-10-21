@@ -16,40 +16,57 @@ const mockedArtwork = [
 ];
 
 const mockedState = {
-  isPlaying: false,
-  currentIndex: 0,
-  lastCurrentTime: 4.184037,
-  currentlyPlaying: {
-    name: 'All This Is',
-    artist: 'Joe L.\'s Studio',
-    album: 'Some Mocked',
-    artwork: mockedArtwork,
-    url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
-  },
-  tracklist: [
-    {
-      name: 'All This Is',
-      artist: 'Joe L.\'s Studio',
-      album: 'Some Mocked',
-      artwork: mockedArtwork,
-      url: 'https://ia800703.us.archive.org/3/items/mythium/JLS_ATI.mp3'
+    isPlaying: false,
+    currentIndex: 0,
+    lastCurrentTime: 4.184037,
+    currentlyPlaying: {
+      name: 'Place',
+      artist: 'Lucy Rose',
+      album: 'Like I Used To',
+      artwork: {
+        src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
+        sizes: '220x220',
+        type: 'image/jpg'
+      },
+      url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/YYkrtSp8baE'
     },
-    {
-      name: 'The Forsaken',
-      artist: 'Broadwing Studio',
-      album: 'Some Mocked',
-      artwork: mockedArtwork,
-      url: 'https://ia800703.us.archive.org/3/items/mythium/BS_TF.mp3'
-    },
-    {
-      name: 'On The Waterfront',
-      artist: 'Popeye\'s',
-      album: 'Some Mocked',
-      artwork: mockedArtwork,
-      url: 'https://ia800703.us.archive.org/3/items/mythium/PNY04-05_OTW.mp3'
-    }
-  ]
-};
+    tracklist: [
+      {
+        name: 'Place',
+        artist: 'Lucy Rose',
+        album: 'Like I Used To',
+        artwork: {
+          src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
+          sizes: '220x220',
+          type: 'image/jpg'
+        },
+        url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/YYkrtSp8baE'
+      },
+      {
+        name: 'Castle On The Hill',
+        artist: 'Ed Sheeran',
+        album: 'Divide',
+        artwork: {
+          src: 'https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png',
+          sizes: '300x300',
+          type: 'image/png'
+        },
+        url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/7Qp5vcuMIlk'
+      },
+      {
+        name: 'Landslide',
+        artist: 'Oh Wonder',
+        album: 'Oh Wonder',
+        artwork: {
+          src: 'https://upload.wikimedia.org/wikipedia/ru/thumb/d/da/Oh_Wonder_album.jpg/230px-Oh_Wonder_album.jpg',
+          sizes: '230x230',
+          type: 'image/jpg'
+        },
+        url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/PiGt9C76U0s'
+      },
+    ]
+  }
+;
 
 const initPlayerEpic = (action$) =>
   action$.ofType(INIT_PLAYER)
