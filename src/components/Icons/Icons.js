@@ -1,4 +1,4 @@
-import {h} from 'preact';
+import { h } from 'preact';
 import icons from './Icons.constants';
 
 const Icon = props => {
@@ -26,4 +26,5 @@ const Icon = props => {
     </svg>
   );
 };
+
 export default Icon;
