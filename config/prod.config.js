@@ -118,6 +118,6 @@ export const prodPlugins = [
 export const prodLoaders = [
   {
     test: /\.(scss|css)$/,
-    loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+    loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader?sourceMap!sass-loader?sourceMap')
   }
 ];
