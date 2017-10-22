@@ -123,6 +123,6 @@
     "lint": "eslint src/**/*.js test/**/*.js",
     "test:watch": "karma start test/karma.conf.js --auto-watch",
     "prebundlesize": "gzip -c build/index.html > build/bundlesize.gz",
-    "bundlesize": "bundlesize",
+    "bundlesize": "bundlesize"
   }
 }
