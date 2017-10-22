@@ -109,7 +109,7 @@
     }
   ],
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack -p --progress",
+    "build": "cross-env NODE_ENV=production webpack",
     "prestaging": "rm -rf build mkdirp build && yarn build && now switch soundplace --token $NOW_TOKEN",
     "predeploy": "rm -rf build mkdirp build && yarn build",
     "deploy": "gh-pages -d build",
