@@ -1,0 +1,39 @@
+$topbar-height: 60px;
+
+.top-bar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $topbar-height;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  border-bottom: 1px solid black;
+  background-color: $black-dark;
+  font-size: 17px;
+  font-weight: 400;
+  z-index: 1;
+
+  #brand {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .brand-img {
+      border-radius: 50%;
+      display: block;
+      max-width: 40px;
+      max-height: 40px;
+      width: auto;
+      height: auto;
+    }
+
+    .brand-name {
+      color: white;
+      font-weight: normal;
+    }
+  }
+}

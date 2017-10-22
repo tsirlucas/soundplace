@@ -1,0 +1,24 @@
+.button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 7px;
+  transition: background-color 0.2s linear;
+
+  &.button-primary {}
+  &.button-secondary {}
+
+  &.button-spotify {
+    background-color: $spotify-green;
+
+    &:hover {
+      background-color: $spotify-green-hover;
+    }
+  }
+}

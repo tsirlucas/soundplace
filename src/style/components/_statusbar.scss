@@ -1,0 +1,108 @@
+@mixin animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 100ms;
+  animation-duration: 4s;
+}
+
+@mixin animation-properties-over-player {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 100ms;
+  animation-duration: 8s;
+}
+
+.status-bar {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background-color: $red;
+  opacity: 0;
+
+  &.show {
+    animation-name: showStatusBar;
+    @include animation-properties;
+  }
+}
+
+@media (max-width: 765px) {
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: auto;
+    height: $bottombar-height;
+    bottom: $bottombar-height;
+    width: 100%;
+    left: 0;
+    padding: 5px 20px;
+    text-align: center;
+    color: white;
+    background-color: $red;
+    opacity: 0;
+
+    &.show {
+      animation-name: showStatusBarMobile;
+      @include animation-properties;
+    }
+
+    &.show-over-player {
+      animation-name: showStatusBarOverPlayer;
+      @include animation-properties-over-player;
+    }
+  }
+
+}
+
+@keyframes showStatusBar {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  25%,
+  50%,
+  60% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes showStatusBarMobile {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  25%,
+  50%,
+  60% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes showStatusBarOverPlayer {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  25%,
+  50%,
+  60% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+}

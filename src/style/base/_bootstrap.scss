@@ -1,0 +1,139 @@
+@mixin layout-animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-duration: 0.3s;
+}
+
+html {
+  overflow: hidden;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: $gray-light;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+}
+
+.section {
+  float: left;
+  width: 100%;
+}
+
+#application, #application > main, .full-height {
+  min-height: 100vh;
+}
+
+#application #layout {
+  padding: 40px;
+  margin-left: 250px;
+
+  &.network {
+    animation-name: increasePaddingForNetworkBar;
+    @include layout-animation-properties;
+  }
+
+  &.without-network {
+    animation-name: decreasePaddingForNetworkBar;
+    @include layout-animation-properties;
+  }
+
+  &.showing-player {
+    animation-name: increasePaddingForPlayer;
+    @include layout-animation-properties;
+  }
+}
+
+@media (max-width: 765px) {
+  #application #layout {
+    padding: 4vh 4vw;
+    margin-left: 0;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    box-sizing: border-box;
+
+    &.network {
+      animation-name: increasePaddingForNetworkBarMobile;
+      @include layout-animation-properties;
+    }
+
+    &.without-network {
+      animation-name: decreasePaddingForNetworkBarMobile;
+      @include layout-animation-properties;
+    }
+
+    &.showing-player {
+      animation-name: increasePaddingForPlayerMobile;
+      @include layout-animation-properties;
+    }
+  }
+}
+
+@keyframes increasePaddingForNetworkBar {
+  0% {
+  }
+
+  100% {
+    padding-top: 68px;
+  }
+}
+
+@keyframes decreasePaddingForNetworkBar {
+  0% {
+    padding-top: 68px;
+  }
+
+  100% {
+  }
+}
+
+@keyframes increasePaddingForNetworkBarMobile {
+  0% {
+    padding-top: 4vh;
+  }
+
+  100% {
+    padding-top: calc(4vh + 28px);
+  }
+}
+
+@keyframes decreasePaddingForNetworkBarMobile {
+  0% {
+    padding-top: calc(4vh + 28px);
+  }
+
+  100% {
+    padding-top: 4vh;
+  }
+}
+
+@keyframes increasePaddingForPlayer {
+  0% {
+    padding: 40px;
+  }
+
+  100% {
+    padding: 40px;
+    padding-bottom: 120px;
+  }
+}
+
+@keyframes increasePaddingForPlayerMobile {
+  0% {
+  }
+
+  100% {
+    padding-bottom: calc(4vw + 60px);
+  }
+}
+
+

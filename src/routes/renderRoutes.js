@@ -1,12 +1,21 @@
 import { h } from 'preact';
 import Route from 'react-router/Route';
+import Switch from 'react-router/Switch';
 
-import { checkAuth } from './auth';
+import { checkAuth, isAuthenticated } from './auth';
+
+const checkAuthForLayout = (route) => {
+  if (route.isPrivate) {
+    return isAuthenticated() ? route.layout : null;
+  }
+
+  return route.layout;
+};
 
 const render = (route) => route.childRoutes ? renderChild(route.childRoutes) : null;
 
 const checkLayout = (route) => {
-  const Layout = route.layout;
+  const Layout = checkAuthForLayout(route);
 
   return Layout ? (
     <Layout>
@@ -17,7 +26,7 @@ const checkLayout = (route) => {
 
 const renderChild = (routes) => (
   routes.map((route, i) =>
-    checkAuth(<Route key={i} {...route}>{checkLayout(route)}</Route>, route.isPrivate)
+    checkAuth(<Route key={i} {...route}>{checkLayout(route)}</Route>, route.isPrivate, route.path)
   ));
 
 const renderRoutes = (routes) => {
@@ -25,7 +34,11 @@ const renderRoutes = (routes) => {
 
   return routes ? (
     <Layout>
-      {renderChild(routes.childRoutes)}
+      <Switch>
+        {routes.childRoutes.map((route, i) =>
+          checkLayout(route)
+        )}
+      </Switch>
     </Layout>
   ) : null;
 };

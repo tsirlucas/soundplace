@@ -1,0 +1,105 @@
+$sidebar-width: 250px;
+
+@mixin sidebar-animation-properties {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  animation-duration: 300ms;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: $sidebar-width;
+  height: 100%;
+  background: $black-dark;
+
+  #brand {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    padding: 0 10%;
+
+    .brand-img {
+      display: block;
+      border-radius: 50%;
+      margin-right: 10%;
+      max-width: 60px;
+      max-height: 60px;
+      width: auto;
+      height: auto;
+    }
+
+    .brand-name {
+      color: white;
+      font-weight: normal;
+    }
+  }
+
+  .brand-nav {
+
+    .brand-nav-item {
+      display: flex;
+      margin: 0;
+      padding: 12px;
+      border-bottom: 1px solid rgba(white, 0.1);
+      color: #999;
+      cursor: pointer;
+      transition: background-color 100ms linear;
+      align-items: center;
+
+      &:first-child {
+        border-top: 1px solid rgba(white, 0.1);
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      &:hover {
+        background-color: rgba(white, 0.1);
+      }
+    }
+
+    .brand-nav-icon {
+      margin-right: 10px;
+    }
+
+    span {
+      line-height: 12px;
+    }
+  }
+
+  &.showing-player {
+    animation-name: decreasePaddingForPlayer;
+    @include sidebar-animation-properties;
+  }
+
+  &.hiding-player {
+    animation-name: increasePaddingForPlayer;
+    @include sidebar-animation-properties;
+  }
+}
+
+@keyframes decreaseHeightForPlayer {
+  0% {
+  }
+
+  100% {
+    padding-bottom: 80px
+  }
+}
+
+@keyframes increaseHeightForPlayer {
+  0% {
+    padding-bottom: 80px
+  }
+
+  100% {
+  }
+}
+

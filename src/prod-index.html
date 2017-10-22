@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html  lang="pt-br" <% if( htmlWebpackPlugin.files.manifest) { %> manifest="<%=  htmlWebpackPlugin.files.manifest %>"<% }  %> >
+<html
+  lang="pt-br" <% if( htmlWebpackPlugin.files.manifest) { %> manifest="<%=  htmlWebpackPlugin.files.manifest %>"<% }  %> >
 <head>
   <meta charset="utf-8">
   <title><%= htmlWebpackPlugin.options.title %></title>
@@ -8,12 +9,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-title" content="SoundPlace">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#242424">
   <meta name="msapplication-starturl" content="./?utm_source=web_app_manifest&utm_medium=web_app_manifest">
 
   <!-- Open Graph data -->
-  <meta property="og:title" content="SoundPlace" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" itemprop="image" content="/img/logo.png" />
+  <meta property="og:title" content="SoundPlace"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" itemprop="image" content="/assets/img/android-chrome-512x512.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/img/apple-touch-icon.png">
 
   <% if ( htmlWebpackPlugin.options.manifest) { %>
   <link rel="manifest" href="<%= htmlWebpackPlugin.options.manifest %>">
@@ -21,18 +25,17 @@
   <% if ( htmlWebpackPlugin.options.themeColor) { %>
   <meta name="theme-color" content="<%= htmlWebpackPlugin.options.themeColor %>">
   <% } %>
-  <% if ( htmlWebpackPlugin.files.favicon) { %>
-  <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
-  <% } %>
   <% if ( htmlWebpackPlugin.options.icon) { %>
   <link rel="icon" sizes="300x300" href="<%= htmlWebpackPlugin.options.icon %>">
   <% } %>
 </head>
 <body>
 <div id="application"></div>
+<script src="/raven.min.js" crossorigin="anonymous"></script>
+<script>(function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)};a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s;c.parentNode.insertBefore(a,c)})(window,document,'galite','script','https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js');galite('create','UA-108346997-1','auto');galite('send','pageview');window.addEventListener('unload',function(){galite('send','timing','JS Dependencies','unload')})</script>
+</body>
 <noscript style="text-align:center;">
   <h2> This application does'nt work without Javascript</h2>
   <h5> See <a href="http://enable-javascript.com/" target="_blank">Allow Javascript</a> and refresh your browser</h5>
 </noscript>
-</body>
 </html>

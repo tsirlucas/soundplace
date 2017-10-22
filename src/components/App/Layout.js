@@ -1,12 +1,9 @@
 import {h} from 'preact';
 
-const Layout = (props) => {
-  return (
-    <div id="app">
-      <main id="content">
-        {props.children}
-      </main>
-    </div>
-  );
-};
+const Layout = (props) => (
+  <main>
+    {props.children}
+  </main>
+);
+
 export default Layout;

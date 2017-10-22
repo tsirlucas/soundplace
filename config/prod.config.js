@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import SWPrecache from 'sw-precache-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import CnameWebpackPlugin from 'cname-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 
@@ -10,25 +11,47 @@ export const prodPlugins = [
   new webpack.NoEmitOnErrorsPlugin(),
   new CopyWebpackPlugin([
     {
-      from: './src/assets/manifest.json',
-      to: './'
-    }, {
-      from: './src/assets/img',
-      to: './img'
+      from: './assets',
+      to: './assets'
+    },
+    {
+      from: './node_modules/raven-js/dist/raven.min.js',
+      to: '.'
     }
   ]),
   new SWPrecache({
     runtimeCaching: [
       {
-        urlPattern: /^https:\/\/example\.com\//,
+        urlPattern: /^https:\/\/scontent\.xx\.fbcdn\.net\//,
         handler: 'cacheFirst'
-      }
+      },
+      {
+        urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
+        handler: 'cacheFirst'
+      },
+      {
+        urlPattern: /^https:\/\/i\.scdn\.co\//,
+        handler: 'cacheFirst'
+      },
+      {
+        urlPattern: /^https:\/\/pl\.scdn\.co\//,
+        handler: 'cacheFirst'
+      },
+      {
+        urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//,
+        handler: 'cacheFirst',
+        options: {
+          successResponses: /20[01]/
+        }
+      },
     ],
     filename: 'sw.js',
-    // importScripts: ['./service-worker.js'], only script changes are necessary
-    dontCacheBustUrlsMatching: /./,
+    // importScripts: ['./service-worker.js'], only if script changes are necessary
     navigateFallback: 'index.html',
-    staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/]
+    staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/],
+    options: {
+      cacheId: 'soundplace'
+    }
   }),
   new webpack.optimize.UglifyJsPlugin({
     output: {
@@ -46,12 +69,13 @@ export const prodPlugins = [
     excludeChunks: ['admin'],
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
-    manifest: 'manifest.json',
+    manifest: './assets/manifest.json',
+    favicon: "./assets/img/favicon.ico",
     minify: {
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackPlugin({
@@ -61,14 +85,34 @@ export const prodPlugins = [
     excludeChunks: ['admin'],
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
-    manifest: 'manifest.json',
+    manifest: './assets/manifest.json',
+    favicon: "./assets/img/favicon.ico",
     minify: {
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#242424',
   }),
-  new HtmlWebpackInlineSourcePlugin()
+  new HtmlWebpackInlineSourcePlugin(),
+  new HtmlWebpackPlugin({
+    template: './src/prod-index.html',
+    filename: '404.html',
+    title: 'SoundPlace',
+    excludeChunks: ['admin'],
+    inlineSource: '(bundle.js|style.css)',
+    removeRedundantAttributes: true,
+    manifest: './assets/manifest.json',
+    favicon: "./assets/img/favicon.ico",
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true
+    },
+    themeColor: '#242424',
+  }),
+  new HtmlWebpackInlineSourcePlugin(),
+  new CnameWebpackPlugin({
+    domain: 'www.soundplace.io',
+  }),
 ];
 
 export const prodLoaders = [

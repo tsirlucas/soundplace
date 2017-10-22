@@ -4,8 +4,9 @@ import * as Routes from './index';
 
 import { store } from '../main.js';
 
-import Page1 from '../pages/Page1';
-import Page2 from '../pages/Page2';
+import Login from '../pages/Login';
+import Artists from '../pages/Artists';
+import Playlist from '../pages/Playlists';
 
 export const browserHistory = createBrowserHistory();
 
@@ -21,14 +22,14 @@ export const updateRoute = () => {
 export const updateState = () => {
   const routeStatus = store.getState().route;
   if (window.location.pathname !== routeStatus.path) {
-    Routes.goTo(window.location.pathname);
+    store.dispatch(Routes.changeRoute(window.location.pathname));
   }
 };
 
 browserHistory.listen(() => {
   const pageElement = document.querySelector('#content');
   if (pageElement) {
-    pageElement.scrollIntoView(true);
+    document.querySelector('body').scrollTop = 0;
   }
   updateState();
 });
@@ -36,19 +37,33 @@ browserHistory.listen(() => {
 const publicRoutes = {
   childRoutes: [
     {
-      path: '/',
-      exact: true,
-      render: Page1
+      path: '/login',
+      component: Login
     }
   ]
 };
 
-const privateRoutes = Routes.privatizeRoutes({
+export const privateRoutes = Routes.privatizeRoutes({
   layout: Routes.App,
   childRoutes: [
     {
-      path: '/page2',
-      render: Page2
+      path: '/',
+      exact: true,
+      header: 'Home',
+      icon: 'HOME',
+      component: Playlist
+    },
+    {
+      path: '/playlists',
+      icon: 'PLAYLISTS',
+      header: 'Playlists',
+      component: Playlist
+    },
+    {
+      path: '/artists',
+      icon: 'ARTISTS',
+      header: 'Artists',
+      component: Artists
     }
   ]
 });

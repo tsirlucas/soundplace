@@ -25,7 +25,7 @@ function onUpdateFound(reg) {
 
 function onStateChange(installingWorker) {
   return () => {
-    if (installingWorker.state === 'installed' && navigator.serviceWorker && navigator.serviceWorker.controller) {
+    if (installingWorker.state === 'activated' && navigator.serviceWorker && navigator.serviceWorker.controller) {
       console.log('Done! Reloading page...');
       window.location.reload();
     }
