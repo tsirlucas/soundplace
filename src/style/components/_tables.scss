@@ -1,0 +1,165 @@
+//
+// Basic Bootstrap table
+//
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$border-width:                1px !default;
+$gray-200:                    #e9ecef !default;
+$gray-700:                    #495057 !default;
+$gray-900:                    #212529 !default;
+$body-bg:                     white !default;
+$spacer:                      1rem !default;
+
+$table-cell-padding:          .75rem !default;
+$table-cell-padding-sm:       .3rem !default;
+
+$table-bg:                    transparent !default;
+$table-accent-bg:             rgba($black,.05) !default;
+$table-hover-bg:              rgba($black,.075) !default;
+$table-active-bg:             $table-hover-bg !default;
+
+$table-border-width:          $border-width !default;
+$table-border-color:          $gray-200 !default;
+
+$table-head-bg:               $gray-200 !default;
+$table-head-color:            $gray-700 !default;
+
+$table-dark-bg:               $gray-900 !default;
+$table-dark-accent-bg:        rgba($white, .05) !default;
+$table-dark-hover-bg:         rgba($white, .075) !default;
+$table-dark-border-color:     lighten($gray-900, 7.5%) !default;
+$table-dark-color:            $body-bg !default;
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer;
+  background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $body-bg;
+  }
+}
+
+
+//
+// Condensed table w/ half padding
+//
+
+.table-sm {
+  th,
+  td {
+    padding: $table-cell-padding-sm;
+  }
+}
+
+
+// Bordered version
+//
+// Add borders all around the table and between all the columns.
+
+.table-bordered {
+  border: $table-border-width solid $table-border-color;
+
+  th,
+  td {
+    border: $table-border-width solid $table-border-color;
+  }
+
+  thead {
+    th,
+    td {
+      border-bottom-width: (2 * $table-border-width);
+    }
+  }
+}
+
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+  tbody tr:nth-of-type(odd) {
+    background-color: $table-accent-bg;
+  }
+}
+
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover {
+  tbody tr {
+    &:hover {
+      background-color: $table-hover-bg;
+    }
+  }
+}
+
+.table {
+  .thead-dark {
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+      border-color: $table-dark-border-color;
+    }
+  }
+
+  .thead-light {
+    th {
+      color: $table-head-color;
+      background-color: $table-head-bg;
+      border-color: $table-border-color;
+    }
+  }
+}
+
+.table-dark {
+  color: $table-dark-color;
+  background-color: $table-dark-bg;
+
+  th,
+  td,
+  thead th {
+    border-color: $table-dark-border-color;
+  }
+
+  &.table-bordered {
+    border: 0;
+  }
+
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-dark-accent-bg;
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      &:hover {
+        background-color: $table-dark-hover-bg;
+      }
+    }
+  }
+}

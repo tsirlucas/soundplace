@@ -6,7 +6,8 @@ import { store } from '../main.js';
 
 import Login from '../pages/Login';
 import Artists from '../pages/Artists';
-import Playlist from '../pages/Playlists';
+import Playlists from '../pages/Playlists';
+import Playlist from '../pages/Playlist';
 
 export const browserHistory = createBrowserHistory();
 
@@ -51,12 +52,17 @@ export const privateRoutes = Routes.privatizeRoutes({
       exact: true,
       header: 'Home',
       icon: 'HOME',
-      component: Playlist
+      component: Playlists
     },
     {
       path: '/playlists',
       icon: 'PLAYLISTS',
       header: 'Playlists',
+      exact: true,
+      component: Playlists
+    },
+    {
+      path: '/playlists/:playlistId',
       component: Playlist
     },
     {
