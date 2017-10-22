@@ -124,6 +124,5 @@
     "test:watch": "karma start test/karma.conf.js --auto-watch",
     "prebundlesize": "gzip -c build/index.html > build/bundlesize.gz",
     "bundlesize": "bundlesize",
-    "postbundlesize": "rm -rf build/bundlesize.gz"
   }
 }
