@@ -33,10 +33,11 @@ class Sidebar extends Component {
           <h3 className="brand-name">{user.name}</h3>
         </div>
         <Navigation>
-          { privateRoutes.childRoutes.map((route) => <NavigationItem onClick={() => changeRoute(route.path)}
-                                                                     header={route.header}
-                                                                     icon={route.icon}
-                                                                     active={route.path === location.pathname}/>)}
+          { privateRoutes.childRoutes.filter((route) => (route.header))
+            .map((route) => <NavigationItem onClick={() => changeRoute(route.path)}
+                                            header={route.header}
+                                            icon={route.icon}
+                                            active={route.path === location.pathname}/>)}
         </Navigation>
       </aside>
     );
