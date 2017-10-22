@@ -1,4 +1,4 @@
-sudo: false
+os: osx
 
 language: node_js
 
@@ -18,7 +18,7 @@ branches:
     - /^greenkeeper/.*$/
   before_script:
     - yarn global add gh-pages
-    - yarn lint
+#    - yarn lint
     - yarn test
 #    - SL=true yarn test
 #    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
