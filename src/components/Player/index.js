@@ -105,25 +105,29 @@ export default class Player extends Component {
     return (
       <div id='player' style={style} className={playerClass}>
         <PlayerProgress player={this.playerElement}/>
-        <div id='playing-details'>
-          <div id='playing-cover' style={`background-image: url(${player.currentlyPlaying.artwork[0].src});`}/>
-          <div id='playing-data'>
-            <div className='music'>{player.currentlyPlaying.name}</div>
-            <div className='artist'>{player.currentlyPlaying.artist}</div>
+        <div className="player-content-left">
+          <div id='playing-details'>
+            <div id='playing-cover' style={`background-image: url(${player.currentlyPlaying.artwork[0].src});`}/>
+            <div id='playing-data'>
+              <div className='music'><strong>{player.currentlyPlaying.name}</strong></div>
+              <div className='artist'>{player.currentlyPlaying.artist}</div>
+            </div>
           </div>
         </div>
-        <div id='player-controls'>
-          <div className={`prev-button ${!hasPrevious ? 'disabled' : ''}`}
-               onClick={this.hasPrevious(player.currentIndex) ? actions.previous : () => null}>
-            <Icon icon='PREVIOUS_BUTTON' size='24' color={hasPrevious ? 'white' : 'gray'}/>
-          </div>
-          <div className='toggle-button' onClick={actions.toggle}>
-            {player.isPlaying ? <Icon icon='PAUSE_BUTTON' size='24' color='white'/> :
-              <Icon icon='PLAY_BUTTON' size='24' color='white'/>}
-          </div>
-          <div className={`next-button ${!hasNext ? 'disabled' : ''}`}
-               onClick={this.hasNext(player.currentIndex) ? actions.next : () => null}>
-            <Icon icon='SKIP_BUTTON' size='24' color={hasNext ? 'white' : 'gray' }/>
+        <div className="player-content-right">
+          <div id='player-controls'>
+            <div className={`prev-button ${!hasPrevious ? 'disabled' : ''}`}
+                 onClick={this.hasPrevious(player.currentIndex) ? actions.previous : () => null}>
+              <Icon icon='PREVIOUS_BUTTON' size='24' color={hasPrevious ? 'white' : 'gray'}/>
+            </div>
+            <div className='toggle-button' onClick={actions.toggle}>
+              {player.isPlaying ? <Icon icon='PAUSE_BUTTON' size='24' color='white'/> :
+                <Icon icon='PLAY_BUTTON' size='24' color='white'/>}
+            </div>
+            <div className={`next-button ${!hasNext ? 'disabled' : ''}`}
+                 onClick={this.hasNext(player.currentIndex) ? actions.next : () => null}>
+              <Icon icon='SKIP_BUTTON' size='24' color={hasNext ? 'white' : 'gray' }/>
+            </div>
           </div>
         </div>
         <audio id='player-element' src={this.getStreamURL(player.currentlyPlaying)} preload="none"/>

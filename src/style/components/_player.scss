@@ -29,10 +29,26 @@
     animation-name: hidePlayer;
     @include player-animation-properties;
   }
+
+  .music {
+    font-size: 1em;
+    padding: 7px 0;
+  }
+
+  .artist {
+    font-size: 14px;
+    color: $gray-dark;
+  }
+
+  .player-content-left,
+  .player-content-right {
+      display: flex;
+      width: 50%;
+  }
 }
 
 #player-progress-bar {
-  border-top: 3px solid #0072BA;
+  border-top: 4px solid $spotify-green;
   position: absolute;
   bottom: 77px;
   left: 0;
@@ -41,6 +57,18 @@
   -webkit-transition: width 1.5s ease-in;
   -o-transition: width 1.5s ease-in;
   transition: width 1.5s ease-in;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $gray-light;
+    box-shadow: 0 0 10px rgba(black, 0.4);
+  }
 }
 
 #playing-cover {
@@ -85,8 +113,9 @@
 }
 
 #playing-details {
-  width: 200px;
-  max-width: 200px;
+  width: 150px;
+  max-width: 150px;
+  padding-left: 9px;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -117,7 +146,13 @@
 
   #player-progress-bar {
     bottom: 48px;
-    border-top: 2px solid #0072BA;
+    border-top: 2px solid $spotify-green;
+
+    &:after {
+      top: -6px;
+      width: 10px;
+      height: 10px;
+    }
   }
 
   #playing-cover {
