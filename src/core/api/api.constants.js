@@ -11,6 +11,7 @@ const getEnvURL = () => {
 };
 
 export const SERVER_URL = getEnvURL();
+export const STREAM_SERVER_URL = 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/';
 
 // ENDPOINTS
 export const SPOTIFY_AUTH = `${SERVER_URL}/auth/spotify`;

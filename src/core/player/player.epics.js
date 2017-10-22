@@ -1,4 +1,3 @@
-import Cookie from 'js-cookie';
 import { combineEpics } from 'redux-observable';
 
 import { Observable } from '../../util/RXImports';
@@ -26,8 +25,7 @@ const mockedState = {
         src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
         sizes: '220x220',
         type: 'image/jpg'
-      }],
-      url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/YYkrtSp8baE'
+      }]
     },
     tracklist: [
       {
@@ -38,8 +36,7 @@ const mockedState = {
           src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
           sizes: '220x220',
           type: 'image/jpg'
-        }],
-        url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/YYkrtSp8baE'
+        }]
       },
       {
         name: 'Castle On The Hill',
@@ -50,7 +47,7 @@ const mockedState = {
           sizes: '300x300',
           type: 'image/png'
         }],
-        url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/7Qp5vcuMIlk'
+        youtubeID: '7Qp5vcuMIlk'
       },
       {
         name: 'Landslide',
@@ -61,7 +58,7 @@ const mockedState = {
           sizes: '230x230',
           type: 'image/jpg'
         }],
-        url: 'https://youtube-cacheable-audio-stream.herokuapp.com/getAudioStream/PiGt9C76U0s'
+        youtubeID: 'PiGt9C76U0s'
       }
     ]
   }

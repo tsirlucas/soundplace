@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { toggle, next, previous } from '../../core/player/player.actions';
 import Icon from '../Icons/Icons';
 import PlayerProgress from './Progressbar';
+import { STREAM_SERVER_URL } from '../../core/api/api.constants';
 
 const secure = process.env.NODE_ENV === 'production';
 
@@ -88,6 +89,12 @@ export default class Player extends Component {
     return currIndex < this.props.player.tracklist.length - 1;
   };
 
+  getStreamURL = ({ youtubeID, name, artist }) => {
+    if (youtubeID) return STREAM_SERVER_URL + youtubeID;
+    const search = `${name} - ${artist} - official audio`;
+    return STREAM_SERVER_URL + search;
+  };
+
   render({ isDesktop, scrollbarWidth, width, player, actions, playerClass }, state) {
     const parsedWidth = isDesktop ? width - scrollbarWidth : width;
     const style = `width: ${parsedWidth}px;`;
@@ -119,7 +126,7 @@ export default class Player extends Component {
             <Icon icon='SKIP_BUTTON' size='24' color={hasNext ? 'white' : 'gray' }/>
           </div>
         </div>
-        <audio id='player-element' src={player.currentlyPlaying.url}/>
+        <audio id='player-element' src={this.getStreamURL(player.currentlyPlaying)}/>
       </div>
     );
   }
