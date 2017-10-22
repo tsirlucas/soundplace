@@ -20,24 +20,25 @@ export default class BottomNav extends Component {
   render({ actions, route }, { selectedOption }) {
     return (
       <div className="bottom-bar">
-        {privateRoutes.childRoutes.map((privRoute) =>
-          <label className="bottom-bar-item">
-            <input
-              type="radio"
-              name="tab-bar"
-              value={privRoute.path}
-              checked={route.path === privRoute.path}
-              onClick={() => actions.changeRoute(privRoute.path)}/>
-            <button className="bottom-bar-button">
-              <div className="bottom-bar-item">
-                <Icon icon={privRoute.icon} size='24'/>
-                <span>
+        {privateRoutes.childRoutes.filter((route) => (route.header))
+          .map((privRoute) =>
+            <label className="bottom-bar-item">
+              <input
+                type="radio"
+                name="tab-bar"
+                value={privRoute.path}
+                checked={route.path === privRoute.path}
+                onClick={() => actions.changeRoute(privRoute.path)}/>
+              <button className="bottom-bar-button">
+                <div className="bottom-bar-item">
+                  <Icon icon={privRoute.icon} size='24'/>
+                  <span>
                   {privRoute.header}
                 </span>
-              </div>
-            </button>
-          </label>
-        )}
+                </div>
+              </button>
+            </label>
+          )}
       </div>
     );
   }
