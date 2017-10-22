@@ -1,4 +1,3 @@
-import throttle from 'lodash.throttle';
 import { createEpicMiddleware } from 'redux-observable';
 import { createStore, applyMiddleware, compose } from 'redux';
 // import {composeWithDevTools} from 'remote-redux-devtools';

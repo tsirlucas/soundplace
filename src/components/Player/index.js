@@ -126,7 +126,7 @@ export default class Player extends Component {
             <Icon icon='SKIP_BUTTON' size='24' color={hasNext ? 'white' : 'gray' }/>
           </div>
         </div>
-        <audio id='player-element' src={this.getStreamURL(player.currentlyPlaying)}/>
+        <audio id='player-element' src={this.getStreamURL(player.currentlyPlaying)} preload="none"/>
       </div>
     );
   }
