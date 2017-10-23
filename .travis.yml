@@ -6,6 +6,7 @@ node_js:
 # Make chrome browser available for testing
 before_install:
   - export CHROME_BIN=chromium-browser
+  - yarn global add lighthouse
   - yarn global add lighthouse-badges
 
 branches:
