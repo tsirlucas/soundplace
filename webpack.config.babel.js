@@ -1,10 +1,13 @@
 import path from 'path';
-import {loaders} from './config/loaders';
-import {plugins} from './config/common.config';
-import {devPlugins, devServerconfig, devLoaders} from './config/dev.config';
-import {prodPlugins, prodLoaders} from './config/prod.config';
+import { loaders } from './config/loaders';
+import { plugins } from './config/common.config';
+import { prodPlugins, prodLoaders } from './config/prod.config';
 
 const ENV = process.env.NODE_ENV || 'development';
+
+if (ENV === 'development') {
+  var { devPlugins, devServerconfig, devLoaders } = require('./config/dev.config');
+}
 
 const envPlugins = ENV === 'development' ? devPlugins : prodPlugins;
 
