@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [];
+var precacheConfig = [["/404.html","4e892ee4b62ff2690e9c6bbb5cabb455"],["/CNAME","b53a7ae9dac2cc6ff355829a79c1dfa4"],["/asset-manifest.json","78ca8c232df22c65f7167321e0a50660"],["/assets/img/android-chrome-192x192.png","59e221032ab061cad83b6ce2bcddbde8"],["/assets/img/android-chrome-512x512.png","cf3fdf7af60a294d6d3f48cb7ad82488"],["/assets/img/apple-touch-icon.png","a0e46feb3cc577478b127936e739dd08"],["/assets/img/favicon-16x16.png","d712b605ed58419c7e6d4ab885d147b7"],["/assets/img/favicon-32x32.png","2f7ce797cf8f198dedb9a9f38b7ef13b"],["/assets/img/favicon.ico","53ac170e970ad034a55ee15ce198708c"],["/assets/img/mstile-150x150.png","ba817517b2c4e1ba1ce802c4d4fafdb4"],["/assets/manifest.json","e7f7832f2ee2c344f7c998f9eabcb448"],["/bundle.js","220ed8dd040102421da566310adfebd9"],["/favicon.ico","53ac170e970ad034a55ee15ce198708c"],["/index.html","4e892ee4b62ff2690e9c6bbb5cabb455"],["/raven.min.js","c662f730306ca5836db4e14568cedf53"],["/style.css","db3b4bc22bcedf3fc0e365d9f9acae95"]];
 var cacheName = 'sw-precache-v3-sw-precache-webpack-plugin-' + (self.registration ? self.registration.scope : '');
 
 
@@ -289,6 +289,7 @@ toolbox.router.get(/^https:\/\/scontent\.xx\.fbcdn\.net\//, toolbox.cacheFirst, 
 toolbox.router.get(/^https:\/\/mosaic\.scdn\.co\//, toolbox.cacheFirst, {});
 toolbox.router.get(/^https:\/\/i\.scdn\.co\//, toolbox.cacheFirst, {});
 toolbox.router.get(/^https:\/\/pl\.scdn\.co\//, toolbox.cacheFirst, {});
+toolbox.router.get(/^https:\/\/www\.soundplace\.io\/assets\/report.html/, toolbox.cacheFirst, {});
 toolbox.router.get(/^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//, toolbox.cacheFirst, {"successResponses":/20[01]/});
 
 
