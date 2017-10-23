@@ -38,6 +38,10 @@ export const prodPlugins = [
         handler: 'cacheFirst'
       },
       {
+        urlPattern: /^https:\/\/www\.soundplace\.io\/assets\/report.html/,
+        handler: 'cacheFirst'
+      },
+      {
         urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//,
         handler: 'cacheFirst',
         options: {
@@ -48,7 +52,6 @@ export const prodPlugins = [
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary
     navigateFallback: 'index.html',
-    staticFileGlobs: ['report.html'],
     staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/],
     options: {
       cacheId: 'soundplace'
