@@ -10,10 +10,10 @@ A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Spot
 
 Lighthouse scores
 
-[![Lighthouse Progressive Web App Badge](https://www.soundplace.io/lighthouse_progressive_web_app.svg)](https://www.soundplace.io/www_soundplace_io_.html)
-[![Lighthouse Performance Badge](https://www.soundplace.io/lighthouse_performance.svg)](https://www.soundplace.io/www_soundplace_io_.html)
-[![Lighthouse Accessibility Badge](https://www.soundplace.io/lighthouse_accessibility.svg)](https://www.soundplace.io/www_soundplace_io_.html)
-[![Lighthouse Best Practices Badge](https://www.soundplace.io/lighthouse_best_practices.svg)](https://www.soundplace.io/www_soundplace_io_.html)
+[![Lighthouse Progressive Web App Badge](https://www.soundplace.io/lighthouse_progressive_web_app.svg)](https://www.soundplace.io/assets/report.html)
+[![Lighthouse Performance Badge](https://www.soundplace.io/lighthouse_performance.svg)](https://www.soundplace.io/assets/report.html)
+[![Lighthouse Accessibility Badge](https://www.soundplace.io/lighthouse_accessibility.svg)](https://www.soundplace.io/assets/report.html)
+[![Lighthouse Best Practices Badge](https://www.soundplace.io/lighthouse_best_practices.svg)](https://www.soundplace.io/assets/report.html)
 
 Supports modern browsers and IE9+:
 
