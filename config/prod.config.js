@@ -48,6 +48,7 @@ export const prodPlugins = [
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary
     navigateFallback: 'index.html',
+    ignoreUrlParametersMatching: [/^https:\/\/www.\soundplace\.io\/assets\/report.html/],
     staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/],
     options: {
       cacheId: 'soundplace'
