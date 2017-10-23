@@ -40,7 +40,7 @@ after_success:
         --data "{\"purge_everything\":true}" &&
     echo && echo Cache purged! && echo &&
     cd build &&
-    lighthouse-badges --urls https://www.soundplace.io/ &&
+    lighthouse-badges --urls https://www.soundplace.io/ --save-report &&
     cd .. &&
     gh-pages -d build;
     fi'
