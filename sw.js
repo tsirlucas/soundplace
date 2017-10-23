@@ -41,7 +41,7 @@ var precacheConfig = [["/404.html","4e892ee4b62ff2690e9c6bbb5cabb455"],["/CNAME"
 var cacheName = 'sw-precache-v3-sw-precache-webpack-plugin-' + (self.registration ? self.registration.scope : '');
 
 
-var ignoreUrlParametersMatching = [/^utm_/];
+var ignoreUrlParametersMatching = [/^https:\/\/www.\soundplace\.io\/assets\/report.html/];
 
 
 
