@@ -17,6 +17,10 @@ export const prodPlugins = [
     {
       from: './node_modules/raven-js/dist/raven.min.js',
       to: '.'
+    },
+    {
+      from: './src/index.html',
+      to: './assets/report.html'
     }
   ]),
   new SWPrecache({
@@ -35,10 +39,6 @@ export const prodPlugins = [
       },
       {
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
-        handler: 'cacheFirst'
-      },
-      {
-        urlPattern: /^https:\/\/www\.soundplace\.io\/assets\/report.html/,
         handler: 'cacheFirst'
       },
       {
