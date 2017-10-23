@@ -1,29 +1,27 @@
-sudo: false
-
 language: node_js
 
 node_js:
-  - 6
+  - 8.7.0
 
 # Make chrome browser available for testing
 before_install:
   - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - yarn global add lighthouse-badges
 
 branches:
   only:
     - master
     - /^greenkeeper/.*$/
   before_script:
-    - npm install -g gh-pages
-    - npm run lint
-    - npm test
-#    - SL=true npm test
+    - yarn global add gh-pages
+    - yarn lint
+    - yarn test
+#    - SL=true yarn test
 #    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
 
 script:
-  - npm run build && npm run bundlesize
+  - yarn build
+  - yarn bundlesize
 
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -40,11 +38,17 @@ after_success:
         -H "X-Auth-Key: $CLOUDFLARE_TOKEN"
         -H "Content-Type: application/json"
         --data "{\"purge_everything\":true}" &&
-    echo && echo Cache purged!; fi'
+    echo && echo Cache purged! && echo &&
+    cd build &&
+    lighthouse-badges --urls https://www.soundplace.io/ &&
+    cd .. &&
+    gh-pages -d build;
+    fi'
 
 install:
-  - npm install
+  - yarn
 
 cache:
+  yarn: true
   directories:
     - node_modules

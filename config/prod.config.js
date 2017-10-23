@@ -13,6 +13,10 @@ export const prodPlugins = [
     {
       from: './assets',
       to: './assets'
+    },
+    {
+      from: './node_modules/raven-js/dist/raven.min.js',
+      to: '.'
     }
   ]),
   new SWPrecache({
@@ -32,7 +36,14 @@ export const prodPlugins = [
       {
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
         handler: 'cacheFirst'
-      }
+      },
+      {
+        urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//,
+        handler: 'cacheFirst',
+        options: {
+          successResponses: /20[01]/
+        }
+      },
     ],
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary

@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import { clearError } from '../../core/api/api.actions';
 
-function mapStateToProps({ api }) {
-  return { error: api.message };
+function mapStateToProps({ api, player }) {
+  return { error: api.message, hasPlayer: player };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -15,9 +15,21 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class StatusBar extends Component {
 
+  getClassToBar = (error, hasPlayer) => {
+    switch (true) {
+      case error && !hasPlayer:
+        return 'show';
+      case error && !!hasPlayer:
+        return 'show-over-player';
+      default:
+        return '';
+    }
+
+  };
+
   render() {
-    const { error } = this.props;
-    const showStatusBar = error ? 'show' : '';
+    const { error, hasPlayer } = this.props;
+    const showStatusBar = this.getClassToBar(error, hasPlayer);
 
     return (
       <section className={`status-bar ${showStatusBar}`}>

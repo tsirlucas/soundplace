@@ -3,6 +3,9 @@ import { h } from 'preact';
 import Redirect from 'react-router/Redirect';
 import Cookie from 'js-cookie';
 
+
+export const isAuthenticated = () => Cookie.get('token');
+
 export const checkAuth = (Route, isPrivate, path) => {
   const isAuthenticated = Cookie.get('token');
   const { pathname } = window.location;

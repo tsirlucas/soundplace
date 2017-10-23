@@ -9,7 +9,6 @@ import configureDevTools from './util/configureDevTools';
 
 import './util/RXImports';
 import './style/index.scss';
-import 'immutable-merge-operators';
 
 export const store = configureStore();
 

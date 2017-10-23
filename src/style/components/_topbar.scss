@@ -24,6 +24,11 @@ $topbar-height: 60px;
 
     .brand-img {
       border-radius: 50%;
+      display: block;
+      max-width: 40px;
+      max-height: 40px;
+      width: auto;
+      height: auto;
     }
 
     .brand-name {
