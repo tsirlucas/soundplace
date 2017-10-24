@@ -72,6 +72,7 @@
 }
 
 #playing-cover {
+  margin-right: 15px;
   min-width: 60px;
   min-height: 60px;
   background-size: cover !important;
@@ -113,12 +114,12 @@
 }
 
 #playing-details {
-  width: 150px;
-  max-width: 150px;
-  padding-left: 9px;
+  width: auto;
+  max-width: 250px;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 10px;
 }
 
 @media (max-width: 765px) {
@@ -142,6 +143,17 @@
       animation-name: hidePlayer;
       @include player-animation-properties;
     }
+
+    .player-content-left,
+    .player-content-right {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+    }
+    .music {
+      font-size: 1em;
+      padding: 2px 0;
+    }
   }
 
   #player-progress-bar {
@@ -156,6 +168,7 @@
   }
 
   #playing-cover {
+    margin-right: 15px;
     min-width: 30px;
     min-height: 30px;
     background-size: cover !important;
@@ -163,12 +176,13 @@
   }
 
   #playing-details {
-    width: 150px;
-    max-width: 150px;
+    width: auto;
+    max-width: 200px;
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
     font-size: 13px;
+    padding-left: 0;
   }
 
   #player-controls {
