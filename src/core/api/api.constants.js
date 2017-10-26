@@ -6,7 +6,8 @@ const getEnvURL = () => {
     // case 'staging':
     //   return 'https://staging-soundplace.io';
     default:
-      return 'https://boiling-plateau-96706.herokuapp.com';
+      // TODO: Put prod url on the CI
+      return 'http://35.199.72.21';
   }
 };
 
