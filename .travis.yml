@@ -33,10 +33,9 @@ after_success:
 deploy:
   provider: script
   skip_cleanup: true
-  script: sh ./scripts/run_on_deploy.sh
+  script: bash ./scripts/run_on_deploy.sh
   on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH = master
+    branch: master
 
 cache:
   yarn: true

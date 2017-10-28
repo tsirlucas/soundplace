@@ -1,4 +1,4 @@
-set -eu pipefail
+set -euo pipefail
 
 node_modules/now/download/dist/now switch soundplace --token $NOW_TOKEN
 
