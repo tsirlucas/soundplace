@@ -35,7 +35,8 @@ deploy:
   skip_cleanup: true
   script: scripts/run_on_deploy
   on:
-    branch: master
+    all_branches: true
+    condition: $TRAVIS_BRANCH = master
 
 cache:
   yarn: true
