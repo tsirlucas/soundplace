@@ -34,7 +34,8 @@ deploy:
   provider: script
   script: scripts/run_on_deploy
   on:
-    branch: master
+    all_branches: true
+    condition: $TRAVIS_BRANCH = master
 
 cache:
   yarn: true
