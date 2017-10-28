@@ -6,15 +6,18 @@ node_js:
 # Make chrome browser available for testing
 before_install:
   - export CHROME_BIN=chromium-browser
-  - yarn global add lighthouse
-  - yarn global add lighthouse-badges
+
+install:
+    - yarn global add lighthouse
+    - yarn global add lighthouse-badges
+    - yarn global add gh-pages
+    - yarn
 
 branches:
   only:
     - master
     - /^greenkeeper/.*$/
   before_script:
-    - yarn global add gh-pages
     - yarn lint
     - yarn test
 #    - SL=true yarn test
@@ -22,33 +25,16 @@ branches:
 
 script:
   - yarn build
-  - yarn bundlesize
 
 after_success:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    node_modules/now/download/dist/now switch soundplace --token $NOW_TOKEN &&
-    URL=$(node_modules/now/download/dist/now ./build -n prs-soundplace --token $NOW_TOKEN --static --public -f) &&
-    echo Running lighthouse tests on: $URL &&
-    node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
+  - yarn bundlesize
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./scripts/run_pr_tests; fi'
 
-  - 'if [ "$TRAVIS_BRANCH" = "master" ]; then
-    gh-pages -d build &&
-    echo && echo Purging Cloudflare cache... && echo &&
-    curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache"
-        -H "X-Auth-Email: tsirlucas@gmail.com"
-        -H "X-Auth-Key: $CLOUDFLARE_TOKEN"
-        -H "Content-Type: application/json"
-        --data "{\"purge_everything\":true}" &&
-    echo && echo Cache purged! && echo &&
-    cd build &&
-    lighthouse-badges --urls https://www.soundplace.io/ --save-report &&
-    mv www_soundplace_io_.html ./assets/report.html &&
-    cd .. &&
-    gh-pages -d build;
-    fi'
-
-install:
-  - yarn
+deploy:
+  provider: script
+  script: scripts/run_on_deploy
+  on:
+    branch: master
 
 cache:
   yarn: true
