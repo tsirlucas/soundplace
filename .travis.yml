@@ -11,7 +11,7 @@ install:
     - yarn global add lighthouse
     - yarn global add lighthouse-badges
     - yarn global add gh-pages
-    - yarn
+    - yarn --frozen-lockfile
 
 branches:
   only:
