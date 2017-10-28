@@ -1,4 +1,4 @@
-set -euo pipefail
+set -eu pipefail
 
 gh-pages -d build
 
