@@ -32,10 +32,10 @@ after_success:
 
 deploy:
   provider: script
+  skip_cleanup: true
   script: scripts/run_on_deploy
   on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH = master
+    branch: master
 
 cache:
   yarn: true
