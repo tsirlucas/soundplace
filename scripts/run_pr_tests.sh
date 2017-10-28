@@ -6,4 +6,4 @@ URL=$(node_modules/now/download/dist/now ./build -n prs-soundplace --token $NOW_
 
 echo -e "\nRunning lighthouse tests on: $URL\n"
 
-node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100; fi'
+node ./node_modules/lighthouse-ci/runlighthouse.js $URL --runner=chrome --score=100
