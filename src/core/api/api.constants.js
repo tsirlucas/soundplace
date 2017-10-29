@@ -7,7 +7,7 @@ const getEnvURL = () => {
     //   return 'https://staging-soundplace.io';
     default:
       // TODO: Put prod url on the CI
-      return 'http://35.199.72.21';
+      return 'https://api-soundplace.com/';
   }
 };
 
