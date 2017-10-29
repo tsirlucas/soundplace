@@ -12,7 +12,7 @@ const getEnvURL = () => {
 };
 
 export const SERVER_URL = getEnvURL();
-export const STREAM_SERVER_URL = 'http://45.55.242.10:3000/getAudioStream/';
+export const STREAM_SERVER_URL = 'http://45.55.242.10:3000/searchAudioStream/';
 
 // ENDPOINTS
 export const SPOTIFY_AUTH = `${SERVER_URL}/auth/spotify`;
