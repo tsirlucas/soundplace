@@ -7,7 +7,7 @@ const getEnvURL = () => {
     //   return 'https://staging-soundplace.io';
     default:
       // TODO: Put prod url on the CI
-      return 'https://api-soundplace.com/';
+      return 'https://api-soundplace.com';
   }
 };
 
