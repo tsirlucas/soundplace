@@ -12,7 +12,7 @@ export const AjaxRequest = (method, url, data = null) => {
   const token = Cookie.get('token');
   const requestKey = `${url}_${JSON.stringify(data)}`;
 
-  if (api.hasNetwork === false) return Observable.fromPromise(AppCache.get(requestKey));
+  if (api.hasNetwork === false) return AppCache.getCleanResponse(requestKey);
 
   const request = () => ajax({
     method,
