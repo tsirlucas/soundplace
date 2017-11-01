@@ -2,19 +2,17 @@ import Cookie from 'js-cookie';
 import { Observable } from '../../util/RXImports';
 import { ajax } from 'rxjs/observable/dom/ajax';
 
+import * as AppCache from './api.cache.service';
 import { getCurrentState } from '../../store';
 import { SERVER_URL } from './api.constants';
-
-const secure = process.env.NODE_ENV === 'production';
 
 export const AjaxRequest = (method, url, data = null) => {
 
   const { api } = getCurrentState();
   const token = Cookie.get('token');
-  const cached = Cookie.get(`${url}_${JSON.stringify(data)}`);
+  const requestKey = `${url}_${JSON.stringify(data)}`;
 
-  if (api.hasNetwork === false) return cached ?
-    Observable.of(JSON.parse(cached)) : Observable.empty();
+  if (api.hasNetwork === false) return Observable.fromPromise(AppCache.get(requestKey));
 
   const request = () => ajax({
     method,
@@ -34,20 +32,15 @@ export const AjaxRequest = (method, url, data = null) => {
     .retry(3)
     .map((res) => {
       if (method === 'GET') {
-        Cookie.set(`${url}_${JSON.stringify(data)}`, JSON.stringify(res), { secure });
+        AppCache.set(requestKey, AppCache.createCleanResponse(res));
       }
       return res;
     });
 
-  if (cached) {
-    return Observable.concat(
-      Observable.of(JSON.parse(cached)),
-      request()
-    );
-  }
-
-  return request();
-
+  return Observable.concat(
+    AppCache.getCleanResponse(requestKey),
+    request()
+  );
 };
 
 export const importUserData = () => AjaxRequest('POST', '/api/me/import');
