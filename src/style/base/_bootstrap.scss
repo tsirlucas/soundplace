@@ -75,6 +75,11 @@ html, body {
       animation-name: increasePaddingForPlayerMobile;
       @include layout-animation-properties;
     }
+
+    &.network.showing-player {
+      animation-name: increasePaddingForNetworkAndPlayerMobile;
+      @include layout-animation-properties;
+    }
   }
 }
 
@@ -136,4 +141,14 @@ html, body {
   }
 }
 
+@keyframes increasePaddingForNetworkAndPlayerMobile {
+  0% {
+    padding-top: 4vh;
+  }
+
+  100% {
+    padding-bottom: calc(4vw + 60px);
+    padding-top: calc(4vh + 28px);
+  }
+}
 
