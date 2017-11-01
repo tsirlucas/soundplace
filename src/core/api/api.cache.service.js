@@ -2,7 +2,15 @@ import { Observable } from '../../util/RXImports';
 
 const CACHE_ID = 'SOUNDPLACE_CACHE';
 
-const appCachePromise = window.caches.open(CACHE_ID);
+const appCachePromise = window.caches ? window.caches.open(CACHE_ID) :
+
+  // Mocking cache to avoid errors on safari
+  new Promise((resolve) => resolve({
+    put: () => null,
+    match: () => new Promise((resolve) => {
+      resolve(undefined);
+    })
+  }));
 
 export const set = (key, response) =>
   appCachePromise.then((cache) => cache.put(key, response));
