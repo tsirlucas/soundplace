@@ -2,6 +2,7 @@
 .idea
 /build
 .vscode
+.history
 /coverage
 .DS_Store
 /node_modules
