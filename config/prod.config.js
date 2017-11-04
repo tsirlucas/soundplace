@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import SWPrecache from 'sw-precache-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
@@ -47,7 +48,7 @@ export const prodPlugins = [
         options: {
           successResponses: /20[01]/
         }
-      },
+      }
     ],
     filename: 'sw.js',
     // importScripts: ['./service-worker.js'], only if script changes are necessary
@@ -57,13 +58,19 @@ export const prodPlugins = [
       cacheId: 'soundplace'
     }
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    output: {
-      comments: 0
-    },
-    compress: {
-      unused: 1,
-      warnings: 0
+  new UglifyJsPlugin({
+    parallel: true,
+    extractComments: true,
+    uglifyOptions: {
+      ie8: true,
+      ecma: 8,
+      warnings: false,
+      mangle: true,
+      compress: {
+        ecma: 5,
+        hoist_props: true,
+        dead_code: true
+      }
     }
   }),
   new HtmlWebpackPlugin({
@@ -79,7 +86,7 @@ export const prodPlugins = [
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#242424',
+    themeColor: '#242424'
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackInlineSourcePlugin(),
@@ -96,7 +103,7 @@ export const prodPlugins = [
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#242424',
+    themeColor: '#242424'
   }),
   new HtmlWebpackPlugin({
     template: './src/prod-index.html',
@@ -111,17 +118,17 @@ export const prodPlugins = [
       collapseWhitespace: true,
       removeComments: true
     },
-    themeColor: '#242424',
+    themeColor: '#242424'
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new CnameWebpackPlugin({
-    domain: 'www.soundplace.io',
-  }),
+    domain: 'www.soundplace.io'
+  })
 ];
 
 export const prodLoaders = [
   {
     test: /\.(scss|css)$/,
-    loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader?sourceMap!sass-loader?sourceMap')
+    loader: ExtractTextPlugin.extract({ use: ['css-loader', 'postcss-loader', 'sass-loader'] })
   }
 ];
