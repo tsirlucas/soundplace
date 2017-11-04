@@ -5,7 +5,6 @@ import routeEpics from './core/router/router.epics';
 import playerEpics from './core/player/player.epics';
 import artistsEpics from './core/artists/artists.epics';
 import playlistsEpics from './core/playlists/playlists.epics';
-import serviceWorkerEpics from './core/service-worker/service-worker.epics';
 
 import { Observable } from './util/RXImports';
 import { clearError } from './core/api/api.actions';
@@ -36,6 +35,5 @@ export const epics = (action$, store) => combineEpics(
   playerEpics,
   playlistsEpics,
   artistsEpics,
-  serviceWorkerEpics
 )(action$, store)
   .catch(handleUncaughtErrors);
