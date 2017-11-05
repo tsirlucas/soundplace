@@ -26,14 +26,20 @@ const deleteCacheRequests = (cachesRes, url) => Observable.fromPromise(Promise.a
 const concatRequests = (cachesReq) => cachesReq.reduce((prev, curr) => (prev.concat(curr)), []);
 const filterSongsReq = (requests) => requests.filter(({ url }) => url.includes(STREAM_SERVER_URL));
 
-const parseSongs = (requests) => requests.map((item) => ({
-  request: item,
-  data: {
-    ...JSON.parse(item.headers.get('data')),
-    size: formatBytes(item.headers.get('Content-Length')),
-    sizeValue: item.headers.get('Content-Length')
-  }
-}));
+//TODO: split this in small functions
+const parseSongs = (requests) => Observable.fromPromise(
+  Promise.all(requests.map((item) =>
+    fetch(item.url)
+      .then((res) => res.blob())
+      .then((blob) => ({
+        request: item,
+        data: {
+          ...JSON.parse(item.headers.get('data')),
+          size: formatBytes(blob.size),
+          sizeValue: blob.size
+        }
+      })))));
+
 
 const fetchMusic = (track) => Observable.fromPromise(fetch(`${STREAM_SERVER_URL}${track.youtubeID}`,
   { headers: { save: true, data: JSON.stringify(track) } }));
@@ -50,8 +56,8 @@ const cachedSongsEpic = (action$) =>
     .mergeMap(getCacheRequests)
     .map(concatRequests)
     .map(filterSongsReq)
-    .map(parseSongs)
-    .map(getCachedSongsSuccess);
+    .mergeMap((songs) => parseSongs(songs)
+      .map(getCachedSongsSuccess));
 
 const saveMusicEpic = (action$) =>
   action$.ofType(SAVE_MUSIC)
