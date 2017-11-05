@@ -42,11 +42,11 @@ Supports modern browsers and IE9+:
 - [ ] [Coveralls](https://coveralls.io/) to automatic test coverage reports
 - [ ] [SauceLabs](https://saucelabs.com/) to automatic browser support reports
 - [x] [Sentry](https://sentry.io/) for error tracking
-- [x] [SW-Precache](https://github.com/GoogleChrome/sw-precache) to generate service-worker and runtime caching
+- [x] [Workbox](https://github.com/GoogleChrome/workbox) to generate service-worker and runtime caching
 - [x] Background player even on blocked screen with [Media Session API](https://developers.google.com/web/updates/2017/02/media-session)
 - [x] Offline strategy using observables to concat cache and API results (first show cached, then automatically updates from network in real-time)
 - [x] Offline strategy to cache songs and let user select what to cache
-- [ ] Let user remove songs from cache
+- [x] Let user remove songs from cache
 - [x] Offline bar to tell users when they're running offline
 - [x] No requests when there's no connection (falls back to cache-only)
 
