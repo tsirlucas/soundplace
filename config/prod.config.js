@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import SWPrecache from 'sw-precache-webpack-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
@@ -24,39 +24,75 @@ export const prodPlugins = [
       to: './assets/report.html'
     }
   ]),
-  new SWPrecache({
+  new WorkboxPlugin({
+    swDest: './build/sw.js',
+    clientsClaim: true,
+    skipWaiting: true,
+    handleFetch: true,
+    navigateFallback: 'index.html',
+    directoryIndex: 'index.html',
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/scontent\.xx\.fbcdn\.net\//,
-        handler: 'cacheFirst'
+        handler: 'cacheFirst',
+        options: {
+          cache: {
+            name: 'scontent-cache',
+            maxEnteries: 200,
+            maxAgeSeconds: 31536000
+          },
+          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
+        }
       },
       {
         urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
-        handler: 'cacheFirst'
+        handler: 'cacheFirst',
+        options: {
+          cache: {
+            name: 'mosaic-cache',
+            maxEnteries: 200,
+            maxAgeSeconds: 31536000
+          },
+          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
+        }
       },
       {
         urlPattern: /^https:\/\/i\.scdn\.co\//,
-        handler: 'cacheFirst'
+        handler: 'cacheFirst',
+        options: {
+          cache: {
+            name: 'iscdn-cache',
+            maxEnteries: 200,
+            maxAgeSeconds: 31536000
+          },
+          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
+        }
       },
       {
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
-        handler: 'cacheFirst'
-      },
-      {
-        urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\/getAudioStream\//,
         handler: 'cacheFirst',
         options: {
-          successResponses: /20[01]/
+          cache: {
+            name: 'plscdn-cache',
+            maxEnteries: 200,
+            maxAgeSeconds: 31536000
+          },
+          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
+        }
+      },
+      {
+        urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\//,
+        handler: 'cacheFirst',
+        options: {
+          cache: {
+            name: 'stream-cache',
+            maxEnteries: 200,
+            maxAgeSeconds: 31536000
+          },
+          cacheableResponse: { statuses: [200, 201] }
         }
       }
-    ],
-    filename: 'sw.js',
-    // importScripts: ['./service-worker.js'], only if script changes are necessary
-    navigateFallback: 'index.html',
-    staticFileGlobsIgnorePatterns: [/\.map$/, /\.DS_Store/],
-    options: {
-      cacheId: 'soundplace'
-    }
+    ]
   }),
   new UglifyJsPlugin({
     parallel: true,
