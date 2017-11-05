@@ -56,12 +56,14 @@ export default class StoragePage extends Component {
     return (
       <section>
         <h2>Using {storage.usage} of {storage.quota}. {storage.free} free</h2>
+        <h3>App resources: {storage.appResources}</h3>
+        <br />
         <h3>Cached songs:</h3>
         <br />
         {storage.cachedSongs.map((item) => {
           return (
             <div onClick={() => actions.deleteMusic(item.request.url)} >
-              <span>{item.data.name} - {item.data.artist}</span> <br />
+              <span>{item.data.name} - {item.data.artist}: {item.data.size}</span> <br />
             </div>
           );
         })}

@@ -1,6 +1,7 @@
 import { combineEpics } from 'redux-observable';
 
 import { Observable } from '../../util/RXImports';
+import { formatBytes } from '../../util/formatBytes';
 import { STREAM_SERVER_URL } from '../api/api.constants';
 import { LOAD_STORAGE_STATUS, GET_CACHED_SONGS, SAVE_MUSIC, DELETE_MUSIC } from './storage.constants';
 import {
@@ -24,7 +25,15 @@ const getCacheRequests = (cachesRes) => Observable.fromPromise(Promise.all(cache
 const deleteCacheRequests = (cachesRes, url) => Observable.fromPromise(Promise.all(cachesRes.map((cache) => cache.delete(url))));
 const concatRequests = (cachesReq) => cachesReq.reduce((prev, curr) => (prev.concat(curr)), []);
 const filterSongsReq = (requests) => requests.filter(({ url }) => url.includes(STREAM_SERVER_URL));
-const parseSongs = (requests) => requests.map((item) => ({ request: item, data: JSON.parse(item.headers.get('data')) }));
+
+const parseSongs = (requests) => requests.map((item) => ({
+  request: item,
+  data: {
+    ...JSON.parse(item.headers.get('data')),
+    size: formatBytes(item.headers.get('Content-Length')),
+    sizeValue: item.headers.get('Content-Length')
+  }
+}));
 
 const fetchMusic = (track) => Observable.fromPromise(fetch(`${STREAM_SERVER_URL}${track.youtubeID}`,
   { headers: { save: true, data: JSON.stringify(track) } }));

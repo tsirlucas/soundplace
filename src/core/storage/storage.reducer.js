@@ -11,13 +11,19 @@ const StorageReducer = (state = initialStorage, action) => {
       return {
         ...state,
         quota: formatBytes(action.payload.quota),
+        quotaValue: action.payload.quota,
         usage: formatBytes(action.payload.usage),
-        free: formatBytes(action.payload.quota - action.payload.usage)
+        usageValue: action.payload.usage,
+        free: formatBytes(action.payload.quota - action.payload.usage),
+        freeValue: action.payload.quota - action.payload.usage
       };
     case GET_CACHED_SONGS_SUCCESS:
       return {
         ...state,
-        cachedSongs: action.payload
+        cachedSongs: action.payload,
+        appResources: formatBytes(action.payload.reduce((prev, curr) => {
+          return prev - curr.data.size;
+        }, state.usageValue))
       };
     default:
       return state;
