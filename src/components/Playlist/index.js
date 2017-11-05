@@ -4,7 +4,7 @@ import Track from './components/Track';
 
 export default class Playlist extends Component {
 
-  render({ playlist }, state) {
+  render({ playlist, onSave }, state) {
     return (
       <section id="playlist">
         <header className="playlist-header">
@@ -15,14 +15,15 @@ export default class Playlist extends Component {
           <table className="table">
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>Artista</th>
-                <th>Álbum</th>
-                <th>Duração</th>
+                <th>Name</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Duration</th>
+                <th>Save</th>
               </tr>
             </thead>
             <tbody>
-              {playlist.tracks.map((track) => <Track track={track} />)}
+              {playlist.tracks.map((track) => <Track track={track} onSave={onSave} />)}
             </tbody>
           </table>
         </main>

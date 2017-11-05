@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 import Artists from '../pages/Artists';
 import Playlists from '../pages/Playlists';
 import Playlist from '../pages/Playlist';
+import Storage from '../pages/Storage';
 
 export const browserHistory = createBrowserHistory();
 
@@ -70,6 +71,12 @@ export const privateRoutes = Routes.privatizeRoutes({
       icon: 'ARTISTS',
       header: 'Artists',
       component: Artists
+    },
+    {
+      path: '/storage',
+      icon: 'STORAGE',
+      header: 'Storage',
+      component: Storage
     }
   ]
 });
