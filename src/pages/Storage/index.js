@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { loadStorageStatus, getCachedSongs, deleteMusic } from '../../core/storage/storage.actions';
 import Playlist from '../../components/Playlist';
+import { formatBytes } from '../../util/formatBytes';
 
 let playlistMock = {
   cover: 'https://pl.scdn.co/images/pl/default/1b19606b5ba531a4fc804e09e651b1f8d765ebe7',
@@ -51,27 +52,42 @@ export default class StoragePage extends Component {
     this.props.actions.getCachedSongs();
   }
 
+  sortArr = (arr) => {
+    return arr.sort((a, b) => {
+      let comparison = 0;
+      if (a.percent < b.percent) {
+        comparison = 1;
+      } else if (a.percent > b.percent) {
+        comparison = -1;
+      }
+      return comparison;
+    });
+  }
+
   render({ storage, actions }) {
-    window.treco = storage;
+    const dataArray = this.sortArr([
+      { label: 'App', percent: (storage.appResources / storage.quota) * 100, color: '#5288D8' },
+      { label: 'Songs', percent: (storage.songs / storage.quota) * 100, color: '#E97028' },
+      { label: 'Free', percent: 100, color: '#00812F' }
+    ]);
+
+    dataArray[1].percent = dataArray[1].percent + dataArray[2].percent;
+
     return (
       <section>
-        <h2>Using {storage.usage} of {storage.quota}. {storage.free} free</h2>
-        <h3>App resources: {storage.appResources}</h3>
-        <br />
-        <h3>Cached songs:</h3>
-        <br />
-        <ul class="chart-skills">
-          <li style={`transform: rotate(${(storage.appResourcesPercent * 1.8)}deg);`}>
-            <span style={`transform: rotate(-${(storage.appResourcesPercent * 1.8)}deg);`}>App</span>
-          </li>
-          <li style={`transform: rotate(${(storage.usagePercent * 1.8)}deg);`}>
-            <span style={`transform: rotate(-${(storage.usagePercent * 1.8)}deg);`}>Songs</span>
-          </li>
-          <li style={`transform: rotate(${(storage.freePercent * 1.8)}deg);`}>
-            <span style={`transform: rotate(-${(storage.freePercent * 1.8)}deg);`}>Free</span>
-          </li>
+        <ul class='chart-skills'>
+          {dataArray.map((item) => (
+            <li style={`transform: rotate(${(item.percent * 1.8)}deg); border-color: ${item.color};`}>
+              <span style={`transform: rotate(-${(item.percent * 1.8)}deg);`}>{item.label}</span>
+            </li>
+          ))}
         </ul>
 
+        <div style='text-align: center;'>
+          <h2>Using {formatBytes(storage.usage)} of {formatBytes(storage.quota)}. {formatBytes(storage.free)} free</h2>
+          <h3>App resources: {formatBytes(storage.appResources)}</h3>
+          <br />
+        </div>
         <br />
         {storage.cachedSongs.map((item) => {
           return (

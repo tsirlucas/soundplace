@@ -21,6 +21,7 @@
   width: 350px;
   height: 175px;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 @media (max-width: 765px) {
@@ -76,21 +77,15 @@
 }
 
 .chart-skills li:nth-child(1) {
-  z-index: 4;
-  border-color: green;
-  animation-name: rotate-one;
+  animation-name: rotate-ochartne;
 }
 
 .chart-skills li:nth-child(2) {
-  z-index: 3;
-  border-color: firebrick;
-  animation-name: rotate-two;
+  animation-name: rotate-chart;
 }
 
 .chart-skills li:nth-child(3) {
-  z-index: 2;
-  border-color: steelblue;
-  animation-name: rotate-three;
+  animation-name: rotate-chart;
 }
 
 .chart-skills span {
@@ -118,22 +113,7 @@
 /* ANIMATIONS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-@keyframes rotate-one {
-  0% {
-    transform: rotate(0deg);
-    /**
-     * 12% => 21.6deg
-     */
-  }
-}
-
-@keyframes rotate-two {
-  0% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes rotate-three {
+@keyframes rotate-chart {
   0% {
     transform: rotate(0deg);
   }
