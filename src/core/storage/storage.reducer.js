@@ -11,12 +11,15 @@ const StorageReducer = (state = initialStorage, action) => {
       return {
         ...state,
         appResources: state.appResources || formatBytes(action.payload.usage),
+        appResourcesPercent: ((state.appResourcesValue ||
+          action.payload.usage) / action.payload.quota) * 100,
         quota: formatBytes(action.payload.quota),
         quotaValue: action.payload.quota,
         usage: formatBytes(action.payload.usage),
         usageValue: action.payload.usage,
         free: formatBytes(action.payload.quota - action.payload.usage),
-        freeValue: action.payload.quota - action.payload.usage
+        freeValue: action.payload.quota - action.payload.usage,
+        freePercent: ((action.payload.quota - action.payload.usage) / action.payload.quota) * 100
       };
     case GET_CACHED_SONGS_SUCCESS:
       return {
@@ -24,7 +27,16 @@ const StorageReducer = (state = initialStorage, action) => {
         cachedSongs: action.payload,
         appResources: formatBytes(action.payload.reduce((prev, curr) => {
           return prev - curr.data.sizeValue;
-        }, state.usageValue))
+        }, state.usageValue)),
+        appResourcesValue: action.payload.reduce((prev, curr) => {
+          return prev - curr.data.sizeValue;
+        }, state.usageValue),
+        appResourcesPercent: (action.payload.reduce((prev, curr) => {
+          return prev - curr.data.sizeValue;
+        }, state.usageValue) / state.quotaValue) * 100,
+        usagePercent: state.usagePercent - ((action.payload.reduce((prev, curr) => {
+          return prev - curr.data.sizeValue;
+        }, state.usageValue) / state.quotaValue) * 100)
       };
     default:
       return state;

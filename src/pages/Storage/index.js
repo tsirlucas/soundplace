@@ -60,6 +60,19 @@ export default class StoragePage extends Component {
         <br />
         <h3>Cached songs:</h3>
         <br />
+        <ul class="chart-skills">
+          <li style={`transform: rotate(${(storage.appResourcesPercent * 1.8)}deg);`}>
+            <span style={`transform: rotate(-${(storage.appResourcesPercent * 1.8)}deg);`}>App</span>
+          </li>
+          <li style={`transform: rotate(${(storage.usagePercent * 1.8)}deg);`}>
+            <span style={`transform: rotate(-${(storage.usagePercent * 1.8)}deg);`}>Songs</span>
+          </li>
+          <li style={`transform: rotate(${(storage.freePercent * 1.8)}deg);`}>
+            <span style={`transform: rotate(-${(storage.freePercent * 1.8)}deg);`}>Free</span>
+          </li>
+        </ul>
+
+        <br />
         {storage.cachedSongs.map((item) => {
           return (
             <div onClick={() => actions.deleteMusic(item.request.url)} >
