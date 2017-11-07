@@ -17,6 +17,7 @@ const StorageReducer = (state = initialStorage, action) => {
         quotaValue: action.payload.quota,
         usage: formatBytes(action.payload.usage),
         usageValue: action.payload.usage,
+        usagePercent: (action.payload.usage / action.payload.quota) * 100,
         free: formatBytes(action.payload.quota - action.payload.usage),
         freeValue: action.payload.quota - action.payload.usage,
         freePercent: ((action.payload.quota - action.payload.usage) / action.payload.quota) * 100
