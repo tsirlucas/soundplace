@@ -32,6 +32,7 @@ const mockedState = {
         name: 'Place',
         artist: 'Lucy Rose',
         album: 'Like I Used To',
+        duration: '2:54',
         artwork: [{
           src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg/220px-Like_I_Used_To%2C_Lucy_Rose%27s_cover.jpg',
           sizes: '220x220',
@@ -42,6 +43,7 @@ const mockedState = {
         name: 'Castle On The Hill',
         artist: 'Ed Sheeran',
         album: 'Divide',
+        duration: '2:54',
         artwork: [{
           src: 'https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png',
           sizes: '300x300',
@@ -53,6 +55,7 @@ const mockedState = {
         name: 'Landslide',
         artist: 'Oh Wonder',
         album: 'Oh Wonder',
+        duration: '2:54',
         artwork: [{
           src: 'https://upload.wikimedia.org/wikipedia/ru/thumb/d/da/Oh_Wonder_album.jpg/230px-Oh_Wonder_album.jpg',
           sizes: '230x230',

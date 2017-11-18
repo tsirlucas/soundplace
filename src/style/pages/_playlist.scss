@@ -37,12 +37,56 @@
     padding: 40px;
   }
 
-  table {
-    width: 100%;
+  .tracks-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 
-    thead th {
-      text-align: left;
-      border: none;
+  .track-item {
+    position: relative;
+    padding: 4px 70px;
+    border-bottom: 1px solid $gray;
+
+    &:hover {
+      background-color: $gray;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 16px;
+      left: 12px;
+      padding: 5px;
+      background-color: $gray-dark;
+      border-radius: 50%;
+    }
+
+    .track-name {
+      padding: 10px 0;
+      color: $gray-dark;
+    }
+
+    .artist-info {
+      padding: 0;
+      font-size: 14px;
+    }
+
+    .track-actions {
+      position: absolute;
+      top: 28px;
+      right: 10px;
+
+      & > * {
+        float: left;
+        margin: 0 15px;
+      }
+    }
+
+    .storage-button {
+      padding: 5px;
+      margin-top: -7px;
+      background-color: $gray-dark;
+      border-radius: 50%;
     }
   }
 }

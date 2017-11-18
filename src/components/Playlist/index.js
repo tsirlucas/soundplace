@@ -12,20 +12,9 @@ export default class Playlist extends Component {
           <h1 className="playlist-name">{playlist.name}</h1>
         </header>
         <main className="playlist-content">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Duration</th>
-                <th>Save</th>
-              </tr>
-            </thead>
-            <tbody>
-              {playlist.tracks.map((track) => <Track track={track} onSave={onSave} />)}
-            </tbody>
-          </table>
+          <ul className="tracks-list">
+            {playlist.tracks.map((track) => <Track track={track} onSave={onSave} />)}
+          </ul>
         </main>
       </section>
     );
