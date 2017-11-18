@@ -1,4 +1,6 @@
+import { h } from 'preact';
 import createBrowserHistory from 'history/createBrowserHistory';
+import Redirect from 'react-router/Redirect';
 
 import * as Routes from './index';
 
@@ -50,6 +52,12 @@ export const privateRoutes = Routes.privatizeRoutes({
   childRoutes: [
     {
       path: '/',
+      exact: true,
+      component: () => <Redirect to="/home"/>
+    },
+
+    {
+      path: '/home',
       exact: true,
       header: 'Home',
       icon: 'HOME',

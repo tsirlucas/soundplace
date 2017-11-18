@@ -37,7 +37,7 @@ class Sidebar extends Component {
             .map((route) => <NavigationItem onClick={() => changeRoute(route.path)}
                                             header={route.header}
                                             icon={route.icon}
-                                            active={route.path === location.pathname}/>)}
+                                            active={location.pathname.includes(route.path)}/>)}
         </Navigation>
       </aside>
     );

@@ -25,9 +25,11 @@ const checkLayout = (route) => {
 };
 
 const renderChild = (routes) => (
-  routes.map((route, i) =>
-    checkAuth(<Route key={i} {...route}>{checkLayout(route)}</Route>, route.isPrivate, route.path)
-  ));
+  routes.map((route, i) => {
+    if (route.switch) return checkAuth(<Switch
+      key={i} {...route}>{checkLayout(route)}</Switch>, route.isPrivate, route.path);
+    return checkAuth(<Route key={i} {...route}>{checkLayout(route)}</Route>, route.isPrivate, route.path);
+  }));
 
 const renderRoutes = (routes) => {
   const Layout = routes.layout;
