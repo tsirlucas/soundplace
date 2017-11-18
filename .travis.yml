@@ -11,7 +11,7 @@ install:
     - yarn global add lighthouse
     - yarn global add lighthouse-badges
     - yarn global add gh-pages
-    - yarn --frozen-lockfile
+    - yarn
 
 branches:
   only:
@@ -28,6 +28,7 @@ script:
 
 after_success:
   - yarn bundlesize
+  - git stash
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./scripts/run_pr_tests; fi'
 
 deploy:
