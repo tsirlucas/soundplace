@@ -12,7 +12,7 @@ const SongsReducer = (state = {}, action) => {
     case REQUEST_SONGS_SUCCESS:
       return {
         ...state,
-        tracks: action.payload.response.data
+        ...action.payload.response.data
       };
     case SAVE_MUSIC:
       return {

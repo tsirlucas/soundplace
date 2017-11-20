@@ -40,7 +40,7 @@ const PlayerReducer = (state = null, action) => {
         currentIndex: action.payload.trackIndex,
         currentlyPlaying: {
           ...action.payload.tracklist[action.payload.trackIndex],
-          artwork: mockedArtwork
+          artwork: [{ src: action.payload.tracklist[action.payload.trackIndex].album.cover, type: 'image/png' }]
         },
         tracklist: action.payload.tracklist
       };
@@ -58,7 +58,7 @@ const PlayerReducer = (state = null, action) => {
         currentIndex: state.currentIndex + 1,
         currentlyPlaying: {
           ...state.tracklist[state.currentIndex + 1],
-          artwork: mockedArtwork
+          artwork: [{ src: state.tracklist[state.currentIndex + 1].album.cover, type: 'image/png' }]
         }
       };
     case PLAYER_PREVIOUS:
@@ -69,7 +69,7 @@ const PlayerReducer = (state = null, action) => {
         currentIndex: state.currentIndex - 1,
         currentlyPlaying: {
           ...state.tracklist[state.currentIndex - 1],
-          artwork: mockedArtwork
+          artwork: [{ src: state.tracklist[state.currentIndex - 1].album.cover, type: 'image/png' }]
         }
       };
     default:
