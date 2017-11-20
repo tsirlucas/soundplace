@@ -1,4 +1,4 @@
-importScripts('workbox-sw.prod.v2.1.2.js');
+importScripts('workbox-sw.prod.v2.1.1.js');
 
 /**
  * DO NOT EDIT THE FILE MANIFEST ENTRY
@@ -20,11 +20,11 @@ importScripts('workbox-sw.prod.v2.1.2.js');
 const fileManifest = [
   {
     "url": "/200.html",
-    "revision": "3606d45ae6f44277ece52033118f3355"
+    "revision": "62e3794a327995472226bdeee05e895a"
   },
   {
     "url": "/404.html",
-    "revision": "3606d45ae6f44277ece52033118f3355"
+    "revision": "62e3794a327995472226bdeee05e895a"
   },
   {
     "url": "assets/report.html",
@@ -32,11 +32,11 @@ const fileManifest = [
   },
   {
     "url": "/bundle.js",
-    "revision": "b6a66dac408a3935383acb2611d679a4"
+    "revision": "d37c2acb35c35c5449366503f5ddd8aa"
   },
   {
     "url": "/index.html",
-    "revision": "3606d45ae6f44277ece52033118f3355"
+    "revision": "62e3794a327995472226bdeee05e895a"
   },
   {
     "url": "/raven.min.js",
