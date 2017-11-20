@@ -34,7 +34,7 @@ const parseSongs = (requests) => Observable.fromPromise(
       .then((blob) => ({
         request: item,
         data: {
-          ...JSON.parse(item.headers.get('data')),
+          ...JSON.parse(item.headers.get('Data')),
           size: formatBytes(blob.size),
           sizeValue: blob.size
         }
