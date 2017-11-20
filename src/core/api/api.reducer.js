@@ -11,12 +11,12 @@ const ApiReducer = (state = {}, action) => {
     case NETWORK_ERROR:
       return {
         ...state,
-        message: 'Houve um problema de conexão. Tente novamente.'
+        message: 'There was a connection problem. Try again.'
       };
     case NOT_FOUND_ERROR:
       return {
         ...state,
-        message: 'Error ao tentar enviar requisição ou não existe. Tente novamente.'
+        message: 'Request not found. Try again.'
       };
     case CLEAR_ERROR:
       return {
