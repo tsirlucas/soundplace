@@ -91,7 +91,7 @@ export default class Player extends Component {
 
   getStreamURL = ({ youtubeID, name, artist }) => {
     if (youtubeID) return STREAM_SERVER_URL + youtubeID;
-    const search = `${name} - ${artist} - official audio`;
+    const search = `${name} - ${artist.name} - official audio`;
     return STREAM_SERVER_URL + search;
   };
 
@@ -110,7 +110,7 @@ export default class Player extends Component {
             <div id='playing-cover' style={`background-image: url(${player.currentlyPlaying.artwork[0].src});`}/>
             <div id='playing-data'>
               <div className='music'><strong>{player.currentlyPlaying.name}</strong></div>
-              <div className='artist'>{player.currentlyPlaying.artist}</div>
+              <div className='artist'>{player.currentlyPlaying.artist.name}</div>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default class Player extends Component {
             </div>
           </div>
         </div>
-        <audio id='player-element' src={this.getStreamURL(player.currentlyPlaying)} preload="none"/>
+        <audio id='player-element' src={this.getStreamURL(player.currentlyPlaying)} preload="none" autoPlay/>
       </div>
     );
   }

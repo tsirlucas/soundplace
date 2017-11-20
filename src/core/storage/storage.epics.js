@@ -41,8 +41,10 @@ const parseSongs = (requests) => Observable.fromPromise(
       })))));
 
 
-const fetchMusic = (track) => Observable.fromPromise(fetch(`${STREAM_SERVER_URL}${track.youtubeID}`,
-  { headers: { save: true, data: JSON.stringify(track) } }));
+const fetchMusic = (track) => Observable.fromPromise(
+  // temporary
+  fetch(`${STREAM_SERVER_URL}${track.name} - ${track.artist.name} - official audio`,
+    { headers: { save: true, data: JSON.stringify(track) } }));
 
 const storageEpic = (action$) =>
   action$.ofType(LOAD_STORAGE_STATUS)
@@ -61,8 +63,8 @@ const cachedSongsEpic = (action$) =>
 
 const saveMusicEpic = (action$) =>
   action$.ofType(SAVE_MUSIC)
-    .mergeMap(({ payload }) => fetchMusic(payload)
-      .map(saveMusicSuccess));
+    .mergeMap(({ payload }) => fetchMusic(payload.track)
+      .map(() => saveMusicSuccess(payload)));
 
 const deleteMusicEpic = (action$) =>
   action$.ofType(DELETE_MUSIC)

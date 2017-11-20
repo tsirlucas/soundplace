@@ -50,3 +50,5 @@ export const getUser = () => AjaxRequest('GET', '/api/me');
 export const getPlaylists = () => AjaxRequest('GET', '/api/me/playlists');
 
 export const getArtists = () => AjaxRequest('GET', '/api/me/artists');
+
+export const getSongs = ({entity, id}) => AjaxRequest('GET', `/api/${entity}/${id}/tracks`);

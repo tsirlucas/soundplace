@@ -5,7 +5,8 @@ import {
   PLAYER_TOGGLE,
   PLAYER_PREVIOUS,
   INIT_PLAYER_SUCCESS,
-  PLAYER_PLAY_FROM_PLAYLIST
+  INIT_PLAYER_ERROR,
+  PLAYER_PLAY_FROM_SONGS
 } from './player.constants';
 
 export const initPlayer = () => ({ type: INIT_PLAYER });
@@ -14,9 +15,10 @@ export const toggle = () => ({ type: PLAYER_TOGGLE });
 export const next = () => ({ type: PLAYER_NEXT });
 export const previous = () => ({ type: PLAYER_PREVIOUS });
 
-export const playFromPlaylist = (tracklist, trackIndex = 0) => ({
-  type: PLAYER_PLAY_FROM_PLAYLIST,
+export const playFromSongs = (tracklist, trackIndex = 0) => ({
+  type: PLAYER_PLAY_FROM_SONGS,
   payload: { tracklist, trackIndex }
 });
 
 export const initPlayerSuccess = (playerState) => ({ type: INIT_PLAYER_SUCCESS, payload: playerState });
+export const initPlayerError = (playerError) => ({ type: INIT_PLAYER_ERROR });

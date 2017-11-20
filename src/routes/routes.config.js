@@ -53,16 +53,16 @@ export const privateRoutes = Routes.privatizeRoutes({
     {
       path: '/',
       exact: true,
-      component: () => <Redirect to="/home"/>
+      component: () => <Redirect to="/playlists"/>
     },
 
-    {
-      path: '/home',
-      exact: true,
-      header: 'Home',
-      icon: 'HOME',
-      component: Playlists
-    },
+    // {
+    //   path: '/home',
+    //   exact: true,
+    //   header: 'Home',
+    //   icon: 'HOME',
+    //   component: Playlists
+    // },
     {
       path: '/playlists',
       icon: 'PLAYLISTS',

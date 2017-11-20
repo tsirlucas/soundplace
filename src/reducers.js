@@ -8,6 +8,7 @@ import ArtistsReducer from './core/artists/artists.reducer';
 import UserReducer from './core/user/user.reducer';
 import WindowReducer from './core/window/window.reducer';
 import StorageReducer from './core/storage/storage.reducer';
+import SongsReducer from './core/songs/songs.reducer';
 
 const appReducer = combineReducers({
   api: ApiReducer,
@@ -17,7 +18,8 @@ const appReducer = combineReducers({
   player: PlayerReducer,
   playlists: PlaylistsReducer,
   artists: ArtistsReducer,
-  storage: StorageReducer
+  storage: StorageReducer,
+  songs: SongsReducer
 });
 
 export default appReducer;

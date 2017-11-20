@@ -6,3 +6,20 @@
 
 // PAGES
 @import "pages/index";
+
+@keyframes spin {
+  0% {
+    transform: rotate(359deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.icon-spinner {
+  line-height: inherit;
+  transform-origin: 50% 50%;
+  animation: spin 1000ms;
+  animation-iteration-count: infinite;
+  display: inline-block;
+}

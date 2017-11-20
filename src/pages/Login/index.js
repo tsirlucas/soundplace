@@ -29,7 +29,7 @@ export default class Login extends Component {
 
       // TODO Ask Lucas for the exp time. Its ms, do the math.
       Cookie.set('token', params['access_token'], { secure, expires: 30 });
-      this.props.actions.importUserData('/home');
+      this.props.actions.importUserData('/playlists');
     }
   }
 

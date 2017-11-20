@@ -13,7 +13,7 @@ export const getCachedSongs = () => ({ type: GET_CACHED_SONGS });
 
 export const getCachedSongsSuccess = (cachedSongs) => ({ type: GET_CACHED_SONGS_SUCCESS, payload: cachedSongs });
 
-export const saveMusic = (track) => ({ type: SAVE_MUSIC, payload: track });
+export const saveMusic = (track, trackIndex) => ({ type: SAVE_MUSIC, payload: { track, trackIndex } });
 
 export const saveMusicSuccess = (payload) => ({ type: SAVE_MUSIC_SUCCESS, payload });
 
