@@ -1,5 +1,7 @@
 import { h } from 'preact';
+
 import Icon from '../../Icons/Icons';
+import parseDuration from '../../../util/parseDuration';
 
 const Track = ({ track, onSave, play, pause, playing }) => (
   <li className="track-item">
@@ -22,7 +24,7 @@ const Track = ({ track, onSave, play, pause, playing }) => (
           <Icon icon='STORAGE' size='17' color='white'/>
         }
       </span>
-      <span className="track-duration"><strong>{track.duration}</strong></span>
+      <span className="track-duration"><strong>{parseDuration(track.duration)}</strong></span>
     </div>
   </li>
 );
