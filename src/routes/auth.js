@@ -16,7 +16,7 @@ export const checkAuth = (Route, isPrivate, path) => {
     if (isPrivate) {
       return Route;
     }
-    return <Redirect from={path} to='/home'/>;
+    return <Redirect from={path} to='/playlists'/>;
   }
 
   const needToRedirect = pathname !== '/login';
