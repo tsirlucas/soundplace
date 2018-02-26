@@ -8131,12 +8131,13 @@ var Login_Login = (Login__dec = Object(preact_redux_esm["b" /* connect */])(Logi
 
       console.log(route.location.search);
       var params = query_string_default.a.parse(route.location.search);
-      // if (params['access_token']) {
-      //
-      //   const expires = params['expires_in'] / (60 * 60 * 24);
-      //   Cookie.set('token', params['access_token'], { secure, expires });
-      //   window.location.reload();
-      // }
+      console.log(params);
+      if (params['access_token']) {
+
+        var expires = params['expires_in'] / (60 * 60 * 24);
+        js_cookie_default.a.set('token', params['access_token'], { secure: Login_secure, expires: expires });
+        window.location.reload();
+      }
     }
   }, {
     key: 'render',
