@@ -19,7 +19,7 @@ export const checkAuth = (Route, isPrivate, path) => {
     return <Redirect from={path} to='/playlists'/>;
   }
 
-  const needToRedirect = pathname !== '/login';
+  const needToRedirect = !pathname.includes('/login');
   //If route is private and his not on /login already, user is redirected to app's public root, else user proceeds.
   return isPrivate && needToRedirect
     ? <Redirect to='/login'/>

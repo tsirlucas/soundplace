@@ -13,7 +13,7 @@ export default class Routes extends Component {
   componentWillMount() {
     let { store } = this.context;
 
-    // handleDirectAccess();
+    handleDirectAccess();
     this.unsubscribe = store.subscribe(updateRoute);
   }
 
