@@ -8131,7 +8131,6 @@ var Login_Login = (Login__dec = Object(preact_redux_esm["b" /* connect */])(Logi
 
       console.log(route.location.search);
       var params = query_string_default.a.parse(route.location.search);
-      console.log(params);
       // if (params['access_token']) {
       //
       //   const expires = params['expires_in'] / (60 * 60 * 24);
