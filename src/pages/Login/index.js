@@ -24,7 +24,7 @@ export default class Login extends Component {
 
   componentWillMount() {
     const { route } = this.context.router;
-    const params = queryString.parse(route.location.hash);
+    const params = queryString.parse(route.location.search);
     if (params['access_token']) {
 
       // TODO Ask Lucas for the exp time. Its ms, do the math.
