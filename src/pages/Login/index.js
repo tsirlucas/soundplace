@@ -25,9 +25,9 @@ export default class Login extends Component {
   componentWillMount() {
     const { route } = this.context.router;
     const params = queryString.parse(route.location.search);
+    console.log(params);
     if (params['access_token']) {
 
-      // TODO Ask Lucas for the exp time. Its ms, do the math.
       const expires = params['expires_in'] / (60 * 60 * 24);
       Cookie.set('token', params['access_token'], { secure, expires });
       window.location.reload();
