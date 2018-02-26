@@ -54,8 +54,8 @@ export default class Player extends Component {
 
       navigator.mediaSession.metadata = new window.MediaMetadata({
         title: currentlyPlaying.name,
-        artist: currentlyPlaying.artist,
-        album: currentlyPlaying.album,
+        artist: currentlyPlaying.artist.name,
+        album: currentlyPlaying.album.name,
         artwork: currentlyPlaying.artwork
       });
 
