@@ -9983,14 +9983,14 @@ var isProd = "production" === 'production';
 var middlewares = void 0;
 
 if (isProd) {
-  window.Raven.config('https://e4cb32dd9e394feda33301bd8321f134@sentry.io/208859').install();
+  // window.Raven.config('https://e4cb32dd9e394feda33301bd8321f134@sentry.io/208859').install();
   var ravenMiddleware = isProd ? built_default()(window.Raven, {
     breadcrumbDataFromAction: function breadcrumbDataFromAction(action) {
       return action;
     }
   }) : undefined;
 
-  middlewares = Object(es["a" /* applyMiddleware */])(createEpicMiddleware(epics_epics), ravenMiddleware);
+  middlewares = Object(es["a" /* applyMiddleware */])(createEpicMiddleware(epics_epics));
 } else {
   middlewares = Object(es["a" /* applyMiddleware */])(createEpicMiddleware(epics_epics));
 }
