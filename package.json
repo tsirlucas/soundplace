@@ -67,7 +67,7 @@
     "karma-phantomjs-launcher": "1.0.4",
     "karma-sauce-launcher": "1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.3",
+    "karma-webpack": "^3.0.0",
     "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
     "mkdirp": "^0.5.1",
     "mocha": "^4.0.0",
