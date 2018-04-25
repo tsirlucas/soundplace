@@ -20,11 +20,11 @@ importScripts('workbox-sw.prod.v2.1.2.js');
 const fileManifest = [
   {
     "url": "/200.html",
-    "revision": "c236012781ba7273e4d702f54fc8c0c9"
+    "revision": "0e0b4cd8294e4d0005e2479e69863ca0"
   },
   {
     "url": "/404.html",
-    "revision": "c236012781ba7273e4d702f54fc8c0c9"
+    "revision": "0e0b4cd8294e4d0005e2479e69863ca0"
   },
   {
     "url": "assets/report.html",
@@ -32,11 +32,11 @@ const fileManifest = [
   },
   {
     "url": "/bundle.js",
-    "revision": "626c88a423ddeb732acb4a1ddb63e2c1"
+    "revision": "c201fa4c4e4918f52578683fe245c8c8"
   },
   {
     "url": "/index.html",
-    "revision": "c236012781ba7273e4d702f54fc8c0c9"
+    "revision": "0e0b4cd8294e4d0005e2479e69863ca0"
   },
   {
     "url": "/raven.min.js",
