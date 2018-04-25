@@ -74,12 +74,12 @@ export const privateRoutes = Routes.privatizeRoutes({
       path: '/playlists/:playlistId',
       component: Playlist
     },
-    {
-      path: '/artists',
-      icon: 'ARTISTS',
-      header: 'Artists',
-      component: Artists
-    },
+    // {
+    //   path: '/artists',
+    //   icon: 'ARTISTS',
+    //   header: 'Artists',
+    //   component: Artists
+    // },
     {
       path: '/storage',
       icon: 'STORAGE',
