@@ -26,7 +26,7 @@ class Topbar extends Component {
     return (
       <div class="top-bar">
         <div id="brand">
-          <img src={user.image} alt={user.name} className="brand-img"/>
+          <img src={user.image} ref={(img) => this.img = img} alt={user.name} className="brand-img" onError={() => this.img.src='/assets/img/avatar.jpeg'}/>
           <h3 className="brand-name">{user.name}</h3>
           <div style="width: 36px"/>
           {/*<Icon icon="MENU" size={36} color="white"/>*/}

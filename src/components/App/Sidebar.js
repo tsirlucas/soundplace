@@ -29,7 +29,7 @@ class Sidebar extends Component {
     return (
       <aside id="sidebar" className={playerClass}>
         <div id="brand">
-          <img src={user.image} alt={user.name} className="brand-img"/>
+          <img src={user.image} ref={(img) => this.img = img} alt={user.name} className="brand-img" onError={() => this.img.src='/assets/img/avatar.jpeg'}/>
           <h3 className="brand-name">{user.name}</h3>
         </div>
         <Navigation>
