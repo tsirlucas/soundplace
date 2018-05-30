@@ -1,4 +1,4 @@
-import { REQUEST_PLAYLISTS_SUCCESS } from './playlists.constants';
+import {REQUEST_PLAYLISTS_SUCCESS} from './playlists.constants';
 
 const PlaylistsReducer = (state = [], action) => {
   switch (action.type) {

@@ -13,16 +13,16 @@ export const prodPlugins = [
   new CopyWebpackPlugin([
     {
       from: './assets',
-      to: './assets'
+      to: './assets',
     },
     {
       from: './node_modules/raven-js/dist/raven.min.js',
-      to: '.'
+      to: '.',
     },
     {
       from: './src/index.html',
-      to: './assets/report.html'
-    }
+      to: './assets/report.html',
+    },
   ]),
   new WorkboxPlugin({
     swDest: './build/sw.js',
@@ -39,10 +39,10 @@ export const prodPlugins = [
           cache: {
             name: 'scontent-cache',
             maxEnteries: 200,
-            maxAgeSeconds: 31536000
+            maxAgeSeconds: 31536000,
           },
-          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
-        }
+          cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
+        },
       },
       {
         urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
@@ -51,10 +51,10 @@ export const prodPlugins = [
           cache: {
             name: 'mosaic-cache',
             maxEnteries: 200,
-            maxAgeSeconds: 31536000
+            maxAgeSeconds: 31536000,
           },
-          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
-        }
+          cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
+        },
       },
       {
         urlPattern: /^https:\/\/i\.scdn\.co\//,
@@ -63,10 +63,10 @@ export const prodPlugins = [
           cache: {
             name: 'iscdn-cache',
             maxEnteries: 200,
-            maxAgeSeconds: 31536000
+            maxAgeSeconds: 31536000,
           },
-          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
-        }
+          cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
+        },
       },
       {
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
@@ -75,10 +75,10 @@ export const prodPlugins = [
           cache: {
             name: 'plscdn-cache',
             maxEnteries: 200,
-            maxAgeSeconds: 31536000
+            maxAgeSeconds: 31536000,
           },
-          cacheableResponse: { statuses: [0, 200, 201, 301, 304, 302] }
-        }
+          cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
+        },
       },
       {
         urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\//,
@@ -87,12 +87,12 @@ export const prodPlugins = [
           cache: {
             name: 'stream-cache',
             maxEnteries: 200,
-            maxAgeSeconds: 31536000
+            maxAgeSeconds: 31536000,
           },
-          cacheableResponse: { statuses: [200, 201] }
-        }
-      }
-    ]
+          cacheableResponse: {statuses: [200, 201]},
+        },
+      },
+    ],
   }),
   new UglifyJsPlugin({
     parallel: true,
@@ -105,9 +105,9 @@ export const prodPlugins = [
       compress: {
         ecma: 5,
         hoist_props: true,
-        dead_code: true
-      }
-    }
+        dead_code: true,
+      },
+    },
   }),
   new HtmlWebpackPlugin({
     template: './src/prod-index.html',
@@ -117,12 +117,12 @@ export const prodPlugins = [
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
     manifest: './assets/manifest.json',
-    favicon: "./assets/img/favicon.ico",
+    favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
-      removeComments: true
+      removeComments: true,
     },
-    themeColor: '#242424'
+    themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackInlineSourcePlugin(),
@@ -134,12 +134,12 @@ export const prodPlugins = [
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
     manifest: './assets/manifest.json',
-    favicon: "./assets/img/favicon.ico",
+    favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
-      removeComments: true
+      removeComments: true,
     },
-    themeColor: '#242424'
+    themeColor: '#242424',
   }),
   new HtmlWebpackPlugin({
     template: './src/prod-index.html',
@@ -149,22 +149,22 @@ export const prodPlugins = [
     inlineSource: '(bundle.js|style.css)',
     removeRedundantAttributes: true,
     manifest: './assets/manifest.json',
-    favicon: "./assets/img/favicon.ico",
+    favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
-      removeComments: true
+      removeComments: true,
     },
-    themeColor: '#242424'
+    themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
   new CnameWebpackPlugin({
-    domain: 'www.soundplace.io'
-  })
+    domain: 'www.soundplace.io',
+  }),
 ];
 
 export const prodLoaders = [
   {
     test: /\.(scss|css)$/,
-    loader: ExtractTextPlugin.extract({ use: ['css-loader', 'postcss-loader', 'sass-loader'] })
-  }
+    loader: ExtractTextPlugin.extract({use: ['css-loader', 'postcss-loader', 'sass-loader']}),
+  },
 ];

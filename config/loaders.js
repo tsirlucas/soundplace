@@ -5,31 +5,32 @@ export const loaders = [
     enforce: 'pre',
     test: /\.js$/,
     loader: 'source-map-loader',
-    exclude: /src/
-  }, {
-    enforce: 'pre',
-    test: /\.js$/,
-    loader: 'eslint-loader',
-    include: /src/
-  }, {
+    exclude: /src/,
+  },
+  {
     test: /\.(ttf|eot|svg|png|jpg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    loader: "file-loader"
-  }, {
-    test: /\.js$/,
+    loader: 'file-loader',
+  },
+  {
+    test: /\.jsx?$/,
     loader: 'babel-loader',
     options: {
-      "babelrc": false,
-      "presets": [
-        ["es2015", {
-          "modules": false
-        }], "stage-0"
+      babelrc: false,
+      presets: [
+        [
+          'es2015',
+          {
+            modules: false,
+          },
+        ],
+        'stage-0',
       ],
-      "plugins": [
-        ["transform-export-extensions"],
-        ["transform-decorators-legacy"],
-        ["transform-react-jsx", { "pragma": "h" }]
-      ]
+      plugins: [
+        ['transform-export-extensions'],
+        ['transform-decorators-legacy'],
+        ['transform-react-jsx', {pragma: 'h'}],
+      ],
     },
-    include: [path.resolve('src'), path.resolve('node_modules/preact-compat/src')]
-  }
+    include: [path.resolve('src'), path.resolve('node_modules/preact-compat/src')],
+  },
 ];

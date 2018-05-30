@@ -1,10 +1,10 @@
-import { h } from 'preact';
+import {h} from 'preact';
 import createBrowserHistory from 'history/createBrowserHistory';
 import Redirect from 'react-router/Redirect';
 
 import * as Routes from './index';
 
-import { store } from '../main.js';
+import {store} from '../main.js';
 
 import Login from '../pages/Login';
 import Artists from '../pages/Artists';
@@ -15,7 +15,7 @@ import Storage from '../pages/Storage';
 export const browserHistory = createBrowserHistory();
 
 export const updateRoute = () => {
-  const { browserHistory } = Routes;
+  const {browserHistory} = Routes;
   const routeStatus = store.getState().route;
   if (routeStatus.path && window.location.pathname !== routeStatus.path) {
     const action = browserHistory[routeStatus.action];
@@ -42,9 +42,9 @@ const publicRoutes = {
   childRoutes: [
     {
       path: '/login',
-      component: Login
-    }
-  ]
+      component: Login,
+    },
+  ],
 };
 
 export const privateRoutes = Routes.privatizeRoutes({
@@ -53,7 +53,7 @@ export const privateRoutes = Routes.privatizeRoutes({
     {
       path: '/',
       exact: true,
-      component: () => <Redirect to="/playlists"/>
+      component: () => <Redirect to="/playlists" />,
     },
 
     // {
@@ -68,11 +68,11 @@ export const privateRoutes = Routes.privatizeRoutes({
       icon: 'PLAYLISTS',
       header: 'Playlists',
       exact: true,
-      component: Playlists
+      component: Playlists,
     },
     {
       path: '/playlists/:playlistId',
-      component: Playlist
+      component: Playlist,
     },
     // {
     //   path: '/artists',
@@ -84,19 +84,19 @@ export const privateRoutes = Routes.privatizeRoutes({
       path: '/storage',
       icon: 'STORAGE',
       header: 'Storage',
-      component: Storage
-    }
-  ]
+      component: Storage,
+    },
+  ],
 });
 
 export const routes = {
   layout: Routes.Layout,
   childRoutes: [
     publicRoutes,
-    privateRoutes
+    privateRoutes,
     // {
     //   path: '*',
     //   component: Routes.ErrorPage
     // }
-  ]
+  ],
 };

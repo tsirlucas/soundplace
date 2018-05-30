@@ -3,9 +3,7 @@ import {h, render} from 'preact';
 function init() {
   document.querySelector('#application').innerHTML = '';
   const App = require('./main').default;
-  render(
-    <App/>
-    , document.querySelector('#application'));
+  render(<App />, document.querySelector('#application'));
 }
 
 // first render:

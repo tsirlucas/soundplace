@@ -1,6 +1,6 @@
-import { LOAD_STORAGE_STATUS_SUCCESS, GET_CACHED_SONGS_SUCCESS } from './storage.constants';
+import {LOAD_STORAGE_STATUS_SUCCESS, GET_CACHED_SONGS_SUCCESS} from './storage.constants';
 
-const initialStorage = { quota: 0, usage: 0, free: 0, songs: 0, cachedSongs: [] };
+const initialStorage = {quota: 0, usage: 0, free: 0, songs: 0, cachedSongs: []};
 
 const StorageReducer = (state = initialStorage, action) => {
   switch (action.type) {
@@ -11,7 +11,7 @@ const StorageReducer = (state = initialStorage, action) => {
         quota: action.payload.quota,
         songs: action.payload.usage,
         free: action.payload.quota - action.payload.usage,
-        appResources: state.appResources || action.payload.usage
+        appResources: state.appResources || action.payload.usage,
       };
     case GET_CACHED_SONGS_SUCCESS:
       return {
@@ -22,7 +22,7 @@ const StorageReducer = (state = initialStorage, action) => {
         }, state.usage),
         songs: action.payload.reduce((prev, curr) => {
           return prev + curr.data.sizeValue;
-        }, 0)
+        }, 0),
       };
     default:
       return state;

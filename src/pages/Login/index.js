@@ -1,34 +1,31 @@
 import Cookie from 'js-cookie';
-import { h, Component } from 'preact';
+import {h, Component} from 'preact';
 import queryString from 'query-string';
-import { connect } from 'preact-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'preact-redux';
+import {bindActionCreators} from 'redux';
 
 import Button from '../../components/Button';
-import { SPOTIFY_AUTH } from '../../core/api/api.constants';
-import { importUserData } from '../../core/user/user.actions';
+import {SPOTIFY_AUTH} from '../../core/api/api.constants';
+import {importUserData} from '../../core/user/user.actions';
 
 const secure = process.env.NODE_ENV === 'production';
-
 
 function mapStateToProps() {
   return {};
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ importUserData }, dispatch) };
+  return {actions: bindActionCreators({importUserData}, dispatch)};
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Login extends Component {
-
   componentWillMount() {
-    const { route } = this.context.router;
+    const {route} = this.context.router;
     const params = queryString.parse(route.location.search);
     if (params['access_token']) {
-
       const expires = params['expires_in'] / (60 * 60 * 24);
-      Cookie.set('token', params['access_token'], { secure, expires });
+      Cookie.set('token', params['access_token'], {secure, expires});
       window.location.reload();
     }
   }
@@ -36,9 +33,7 @@ export default class Login extends Component {
   render(props, state) {
     return (
       <section className="section full-height" id="login">
-        <Button
-          href={SPOTIFY_AUTH}
-          className="button-spotify">
+        <Button href={SPOTIFY_AUTH} className="button-spotify">
           Conecte-se com Spotify
         </Button>
       </section>

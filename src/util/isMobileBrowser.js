@@ -1,6 +1,5 @@
 export const isMobile = screen.width < 992;
 
-
 // In case media queris does't work, try this:
 // Copied from http://detectmobilebrowsers.com/
 

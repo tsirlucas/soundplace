@@ -1,15 +1,15 @@
-import { h } from 'preact';
+import {h} from 'preact';
 import icons from './Icons.constants';
 
-const Icon = props => {
+const Icon = (props) => {
   const styles = {
     svg: {
       display: 'inline-block',
-      verticalAlign: 'middle'
+      verticalAlign: 'middle',
     },
     path: {
-      fill: props.color || ''
-    }
+      fill: props.color || '',
+    },
   };
   return (
     <svg
@@ -21,8 +21,9 @@ const Icon = props => {
       fill-rule="evenodd"
       clip-rule="evenodd"
       stroke-linejoin="round"
-      stroke-miterlimit="1.414">
-      <path style={styles.path} d={icons[props.icon]}/>
+      stroke-miterlimit="1.414"
+    >
+      <path style={styles.path} d={icons[props.icon]} />
     </svg>
   );
 };

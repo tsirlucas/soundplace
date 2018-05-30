@@ -1,4 +1,4 @@
-import { REQUEST_ARTISTS_SUCCESS } from './artists.constants';
+import {REQUEST_ARTISTS_SUCCESS} from './artists.constants';
 
 const ArtistsReducer = (state = [], action) => {
   switch (action.type) {

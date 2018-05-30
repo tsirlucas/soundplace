@@ -1,6 +1,6 @@
-import { h } from 'preact';
+import {h} from 'preact';
 
-const Networkbar = ({ networkClass, width, isDesktop, scrollbarWidth }) => {
+const Networkbar = ({networkClass, width, isDesktop, scrollbarWidth}) => {
   const parsedWidth = isDesktop ? width - 250 - scrollbarWidth : width;
   const style = `width: ${parsedWidth}px;`;
 

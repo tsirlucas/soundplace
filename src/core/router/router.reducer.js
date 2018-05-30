@@ -1,8 +1,8 @@
-import { CHANGE_ROUTE, REPLACE_ROUTE, PREV_ROUTE } from './router.constants';
+import {CHANGE_ROUTE, REPLACE_ROUTE, PREV_ROUTE} from './router.constants';
 
 const initialState = {
   path: '/',
-  action: 'replace'
+  action: 'replace',
 };
 
 const RoutesReducer = (state = initialState, action) => {
@@ -10,17 +10,17 @@ const RoutesReducer = (state = initialState, action) => {
     case CHANGE_ROUTE:
       return {
         path: action.payload.path,
-        action: 'push'
+        action: 'push',
       };
     case REPLACE_ROUTE:
       return {
         path: action.payload.path,
-        action: 'replace'
+        action: 'replace',
       };
     case PREV_ROUTE:
       return {
         path: '*',
-        action: 'goBack'
+        action: 'goBack',
       };
     default:
       return state;

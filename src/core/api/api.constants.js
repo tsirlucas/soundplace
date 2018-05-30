@@ -7,12 +7,13 @@ const getEnvURL = () => {
     //   return 'https://staging-soundplace.io';
     default:
       // TODO: Put prod url on the CI
-      return 'https://soundplace-api.herokuapp.com';
+      return 'http://localhost:3000';
   }
 };
 
 export const SERVER_URL = getEnvURL();
-export const STREAM_SERVER_URL = 'https://youtube-cacheable-audio-stream.herokuapp.com/searchAudioStream/';
+export const STREAM_SERVER_URL =
+  'https://youtube-cacheable-audio-stream.herokuapp.com/searchAudioStream/';
 
 // ENDPOINTS
 export const SPOTIFY_AUTH = `${SERVER_URL}/auth/spotify`;
@@ -32,5 +33,5 @@ export const ERRORS_MAP = {
   0: NETWORK_ERROR,
   401: SESSION_ERROR,
   404: NOT_FOUND_ERROR,
-  428: PRECONDITION_REQUIRED
+  428: PRECONDITION_REQUIRED,
 };

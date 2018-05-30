@@ -1,4 +1,4 @@
-import { combineEpics } from 'redux-observable';
+import {combineEpics} from 'redux-observable';
 
 import userEpics from './core/user/user.epics';
 import routeEpics from './core/router/router.epics';
@@ -8,21 +8,22 @@ import playlistsEpics from './core/playlists/playlists.epics';
 import storageEpics from './core/storage/storage.epics';
 import songsEpics from './core/songs/songs.epics';
 
-import { Observable } from './util/RXImports';
-import { clearError } from './core/api/api.actions';
+import {Observable} from './util/RXImports';
+import {clearError} from './core/api/api.actions';
 
-import { ERRORS_MAP } from './core/api/api.constants';
+import {ERRORS_MAP} from './core/api/api.constants';
 
 const handleUncaughtErrors = (error, stream) => {
   if (error.xhr) {
-    const errorAction = { type: ERRORS_MAP[error.status], payload: error.xhr.response };
+    const errorAction = {type: ERRORS_MAP[error.status], payload: error.xhr.response};
 
     return Observable.concat(
       Observable.of(error)
         .delay(4000)
         .map(clearError)
         .startWith(errorAction),
-      stream);
+      stream,
+    );
   }
 
   //Loging uncaught errors and returning stream (avoids epics to break)
@@ -31,13 +32,13 @@ const handleUncaughtErrors = (error, stream) => {
   return stream;
 };
 
-export const epics = (action$, store) => combineEpics(
-  userEpics,
-  routeEpics,
-  playerEpics,
-  playlistsEpics,
-  artistsEpics,
-  storageEpics,
-  songsEpics
-)(action$, store)
-  .catch(handleUncaughtErrors);
+export const epics = (action$, store) =>
+  combineEpics(
+    userEpics,
+    routeEpics,
+    playerEpics,
+    playlistsEpics,
+    artistsEpics,
+    storageEpics,
+    songsEpics,
+  )(action$, store).catch(handleUncaughtErrors);

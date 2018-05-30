@@ -5,12 +5,15 @@ import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 export const devPlugins = [
-  new BrowserSyncPlugin({
-    host: 'localhost',
-    port: 9000,
-    notify: false,
-    proxy: 'http://localhost:9100/'
-  }, { reload: false }),
+  new BrowserSyncPlugin(
+    {
+      host: 'localhost',
+      port: 9000,
+      notify: false,
+      proxy: 'http://localhost:9100/',
+    },
+    {reload: false},
+  ),
   new Dashboard(),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NamedModulesPlugin(),
@@ -24,11 +27,11 @@ export const devPlugins = [
     favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
-      removeComments: true
+      removeComments: true,
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#fff', //MY_APP_HERE
   }),
-  new ScriptExtHtmlWebpackPlugin({ defaultAttribute: "async" }),
+  new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'async'}),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     title: 'SoundPlace',
@@ -39,11 +42,11 @@ export const devPlugins = [
     favicon: './assets/img/favicon.ico',
     minify: {
       collapseWhitespace: true,
-      removeComments: true
+      removeComments: true,
     },
-    themeColor: '#fff' //MY_APP_HERE
+    themeColor: '#fff', //MY_APP_HERE
   }),
-  new ScriptExtHtmlWebpackPlugin({ defaultAttribute: "async" }),
+  new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'async'}),
 ];
 
 export const devServerconfig = {
@@ -53,13 +56,18 @@ export const devServerconfig = {
     hot: true,
     compress: true,
     contentBase: './src/index',
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 };
 
 export const devLoaders = [
   {
     test: /\.(scss|css)$/,
-    use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap']
-  }
+    use: [
+      'style-loader',
+      'css-loader?sourceMap',
+      'postcss-loader?sourceMap',
+      'sass-loader?sourceMap',
+    ],
+  },
 ];

@@ -4,13 +4,14 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
 }
 
 function registerSW() {
-  navigator.serviceWorker.register('sw.js', { scope: './' })
+  navigator.serviceWorker
+    .register('sw.js', {scope: './'})
     .then(registerSuccess)
     .catch(console.log.bind(console));
 }
 
 function registerSuccess(reg) {
-  console.log('Done. Now you\'re running offline.');
+  console.log("Done. Now you're running offline.");
   reg.onupdatefound = onUpdateFound(reg);
 }
 
@@ -25,7 +26,11 @@ function onUpdateFound(reg) {
 
 function onStateChange(installingWorker) {
   return () => {
-    if (installingWorker.state === 'activated' && navigator.serviceWorker && navigator.serviceWorker.controller) {
+    if (
+      installingWorker.state === 'activated' &&
+      navigator.serviceWorker &&
+      navigator.serviceWorker.controller
+    ) {
       console.log('Done! Reloading page...');
       window.location.reload();
     }

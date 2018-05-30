@@ -1,9 +1,9 @@
-import { browserHistory } from './routes.config';
+import {browserHistory} from './routes.config';
 
 // Handle direct access to some url so history.back lead to dashboard before closes app
 
 const handleDirectAccess = () => {
-  const { pathname } = window.location;
+  const {pathname} = window.location;
   const search = window.location.search;
   const hash = window.location.hash;
 

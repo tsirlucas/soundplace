@@ -1,9 +1,9 @@
-import { h, Component } from 'preact';
+import {h, Component} from 'preact';
 import Router from 'react-router/Router';
 
 import renderRoutes from './renderRoutes';
 import handleDirectAccess from './handleDirectAccess';
-import { routes, updateRoute, browserHistory } from './routes.config';
+import {routes, updateRoute, browserHistory} from './routes.config';
 
 export default class Routes extends Component {
   shouldComponentUpdate() {
@@ -11,7 +11,7 @@ export default class Routes extends Component {
   }
 
   componentWillMount() {
-    let { store } = this.context;
+    let {store} = this.context;
 
     handleDirectAccess();
     this.unsubscribe = store.subscribe(updateRoute);
@@ -22,10 +22,6 @@ export default class Routes extends Component {
   }
 
   render() {
-    return (
-      <Router history={browserHistory}>
-        {renderRoutes(routes)}
-      </Router>
-    );
+    return <Router history={browserHistory}>{renderRoutes(routes)}</Router>;
   }
 }

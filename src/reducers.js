@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
 import ApiReducer from './core/api/api.reducer';
 import PlayerReducer from './core/player/player.reducer';
@@ -19,7 +19,7 @@ const appReducer = combineReducers({
   playlists: PlaylistsReducer,
   artists: ArtistsReducer,
   storage: StorageReducer,
-  songs: SongsReducer
+  songs: SongsReducer,
 });
 
 export default appReducer;
