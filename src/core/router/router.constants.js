@@ -1,6 +1,0 @@
-export const PREV_ROUTE = 'GO_BACK_ROUTE';
-export const CHANGE_ROUTE = 'CHANGE_ROUTE';
-export const RELOAD_ROUTE = 'RELOAD_ROUTE';
-export const REPLACE_ROUTE = 'REPLACE_ROUTE';
-
-export default {CHANGE_ROUTE, REPLACE_ROUTE, PREV_ROUTE, RELOAD_ROUTE};

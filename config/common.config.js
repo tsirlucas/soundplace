@@ -2,10 +2,12 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 const ENV = process.env.NODE_ENV || 'development';
 
 export const plugins = [
+  new Dotenv({systemvars: true}),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.LoaderOptionsPlugin({
     options: {

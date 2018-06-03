@@ -1,12 +1,15 @@
 import path from 'path';
-import { loaders } from './config/loaders';
-import { plugins } from './config/common.config';
-import { prodPlugins, prodLoaders } from './config/prod.config';
+import {loaders} from './config/loaders';
+import {plugins} from './config/common.config';
+import {prodPlugins, prodLoaders} from './config/prod.config';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 const ENV = process.env.NODE_ENV || 'development';
 
+const resolvePath = (value) => path.resolve(__dirname, value);
+
 if (ENV === 'development') {
-  var { devPlugins, devServerconfig, devLoaders } = require('./config/dev.config');
+  var {devPlugins, devServerconfig, devLoaders} = require('./config/dev.config');
 }
 
 const envPlugins = ENV === 'development' ? devPlugins : prodPlugins;
@@ -15,35 +18,57 @@ const envLoaders = ENV === 'development' ? devLoaders : prodLoaders;
 
 module.exports = {
   entry: {
-    bundle: [
-      'react-hot-loader/patch',
-      './src/index.js'
-    ]
+    bundle: ['react-hot-loader/patch', './src/index.tsx'],
   },
 
   output: {
-    path: path.resolve(__dirname, './build'),
+    path: resolvePath('./build'),
     filename: '[name].js',
-    chunkFilename: '[id].[hash:8].chunk.js',
-    publicPath: '/'
   },
-
   resolve: {
-    extensions: ['.js', '.scss'],
     alias: {
-      'react': 'preact-compat',
+      src: resolvePath('src/'),
+      views: resolvePath('src/views/'),
+      components: resolvePath('src/components/'),
+      config: resolvePath('src/environment'),
+      core: resolvePath('src/core/'),
+      models: resolvePath('src/models/'),
+      services: resolvePath('src/services/'),
+      style: resolvePath('src/style/'),
+      util: resolvePath('src/util/'),
+      react: 'preact-compat',
       'react-dom': 'preact-compat',
-      "preact-compat": "preact-compat/dist/preact-compat"
-    }
+      'preact-compat': 'preact-compat/dist/preact-compat',
+    },
+    extensions: ['.js', '.json', '.ts', '.tsx', '.scss', '.sass'],
   },
   module: {
-    rules: loaders.concat(envLoaders)
+    rules: loaders.concat(envLoaders),
   },
   plugins: plugins.concat(envPlugins),
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        parallel: true,
+        extractComments: true,
+        uglifyOptions: {
+          ie8: true,
+          ecma: 8,
+          warnings: false,
+          mangle: true,
+          compress: {
+            ecma: 5,
+            hoist_props: true,
+          },
+          dead_code: true,
+        },
+      }),
+    ],
+  },
   stats: {
-    colors: true
+    colors: true,
   },
   // devtool: 'source-map',
   devtool: ENV !== 'production' && 'eval',
-  ...devServerconfig
+  ...devServerconfig,
 };

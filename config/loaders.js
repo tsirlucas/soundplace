@@ -12,13 +12,19 @@ export const loaders = [
     loader: 'file-loader',
   },
   {
+    test: /\.tsx?$/,
+    loaders: ['awesome-typescript-loader'],
+    exclude: /node_modules/,
+  },
+  {
     test: /\.jsx?$/,
     loader: 'babel-loader',
     options: {
       babelrc: false,
+      sourceMaps: true,
       presets: [
         [
-          'es2015',
+          'env',
           {
             modules: false,
           },

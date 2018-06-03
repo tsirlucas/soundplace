@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "es6",
+    "lib": ["dom", "es2018", "esnext"],
+    "noEmit": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "custom_typings",
+      "node_modules/@types",
+    ],
+    "skipLibCheck": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "baseUrl": ".",
+    "paths": {
+      "src": ["src"],
+      "src/*": ["src/*"],
+      "components": ["src/components/index.ts"],
+      "components/*": ["src/components/*"],
+      "views": ["src/views/index.ts"],
+      "views/*": ["src/views/*"],
+      "services": ["src/services/index.ts"],
+      "services/*": ["src/services/*"],
+      "core": ["src/core/index.ts"],
+      "core/*": ["src/core/*"],
+      "models": ["src/models/index.ts"],
+      "models/*": ["src/models/*"],
+      "utils": ["src/utils/index.ts"],
+      "utils/*": ["src/utils/*"],
+      "style": ["src/style/index.ts"],
+      "style/*": ["src/style/*"],
+      "config": ["src/environment"],
+    }
+  },
+  "filesGlob": [
+    "custom_typings/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "types": [
+    "react",
+    "react-native",
+    "jest"
+  ],
+  "include": ["./src"],
+  "compileOnSave": true
+}

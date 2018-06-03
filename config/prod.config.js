@@ -2,10 +2,10 @@ import webpack from 'webpack';
 import WorkboxPlugin from 'workbox-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
+import BrotliPlugin from 'brotli-webpack-plugin';
 
 export const prodPlugins = [
   new webpack.optimize.ModuleConcatenationPlugin(),
@@ -94,21 +94,6 @@ export const prodPlugins = [
       },
     ],
   }),
-  new UglifyJsPlugin({
-    parallel: true,
-    extractComments: true,
-    uglifyOptions: {
-      ie8: true,
-      ecma: 8,
-      warnings: false,
-      mangle: true,
-      compress: {
-        ecma: 5,
-        hoist_props: true,
-        dead_code: true,
-      },
-    },
-  }),
   new HtmlWebpackPlugin({
     template: './src/prod-index.html',
     filename: 'index.html',
@@ -159,6 +144,12 @@ export const prodPlugins = [
   new HtmlWebpackInlineSourcePlugin(),
   new CnameWebpackPlugin({
     domain: 'www.soundplace.io',
+  }),
+  new BrotliPlugin({
+    asset: '[path].br[query]',
+    test: /\.(js|css|html|svg)$/,
+    threshold: 10240,
+    minRatio: 0.8,
   }),
 ];
 
