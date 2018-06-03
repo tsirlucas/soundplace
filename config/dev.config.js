@@ -54,7 +54,6 @@ export const devServerconfig = {
     port: process.env.PORT || 9100,
     host: '0.0.0.0',
     hot: true,
-    compress: true,
     contentBase: './src/index',
     historyApiFallback: true,
   },

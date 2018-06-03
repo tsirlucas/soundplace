@@ -5,7 +5,7 @@ import {actions} from './api.actions';
 export const SPOTIFY_AUTH = `${environment.settings.apiUrl}/auth/spotify`;
 
 export const STREAM_SERVER_URL =
-  'https://youtube-cacheable-audio-stream.herokuapp.com/searchAudioStream/';
+  `${environment.settings.streamUrl}/searchAudioStream`;
 
 export const ERRORS_MAP = {
   0: actions.networkError,

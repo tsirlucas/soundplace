@@ -27,11 +27,11 @@ class AppLayoutComponent extends Component<Props, null> {
     }
   };
 
-  getPlayerClass = (player) => {
+  getPlayerClass = (showPlayer) => {
     switch (true) {
-      case player && !player.curentId:
+      case !showPlayer:
         return 'hiding-player';
-      case player && player.curentId:
+      case showPlayer:
         return 'showing-player';
       default:
         return '';

@@ -115,9 +115,9 @@ class PlayerComponent extends Component<Props, null> {
   getStreamURL = (currentlyPlaying) => {
     if (!currentlyPlaying) return null;
     const {youtubeID, name, artist} = currentlyPlaying;
-    if (youtubeID) return STREAM_SERVER_URL + youtubeID;
+    if (youtubeID) return `${STREAM_SERVER_URL}/${youtubeID}`;
     const search = `${name} - ${artist.name} - official audio`;
-    return STREAM_SERVER_URL + search;
+    return `${STREAM_SERVER_URL}/${search}`;
   };
 
   render({isDesktop, scrollbarWidth, width, player, actions, playerClass}: Props) {

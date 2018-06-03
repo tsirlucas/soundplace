@@ -50,13 +50,27 @@ const parseSongs = (requests) =>
     ),
   );
 
+const gerReadableStreamValue = (rStream) => {
+  const reader = rStream.getReader();
+  const read = () =>
+    reader.read().then(({value, done}) => {
+      console.log(value, done);
+      return done ? value : read();
+    });
+  return read();
+};
+
 const fetchMusic = (track) =>
   Observable.fromPromise(
     // temporary
-    fetch(`${STREAM_SERVER_URL}${track.name} - ${track.artist.name} - official audio`, {
+    fetch(`${STREAM_SERVER_URL}/${track.name} - ${track.artist.name} - official audio`, {
       headers: {save: 'true', data: JSON.stringify(track)},
     }),
-  );
+  ).mergeMap((res) => {
+    const x = gerReadableStreamValue(res.body);
+    console.log(x);
+    return Observable.fromPromise(x);
+  });
 
 const storageEpic: Epic<ActionsValues, RootState> = (action$) =>
   action$

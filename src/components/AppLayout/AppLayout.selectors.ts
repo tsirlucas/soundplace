@@ -11,7 +11,7 @@ export const mapStateToProps = ({player, window, api, router, user}: RootState) 
   api,
   user: user.data,
   hasNetwork: api.hasNetwork,
-  showPlayer: player,
+  showPlayer: player.currentId,
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
