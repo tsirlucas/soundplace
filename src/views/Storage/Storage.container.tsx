@@ -11,7 +11,7 @@ import {
 
 type Props = MapStateToProps & MapDispatchToProps;
 
-class StorageComponent extends Component<Props, null> {
+class StorageComponent extends Component<Props, {}> {
   componentDidMount() {
     this.props.actions.loadStorageStatus();
     this.props.actions.requestCachedSongs();

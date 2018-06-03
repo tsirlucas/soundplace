@@ -15,7 +15,7 @@ export type Props = MapDispatchToProps &
     children: HTMLElement;
   };
 
-class AppLayoutComponent extends Component<Props, null> {
+class AppLayoutComponent extends Component<Props, {}> {
   getNetworkClass = (hasNetwork) => {
     switch (hasNetwork) {
       case true:
@@ -66,7 +66,6 @@ class AppLayoutComponent extends Component<Props, null> {
             user={user}
             router={router}
             height={height}
-            playerClass={playerClass}
             actions={{...routerActions, ...userActions}}
           />
         ) : (

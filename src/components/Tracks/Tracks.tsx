@@ -22,7 +22,7 @@ type Props = {
   };
 };
 
-export class Tracks extends Component<Props, null> {
+export class Tracks extends Component<Props, {}> {
   componentWillMount() {
     this.props.actions.requestTracks(this.props.id);
   }

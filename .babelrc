@@ -1,12 +1,12 @@
 {
-  "sourceMaps": true,
   "presets": [
-    "es2015",
-    "stage-0"
+    ["env", {
+      "targets": {
+        "node": "6.10"
+      }
+    }]
   ],
   "plugins": [
-		["transform-export-extensions"],
-    ["transform-decorators-legacy"],
-    ["transform-react-jsx", { "pragma": "h" }]
+		["transform-object-rest-spread"]
   ]
 }

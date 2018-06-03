@@ -1,11 +1,12 @@
 import webpack from 'webpack';
-import WorkboxPlugin from 'workbox-webpack-plugin';
+import {GenerateSW} from 'workbox-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 import BrotliPlugin from 'brotli-webpack-plugin';
+import postcssPresetEnv from 'postcss-preset-env';
 
 export const prodPlugins = [
   new webpack.optimize.ModuleConcatenationPlugin(),
@@ -24,7 +25,7 @@ export const prodPlugins = [
       to: './assets/report.html',
     },
   ]),
-  new WorkboxPlugin({
+  new GenerateSW({
     swDest: './build/sw.js',
     clientsClaim: true,
     skipWaiting: true,
@@ -156,6 +157,18 @@ export const prodPlugins = [
 export const prodLoaders = [
   {
     test: /\.(scss|css)$/,
-    loader: ExtractTextPlugin.extract({use: ['css-loader', 'postcss-loader', 'sass-loader']}),
+    loader: ExtractTextPlugin.extract({
+      use: [
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: () => [postcssPresetEnv()],
+          },
+        },
+        'sass-loader',
+      ],
+    }),
   },
 ];

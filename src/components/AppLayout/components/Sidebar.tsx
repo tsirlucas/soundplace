@@ -7,7 +7,6 @@ import {Props as ContainerProps} from '../AppLayout.container';
 
 type Props = {
   height: number;
-  playerClass: string;
   router: ContainerProps['router'];
   user: ContainerProps['user'];
   actions: {
@@ -25,11 +24,11 @@ export class Sidebar extends Component<Props, null> {
     img.src = '/assets/img/avatar.jpeg';
   };
 
-  render({playerClass, user}: Props) {
+  render({user}: Props) {
     const {changeRoute} = this.props.actions;
 
     return (
-      <aside id="sidebar" className={playerClass}>
+      <aside id="sidebar">
         {user && (
           <div id="brand">
             <img

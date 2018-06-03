@@ -16,7 +16,7 @@ const secure = process.env.NODE_ENV === 'production';
 
 type Props = MapStateToProps & MapDispatchToProps;
 
-class PlayerComponent extends Component<Props, null> {
+class PlayerComponent extends Component<Props, {}> {
   playerElement: HTMLAudioElement;
 
   componentWillReceiveProps(nextProps: Props) {

@@ -1,3 +1,4 @@
+import {hot} from 'react-hot-loader';
 import {h} from 'preact';
 import {Provider} from 'preact-redux';
 
@@ -34,4 +35,4 @@ const Main = () => (
   </Provider>
 );
 
-export default Main;
+export default hot(module)(Main);

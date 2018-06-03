@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
@@ -12,7 +11,6 @@ export const plugins = [
   new webpack.LoaderOptionsPlugin({
     options: {
       context: __dirname,
-      postcss: [autoprefixer],
     },
     minimize: true,
     debug: false,

@@ -12,7 +12,7 @@ import {
 
 type Props = MapStateToProps & MapDispatchToProps;
 
-class PlaylistsComponent extends Component<Props, null> {
+class PlaylistsComponent extends Component<Props, {}> {
   componentDidMount() {
     this.props.actions.requestPlaylists();
   }

@@ -18,7 +18,7 @@ const envLoaders = ENV === 'development' ? devLoaders : prodLoaders;
 
 module.exports = {
   entry: {
-    bundle: ['react-hot-loader/patch', './src/index.tsx'],
+    bundle: ['./src/index.tsx'],
   },
 
   output: {
