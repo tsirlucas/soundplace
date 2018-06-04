@@ -18,10 +18,10 @@
   "404.html": "404.html",
   "200.html": "200.html",
   "CNAME": "CNAME",
-  "raven.min.js.br": "raven.min.js.br",
   "style.css.br": "style.css.br",
-  "bundle.js.br": "bundle.js.br",
-  "404.html.br": "404.html.br",
+  "raven.min.js.br": "raven.min.js.br",
+  "index.html.br": "index.html.br",
   "200.html.br": "200.html.br",
-  "index.html.br": "index.html.br"
+  "bundle.js.br": "bundle.js.br",
+  "404.html.br": "404.html.br"
 }
