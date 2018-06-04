@@ -1,8 +1,8 @@
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import webpack from 'webpack';
 import Dashboard from 'webpack-dashboard/plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
-import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 export const devPlugins = [
   new BrowserSyncPlugin(
@@ -76,11 +76,6 @@ export const devServerconfig = {
 export const devLoaders = [
   {
     test: /\.(scss|css)$/,
-    use: [
-      'style-loader',
-      'css-loader?sourceMap',
-      'postcss-loader?sourceMap',
-      'sass-loader?sourceMap',
-    ],
+    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
   },
 ];

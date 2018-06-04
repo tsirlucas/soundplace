@@ -29,7 +29,6 @@ export const prodPlugins = [
     swDest: './build/sw.js',
     clientsClaim: true,
     skipWaiting: true,
-    handleFetch: true,
     navigateFallback: 'index.html',
     directoryIndex: 'index.html',
     runtimeCaching: [
@@ -37,9 +36,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/scontent\.xx\.fbcdn\.net\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'scontent-cache',
-            maxEnteries: 200,
+          cacheName: 'scontent-cache',
+          expiration: {
+            maxEntries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -49,9 +48,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'mosaic-cache',
-            maxEnteries: 200,
+          cacheName: 'mosaic-cache',
+          expiration: {
+            maxEntries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -61,9 +60,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/i\.scdn\.co\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'iscdn-cache',
-            maxEnteries: 200,
+          cacheName: 'iscdn-cache',
+          expiration: {
+            maxEntries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -73,9 +72,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'plscdn-cache',
-            maxEnteries: 200,
+          cacheName: 'plscdn-cache',
+          expiration: {
+            maxEntries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -85,9 +84,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'stream-cache',
-            maxEnteries: 200,
+          cacheName: 'stream-cache',
+          expiration: {
+            maxEntries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [200, 201]},

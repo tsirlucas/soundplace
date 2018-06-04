@@ -10,17 +10,17 @@ type OwnProps = {
   id: string;
 };
 export const mapStateToProps = ({tracks, player}: RootState, ownProps: OwnProps) => ({
-  tracks,
   player,
+  tracks,
   ...ownProps,
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {
-      saveMusic: storageActions.saveMusic,
-      requestTracks: tracksActions.requestTracks,
       play: playerActions.playMusic,
+      requestTracks: tracksActions.requestTracks,
+      saveMusic: storageActions.saveMusic,
       setList: playerActions.setList,
       toggle: playerActions.toggle,
     },

@@ -23,6 +23,8 @@ type Props = {
 };
 
 export class Tracks extends Component<Props, {}> {
+  state = {};
+
   componentWillMount() {
     this.props.actions.requestTracks(this.props.id);
   }

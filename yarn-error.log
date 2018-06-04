@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/node /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/yarn lint
+  /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/node /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/yarn build
 
 PATH: 
   /Users/lucascorreia/.rvm/gems/ruby-2.2.2/bin:/Users/lucascorreia/.rvm/gems/ruby-2.2.2@global/bin:/Users/lucascorreia/.rvm/rubies/ruby-2.2.2/bin:/Users/lucascorreia/.nvm/versions/node/v8.9.0/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin:/Users/lucascorreia/.rvm/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/bin/:/Volumes/HD_ARQUIVOS/System/ANDROID_PATH/android-sdk/platform-tools/:/Volumes/HD_ARQUIVOS/System/ANDROID_PATH/android-sdk/tools/
@@ -30,7 +30,7 @@ npm manifest:
       "normalize.css": "8.0.0",
       "preact": "8.2.9",
       "preact-compat": "3.18.0",
-      "preact-redux": "2.0.3",
+      "preact-redux": "2.0.1",
       "query-string": "5.1.1",
       "raven-for-redux": "1.1.1",
       "raven-js": "3.25.2",
@@ -74,7 +74,6 @@ npm manifest:
       "style-loader": "0.21.0",
       "tslint": "5.10.0",
       "tslint-config-prettier": "1.13.0",
-      "tslint-loader": "3.6.0",
       "tslint-react": "3.6.0",
       "typescript": "2.9.1",
       "uglifyjs-webpack-plugin": "1.2.5",
@@ -7031,9 +7030,9 @@ Lockfile:
       prop-types "^15.5.8"
       standalone-react-addons-pure-render-mixin "^0.1.1"
   
-  preact-redux@2.0.3:
-    version "2.0.3"
-    resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.3.tgz#960a535c322643cd35998f33f0c2e67bc1e7eaab"
+  preact-redux@2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.1.tgz#e60df461b1a287f92ad7988fce1fdaffa5e3842e"
   
   preact-render-to-string@^3.6.0:
     version "3.6.3"
@@ -7791,7 +7790,7 @@ Lockfile:
     dependencies:
       glob "^7.0.5"
   
-  rimraf@^2.4.4, rimraf@^2.6.2:
+  rimraf@^2.6.2:
     version "2.6.2"
     resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
     dependencies:
@@ -8793,16 +8792,6 @@ Lockfile:
     version "1.13.0"
     resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.13.0.tgz#189e821931ad89e0364e4e292d5c44a14e90ecd6"
   
-  tslint-loader@3.6.0:
-    version "3.6.0"
-    resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.6.0.tgz#12ed4d5ef57d68be25cd12692fb2108b66469d76"
-    dependencies:
-      loader-utils "^1.0.2"
-      mkdirp "^0.5.1"
-      object-assign "^4.1.1"
-      rimraf "^2.4.4"
-      semver "^5.3.0"
-  
   tslint-react@3.6.0:
     version "3.6.0"
     resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.6.0.tgz#7f462c95c4a0afaae82507f06517ff02942196a1"
@@ -9770,9 +9759,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 2
+  Exit code: 1
   Command: sh
-  Arguments: -c tslint --project .
+  Arguments: -c cross-env NODE_ENV=production webpack --mode production
   Directory: /Users/lucascorreia/Documents/workspace/college/soundplace
   Output:
   

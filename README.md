@@ -6,7 +6,6 @@ A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Spot
 [![build status](https://travis-ci.com/tsirlucas/soundplace.svg?token=ZNhrvg7GyFkRokuwtw6s&branch=master)](https://travis-ci.com/tsirlucas/soundplace) 
 [![Code Climate](https://codeclimate.com/repos/59a2011dbfeab8029a0010cb/badges/1b62d2d8c9421cfbda42/gpa.svg)](https://codeclimate.com/repos/59a2011dbfeab8029a0010cb/feed)
 [![gzip size](http://img.badgesize.io/https://www.soundplace.io/index.html?compression=gzip)](https://www.soundplace.io/bundlesize.gz)
-[![coveralls](https://img.shields.io/coveralls/tsirlucas/soundplace/master.svg)](https://coveralls.io/github/tsirlucas/soundplace)
 
 Lighthouse scores
 
