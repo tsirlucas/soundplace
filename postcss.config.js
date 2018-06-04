@@ -1,3 +1,3 @@
 module.exports = {
-  sourceMap: true
+  sourceMap: true,
 };
