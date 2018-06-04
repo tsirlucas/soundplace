@@ -12,12 +12,12 @@ self.__precacheManifest = [
     "url": "bundle.js.LICENSE"
   },
   {
-    "revision": "452716b418a89a84ccfd77be827204e1",
-    "url": "raven.min.js"
-  },
-  {
     "revision": "5fc5574370b8fb0412db",
     "url": "style.css"
+  },
+  {
+    "revision": "452716b418a89a84ccfd77be827204e1",
+    "url": "raven.min.js"
   },
   {
     "revision": "e7f7832f2ee2c344f7c998f9eabcb448",

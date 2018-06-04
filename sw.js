@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.2.0/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.989669cc22b45f317115d49dcdf6500a.js"
+  "precache-manifest.732dd64ced1de230cd8e945962c8eda5.js"
 );
 
 workbox.skipWaiting();
@@ -28,10 +28,10 @@ workbox.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {
-  "directoryIndex": "index.html"
+  "directoryIndex": "./index.html"
 });
 
-workbox.routing.registerNavigationRoute("index.html");
+workbox.routing.registerNavigationRoute("./index.html");
 
 workbox.routing.registerRoute(/^https:\/\/scontent\.xx\.fbcdn\.net\//, workbox.strategies.cacheFirst({ cacheName: "scontent-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":200,"maxAgeSeconds":31536000}), new workbox.cacheableResponse.Plugin({"statuses":[0,200,201,301,304,302]})] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/mosaic\.scdn\.co\//, workbox.strategies.cacheFirst({ cacheName: "mosaic-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":200,"maxAgeSeconds":31536000}), new workbox.cacheableResponse.Plugin({"statuses":[0,200,201,301,304,302]})] }), 'GET');
