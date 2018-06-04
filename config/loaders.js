@@ -8,7 +8,6 @@ export const loaders = [
         loader: 'babel-loader',
         options: {
           babelrc: false,
-          sourceMaps: true,
           plugins: [['transform-react-jsx', {pragma: 'h'}], 'react-hot-loader/babel'],
         },
       },

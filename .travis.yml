@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - 8.7.0
+  - 8.9.0
 
 # Make chrome browser available for testing
 before_install:
@@ -18,10 +18,7 @@ branches:
     - master
     - /^greenkeeper/.*$/
   before_script:
-    - yarn lint
-    - yarn test
-#    - SL=true yarn test
-#    - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
+    # - yarn lint
 
 script:
   - yarn build
