@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import {GenerateSW} from 'workbox-webpack-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
@@ -25,10 +25,11 @@ export const prodPlugins = [
       to: './assets/report.html',
     },
   ]),
-  new GenerateSW({
+  new WorkboxPlugin({
     swDest: './build/sw.js',
     clientsClaim: true,
     skipWaiting: true,
+    handleFetch: true,
     navigateFallback: 'index.html',
     directoryIndex: 'index.html',
     runtimeCaching: [
@@ -36,9 +37,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/scontent\.xx\.fbcdn\.net\//,
         handler: 'cacheFirst',
         options: {
-          cacheName: 'scontent-cache',
-          expiration: {
-            maxEntries: 200,
+          cache: {
+            name: 'scontent-cache',
+            maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -48,9 +49,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
         handler: 'cacheFirst',
         options: {
-          cacheName: 'mosaic-cache',
-          expiration: {
-            maxEntries: 200,
+          cache: {
+            name: 'mosaic-cache',
+            maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -60,9 +61,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/i\.scdn\.co\//,
         handler: 'cacheFirst',
         options: {
-          cacheName: 'iscdn-cache',
-          expiration: {
-            maxEntries: 200,
+          cache: {
+            name: 'iscdn-cache',
+            maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -72,9 +73,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/pl\.scdn\.co\//,
         handler: 'cacheFirst',
         options: {
-          cacheName: 'plscdn-cache',
-          expiration: {
-            maxEntries: 200,
+          cache: {
+            name: 'plscdn-cache',
+            maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -84,9 +85,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\//,
         handler: 'cacheFirst',
         options: {
-          cacheName: 'stream-cache',
-          expiration: {
-            maxEntries: 200,
+          cache: {
+            name: 'stream-cache',
+            maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [200, 201]},
