@@ -14,12 +14,10 @@ Lighthouse scores
 [![Lighthouse Accessibility Badge](https://www.soundplace.io/lighthouse_accessibility.svg)](https://www.soundplace.io/assets/report.html)
 [![Lighthouse Best Practices Badge](https://www.soundplace.io/lighthouse_best_practices.svg)](https://www.soundplace.io/assets/report.html)
 
-Supports modern browsers and IE9+:
-
-[![Browsers](https://saucelabs.com/browser-matrix/soundplace.svg)](https://saucelabs.com/u/soundplace)
 
 ## Features and toolbelt
 
+- [X] [Typescript](https://www.typescriptlang.org)
 - [x] [Preact](https://github.com/developit/preact) as [React](https://github.com/facebook/react) alternative
 - [x] [React Router](https://github.com/ReactTraining/react-router) with some proper logics to create plain-routes even on v4, resulting in only 80kb (not minified and with browser-history included)
 - [x] [Redux](http://redux.js.org/) to manage application state
@@ -29,7 +27,6 @@ Supports modern browsers and IE9+:
 - [x] Transpiled with [Babel](https://babeljs.io/)
 - [x] [Sass](https://github.com/sass/sass) as css preprocessor
 - [x] [gh-pages](https://pages.github.com/) to deploy production environment
-- [x] [Zeit/Now](https://zeit.co/now) to deploy staging and test environments
 - [x] [Cloudflare](https://www.cloudflare.com) as CDN
 - [x] [Travis](https://travis-ci.com/) Integration
 - [x] [Lighthouse Badges](https://github.com/emazzotta/lighthouse-badges) Always updated to latest build
@@ -38,8 +35,6 @@ Supports modern browsers and IE9+:
 - [x] [Lighthouse-CI](https://github.com/ebidel/lighthouse-ci) 100 score automatic check on PRs
 - [x] [Code Climate](https://codeclimate.com/) automatic check on PRs
 - [x] [ESLint](https://github.com/eslint/eslint) as Ecmascript linter
-- [ ] [Coveralls](https://coveralls.io/) to automatic test coverage reports
-- [ ] [SauceLabs](https://saucelabs.com/) to automatic browser support reports
 - [x] [Sentry](https://sentry.io/) for error tracking
 - [x] [Workbox](https://github.com/GoogleChrome/workbox) to generate service-worker and runtime caching
 - [x] Background player even on blocked screen with [Media Session API](https://developers.google.com/web/updates/2017/02/media-session)
