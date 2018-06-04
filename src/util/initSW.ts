@@ -20,19 +20,13 @@ function onUpdateFound(reg) {
     console.log('Updating service worker...');
     const installingWorker = reg.installing;
 
-    installingWorker.onstatechange = onStateChange(installingWorker);
+    installingWorker.addEventListener('statechange', onStateChange);
   };
 }
 
-function onStateChange(installingWorker) {
-  return () => {
-    if (
-      installingWorker.state === 'activated' &&
-      navigator.serviceWorker &&
-      navigator.serviceWorker.controller
-    ) {
-      console.log('Done! Reloading page...');
-      window.location.reload();
-    }
-  };
+function onStateChange(e) {
+  if (e.currentTarget.state === 'activated') {
+    console.log('Done! Reloading page...');
+    window.location.reload(true);
+  }
 }

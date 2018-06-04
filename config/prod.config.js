@@ -29,7 +29,6 @@ export const prodPlugins = [
     swDest: './build/sw.js',
     clientsClaim: true,
     skipWaiting: true,
-    handleFetch: true,
     navigateFallback: 'index.html',
     directoryIndex: 'index.html',
     runtimeCaching: [
@@ -111,7 +110,6 @@ export const prodPlugins = [
     themeColor: '#242424',
   }),
   new HtmlWebpackInlineSourcePlugin(),
-  new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackPlugin({
     template: './src/prod-index.html',
     filename: '404.html',
@@ -127,6 +125,7 @@ export const prodPlugins = [
     },
     themeColor: '#242424',
   }),
+  new HtmlWebpackInlineSourcePlugin(),
   new HtmlWebpackPlugin({
     template: './src/prod-index.html',
     filename: '200.html',
@@ -159,7 +158,7 @@ export const prodLoaders = [
     test: /\.(scss|css)$/,
     loader: ExtractTextPlugin.extract({
       use: [
-        'css-loader',
+        {loader: 'css-loader', options: {minimize: true}},
         {
           loader: 'postcss-loader',
           options: {
