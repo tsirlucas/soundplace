@@ -27,6 +27,38 @@ const fileManifest = [
     "revision": "793a1ee792678309ae8c2d80e2fff017"
   },
   {
+    "url": "asset-manifest.json",
+    "revision": "36d1d85d4d13e75c2f26b4ccdf492b28"
+  },
+  {
+    "url": "assets/img/android-chrome-192x192.png",
+    "revision": "59e221032ab061cad83b6ce2bcddbde8"
+  },
+  {
+    "url": "assets/img/android-chrome-512x512.png",
+    "revision": "cf3fdf7af60a294d6d3f48cb7ad82488"
+  },
+  {
+    "url": "assets/img/apple-touch-icon.png",
+    "revision": "a0e46feb3cc577478b127936e739dd08"
+  },
+  {
+    "url": "assets/img/favicon-16x16.png",
+    "revision": "d712b605ed58419c7e6d4ab885d147b7"
+  },
+  {
+    "url": "assets/img/favicon-32x32.png",
+    "revision": "2f7ce797cf8f198dedb9a9f38b7ef13b"
+  },
+  {
+    "url": "assets/img/mstile-150x150.png",
+    "revision": "ba817517b2c4e1ba1ce802c4d4fafdb4"
+  },
+  {
+    "url": "assets/manifest.json",
+    "revision": "e7f7832f2ee2c344f7c998f9eabcb448"
+  },
+  {
     "url": "assets/report.html",
     "revision": "07fff4d1e6803085aa562628971f98b3"
   },
