@@ -1,7 +1,8 @@
 {
   "bundle.js": "bundle.js",
   "bundle.css": "style.css",
-  "assets/manifest.json": "assets/manifest.json",
+  "assets/img/mstile-150x150.png": "assets/img/mstile-150x150.png",
+  "bundle.js.LICENSE": "bundle.js.LICENSE",
   "raven.min.js": "raven.min.js",
   "./assets/report.html": "./assets/report.html",
   "assets/img/android-chrome-192x192.png": "assets/img/android-chrome-192x192.png",
@@ -11,7 +12,7 @@
   "assets/img/favicon-16x16.png": "assets/img/favicon-16x16.png",
   "assets/img/favicon-32x32.png": "assets/img/favicon-32x32.png",
   "assets/img/favicon.ico": "assets/img/favicon.ico",
-  "assets/img/mstile-150x150.png": "assets/img/mstile-150x150.png",
+  "assets/manifest.json": "assets/manifest.json",
   "favicon.ico": "favicon.ico",
   "index.html": "index.html",
   "404.html": "404.html",
@@ -19,8 +20,8 @@
   "CNAME": "CNAME",
   "style.css.br": "style.css.br",
   "raven.min.js.br": "raven.min.js.br",
-  "index.html.br": "index.html.br",
   "200.html.br": "200.html.br",
+  "404.html.br": "404.html.br",
   "bundle.js.br": "bundle.js.br",
-  "404.html.br": "404.html.br"
+  "index.html.br": "index.html.br"
 }
