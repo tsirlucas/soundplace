@@ -20,15 +20,15 @@ importScripts('workbox-sw.prod.v2.1.3.js');
 const fileManifest = [
   {
     "url": "200.html",
-    "revision": "3f0ed074dfcab18d8d8e6b57c1e253f2"
+    "revision": "d74cf76c1dba29bf5ca4dfb08a17408a"
   },
   {
     "url": "404.html",
-    "revision": "3f0ed074dfcab18d8d8e6b57c1e253f2"
+    "revision": "d74cf76c1dba29bf5ca4dfb08a17408a"
   },
   {
     "url": "asset-manifest.json",
-    "revision": "36d1d85d4d13e75c2f26b4ccdf492b28"
+    "revision": "aee2a88cd061e7720d2cfbd0919157b2"
   },
   {
     "url": "assets/img/android-chrome-192x192.png",
@@ -64,11 +64,11 @@ const fileManifest = [
   },
   {
     "url": "bundle.js",
-    "revision": "c7c8cbf678ecb509c49a7ad9ede4bc1d"
+    "revision": "a334b9d2a4f7d7cd7845bf71173c8020"
   },
   {
     "url": "index.html",
-    "revision": "3f0ed074dfcab18d8d8e6b57c1e253f2"
+    "revision": "d74cf76c1dba29bf5ca4dfb08a17408a"
   },
   {
     "url": "raven.min.js",
