@@ -32,12 +32,14 @@ class StorageComponent extends Component<Props, {}> {
   render({storage, actions}: Props) {
     const {storageInfo, cachedSongs} = storage;
     const dataArray = this.sortArr([
-      {label: 'App', percent: storageInfo.appResources / storageInfo.quota * 100, color: '#5288D8'},
-      {label: 'Songs', percent: storageInfo.songs / storageInfo.quota * 100, color: '#E97028'},
+      {
+        label: 'App',
+        percent: (storageInfo.appResources / storageInfo.quota) * 100,
+        color: '#5288D8',
+      },
+      {label: 'Songs', percent: (storageInfo.songs / storageInfo.quota) * 100, color: '#E97028'},
       {label: 'Free', percent: 100, color: '#00812F'},
     ]);
-
-    console.log(dataArray);
 
     dataArray[1].percent = dataArray[1].percent + dataArray[2].percent;
 
@@ -76,4 +78,7 @@ class StorageComponent extends Component<Props, {}> {
   }
 }
 
-export const Storage = connect(mapStateToProps, mapDispatchToProps)(StorageComponent);
+export const Storage = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StorageComponent);

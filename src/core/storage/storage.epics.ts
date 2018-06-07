@@ -50,11 +50,10 @@ const parseSongs = (requests) =>
     ),
   );
 
-const gerReadableStreamValue = (rStream) => {
+const getReadableStreamValue = (rStream) => {
   const reader = rStream.getReader();
   const read = () =>
     reader.read().then(({value, done}) => {
-      console.log(value, done);
       return done ? value : read();
     });
   return read();
@@ -67,9 +66,7 @@ const fetchMusic = (track) =>
       headers: {save: 'true', data: JSON.stringify(track)},
     }),
   ).mergeMap((res) => {
-    const x = gerReadableStreamValue(res.body);
-    console.log(x);
-    return Observable.fromPromise(x);
+    return Observable.fromPromise(getReadableStreamValue(res.body));
   });
 
 const storageEpic: Epic<ActionsValues, RootState> = (action$) =>

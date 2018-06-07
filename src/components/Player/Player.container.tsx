@@ -126,7 +126,7 @@ class PlayerComponent extends Component<Props, {}> {
 
     const hasPrevious = this.hasPrevious();
     const hasNext = this.hasNext();
-    console.log(this.props.player);
+
     const {list} = this.props.player;
     const currentlyPlaying = list && list[this.props.player.currentId];
 

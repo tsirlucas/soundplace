@@ -12,7 +12,6 @@ export const initialState = {
 const data = createReducer({}, initialState.data).on(
   actions.requestPlaylistsSuccess,
   (_state, payload) => {
-    console.log(payload);
     return payload.reduce((curr, next) => {
       curr[next.id] = next;
       return curr;
