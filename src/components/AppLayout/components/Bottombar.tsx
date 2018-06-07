@@ -13,7 +13,7 @@ export class Bottombar extends Component<Props, null> {
   render({actions}) {
     return (
       <div className="bottom-bar">
-        {privateRoutes.childRoutes.filter((route) => route.header).map((privRoute) => (
+        {privateRoutes.filter((route) => route.header).map((privRoute) => (
           <label className="bottom-bar-item">
             <input
               type="radio"

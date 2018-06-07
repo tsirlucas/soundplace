@@ -10,7 +10,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let middlewares;
 
-if (isProd) {
+if (false) {
   window['Raven'].config('https://e4cb32dd9e394feda33301bd8321f134@sentry.io/208859').install();
   const ravenMiddleware = isProd
     ? createRavenMiddleware(window['Raven'], {

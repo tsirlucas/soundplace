@@ -42,29 +42,23 @@ module.exports = {
     },
     extensions: ['.js', '.json', '.ts', '.tsx', '.scss', '.sass'],
   },
-  module: {
-    rules: loaders.concat(envLoaders),
-  },
-  plugins: plugins.concat(envPlugins),
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
-        parallel: true,
         extractComments: true,
         uglifyOptions: {
-          ie8: true,
-          ecma: 8,
-          warnings: false,
-          mangle: true,
           compress: {
-            ecma: 5,
-            hoist_props: true,
+            reduce_vars: false,
+            inline: true,
           },
-          dead_code: true,
         },
       }),
     ],
   },
+  module: {
+    rules: loaders.concat(envLoaders),
+  },
+  plugins: plugins.concat(envPlugins),
   stats: {
     colors: true,
   },

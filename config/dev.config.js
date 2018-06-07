@@ -16,36 +16,6 @@ export const devPlugins = [
   ),
   new Dashboard(),
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NamedModulesPlugin(),
-  new HtmlWebpackPlugin({
-    template: './src/index.html',
-    title: 'SoundPlace',
-    filename: '200.html',
-    removeRedundantAttributes: true,
-    inject: false,
-    manifest: './assets/manifest.json',
-    favicon: './assets/img/favicon.ico',
-    minify: {
-      collapseWhitespace: true,
-      removeComments: true,
-    },
-    themeColor: '#fff', //MY_APP_HERE
-  }),
-  new HtmlWebpackPlugin({
-    template: './src/index.html',
-    title: 'SoundPlace',
-    filename: '404.html',
-    removeRedundantAttributes: true,
-    inject: false,
-    manifest: './assets/manifest.json',
-    favicon: './assets/img/favicon.ico',
-    minify: {
-      collapseWhitespace: true,
-      removeComments: true,
-    },
-    themeColor: '#fff', //MY_APP_HERE
-  }),
-  new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'async'}),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     title: 'SoundPlace',

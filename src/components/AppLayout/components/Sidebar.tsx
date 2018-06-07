@@ -41,7 +41,7 @@ export class Sidebar extends Component<Props, null> {
           </div>
         )}
         <Navigation>
-          {privateRoutes.childRoutes
+          {privateRoutes
             .filter((route) => route.header)
             .map((route) => (
               <NavigationItem

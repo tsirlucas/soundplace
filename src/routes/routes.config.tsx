@@ -1,8 +1,7 @@
 import Redirect from 'react-router/Redirect';
-import createBrowserHistory from 'history/createBrowserHistory';
+import createHashHistory from 'history/createHashHistory';
 import {h} from 'preact';
 
-import {AppLayout, PublicLayout} from 'components';
 import {actions as routerActions} from 'core/router';
 import {store} from 'src/main';
 import {Login} from 'views/Login';
@@ -12,7 +11,7 @@ import {Storage} from 'views/Storage';
 
 import {privatizeRoutes} from './auth';
 
-export const browserHistory = createBrowserHistory();
+export const browserHistory = createHashHistory();
 
 export const updateRoute = () => {
   const routeStatus = store.getState().router;
@@ -29,73 +28,36 @@ export const updateState = () => {
   }
 };
 
-browserHistory.listen(() => {
-  const pageElement = document.querySelector('#content');
-  if (pageElement) {
-    document.querySelector('body').scrollTop = 0;
-  }
-  updateState();
-});
+const publicRoutes = [
+  {
+    path: '/login',
+    component: Login,
+  },
+];
 
-const publicRoutes = {
-  childRoutes: [
-    {
-      path: '/login',
-      component: Login,
-    },
-  ],
-};
+export const privateRoutes = privatizeRoutes([
+  {
+    path: '/',
+    exact: true,
+    component: () => <Redirect to="/playlists" />,
+  },
+  {
+    path: '/playlists',
+    icon: 'PLAYLISTS',
+    header: 'Playlists',
+    exact: true,
+    component: Playlists,
+  },
+  {
+    path: '/playlists/:playlistId',
+    component: Playlist,
+  },
+  {
+    path: '/storage',
+    icon: 'STORAGE',
+    header: 'Storage',
+    component: Storage,
+  },
+]);
 
-export const privateRoutes = privatizeRoutes({
-  layout: AppLayout,
-  childRoutes: [
-    {
-      path: '/',
-      exact: true,
-      component: () => <Redirect to="/playlists" />,
-    },
-
-    // {
-    //   path: '/home',
-    //   exact: true,
-    //   header: 'Home',
-    //   icon: 'HOME',
-    //   component: Playlists
-    // },
-    {
-      path: '/playlists',
-      icon: 'PLAYLISTS',
-      header: 'Playlists',
-      exact: true,
-      component: Playlists,
-    },
-    {
-      path: '/playlists/:playlistId',
-      component: Playlist,
-    },
-    // {
-    //   path: '/artists',
-    //   icon: 'ARTISTS',
-    //   header: 'Artists',
-    //   component: Artists
-    // },
-    {
-      path: '/storage',
-      icon: 'STORAGE',
-      header: 'Storage',
-      component: Storage,
-    },
-  ],
-});
-
-export const routes = {
-  layout: PublicLayout,
-  childRoutes: [
-    publicRoutes,
-    privateRoutes,
-    // {
-    //   path: '*',
-    //   component: Routes.ErrorPage
-    // }
-  ],
-};
+export const routes = [...publicRoutes, ...privateRoutes];
