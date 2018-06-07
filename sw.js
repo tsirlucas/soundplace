@@ -19,16 +19,8 @@ importScripts('workbox-sw.prod.v2.1.3.js');
  */
 const fileManifest = [
   {
-    "url": "200.html",
-    "revision": "4c26b8563805c5c497b06dbbc247e011"
-  },
-  {
-    "url": "404.html",
-    "revision": "4c26b8563805c5c497b06dbbc247e011"
-  },
-  {
     "url": "asset-manifest.json",
-    "revision": "8a2b44ea6b9fe4a4536a0ca7022dbb9c"
+    "revision": "29d9c906f44bc1362cd1106ad4028bbf"
   },
   {
     "url": "assets/img/android-chrome-192x192.png",
