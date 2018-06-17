@@ -28,7 +28,7 @@
     "@types/js-cookie": "2.1.0",
     "@types/node": "10.3.0",
     "@types/wicg-mediasession": "1.0.2",
-    "awesome-typescript-loader": "5.0.0",
+    "awesome-typescript-loader": "5.1.0",
     "babel-core": "6.26.3",
     "babel-loader": "7.1.4",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
