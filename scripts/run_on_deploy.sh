@@ -16,7 +16,7 @@ echo -e "\nCloudflare cache purged!\n"
 
 cd build
 docker pull emazzotta/lighthouse-badges
-docker run \
+sudo docker run \
     -v $(pwd):/home/chrome/reports \
     --cap-add=SYS_ADMIN \
     emazzotta/lighthouse-badges \
