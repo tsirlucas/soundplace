@@ -2,7 +2,7 @@ import {environment} from 'config';
 
 import {actions} from './api.actions';
 
-export const SPOTIFY_AUTH = `${environment.settings.apiUrl}/auth/spotify`;
+export const SPOTIFY_AUTH = `${environment.settings.apiUrl}auth/spotify`;
 
 export const STREAM_SERVER_URL =
   `${environment.settings.streamUrl}/searchAudioStream`;
