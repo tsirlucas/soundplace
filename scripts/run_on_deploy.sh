@@ -13,16 +13,3 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purg
     --data "{\"purge_everything\":true}"
 
 echo -e "\nCloudflare cache purged!\n"
-
-cd build
-sudo chown -R travis:travis /home/travis/
-docker pull emazzotta/lighthouse-badges
-docker run --privileged=true\
-    -v $(pwd):/home/chrome/reports \
-    --cap-add=SYS_ADMIN \
-    emazzotta/lighthouse-badges \
-    /bin/bash -c "chown -R 2000:2000 /home/chrome/ & lighthouse-badges --urls https://www.soundplace.io/ --save-report"
-
-mv www_soundplace_io_.html ./assets/report.html
-cd ..
-gh-pages -d build;
