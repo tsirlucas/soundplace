@@ -17,7 +17,7 @@ echo -e "\nCloudflare cache purged!\n"
 cd build
 sudo chown -R travis:travis /home/travis/
 docker pull emazzotta/lighthouse-badges
-docker run -u root\
+docker run --privileged=true\
     -v $(pwd):/home/chrome/reports \
     --cap-add=SYS_ADMIN \
     emazzotta/lighthouse-badges \
