@@ -21,7 +21,7 @@ docker run \
     -v $(pwd):/home/chrome/reports \
     --cap-add=SYS_ADMIN \
     emazzotta/lighthouse-badges \
-    /bin/bash -c "sudo chown -R $UID:$UID /home/chrome/ & lighthouse-badges --urls https://www.soundplace.io/ --save-report"
+    /bin/bash -c "chown -R $UID:$UID /home/chrome/ & lighthouse-badges --urls https://www.soundplace.io/ --save-report"
 
 mv www_soundplace_io_.html ./assets/report.html
 cd ..
