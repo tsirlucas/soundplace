@@ -48,7 +48,7 @@ export class Sidebar extends Component<Props, null> {
                 onClick={() => changeRoute(route.path)}
                 header={route.header}
                 icon={route.icon}
-                active={location.pathname.includes(route.path)}
+                active={location.hash.includes(route.path)}
               />
             ))}
         </Navigation>

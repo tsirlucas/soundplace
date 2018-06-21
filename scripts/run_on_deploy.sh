@@ -1,5 +1,7 @@
 set -euo pipefail
 
+echo -e "machine github.com\n  login $GITHUB_TOKEN" >> ~/.netrc
+
 gh-pages -d build
 
 echo -e "\nPurging Cloudflare cache...\n"

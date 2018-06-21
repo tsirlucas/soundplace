@@ -19,7 +19,7 @@ export class Bottombar extends Component<Props, null> {
               type="radio"
               name="tab-bar"
               value={privRoute.path}
-              checked={location.pathname.includes(privRoute.path)}
+              checked={location.hash.includes(privRoute.path)}
               onClick={() => actions.changeRoute(privRoute.path)}
             />
             <button className="bottom-bar-button">
