@@ -7,15 +7,6 @@ A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Spot
 [![Code Climate](https://codeclimate.com/repos/59a2011dbfeab8029a0010cb/badges/1b62d2d8c9421cfbda42/gpa.svg)](https://codeclimate.com/repos/59a2011dbfeab8029a0010cb/feed)
 [![gzip size](http://img.badgesize.io/https://www.soundplace.io/index.html?compression=gzip)](https://www.soundplace.io/bundlesize.gz)
 
-Lighthouse scores
-
-[![Lighthouse Progressive Web App Badge](https://www.soundplace.io/lighthouse_progressive_web_app.svg)](https://www.soundplace.io/assets/report.html)
-[![Lighthouse Performance Badge](https://www.soundplace.io/lighthouse_performance.svg)](https://www.soundplace.io/assets/report.html)
-[![Lighthouse Accessibility Badge](https://www.soundplace.io/lighthouse_accessibility.svg)](https://www.soundplace.io/assets/report.html)
-[![Lighthouse Best Practices Badge](https://www.soundplace.io/lighthouse_best_practices.svg)](https://www.soundplace.io/assets/report.html)
-[![Lighthouse SEO Badge](https://www.soundplace.io/lighthouse_seo.svg)](https://www.soundplace.io/assets/report.html)
-
-
 ## Features and toolbelt
 
 - [X] [Typescript](https://www.typescriptlang.org)
@@ -30,12 +21,10 @@ Lighthouse scores
 - [x] [gh-pages](https://pages.github.com/) to deploy production environment
 - [x] [Cloudflare](https://www.cloudflare.com) as CDN
 - [x] [Travis](https://travis-ci.com/) Integration
-- [x] [Lighthouse Badges](https://github.com/emazzotta/lighthouse-badges) Always updated to latest build
 - [x] [Greenkeeper](https://greenkeeper.io/) Dependency Manager
 - [x] [BundleSize](https://github.com/siddharthkp/bundlesize) < 100kb automatic check on PRs
 - [x] [Lighthouse-CI](https://github.com/ebidel/lighthouse-ci) 100 score automatic check on PRs
 - [x] [Code Climate](https://codeclimate.com/) automatic check on PRs
-- [x] [ESLint](https://github.com/eslint/eslint) as Ecmascript linter
 - [x] [Sentry](https://sentry.io/) for error tracking
 - [x] [Workbox](https://github.com/GoogleChrome/workbox) to generate service-worker and runtime caching
 - [x] Background player even on blocked screen with [Media Session API](https://developers.google.com/web/updates/2017/02/media-session)
