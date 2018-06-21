@@ -13,6 +13,7 @@ Lighthouse scores
 [![Lighthouse Performance Badge](https://www.soundplace.io/lighthouse_performance.svg)](https://www.soundplace.io/assets/report.html)
 [![Lighthouse Accessibility Badge](https://www.soundplace.io/lighthouse_accessibility.svg)](https://www.soundplace.io/assets/report.html)
 [![Lighthouse Best Practices Badge](https://www.soundplace.io/lighthouse_best_practices.svg)](https://www.soundplace.io/assets/report.html)
+[![Lighthouse SEO Badge](https://www.soundplace.io/lighthouse_seo.svg)](https://www.soundplace.io/assets/report.html)
 
 
 ## Features and toolbelt

@@ -4,11 +4,12 @@ node_js:
   - 8.9.0
 
 addons:
-  chrome: stable
+  - google-chrome-stable
 
 # Make chrome browser available for testing
 before_install:
   - export CHROME_BIN=chromium-browser
+  - google-chrome-stable --headless --no-sandbox --remote-debugging-port=9222 http://localhost:80
 
 install:
     - yarn global add lighthouse
