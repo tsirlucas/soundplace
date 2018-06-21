@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - 8.9.0
 
+addons:
+  chrome: stable
+
 # Make chrome browser available for testing
 before_install:
   - export CHROME_BIN=chromium-browser

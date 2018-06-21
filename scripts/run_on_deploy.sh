@@ -14,8 +14,6 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purg
 
 echo -e "\nCloudflare cache purged!\n"
 
-yarn global add chrome-launcher
-
 cd build
 lighthouse-badges --urls https://www.soundplace.io/ --save-report
 mv www_soundplace_io_.html ./assets/report.html
