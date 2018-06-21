@@ -14,12 +14,13 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purg
 
 echo -e "\nCloudflare cache purged!\n"
 
-cd build
 export DISPLAY=:99.0
 export LIGHTHOUSE_CHROMIUM_PATH="$(pwd)/chrome-linux/chrome"
 ./node_modules/lighthouse/lighthouse-core/scripts/download-chrome.sh
 start-stop-daemon --start --background --exec $(pwd)/chrome-linux/chrome
 sleep 5
+
+cd build
 lighthouse-badges --urls https://www.soundplace.io/ --save-report
 mv www_soundplace_io_.html ./assets/report.html
 cd ..
