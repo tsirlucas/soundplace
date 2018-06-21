@@ -17,11 +17,11 @@ echo -e "\nCloudflare cache purged!\n"
 cd build
 sudo chown -R travis:travis /home/travis/
 docker pull emazzotta/lighthouse-badges
-docker run \
+docker run -u root\
     -v $(pwd):/home/chrome/reports \
     --cap-add=SYS_ADMIN \
     emazzotta/lighthouse-badges \
-    /bin/bash -c "chown -R $UID:$UID /home/chrome/ & lighthouse-badges --urls https://www.soundplace.io/ --save-report"
+    /bin/bash -c "chown -R 2000:2000 /home/chrome/ & lighthouse-badges --urls https://www.soundplace.io/ --save-report"
 
 mv www_soundplace_io_.html ./assets/report.html
 cd ..
