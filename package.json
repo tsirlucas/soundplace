@@ -39,7 +39,7 @@
     "browser-sync-webpack-plugin": "2.2.2",
     "bundlesize": "0.17.0",
     "cname-webpack-plugin": "1.0.2",
-    "copy-webpack-plugin": "4.5.1",
+    "copy-webpack-plugin": "4.5.2",
     "cross-env": "5.1.6",
     "css-loader": "0.28.11",
     "dotenv-webpack": "1.5.5",
