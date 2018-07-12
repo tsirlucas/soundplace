@@ -8,7 +8,7 @@ export class PlaylistRestService extends RestService {
 
   private constructor() {
     super({
-      baseUrl: environment.settings.apiUrl,
+      baseUrl: `${environment.settings.apiUrl}/data`,
       endpoint: '/api/me/playlists',
       token: Cookie.get('token'),
     });

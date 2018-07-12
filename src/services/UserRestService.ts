@@ -8,7 +8,7 @@ export class UserRestService extends RestService {
 
   private constructor() {
     super({
-      baseUrl: environment.settings.apiUrl,
+      baseUrl: `${environment.settings.apiUrl}/data`,
       endpoint: '/api/me',
       token: Cookie.get('token'),
     });
