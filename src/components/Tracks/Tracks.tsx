@@ -35,7 +35,7 @@ export class Tracks extends Component<Props, {}> {
 
   play = (track) => {
     this.props.actions.setList(this.props.tracks.data);
-    this.props.actions.play(track.spotify_id);
+    this.props.actions.play(track.id);
   };
 
   pause = () => {
@@ -45,7 +45,7 @@ export class Tracks extends Component<Props, {}> {
   isPlaying = (track) => {
     if (this.props.player) {
       const {currentId} = this.props.player;
-      return currentId === track.spotify_id && this.props.player.isPlaying;
+      return currentId === track.id && this.props.player.isPlaying;
     }
     return false;
   };

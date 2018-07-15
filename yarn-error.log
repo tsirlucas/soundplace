@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/node /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/yarn build
+  /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/node /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/yarn dev
 
 PATH: 
   /Users/lucascorreia/.rvm/gems/ruby-2.2.2/bin:/Users/lucascorreia/.rvm/gems/ruby-2.2.2@global/bin:/Users/lucascorreia/.rvm/rubies/ruby-2.2.2/bin:/Users/lucascorreia/.nvm/versions/node/v8.9.0/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin:/Users/lucascorreia/.rvm/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/bin/:/Volumes/HD_ARQUIVOS/System/ANDROID_PATH/android-sdk/platform-tools/:/Volumes/HD_ARQUIVOS/System/ANDROID_PATH/android-sdk/tools/
@@ -34,7 +34,7 @@ npm manifest:
       "query-string": "5.1.1",
       "raven-for-redux": "1.1.1",
       "raven-js": "3.25.2",
-      "react-router": "4.2.0",
+      "react-router-dom": "4.2.2",
       "redux": "3.7.2",
       "redux-act": "1.7.4",
       "redux-observable": "0.18.0",
@@ -83,7 +83,7 @@ npm manifest:
       "webpack-dashboard": "2.0.0",
       "webpack-dev-server": "3.1.4",
       "webpack-manifest-plugin": "2.0.3",
-      "workbox-webpack-plugin": "2.1.2"
+      "workbox-webpack-plugin": "2.1.3"
     },
     "keywords": [
       "preact",
@@ -7000,9 +7000,9 @@ Lockfile:
       prop-types "^15.5.8"
       standalone-react-addons-pure-render-mixin "^0.1.1"
   
-  preact-redux@2.0.1:
-    version "2.0.1"
-    resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.1.tgz#e60df461b1a287f92ad7988fce1fdaffa5e3842e"
+  preact-redux@2.0.2:
+    version "2.0.2"
+    resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.2.tgz#72142906f73565addf5d0b5fd7c6fe1cc5a026a5"
   
   preact-render-to-string@^3.6.0:
     version "3.6.3"
@@ -7329,7 +7329,18 @@ Lockfile:
     version "3.0.4"
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   
-  react-router@4.2.0:
+  react-router-dom@4.2.2:
+    version "4.2.2"
+    resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
+    dependencies:
+      history "^4.7.2"
+      invariant "^2.2.2"
+      loose-envify "^1.3.1"
+      prop-types "^15.5.4"
+      react-router "^4.2.0"
+      warning "^3.0.0"
+  
+  react-router@^4.2.0:
     version "4.2.0"
     resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"
     dependencies:
@@ -9374,7 +9385,7 @@ Lockfile:
     version "0.0.3"
     resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
   
-  workbox-build@^2.1.2:
+  workbox-build@^2.1.3:
     version "2.1.3"
     resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-2.1.3.tgz#a8161946d3f85b8cc2590dd3a519d53d40ff8a06"
     dependencies:
@@ -9389,11 +9400,11 @@ Lockfile:
     version "2.1.3"
     resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-2.1.3.tgz#4045560dc26ada7a41fe37999a93c71c43e41d6a"
   
-  workbox-webpack-plugin@2.1.2:
-    version "2.1.2"
-    resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-2.1.2.tgz#e9d8d5cb70d5b32d5e86e92e3d099ac54c95914a"
+  workbox-webpack-plugin@2.1.3:
+    version "2.1.3"
+    resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-2.1.3.tgz#e4de94818ccef6f667b1f5f418ce5a1061da8d33"
     dependencies:
-      workbox-build "^2.1.2"
+      workbox-build "^2.1.3"
   
   worker-farm@^1.5.2:
     version "1.6.0"
@@ -9642,9 +9653,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 127
   Command: sh
-  Arguments: -c cross-env NODE_ENV=production webpack --mode production
+  Arguments: -c cross-env NODE_ENV=development webpack-dev-server --hot --mode development
   Directory: /Users/lucascorreia/Documents/workspace/college/soundplace
   Output:
   

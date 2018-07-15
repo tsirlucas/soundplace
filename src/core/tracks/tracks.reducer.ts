@@ -19,14 +19,14 @@ const data = createReducer({}, initialState.data)
   .on(actions.requestTracks, () => initialState.data)
   .on(actions.requestTracksSuccess, (_state, payload) => {
     return payload.tracks.reduce((curr, next) => {
-      curr[next.spotify_id] = next;
+      curr[next.id] = next;
       return curr;
     }, {});
   })
   .on(storageActions.saveMusic, (state, payload) => {
     return {
       ...state,
-      [payload.spotify_id]: {...state[payload.spotify_id], downloading: true},
+      [payload.id]: {...state[payload.id], downloading: true},
     };
   })
   .on(storageActions.saveMusicSuccess, (state, payload) => ({

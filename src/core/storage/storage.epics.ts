@@ -89,7 +89,7 @@ const saveMusicEpic: Epic<ActionsValues, RootState> = (action$) =>
   action$
     .ofType(actions.saveMusic.getType())
     .mergeMap(({payload}: Actions['saveMusic']) =>
-      fetchMusic(payload).mapTo(actions.saveMusicSuccess(payload.spotify_id)),
+      fetchMusic(payload).mapTo(actions.saveMusicSuccess(payload.id)),
     );
 
 const deleteMusicEpic: Epic<ActionsValues, RootState> = (action$) =>

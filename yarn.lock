@@ -6883,9 +6883,9 @@ preact-compat@3.18.0:
     prop-types "^15.5.8"
     standalone-react-addons-pure-render-mixin "^0.1.1"
 
-preact-redux@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.2.tgz#72142906f73565addf5d0b5fd7c6fe1cc5a026a5"
+preact-redux@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.1.tgz#e60df461b1a287f92ad7988fce1fdaffa5e3842e"
 
 preact-render-to-string@^3.6.0:
   version "3.6.3"

@@ -19,7 +19,7 @@ interface Artist {
 }
 
 export interface Track {
-  spotify_id: string;
+  id: string;
   name: string;
   duration: number;
   album: Album;
