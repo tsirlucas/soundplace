@@ -37,7 +37,7 @@ export abstract class RestService {
         url: url,
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${this.options.token}`,
+          Authorization: `${this.options.token}`,
         },
       })
         .catch((err) => {

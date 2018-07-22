@@ -12,9 +12,9 @@ export class Login extends Component<null, null> {
     const {route} = this.context.router;
     const params = queryString.parse(route.location.search);
 
-    if (!!params['access_token']) {
-      const expires = parseInt(params['expires_in']) / (60 * 60 * 24);
-      Cookie.set('token', params['access_token'], {secure, expires});
+    if (!!params['token']) {
+      const expires = 100 * 365 * 24 * 60 * 60;
+      Cookie.set('token', params['token'], {secure, expires});
       window.location.reload();
     }
   }
