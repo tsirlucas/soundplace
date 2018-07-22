@@ -65,7 +65,7 @@
     "webpack": "4.10.2",
     "webpack-cli": "2.1.4",
     "webpack-dashboard": "2.0.0",
-    "webpack-dev-server": "3.1.4",
+    "webpack-dev-server": "3.1.5",
     "webpack-manifest-plugin": "2.0.3",
     "workbox-webpack-plugin": "2.1.3"
   },
