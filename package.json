@@ -13,7 +13,7 @@
     "js-cookie": "2.2.0",
     "normalize.css": "8.0.0",
     "preact": "8.2.9",
-    "preact-compat": "3.18.0",
+    "preact-compat": "3.18.1",
     "preact-redux": "2.0.1",
     "query-string": "5.1.1",
     "raven-for-redux": "1.1.1",
