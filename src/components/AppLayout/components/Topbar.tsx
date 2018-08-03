@@ -5,12 +5,12 @@ import {Props as ContainerProps} from '../AppLayout.container';
 type Props = {
   user: ContainerProps['user'];
   actions: {
-    requestUser: ContainerProps['userActions']['requestUser'];
+    subscribeUser: ContainerProps['userActions']['subscribeUser'];
   };
 };
 export class Topbar extends Component<Props, null> {
   componentDidMount() {
-    this.props.actions.requestUser();
+    this.props.actions.subscribeUser();
   }
 
   onLoadImageError = (img) => {

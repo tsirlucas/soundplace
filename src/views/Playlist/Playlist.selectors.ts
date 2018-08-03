@@ -9,9 +9,10 @@ type OwnProps = {
   entity: string;
   id: string;
 };
-export const mapStateToProps = ({tracks, player}: RootState, ownProps: OwnProps) => ({
+export const mapStateToProps = ({tracks, player, playlists}: RootState, ownProps: OwnProps) => ({
   player,
   tracks,
+  playlist: playlists.data && playlists.data[ownProps.id],
   ...ownProps,
 });
 
@@ -19,7 +20,8 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {
       play: playerActions.playMusic,
-      requestTracks: tracksActions.requestTracks,
+      subscribeTracks: tracksActions.subscribeTracks,
+      unsubscribeTracks: tracksActions.unsubscribeTracks,
       saveMusic: storageActions.saveMusic,
       setList: playerActions.setList,
       toggle: playerActions.toggle,

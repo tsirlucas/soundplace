@@ -10,14 +10,14 @@ type Props = {
   router: ContainerProps['router'];
   user: ContainerProps['user'];
   actions: {
-    requestUser: ContainerProps['userActions']['requestUser'];
+    subscribeUser: ContainerProps['userActions']['subscribeUser'];
     changeRoute: ContainerProps['routerActions']['changeRoute'];
   };
 };
 
 export class Sidebar extends Component<Props, null> {
   componentDidMount() {
-    this.props.actions.requestUser();
+    this.props.actions.subscribeUser();
   }
 
   onLoadImageError = (img) => {

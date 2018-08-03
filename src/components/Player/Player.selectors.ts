@@ -21,7 +21,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {
       saveMusic: storageActions.saveMusic,
-      requestTracks: tracksActions.requestTracks,
+      subscribeTracks: tracksActions.subscribeTracks,
       play: playerActions.playMusic,
       toggle: playerActions.toggle,
     },

@@ -9,10 +9,7 @@ export const initialState = {
   data: null as User,
 };
 
-const data = createReducer({}, initialState.data).on(
-  actions.requestUserSuccess,
-  (_state, payload) => payload,
-);
+const data = createReducer({}, initialState.data).on(actions.setUser, (_state, payload) => payload);
 
 export type UserState = typeof initialState;
 export const user = combineReducers<UserState>({

@@ -93,4 +93,7 @@ class AppLayoutComponent extends Component<Props, {}> {
   }
 }
 
-export const AppLayout = connect(mapStateToProps, mapDispatchToProps)(AppLayoutComponent);
+export const AppLayout = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AppLayoutComponent);

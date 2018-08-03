@@ -29,7 +29,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   ),
   userActions: bindActionCreators(
     {
-      requestUser: userActions.requestUser,
+      subscribeUser: userActions.subscribeUser,
     },
     dispatch,
   ),

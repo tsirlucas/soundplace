@@ -67,9 +67,7 @@ class PlayerComponent extends Component<Props, {}> {
 
       navigator.mediaSession.metadata = new window['MediaMetadata']({
         title: currentlyPlaying.name,
-        artist: currentlyPlaying.artist.name,
-        album: currentlyPlaying.album.name,
-        artwork: [{src: currentlyPlaying.album.cover, type: 'image/png'}],
+        artwork: [{src: currentlyPlaying.cover, type: 'image/png'}],
       });
 
       navigator.mediaSession.setActionHandler('play', this.props.actions.toggle);
@@ -114,10 +112,8 @@ class PlayerComponent extends Component<Props, {}> {
 
   getStreamURL = (currentlyPlaying) => {
     if (!currentlyPlaying) return null;
-    const {youtubeID, name, artist} = currentlyPlaying;
-    if (youtubeID) return `${STREAM_SERVER_URL}/${youtubeID}`;
-    const search = `${name} - ${artist.name} - official audio`;
-    return `${STREAM_SERVER_URL}/${search}`;
+    const {id} = currentlyPlaying;
+    return `${STREAM_SERVER_URL}/${id}`;
   };
 
   render({isDesktop, scrollbarWidth, width, player, actions, playerClass}: Props) {
@@ -136,15 +132,12 @@ class PlayerComponent extends Component<Props, {}> {
           <PlayerProgress player={this.playerElement} />,
           <div className="player-content-left">
             <div id="playing-details">
-              <div
-                id="playing-cover"
-                style={`background-image: url(${currentlyPlaying.album.cover});`}
-              />
+              <div id="playing-cover" style={`background-image: url(${currentlyPlaying.cover});`} />
               <div id="playing-data">
                 <div className="music">
                   <strong>{currentlyPlaying.name}</strong>
                 </div>
-                <div className="artist">{currentlyPlaying.artist.name}</div>
+                <div className="artist">{currentlyPlaying.channel}</div>
               </div>
             </div>
           </div>,
@@ -183,4 +176,7 @@ class PlayerComponent extends Component<Props, {}> {
   }
 }
 
-export const Player = connect(mapStateToProps, mapDispatchToProps)(PlayerComponent);
+export const Player = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PlayerComponent);

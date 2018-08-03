@@ -2,7 +2,6 @@ import {h} from 'preact';
 
 import {Track} from 'models';
 
-import parseDuration from '../../../util/parseDuration';
 import {Icon} from '../../Icons/Icons';
 
 type Props = {
@@ -25,7 +24,7 @@ const Track = ({track, onSave, play, pause, playing}: Props) => (
       </span>
     )}
     <h3 className="track-name">{track.name}</h3>
-    <p className="artist-info">{`${track.artist.name} - ${track.album.name}`}</p>
+    <p className="artist-info">{`${track.channel}`}</p>
     <div className="track-actions">
       <span className="storage-button" onClick={() => onSave(track)}>
         {track.downloading ? (
@@ -35,9 +34,6 @@ const Track = ({track, onSave, play, pause, playing}: Props) => (
         ) : (
           <Icon icon="STORAGE" size="17" color="white" />
         )}
-      </span>
-      <span className="track-duration">
-        <strong>{parseDuration(track.duration)}</strong>
       </span>
     </div>
   </li>

@@ -67,7 +67,7 @@ class StorageComponent extends Component<Props, {}> {
             return (
               <div onClick={() => actions.deleteMusic(item.request.url)}>
                 <span>
-                  {item.data.name} - {item.data.artist.name}: {item.data.size}
+                  {item.data.name} - {item.data.channel}: {item.data.size}
                 </span>{' '}
                 <br />
               </div>

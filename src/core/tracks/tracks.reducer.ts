@@ -7,21 +7,25 @@ import {IndexedTracks} from 'models';
 import {actions} from './tracks.actions';
 
 export const initialState = {
-  listInfo: {
-    id: null as string,
-    name: null as string,
-    cover: null as string,
-  },
   data: null as IndexedTracks,
 };
 
 const data = createReducer({}, initialState.data)
-  .on(actions.requestTracks, () => initialState.data)
-  .on(actions.requestTracksSuccess, (_state, payload) => {
-    return payload.tracks.reduce((curr, next) => {
+  .on(actions.setTracks, (_state, payload) => {
+    return payload.item.reduce((curr, next) => {
       curr[next.id] = next;
       return curr;
     }, {});
+  })
+  .on(actions.addTrack, (state, payload) => ({...state, [payload.item.id]: payload.item}))
+  .on(actions.updateTrack, (state, payload) => ({...state, [payload.item.id]: payload.item}))
+  .on(actions.removeTrack, (state, payload) => {
+    return Object.keys(state)
+      .filter((key) => key !== payload.item.id)
+      .reduce((result, current) => {
+        result[current] = state[current];
+        return result;
+      }, {});
   })
   .on(storageActions.saveMusic, (state, payload) => {
     return {
@@ -34,12 +38,7 @@ const data = createReducer({}, initialState.data)
     [payload]: {...state[payload], downloading: false},
   }));
 
-const listInfo = createReducer({}, initialState.listInfo)
-  .on(actions.requestTracks, () => initialState.listInfo)
-  .on(actions.requestTracksSuccess, (_state, {tracks: _, ...rest}) => rest);
-
 export type TracksState = typeof initialState;
 export const tracks = combineReducers<TracksState>({
   data,
-  listInfo,
 });

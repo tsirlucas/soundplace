@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/node /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/yarn dev
+  /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/node /Users/lucascorreia/.nvm/versions/node/v8.9.0/bin/yarn remove apollo-client
 
 PATH: 
   /Users/lucascorreia/.rvm/gems/ruby-2.2.2/bin:/Users/lucascorreia/.rvm/gems/ruby-2.2.2@global/bin:/Users/lucascorreia/.rvm/rubies/ruby-2.2.2/bin:/Users/lucascorreia/.nvm/versions/node/v8.9.0/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin:/Users/lucascorreia/.rvm/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/bin/:/Volumes/HD_ARQUIVOS/System/ANDROID_PATH/android-sdk/platform-tools/:/Volumes/HD_ARQUIVOS/System/ANDROID_PATH/android-sdk/tools/
@@ -7000,9 +7000,9 @@ Lockfile:
       prop-types "^15.5.8"
       standalone-react-addons-pure-render-mixin "^0.1.1"
   
-  preact-redux@2.0.2:
-    version "2.0.2"
-    resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.2.tgz#72142906f73565addf5d0b5fd7c6fe1cc5a026a5"
+  preact-redux@2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/preact-redux/-/preact-redux-2.0.1.tgz#e60df461b1a287f92ad7988fce1fdaffa5e3842e"
   
   preact-render-to-string@^3.6.0:
     version "3.6.3"
@@ -9652,17 +9652,10 @@ Lockfile:
       yeoman-environment "^2.0.5"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 127
-  Command: sh
-  Arguments: -c cross-env NODE_ENV=development webpack-dev-server --hot --mode development
-  Directory: /Users/lucascorreia/Documents/workspace/college/soundplace
-  Output:
-  
-      at ProcessTermError.MessageError (/Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:126:13)
-      at ChildProcess.emit (events.js:214:7)
-      at maybeClose (internal/child_process.js:925:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+  Error: This module isn't specified in a manifest.
+      at new MessageError (/Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:186:110)
+      at Object.<anonymous> (/Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:60445:15)
+      at Generator.next (<anonymous>)
+      at step (/Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /Users/lucascorreia/.nvm/versions/node/v8.9.0/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
