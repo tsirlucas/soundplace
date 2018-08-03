@@ -67,7 +67,7 @@ class PlayerComponent extends Component<Props, {}> {
 
       navigator.mediaSession.metadata = new window['MediaMetadata']({
         title: currentlyPlaying.name,
-        artwork: [{src: currentlyPlaying.cover, type: 'image/png'}],
+        artwork: [{src: currentlyPlaying.cover.big, type: 'image/png'}],
       });
 
       navigator.mediaSession.setActionHandler('play', this.props.actions.toggle);
@@ -132,7 +132,7 @@ class PlayerComponent extends Component<Props, {}> {
           <PlayerProgress player={this.playerElement} />,
           <div className="player-content-left">
             <div id="playing-details">
-              <div id="playing-cover" style={`background-image: url(${currentlyPlaying.cover});`} />
+              <div id="playing-cover" style={`background-image: url(${currentlyPlaying.cover.small});`} />
               <div id="playing-data">
                 <div className="music">
                   <strong>{currentlyPlaying.name}</strong>

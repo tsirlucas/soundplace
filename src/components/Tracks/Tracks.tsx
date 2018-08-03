@@ -62,7 +62,10 @@ export class Tracks extends Component<Props, {}> {
     return (
       <section id="playlist">
         <header className="playlist-header">
-          <div className="playlist-image" style={`background-image: url(${playlist.cover})`} />
+          <div
+            className="playlist-image"
+            style={`background-image: url(${playlist.cover.medium})`}
+          />
           <h1 className="playlist-name">{playlist.name}</h1>
         </header>
         <main className="playlist-content">

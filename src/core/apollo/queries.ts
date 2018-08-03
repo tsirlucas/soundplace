@@ -27,7 +27,11 @@ export const GET_PLAYLISTS = gql`
     currentUserPlaylists {
       id
       name
-      cover
+      cover {
+        small
+        medium
+        big
+      }
     }
   }
 `;
@@ -39,7 +43,11 @@ export const SUBSCRIBE_PLAYLISTS = gql`
       item {
         id
         name
-        cover
+        cover {
+          small
+          medium
+          big
+        }
       }
     }
   }
@@ -50,8 +58,12 @@ export const GET_TRACKS = gql`
     playlistTracks(playlistId: $playlistId) {
       id
       name
-      cover
       channel
+      cover {
+        small
+        medium
+        big
+      }
     }
   }
 `;
@@ -63,8 +75,12 @@ export const SUBSCRIBE_TRACKS = gql`
       item {
         id
         name
-        cover
         channel
+        cover {
+          small
+          medium
+          big
+        }
       }
     }
   }
