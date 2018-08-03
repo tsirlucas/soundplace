@@ -8,14 +8,15 @@ import ApolloClient, {
 import {ApolloLink} from 'apollo-link';
 import {RetryLink} from 'apollo-link-retry';
 import {WebSocketLink} from 'apollo-link-ws';
+import {environment} from 'config';
 import Cookie from 'js-cookie';
-// import {environment} from 'config';
 import localforage from 'localforage';
 import {Observable} from 'rxjs';
 
 export class Client {
   private static instance: Client;
   public client: ApolloClient<NormalizedCacheObject>;
+  private socketUrl = `${environment.settings.apiUrl}/graphql`.replace(/https?/, 'ws');
 
   private constructor() {
     const cache = new InMemoryCache();
@@ -26,7 +27,7 @@ export class Client {
     });
 
     const wsLink = new WebSocketLink({
-      uri: `ws://localhost:3004/graphql`,
+      uri: this.socketUrl,
       options: {
         reconnect: true,
         connectionParams: () => ({
