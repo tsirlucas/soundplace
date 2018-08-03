@@ -1,12 +1,17 @@
 import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory';
 import {persistCache} from 'apollo-cache-persist';
-import ApolloClient, {OperationVariables, QueryOptions, SubscriptionOptions} from 'apollo-client';
+import ApolloClient, {
+  OperationVariables,
+  SubscriptionOptions,
+  WatchQueryOptions,
+} from 'apollo-client';
 import {ApolloLink} from 'apollo-link';
 import {RetryLink} from 'apollo-link-retry';
 import {WebSocketLink} from 'apollo-link-ws';
 import Cookie from 'js-cookie';
 // import {environment} from 'config';
 import localforage from 'localforage';
+import {Observable} from 'rxjs';
 
 export class Client {
   private static instance: Client;
@@ -60,8 +65,13 @@ export class Client {
 
     return this.instance;
   }
-  public query = <T>(options: QueryOptions<OperationVariables>) =>
-    this.client.query<T, OperationVariables>(options);
+
+  public watchQuery = <T>(options: WatchQueryOptions<OperationVariables>) =>
+    Observable.from(
+      this.client.watchQuery<T, OperationVariables>({...options, fetchPolicy: 'cache-and-network'}),
+    )
+      .take(2)
+      .filter((res) => !!res.data);
 
   public subscribe = <T>(options: SubscriptionOptions<OperationVariables>) =>
     this.client.subscribe<T, OperationVariables>(options);

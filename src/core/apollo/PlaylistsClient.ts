@@ -21,9 +21,9 @@ export class PlaylistsClient {
     return this.instance;
   }
   public get = () =>
-    Observable.fromPromise(
-      this.client.query<{currentUserPlaylists: Playlist[]}>({query: GET_PLAYLISTS}),
-    ).map((res) => ({operation: 'NONE', item: res.data.currentUserPlaylists}));
+    this.client
+      .watchQuery<{currentUserPlaylists: Playlist[]}>({query: GET_PLAYLISTS})
+      .map((res) => ({operation: 'NONE', item: res.data.currentUserPlaylists}));
 
   public subscribe = () => {
     return Observable.concat(

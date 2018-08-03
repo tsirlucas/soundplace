@@ -21,14 +21,14 @@ export class TracksClient {
     return this.instance;
   }
   public get = (playlistId: string) =>
-    Observable.fromPromise(
-      this.client.query<{playlistTracks: Track[]}>({
+    this.client
+      .watchQuery<{playlistTracks: Track[]}>({
         query: GET_TRACKS,
         variables: {
           playlistId,
         },
-      }),
-    ).map((res) => ({operation: 'NONE', item: res.data.playlistTracks}));
+      })
+      .map((res) => ({operation: 'NONE', item: res.data.playlistTracks}));
 
   public subscribe = (playlistId: string) => {
     return Observable.concat(

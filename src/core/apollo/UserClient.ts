@@ -21,9 +21,9 @@ export class UserClient {
     return this.instance;
   }
   public get = () =>
-    Observable.fromPromise(this.client.query<{currentUser: User}>({query: GET_USER})).map(
-      (res) => res.data.currentUser,
-    );
+    this.client
+      .watchQuery<{currentUser: User}>({query: GET_USER})
+      .map((res) => res.data.currentUser);
 
   public subscribe = () => {
     return Observable.concat(
