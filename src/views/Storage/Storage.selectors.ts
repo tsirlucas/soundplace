@@ -3,7 +3,7 @@ import {Action, bindActionCreators, Dispatch} from 'redux';
 import {RootState} from 'core';
 import {actions as storageActions} from 'core/storage';
 
-export const mapStateToProps = ({storage}: RootState) => ({storage: storage});
+export const mapStateToProps = ({storage, tracks}: RootState) => ({storage, tracks});
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(

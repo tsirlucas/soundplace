@@ -15,10 +15,10 @@
   &.button-secondary {}
 
   &.button-youtube {
-    background-color: $spotify-green;
+    background-color: $youtube-red;
 
     &:hover {
-      background-color: $spotify-green-hover;
+      background-color: $youtube-red-hover;
     }
   }
 }

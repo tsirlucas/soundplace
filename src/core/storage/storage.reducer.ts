@@ -1,7 +1,5 @@
 import {createReducer} from 'redux-act';
 
-import {StoragedTrackRequest} from 'models';
-
 import {actions} from './storage.actions';
 
 const initialStorageInfo = {
@@ -13,7 +11,6 @@ const initialStorageInfo = {
 };
 
 export const initialState = {
-  cachedSongs: null as StoragedTrackRequest[],
   storageInfo: initialStorageInfo,
 };
 
@@ -29,7 +26,6 @@ const data = createReducer({}, initialState)
     },
   }))
   .on(actions.requestCachedSongsSuccess, (state, payload) => ({
-    cachedSongs: payload,
     storageInfo: {
       ...state.storageInfo,
       appResources: payload.reduce((prev, curr) => {

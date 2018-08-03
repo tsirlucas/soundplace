@@ -48,7 +48,7 @@
 }
 
 #player-progress-bar {
-  border-top: 4px solid $spotify-green;
+  border-top: 4px solid $youtube-red;
   position: absolute;
   bottom: 77px;
   left: 0;
@@ -158,7 +158,7 @@
 
   #player-progress-bar {
     bottom: 48px;
-    border-top: 2px solid $spotify-green;
+    border-top: 2px solid $youtube-red;
 
     &:after {
       top: -6px;

@@ -27,7 +27,7 @@ type Props = {
 export class Tracks extends Component<Props, {}> {
   state = {};
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.subscribeTracks(this.props.id);
   }
 
@@ -72,6 +72,7 @@ export class Tracks extends Component<Props, {}> {
           <ul className="tracks-list">
             {Object.values(tracks.data).map((track) => (
               <Track
+                status={tracks.saved[track.id] ? tracks.saved[track.id].status : 'NOT-SAVED'}
                 track={track}
                 play={this.play}
                 pause={this.pause}

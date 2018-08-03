@@ -29,8 +29,10 @@ class StorageComponent extends Component<Props, {}> {
     });
   };
 
-  render({storage, actions}: Props) {
-    const {storageInfo, cachedSongs} = storage;
+  render({storage, tracks, actions}: Props) {
+    const {storageInfo} = storage;
+    const cachedSongs = Object.keys(tracks.saved).map((key) => tracks.data[key]);
+
     const dataArray = this.sortArr([
       {
         label: 'App',
@@ -65,9 +67,9 @@ class StorageComponent extends Component<Props, {}> {
         {cachedSongs &&
           cachedSongs.map((item) => {
             return (
-              <div onClick={() => actions.deleteMusic(item.request.url)}>
+              <div onClick={() => actions.deleteMusic(item.id)}>
                 <span>
-                  {item.data.name} - {item.data.channel}: {item.data.size}
+                  {item.name} - {item.channel}: {123}
                 </span>{' '}
                 <br />
               </div>

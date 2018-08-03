@@ -1,18 +1,20 @@
 import {h} from 'preact';
 
 import {Track} from 'models';
+import {RootState} from 'src/core';
 
 import {Icon} from '../../Icons/Icons';
 
 type Props = {
   track: Track;
+  status: RootState['tracks']['saved']['any']['status'] | 'NOT-SAVED';
   onSave: Function;
   play: Function;
   pause: Function;
   playing: boolean;
 };
 
-const Track = ({track, onSave, play, pause, playing}: Props) => (
+const Track = ({track, onSave, play, pause, playing, status}: Props) => (
   <li className="track-item">
     {playing ? (
       <span className="play-button" onClick={() => pause()}>
@@ -27,13 +29,12 @@ const Track = ({track, onSave, play, pause, playing}: Props) => (
     <p className="artist-info">{`${track.channel}`}</p>
     <div className="track-actions">
       <span className="storage-button" onClick={() => onSave(track)}>
-        {track.downloading ? (
+        {status === 'DOWNLOADING' && (
           <span className="icon-spinner">
             <Icon icon="SYNC" size="17" color="white" />
           </span>
-        ) : (
-          <Icon icon="STORAGE" size="17" color="white" />
         )}
+        {status === 'NOT-SAVED' && <Icon icon="STORAGE" size="17" color="white" />}
       </span>
     </div>
   </li>

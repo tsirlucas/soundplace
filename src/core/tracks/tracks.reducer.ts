@@ -8,7 +8,27 @@ import {actions} from './tracks.actions';
 
 export const initialState = {
   data: null as IndexedTracks,
+  saved: {} as {[index: string]: {status: 'DOWNLOADING' | 'DONE'}},
 };
+
+const saved = createReducer({}, initialState.saved)
+  .on(storageActions.saveMusic, (state, payload) => {
+    return {
+      ...state,
+      [payload.id]: {status: 'DOWNLOADING'},
+    };
+  })
+  .on(storageActions.saveMusicSuccess, (state, payload) => ({
+    ...state,
+    [payload]: {status: 'DONE'},
+  }))
+  .on(storageActions.requestCachedSongsSuccess, (state, payload) => ({
+    ...state,
+    ...payload.reduce((curr, next) => {
+      curr[next.data.id] =  {status: 'DONE'};
+      return curr;
+    }, {}),
+  }));
 
 const data = createReducer({}, initialState.data)
   .on(actions.setTracks, (_state, payload) => {
@@ -26,19 +46,10 @@ const data = createReducer({}, initialState.data)
         result[current] = state[current];
         return result;
       }, {});
-  })
-  .on(storageActions.saveMusic, (state, payload) => {
-    return {
-      ...state,
-      [payload.id]: {...state[payload.id], downloading: true},
-    };
-  })
-  .on(storageActions.saveMusicSuccess, (state, payload) => ({
-    ...state,
-    [payload]: {...state[payload], downloading: false},
-  }));
+  });
 
 export type TracksState = typeof initialState;
 export const tracks = combineReducers<TracksState>({
   data,
+  saved,
 });

@@ -1,15 +1,7 @@
-import Redirect from 'react-router/Redirect';
 import createHashHistory from 'history/createHashHistory';
-import {h} from 'preact';
 
 import {actions as routerActions} from 'core/router';
 import {store} from 'src/main';
-import {Login} from 'views/Login';
-import {Playlist} from 'views/Playlist';
-import {Playlists} from 'views/Playlists';
-import {Storage} from 'views/Storage';
-
-import {privatizeRoutes} from './auth';
 
 export const browserHistory = createHashHistory();
 
@@ -28,36 +20,15 @@ export const updateState = () => {
   }
 };
 
-const publicRoutes = [
-  {
-    path: '/login',
-    component: Login,
-  },
-];
-
-export const privateRoutes = privatizeRoutes([
-  {
-    path: '/',
-    exact: true,
-    component: () => <Redirect to="/playlists" />,
-  },
+export const privateRoutes = [
   {
     path: '/playlists',
     icon: 'PLAYLISTS',
     header: 'Playlists',
-    exact: true,
-    component: Playlists,
-  },
-  {
-    path: '/playlists/:playlistId',
-    component: Playlist,
   },
   {
     path: '/storage',
     icon: 'STORAGE',
     header: 'Storage',
-    component: Storage,
   },
-]);
-
-export const routes = [...publicRoutes, ...privateRoutes];
+];

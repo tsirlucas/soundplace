@@ -62,7 +62,7 @@ const getReadableStreamValue = (rStream) => {
 const fetchMusic = (track) =>
   Observable.fromPromise(
     // temporary
-    fetch(`${STREAM_SERVER_URL}/${track.name} - ${track.artist.name} - official audio`, {
+    fetch(`${STREAM_SERVER_URL}/${track.id}`, {
       headers: {save: 'true', data: JSON.stringify(track)},
     }),
   ).mergeMap((res) => {

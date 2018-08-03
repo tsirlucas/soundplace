@@ -5,7 +5,6 @@ export interface Track {
   name: string;
   channel: string;
   cover: Cover;
-  downloading?: boolean;
 }
 
 export interface IndexedTracks {
