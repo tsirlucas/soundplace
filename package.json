@@ -31,7 +31,8 @@
     "redux": "3.7.2",
     "redux-act": "1.7.4",
     "redux-observable": "0.18.0",
-    "rxjs": "5.5.11"
+    "rxjs": "5.5.11",
+    "subscriptions-transport-ws": "^0.9.14"
   },
   "devDependencies": {
     "@types/js-cookie": "2.1.0",
