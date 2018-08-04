@@ -1,8 +1,10 @@
 import {h} from 'preact';
 
+import {Cover} from 'models';
+
 type Item = {
   name: string;
-  cover: string;
+  cover: Cover;
 };
 
 type ListProps = {
@@ -25,7 +27,7 @@ const CardListItem = ({item, open}: ItemProps) => (
   <div className="cardlist-item" onClick={() => open(item)}>
     <figure>
       <div className="cardlist-item-cover">
-        <img data-src={item.cover || 'http://via.placeholder.com/200x200'} alt={item.name} />
+        <img data-src={item.cover.medium || 'http://via.placeholder.com/200x200'} alt={item.name} />
       </div>
       <div className="cardlist-item-title">
         <figcaption>

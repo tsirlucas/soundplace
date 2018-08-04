@@ -4,18 +4,21 @@ import {RootState} from 'core';
 import {actions as playerActions} from 'core/player';
 import {actions as storageActions} from 'core/storage';
 import {actions as tracksActions} from 'core/tracks';
-import {Track as TrackType} from 'models';
+import {Playlist, Track as TrackType} from 'models';
 
 import Track from './components/Track';
 
 type Props = {
   entity: string;
   id: string;
+  playlist: Playlist;
   tracks: RootState['tracks'];
   player: RootState['player'];
   actions: {
     saveMusic: typeof storageActions.saveMusic;
-    requestTracks: typeof tracksActions.requestTracks;
+    deleteMusic: typeof storageActions.deleteMusic;
+    subscribeTracks: typeof tracksActions.subscribeTracks;
+    unsubscribeTracks: typeof tracksActions.unsubscribeTracks;
     play: typeof playerActions.playMusic;
     setList: typeof playerActions.setList;
     toggle: typeof playerActions.toggle;
@@ -25,12 +28,20 @@ type Props = {
 export class Tracks extends Component<Props, {}> {
   state = {};
 
-  componentWillMount() {
-    this.props.actions.requestTracks(this.props.id);
+  componentDidMount() {
+    this.props.actions.subscribeTracks(this.props.id);
+  }
+
+  componentWillUnmount() {
+    this.props.actions.unsubscribeTracks();
   }
 
   save = (track: TrackType) => {
     this.props.actions.saveMusic(track);
+  };
+
+  delete = (track: TrackType) => {
+    this.props.actions.deleteMusic(track.id);
   };
 
   play = (track) => {
@@ -50,26 +61,28 @@ export class Tracks extends Component<Props, {}> {
     return false;
   };
 
-  render({tracks}: Props) {
-    if (!tracks.data) return null;
+  render({tracks, playlist}: Props) {
+    if (!tracks.data || !playlist) return null;
 
     return (
       <section id="playlist">
         <header className="playlist-header">
           <div
             className="playlist-image"
-            style={`background-image: url(${tracks.listInfo.cover})`}
+            style={`background-image: url(${playlist.cover.medium})`}
           />
-          <h1 className="playlist-name">{tracks.listInfo.name}</h1>
+          <h1 className="playlist-name">{playlist.name}</h1>
         </header>
         <main className="playlist-content">
           <ul className="tracks-list">
             {Object.values(tracks.data).map((track) => (
               <Track
+                status={tracks.saved[track.id] ? tracks.saved[track.id].status : 'NOT-SAVED'}
                 track={track}
                 play={this.play}
                 pause={this.pause}
                 onSave={this.save}
+                onDelete={this.delete}
                 playing={this.isPlaying(track)}
               />
             ))}

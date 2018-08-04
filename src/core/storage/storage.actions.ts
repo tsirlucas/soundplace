@@ -5,7 +5,8 @@ import {Estimate, StoragedTrackRequest, Track} from 'models';
 export const actions = {
   loadStorageStatus: createAction('storage/LOAD_STORAGE_STATUS'),
   loadStorageStatusSuccess: createAction<Estimate>('storage/LOAD_STORAGE_STATUS_SUCCESS'),
-  requestCachedSongs: createAction('storage/GET_CACHED_SONGS'),
+  subscribeCachedSongs: createAction('storage/SUBSCRIBE_CACHED_SONGS'),
+  unsubscribeCachedSongs: createAction('storage/UNSUBSCRIBE_CACHED_SONGS'),
   requestCachedSongsSuccess: createAction<StoragedTrackRequest[]>(
     'storage/GET_CACHED_SONGS_SUCCESS',
   ),

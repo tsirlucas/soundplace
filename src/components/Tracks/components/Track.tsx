@@ -1,19 +1,20 @@
 import {h} from 'preact';
 
+import {Icon} from 'components';
 import {Track} from 'models';
-
-import parseDuration from '../../../util/parseDuration';
-import {Icon} from '../../Icons/Icons';
+import {RootState} from 'src/core';
 
 type Props = {
   track: Track;
+  status: RootState['tracks']['saved']['any']['status'] | 'NOT-SAVED';
   onSave: Function;
+  onDelete: Function;
   play: Function;
   pause: Function;
   playing: boolean;
 };
 
-const Track = ({track, onSave, play, pause, playing}: Props) => (
+const Track = ({track, onSave, onDelete, play, pause, playing, status}: Props) => (
   <li className="track-item">
     {playing ? (
       <span className="play-button" onClick={() => pause()}>
@@ -25,19 +26,20 @@ const Track = ({track, onSave, play, pause, playing}: Props) => (
       </span>
     )}
     <h3 className="track-name">{track.name}</h3>
-    <p className="artist-info">{`${track.artist.name} - ${track.album.name}`}</p>
+    <p className="artist-info">{`${track.channel}`}</p>
     <div className="track-actions">
-      <span className="storage-button" onClick={() => onSave(track)}>
-        {track.downloading ? (
-          <span className="icon-spinner">
-            <Icon icon="SYNC" size="17" color="white" />
-          </span>
-        ) : (
-          <Icon icon="STORAGE" size="17" color="white" />
-        )}
-      </span>
-      <span className="track-duration">
-        <strong>{parseDuration(track.duration)}</strong>
+      <span className="storage-button">
+        <span onClick={() => onDelete(track)}>
+          {status === 'DOWNLOADING' && (
+            <span className="icon-spinner">
+              <Icon icon="SYNC" size="17" color="white" />
+            </span>
+          )}
+          {status === 'DONE' && <Icon icon="UNSTORAGE" size="17" color="white" />}
+        </span>
+        <span onClick={() => onSave(track)}>
+          {status === 'NOT-SAVED' && <Icon icon="STORAGE" size="17" color="white" />}
+        </span>
       </span>
     </div>
   </li>

@@ -10,14 +10,20 @@ type Props = {
   router: ContainerProps['router'];
   user: ContainerProps['user'];
   actions: {
-    requestUser: ContainerProps['userActions']['requestUser'];
+    subscribeUser: ContainerProps['userActions']['subscribeUser'];
+    unsubscribeUser: ContainerProps['userActions']['unsubscribeUser'];
+    import: ContainerProps['userActions']['import'];
     changeRoute: ContainerProps['routerActions']['changeRoute'];
   };
 };
 
 export class Sidebar extends Component<Props, null> {
   componentDidMount() {
-    this.props.actions.requestUser();
+    this.props.actions.subscribeUser();
+  }
+
+  componentWillUnmount() {
+    this.props.actions.unsubscribeUser();
   }
 
   onLoadImageError = (img) => {
@@ -38,6 +44,15 @@ export class Sidebar extends Component<Props, null> {
               className="brand-img"
             />
             <h3 className="brand-name">{user.name}</h3>
+            {user.importing ? (
+              <span className="icon-spinner">
+                <Icon icon="SYNC" size="24" color="white" />
+              </span>
+            ) : (
+              <div onClick={this.props.actions.import}>
+                <Icon icon="SYNC" size="24" color="white" />
+              </div>
+            )}
           </div>
         )}
         <Navigation>

@@ -32,11 +32,11 @@ export const prodPlugins = [
     globIgnores: ['*.map.js'],
     runtimeCaching: [
       {
-        urlPattern: /^https:\/\/scontent\.xx\.fbcdn\.net\//,
+        urlPattern: /^https:\/\/lh3\.googleusercontent\.com\//,
         handler: 'cacheFirst',
         options: {
           cache: {
-            name: 'scontent-cache',
+            name: 'googleusercontent-cache',
             maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
@@ -44,11 +44,11 @@ export const prodPlugins = [
         },
       },
       {
-        urlPattern: /^https:\/\/mosaic\.scdn\.co\//,
+        urlPattern: /^https:\/\/i\.ytimg\.com\//,
         handler: 'cacheFirst',
         options: {
           cache: {
-            name: 'mosaic-cache',
+            name: 'ytimg-cache',
             maxEnteries: 200,
             maxAgeSeconds: 31536000,
           },
@@ -56,31 +56,7 @@ export const prodPlugins = [
         },
       },
       {
-        urlPattern: /^https:\/\/i\.scdn\.co\//,
-        handler: 'cacheFirst',
-        options: {
-          cache: {
-            name: 'iscdn-cache',
-            maxEnteries: 200,
-            maxAgeSeconds: 31536000,
-          },
-          cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
-        },
-      },
-      {
-        urlPattern: /^https:\/\/pl\.scdn\.co\//,
-        handler: 'cacheFirst',
-        options: {
-          cache: {
-            name: 'plscdn-cache',
-            maxEnteries: 200,
-            maxAgeSeconds: 31536000,
-          },
-          cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
-        },
-      },
-      {
-        urlPattern: /^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\//,
+        urlPattern: /^https:\/\/api-soundplace\.com\/stream/,
         handler: 'cacheFirst',
         options: {
           cache: {

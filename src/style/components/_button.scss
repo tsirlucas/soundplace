@@ -14,11 +14,11 @@
   &.button-primary {}
   &.button-secondary {}
 
-  &.button-spotify {
-    background-color: $spotify-green;
+  &.button-youtube {
+    background-color: $youtube-red;
 
     &:hover {
-      background-color: $spotify-green-hover;
+      background-color: $youtube-red-hover;
     }
   }
 }

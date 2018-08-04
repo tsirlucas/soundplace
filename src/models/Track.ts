@@ -1,36 +1,12 @@
-import {Playlist} from './Playlist';
-
-interface Album {
-  cover: string;
-  name: string;
-}
-
-interface ExternalUrls {
-  spotify: string;
-}
-
-interface Artist {
-  id: string;
-  name: string;
-  type: string;
-  uri: string;
-  href: string;
-  external_urls: ExternalUrls;
-}
+import {Cover} from './Cover';
 
 export interface Track {
   id: string;
   name: string;
-  duration: number;
-  album: Album;
-  artist: Artist;
-  downloading?: boolean;
+  channel: string;
+  cover: Cover;
 }
 
 export interface IndexedTracks {
   [index: string]: Track;
-}
-
-export interface TrackList extends Playlist {
-  tracks: Track[];
 }

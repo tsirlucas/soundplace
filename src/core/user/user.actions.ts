@@ -3,8 +3,11 @@ import {createAction} from 'redux-act';
 import {User} from 'models';
 
 export const actions = {
-  requestUser: createAction('user/REQUEST_USER'),
-  requestUserSuccess: createAction<User>('user/requestUserSuccess'),
+  subscribeUser: createAction('user/SUBSCRIBE_USER'),
+  unsubscribeUser: createAction('user/UNSUBSCRIBE_USER'),
+  import: createAction('user/IMPORT'),
+  cancelImport: createAction('user/CANCEL_IMPORT'),
+  setUser: createAction<User>('user/SET_USER'),
 };
 
 type ActionsType = typeof actions;

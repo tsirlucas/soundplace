@@ -1,10 +1,13 @@
 import {createAction} from 'redux-act';
 
-import {Playlist} from 'models';
+import {Playlist, SocketUpdate} from 'models';
 
 export const actions = {
-  requestPlaylists: createAction('playlists/REQUEST_PLAYLISTS'),
-  requestPlaylistsSuccess: createAction<Playlist[]>('playlists/REQUEST_PLAYLISTS_SUCCESSS'),
+  subscribePlaylists: createAction('playlists/SUBSCRIBE_PLAYLISTS'),
+  setPlaylists: createAction<SocketUpdate<Playlist[]>>('playlists/SET_PLAYLISTS'),
+  addPlaylist: createAction<SocketUpdate<Playlist>>('playlists/ADD_PLAYLIST'),
+  updatePlaylist: createAction<SocketUpdate<Playlist>>('playlists/UPDATE_PLAYLIST'),
+  removePlaylist: createAction<SocketUpdate<Playlist>>('playlists/REMOVE_PLAYLIST'),
 };
 
 type ActionsType = typeof actions;

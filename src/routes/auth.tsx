@@ -4,7 +4,7 @@ import {h} from 'preact';
 
 export const isAuthenticated = () => Cookie.get('token');
 
-export const checkAuth = (Route, isPrivate, path) => {
+export const checkAuth = (Route: JSX.Element, isPrivate: boolean, path?: string) => {
   const isAuthenticated = Cookie.get('token');
   const {hash} = window.location;
 
@@ -13,16 +13,10 @@ export const checkAuth = (Route, isPrivate, path) => {
     if (isPrivate) {
       return Route;
     }
-    return <Redirect from={path} to="/playlists" />;
+    const from = path ? path : hash.slice(1, -1).split('?')[0];
+    return <Redirect from={from} to="/playlists" />;
   }
-
   const needToRedirect = !hash.includes('/login');
   //If route is private and his not on /login already, user is redirected to app's public root, else user proceeds.
   return isPrivate && needToRedirect ? <Redirect to="/login" /> : Route;
 };
-
-export const privatizeRoutes = (routes) =>
-  routes.map((route) => {
-    route.isPrivate = true;
-    return route;
-  });

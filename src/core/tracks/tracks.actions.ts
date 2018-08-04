@@ -1,11 +1,15 @@
 import {createAction} from 'redux-act';
 
-import {TrackList} from 'models';
+import {SocketUpdate, Track} from 'models';
 
 export const actions = {
-  requestTracks: createAction<string>('tracks/REQHEST_TRACKS'),
-  requestTracksSuccess: createAction<TrackList>('tracks/REQUEST_TRACKS_SUCCESS'),
-  updateTracksData: createAction<TrackList>('tracks/UPDATE_TRACKS_DATA'),
+  subscribeTracks: createAction<string>('tracks/SUBSCRIBE_TRACKS'),
+  subscribeToTracksIds: createAction<string[]>('tracks/SUBSCRIBE_TRACKS_IDS'),
+  unsubscribeTracks: createAction('tracks/UNSUBSCRIBE_TRACKS'),
+  setTracks: createAction<SocketUpdate<Track[]>>('tracks/SET_TRACKS'),
+  addTrack: createAction<SocketUpdate<Track>>('tracks/ADD_TRACK'),
+  updateTrack: createAction<SocketUpdate<Track>>('tracks/UPDATE_TRACK'),
+  removeTrack: createAction<SocketUpdate<Track>>('tracks/REMOVE_TRACK'),
   onOffline: createAction('tracks/ON_OFFLINE'),
 };
 

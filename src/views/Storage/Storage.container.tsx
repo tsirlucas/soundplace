@@ -1,6 +1,8 @@
 import {Component, h} from 'preact';
 import {connect} from 'preact-redux';
 
+import {Icon} from 'components';
+
 import {formatBytes} from '../../util/formatBytes';
 import {
   mapDispatchToProps,
@@ -14,7 +16,11 @@ type Props = MapStateToProps & MapDispatchToProps;
 class StorageComponent extends Component<Props, {}> {
   componentDidMount() {
     this.props.actions.loadStorageStatus();
-    this.props.actions.requestCachedSongs();
+    this.props.actions.subscribeCachedSongs();
+  }
+
+  componentWillUnmount() {
+    this.props.actions.unsubscribeCachedSongs();
   }
 
   sortArr = (arr) => {
@@ -29,8 +35,15 @@ class StorageComponent extends Component<Props, {}> {
     });
   };
 
-  render({storage, actions}: Props) {
-    const {storageInfo, cachedSongs} = storage;
+  render({storage, tracks, actions}: Props) {
+    const {storageInfo} = storage;
+    const cachedSongs = tracks.data
+      ? Object.keys(tracks.saved).map((key) => ({
+          ...tracks.data[key],
+          ...tracks.saved[key],
+        }))
+      : [];
+
     const dataArray = this.sortArr([
       {
         label: 'App',
@@ -44,8 +57,8 @@ class StorageComponent extends Component<Props, {}> {
     dataArray[1].percent = dataArray[1].percent + dataArray[2].percent;
 
     return (
-      <section>
-        <ul class="chart-skills">
+      <section id="storage">
+        <ul className="chart-skills">
           {dataArray.map((item) => (
             <li style={`transform: rotate(${item.percent * 1.8}deg); border-color: ${item.color};`}>
               <span style={`transform: rotate(-${item.percent * 1.8}deg);`}>{item.label}</span>
@@ -62,17 +75,26 @@ class StorageComponent extends Component<Props, {}> {
           <br />
         </div>
         <br />
-        {cachedSongs &&
-          cachedSongs.map((item) => {
-            return (
-              <div onClick={() => actions.deleteMusic(item.request.url)}>
-                <span>
-                  {item.data.name} - {item.data.artist.name}: {item.data.size}
-                </span>{' '}
-                <br />
-              </div>
-            );
-          })}
+        <div className="tracks-list">
+          {cachedSongs &&
+            cachedSongs.map((item) => (
+              <li className="track-item">
+                <h3 className="track-name">{item.name}</h3>
+                <p className="artist-info">{item.channel}</p>
+                <p className="artist-info">{item.size}</p>
+                <div className="track-actions">
+                  <span className="storage-button" onClick={() => actions.deleteMusic(item.id)}>
+                    {item.status === 'DOWNLOADING' && (
+                      <span className="icon-spinner">
+                        <Icon icon="SYNC" size="17" color="white" />
+                      </span>
+                    )}
+                    {item.status === 'DONE' && <Icon icon="UNSTORAGE" size="17" color="white" />}
+                  </span>
+                </div>
+              </li>
+            ))}
+        </div>
       </section>
     );
   }

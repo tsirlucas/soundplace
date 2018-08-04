@@ -14,7 +14,7 @@ type Props = MapStateToProps & MapDispatchToProps;
 
 class PlaylistsComponent extends Component<Props, {}> {
   componentDidMount() {
-    this.props.actions.requestPlaylists();
+    this.props.actions.subscribePlaylists();
   }
 
   componentDidUpdate() {
@@ -30,4 +30,7 @@ class PlaylistsComponent extends Component<Props, {}> {
   }
 }
 
-export const Playlists = connect(mapStateToProps, mapDispatchToProps)(PlaylistsComponent);
+export const Playlists = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PlaylistsComponent);

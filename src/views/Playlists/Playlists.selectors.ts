@@ -9,7 +9,7 @@ export const mapStateToProps = ({playlists}: RootState) => ({playlists: playlist
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {
-      requestPlaylists: playlistsActions.requestPlaylists,
+      subscribePlaylists: playlistsActions.subscribePlaylists,
       changeRoute: routerActions.changeRoute,
     },
     dispatch,
