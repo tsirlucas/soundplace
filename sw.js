@@ -56,11 +56,11 @@ const fileManifest = [
   },
   {
     "url": "bundle.js",
-    "revision": "d90b02057112930bd6ff00fce7242a8f"
+    "revision": "319474467459e396268e68a3a19555a9"
   },
   {
     "url": "index.html",
-    "revision": "b7f9e466193810057882c611bef2ff7d"
+    "revision": "3afa6557dc1647f1a700ef5d3711cb30"
   },
   {
     "url": "raven.min.js",
@@ -68,7 +68,7 @@ const fileManifest = [
   },
   {
     "url": "style.css",
-    "revision": "bcbb58bb52e47e4b97a36f34ded6168b"
+    "revision": "ed2c1ae1bcc0328f1486265628b9f7eb"
   }
 ];
 
@@ -78,8 +78,8 @@ const workboxSW = new self.WorkboxSW({
   "directoryIndex": "index.html"
 });
 workboxSW.precache(fileManifest);
-workboxSW.router.registerNavigationRoute("index.html");workboxSW.router.registerRoute(/^https:\/\/scontent\.xx\.fbcdn\.net\//, workboxSW.strategies.cacheFirst({
-  "cacheName": "scontent-cache",
+workboxSW.router.registerNavigationRoute("index.html");workboxSW.router.registerRoute(/^https:\/\/lh3\.googleusercontent\.com\//, workboxSW.strategies.cacheFirst({
+  "cacheName": "googleusercontent-cache",
   "cacheableResponse": {
     "statuses": [
       0,
@@ -94,8 +94,8 @@ workboxSW.router.registerNavigationRoute("index.html");workboxSW.router.register
     "maxAgeSeconds": 31536000
   }
 }), 'GET');
-workboxSW.router.registerRoute(/^https:\/\/mosaic\.scdn\.co\//, workboxSW.strategies.cacheFirst({
-  "cacheName": "mosaic-cache",
+workboxSW.router.registerRoute(/^https:\/\/i\.ytimg\.com\//, workboxSW.strategies.cacheFirst({
+  "cacheName": "ytimg-cache",
   "cacheableResponse": {
     "statuses": [
       0,
@@ -110,39 +110,7 @@ workboxSW.router.registerRoute(/^https:\/\/mosaic\.scdn\.co\//, workboxSW.strate
     "maxAgeSeconds": 31536000
   }
 }), 'GET');
-workboxSW.router.registerRoute(/^https:\/\/i\.scdn\.co\//, workboxSW.strategies.cacheFirst({
-  "cacheName": "iscdn-cache",
-  "cacheableResponse": {
-    "statuses": [
-      0,
-      200,
-      201,
-      301,
-      304,
-      302
-    ]
-  },
-  "cacheExpiration": {
-    "maxAgeSeconds": 31536000
-  }
-}), 'GET');
-workboxSW.router.registerRoute(/^https:\/\/pl\.scdn\.co\//, workboxSW.strategies.cacheFirst({
-  "cacheName": "plscdn-cache",
-  "cacheableResponse": {
-    "statuses": [
-      0,
-      200,
-      201,
-      301,
-      304,
-      302
-    ]
-  },
-  "cacheExpiration": {
-    "maxAgeSeconds": 31536000
-  }
-}), 'GET');
-workboxSW.router.registerRoute(/^https:\/\/youtube-cacheable-audio-stream\.herokuapp\.com\//, workboxSW.strategies.cacheFirst({
+workboxSW.router.registerRoute(/^https:\/\/api-soundplace\.com\/stream/, workboxSW.strategies.cacheFirst({
   "cacheName": "stream-cache",
   "cacheableResponse": {
     "statuses": [

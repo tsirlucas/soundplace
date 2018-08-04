@@ -6,6 +6,20 @@
  * Released under the MIT license
  */
 
+/*!
+    localForage -- Offline Storage, Improved
+    Version 1.5.7
+    https://localforage.github.io/localForage
+    (c) 2013-2017 Mozilla, Apache License 2.0
+*/
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+
 /*
 object-assign
 (c) Sindre Sorhus
