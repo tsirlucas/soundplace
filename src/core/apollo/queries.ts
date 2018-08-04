@@ -7,6 +7,7 @@ export const GET_USER = gql`
     currentUser {
       name
       image
+      importing
     }
   }
 `;
@@ -17,6 +18,7 @@ export const SUBSCRIBE_USER = gql`
       item {
         name
         image
+        importing
       }
     }
   }

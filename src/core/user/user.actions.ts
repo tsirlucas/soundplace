@@ -4,6 +4,9 @@ import {User} from 'models';
 
 export const actions = {
   subscribeUser: createAction('user/SUBSCRIBE_USER'),
+  unsubscribeUser: createAction('user/UNSUBSCRIBE_USER'),
+  import: createAction('user/IMPORT'),
+  cancelImport: createAction('user/CANCEL_IMPORT'),
   setUser: createAction<User>('user/SET_USER'),
 };
 
