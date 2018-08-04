@@ -16,7 +16,7 @@ import {Observable} from 'rxjs';
 export class Client {
   private static instance: Client;
   public client: ApolloClient<NormalizedCacheObject>;
-  private socketUrl = `${environment.settings.apiUrl}/graphql`.replace(/https?/, 'ws');
+  private socketUrl = `${environment.settings.apiUrl}/graphql`.replace(/http/, 'ws');
 
   private constructor() {
     const cache = new InMemoryCache();
