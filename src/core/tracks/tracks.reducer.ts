@@ -8,7 +8,9 @@ import {actions} from './tracks.actions';
 
 export const initialState = {
   data: null as IndexedTracks,
-  saved: {} as {[index: string]: {status: 'DOWNLOADING' | 'DONE'}},
+  saved: {} as {
+    [index: string]: {status: 'DOWNLOADING' | 'DONE'; size?: number; sizeValue?: string};
+  },
 };
 
 const saved = createReducer({}, initialState.saved)
@@ -18,14 +20,12 @@ const saved = createReducer({}, initialState.saved)
       [payload.id]: {status: 'DOWNLOADING'},
     };
   })
-  .on(storageActions.saveMusicSuccess, (state, payload) => ({
-    ...state,
-    [payload]: {status: 'DONE'},
-  }))
   .on(storageActions.requestCachedSongsSuccess, (state, payload) => ({
     ...state,
     ...payload.reduce((curr, next) => {
-      curr[next.data.id] =  {status: 'DONE'};
+      const splitted = next.request.url.split('/');
+      const key = splitted[splitted.length - 1];
+      curr[key] = {status: 'DONE', size: next.data.size, sizeValue: next.data.sizeValue};
       return curr;
     }, {}),
   }));

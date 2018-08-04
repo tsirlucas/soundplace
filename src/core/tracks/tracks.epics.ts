@@ -1,4 +1,5 @@
 import {Epic} from 'redux-observable';
+import {combineEpics} from 'redux-observable';
 
 import {RootState} from 'core';
 import {TracksClient} from 'core/apollo';
@@ -21,4 +22,12 @@ const tracksEpic: Epic<ActionsValues, RootState> = (action$) =>
       .takeUntil(action$.ofType(actions.unsubscribeTracks.getType())),
   );
 
-export default tracksEpic;
+const cachedTracksEpic: Epic<ActionsValues, RootState> = (action$) =>
+  action$.ofType(actions.subscribeToTracksIds.getType()).mergeMap(({payload}) =>
+    TracksClient.getInstance()
+      .subscribeByIds(payload as string[])
+      .map((value) => map[value.operation](value))
+      .takeUntil(action$.ofType(actions.subscribeToTracksIds.getType())),
+  );
+
+export default combineEpics(tracksEpic, cachedTracksEpic);

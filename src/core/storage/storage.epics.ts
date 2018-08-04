@@ -3,6 +3,7 @@ import {Epic} from 'redux-observable';
 import {Observable} from 'rxjs';
 
 import {RootState} from 'core';
+import {actions as tracksActions} from 'core/tracks';
 import {StoragedNavigator, StoragedTrack, StoragedTrackRequest} from 'models';
 
 import {formatBytes} from '../../util/formatBytes';
@@ -23,29 +24,33 @@ const estimateStorage = () => {
 // TODO Better small functions
 const getCachesKeys = () => Observable.fromPromise(caches.keys());
 const getCaches = (keys) =>
-  Observable.fromPromise(Promise.all(keys.map((cacheKey) => caches.open(cacheKey))));
+  Observable.fromPromise(Promise.all(keys.map((cacheKey: string) => caches.open(cacheKey))));
 const getCacheRequests = (cachesRes) =>
   Observable.fromPromise(Promise.all(cachesRes.map((cache) => cache.keys())));
-const deleteCacheRequests = (cachesRes, url) =>
+const deleteCacheRequests = (cachesRes, url: string) =>
   Observable.fromPromise(Promise.all(cachesRes.map((cache) => cache.delete(url))));
 const concatRequests = (cachesReq) => cachesReq.reduce((prev, curr) => prev.concat(curr), []);
 const filterSongsReq = (requests) => requests.filter(({url}) => url.includes(STREAM_SERVER_URL));
 
 //TODO: split this in small functions
-const parseSongs = (requests) =>
+const parseSongs = (requests): Observable<StoragedTrackRequest[]> =>
   Observable.fromPromise(
     Promise.all<StoragedTrackRequest>(
       requests.map((item) =>
         fetch(item.url)
           .then((res) => res.blob())
-          .then((blob) => ({
-            request: item,
-            data: {
-              ...JSON.parse(item.headers.get('Data')),
-              size: formatBytes(blob.size),
-              sizeValue: blob.size,
-            } as StoragedTrack,
-          })),
+          .then((blob) => {
+            const splitted = item.request.url.split('/');
+            const id = splitted[splitted.length - 1];
+            return {
+              request: item,
+              data: {
+                id,
+                size: formatBytes(blob.size),
+                sizeValue: blob.size,
+              } as StoragedTrack,
+            };
+          }),
       ),
     ),
   );
@@ -59,11 +64,11 @@ const getReadableStreamValue = (rStream) => {
   return read();
 };
 
-const fetchMusic = (track) =>
+const fetchMusic = (id: string) =>
   Observable.fromPromise(
     // temporary
-    fetch(`${STREAM_SERVER_URL}/${track.id}`, {
-      headers: {save: 'true', data: JSON.stringify(track)},
+    fetch(`${STREAM_SERVER_URL}/${id}`, {
+      headers: {save: 'true'},
     }),
   ).mergeMap((res) => {
     return Observable.fromPromise(getReadableStreamValue(res.body));
@@ -75,33 +80,63 @@ const storageEpic: Epic<ActionsValues, RootState> = (action$) =>
     .mergeMap(estimateStorage)
     .map(actions.loadStorageStatusSuccess);
 
+const $getCachedSongs = getCachesKeys()
+  .mergeMap(getCaches)
+  .mergeMap(getCacheRequests)
+  .map(concatRequests)
+  .map(filterSongsReq)
+  .map(parseSongs);
+
+const createCachedSongsProducer = () => {
+  const value = $getCachedSongs;
+  let cb: Function;
+
+  const emit = () => {
+    if (cb) cb(value);
+    return Observable.empty<never>();
+  };
+
+  return {
+    emit,
+    subscribe: (cbFunc: Function) => (cb = cbFunc),
+  };
+};
+
+const cachedSongsProducer = createCachedSongsProducer();
+
+const $cachedSongsObservable: Observable<StoragedTrackRequest[]> = Observable.create((observer) => {
+  cachedSongsProducer.subscribe((observable) => {
+    observable.subscribe(observer.next);
+  });
+});
+
 const cachedSongsEpic: Epic<ActionsValues, RootState> = (action$) =>
   action$
-    .ofType(actions.requestCachedSongs.getType())
-    .mergeMap(getCachesKeys)
-    .mergeMap(getCaches)
-    .mergeMap(getCacheRequests)
-    .map(concatRequests)
-    .map(filterSongsReq)
-    .mergeMap((songs) => parseSongs(songs).map(actions.requestCachedSongsSuccess));
+    .ofType(actions.subscribeCachedSongs.getType())
+    .mergeMap(() =>
+      $cachedSongsObservable.mergeMap((requests) =>
+        Observable.concat(
+          Observable.of(actions.requestCachedSongsSuccess(requests)),
+          Observable.of(tracksActions.subscribeToTracksIds(requests.map((item) => item.data.id))),
+        ),
+      ),
+    )
+    .takeUntil(action$.ofType(actions.unsubscribeCachedSongs.getType()));
 
 const saveMusicEpic: Epic<ActionsValues, RootState> = (action$) =>
   action$
     .ofType(actions.saveMusic.getType())
     .mergeMap(({payload}: Actions['saveMusic']) =>
-      fetchMusic(payload).mapTo(actions.saveMusicSuccess(payload.id)),
+      fetchMusic(payload.id).mergeMap(() => cachedSongsProducer.emit()),
     );
 
 const deleteMusicEpic: Epic<ActionsValues, RootState> = (action$) =>
   action$.ofType(actions.deleteMusic.getType()).mergeMap(({payload}) =>
     getCachesKeys()
       .mergeMap(getCaches)
-      .mergeMap((cacheRes) => deleteCacheRequests(cacheRes, payload))
+      .mergeMap((cacheRes) => deleteCacheRequests(cacheRes, `${STREAM_SERVER_URL}/${payload}`))
       .mergeMap(() =>
-        Observable.concat(
-          Observable.of(actions.loadStorageStatus()),
-          Observable.of(actions.requestCachedSongs()),
-        ),
+        Observable.concat(cachedSongsProducer.emit(), Observable.of(actions.loadStorageStatus())),
       ),
   );
 

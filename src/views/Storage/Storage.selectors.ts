@@ -9,7 +9,8 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {
       loadStorageStatus: storageActions.loadStorageStatus,
-      requestCachedSongs: storageActions.requestCachedSongs,
+      subscribeCachedSongs: storageActions.subscribeCachedSongs,
+      unsubscribeCachedSongs: storageActions.unsubscribeCachedSongs,
       deleteMusic: storageActions.deleteMusic,
     },
     dispatch,

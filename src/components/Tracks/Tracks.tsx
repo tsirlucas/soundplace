@@ -16,6 +16,7 @@ type Props = {
   player: RootState['player'];
   actions: {
     saveMusic: typeof storageActions.saveMusic;
+    deleteMusic: typeof storageActions.deleteMusic;
     subscribeTracks: typeof tracksActions.subscribeTracks;
     unsubscribeTracks: typeof tracksActions.unsubscribeTracks;
     play: typeof playerActions.playMusic;
@@ -37,6 +38,10 @@ export class Tracks extends Component<Props, {}> {
 
   save = (track: TrackType) => {
     this.props.actions.saveMusic(track);
+  };
+
+  delete = (track: TrackType) => {
+    this.props.actions.deleteMusic(track.id);
   };
 
   play = (track) => {
@@ -77,6 +82,7 @@ export class Tracks extends Component<Props, {}> {
                 play={this.play}
                 pause={this.pause}
                 onSave={this.save}
+                onDelete={this.delete}
                 playing={this.isPlaying(track)}
               />
             ))}

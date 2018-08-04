@@ -4,6 +4,7 @@ import {SocketUpdate, Track} from 'models';
 
 export const actions = {
   subscribeTracks: createAction<string>('tracks/SUBSCRIBE_TRACKS'),
+  subscribeToTracksIds: createAction<string[]>('tracks/SUBSCRIBE_TRACKS_IDS'),
   unsubscribeTracks: createAction('tracks/UNSUBSCRIBE_TRACKS'),
   setTracks: createAction<SocketUpdate<Track[]>>('tracks/SET_TRACKS'),
   addTrack: createAction<SocketUpdate<Track>>('tracks/ADD_TRACK'),

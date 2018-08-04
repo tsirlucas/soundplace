@@ -1,8 +1,6 @@
-import {Track} from './Track';
-
 export type Estimate = {usage: number; quota: number};
 
-interface Storage {
+interface Storage extends StorageManager {
   estimate: () => Promise<Estimate>;
 }
 
@@ -10,7 +8,8 @@ export interface StoragedNavigator extends Navigator {
   storage: Storage;
 }
 
-export interface StoragedTrack extends Track {
+export interface StoragedTrack {
+  id: string;
   size: string;
   sizeValue: number;
 }

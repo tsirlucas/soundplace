@@ -14,7 +14,7 @@ import {checkAuth} from './auth';
 import handleDirectAccess from './handleDirectAccess';
 import {browserHistory, updateRoute, updateState} from './routes.config';
 
-export class Routes extends Component<null, null> {
+export class Routes extends Component {
   unsubscribe: Function;
 
   shouldComponentUpdate() {

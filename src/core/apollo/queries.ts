@@ -86,4 +86,37 @@ export const SUBSCRIBE_TRACKS = gql`
   }
 `;
 
+export const GET_TRACKS_BY_IDS = gql`
+  query Tracks($ids: [ID!]) {
+    tracks(ids: $ids) {
+      id
+      name
+      channel
+      cover {
+        small
+        medium
+        big
+      }
+    }
+  }
+`;
+
+export const SUBSCRIBE_TRACKS_BY_IDS = gql`
+  subscription Tracks($ids: [ID!]) {
+    tracks(ids: $ids) {
+      operation
+      item {
+        id
+        name
+        channel
+        cover {
+          small
+          medium
+          big
+        }
+      }
+    }
+  }
+`;
+
 Client.getInstance().subscribe;

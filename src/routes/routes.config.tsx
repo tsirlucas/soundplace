@@ -29,6 +29,7 @@ export const privateRoutes = [
   {
     path: '/storage',
     icon: 'STORAGE',
+    viewbox: '30',
     header: 'Storage',
   },
 ];

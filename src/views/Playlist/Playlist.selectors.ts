@@ -23,6 +23,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
       subscribeTracks: tracksActions.subscribeTracks,
       unsubscribeTracks: tracksActions.unsubscribeTracks,
       saveMusic: storageActions.saveMusic,
+      deleteMusic: storageActions.deleteMusic,
       setList: playerActions.setList,
       toggle: playerActions.toggle,
     },

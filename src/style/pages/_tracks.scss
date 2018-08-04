@@ -1,0 +1,100 @@
+.tracks-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.track-item {
+  position: relative;
+  padding: 4px 70px;
+  border-bottom: 1px solid $gray;
+
+  &:hover {
+    background-color: $gray;
+  }
+
+  .play-button {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    padding: 5px;
+    background-color: $gray-dark;
+    border-radius: 50%;
+  }
+
+  .track-name {
+    padding: 10px 0;
+    color: $gray-dark;
+  }
+
+  .artist-info {
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .track-actions {
+    position: absolute;
+    top: 28px;
+    right: 10px;
+
+    & > * {
+      float: left;
+      margin: 0 15px;
+    }
+  }
+
+  .storage-button {
+    padding: 5px;
+    margin-top: -7px;
+    background-color: $gray-dark;
+    border-radius: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tracks-list {
+    float: left;
+    padding-bottom: 120px
+  }
+
+  .track-item {
+    float: left;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 0;
+    min-height: 120px;
+
+    .track-actions {
+      top: inherit;
+      bottom: 10px;
+      right: 0;
+
+      & > * {
+        margin-left: 7px;
+        margin-right: 7px;
+      }
+    }
+
+    .play-button {
+      top: 15px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .track-name {
+      padding-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .artist-info {
+      font-size: 13px;
+    }
+
+    .track-duration {
+      font-size: 12px;
+    }
+  }
+}
