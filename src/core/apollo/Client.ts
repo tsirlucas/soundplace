@@ -30,6 +30,7 @@ export class Client {
       uri: this.socketUrl,
       options: {
         reconnect: true,
+        timeout: 30000,
         connectionParams: () => ({
           authorization: Cookie.get('token'),
         }),
