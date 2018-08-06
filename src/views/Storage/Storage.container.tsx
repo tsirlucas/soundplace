@@ -16,11 +16,6 @@ type Props = MapStateToProps & MapDispatchToProps;
 class StorageComponent extends Component<Props, {}> {
   componentDidMount() {
     this.props.actions.loadStorageStatus();
-    this.props.actions.subscribeCachedSongs();
-  }
-
-  componentWillUnmount() {
-    this.props.actions.unsubscribeCachedSongs();
   }
 
   sortArr = (arr) => {
@@ -77,7 +72,7 @@ class StorageComponent extends Component<Props, {}> {
         <br />
         <div className="tracks-list">
           {cachedSongs &&
-            cachedSongs.map((item) => (
+            cachedSongs.filter((item) => item.name).map((item) => (
               <li className="track-item">
                 <h3 className="track-name">{item.name}</h3>
                 <p className="artist-info">{item.channel}</p>

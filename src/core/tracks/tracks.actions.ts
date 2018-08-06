@@ -2,14 +2,19 @@ import {createAction} from 'redux-act';
 
 import {SocketUpdate, Track} from 'models';
 
+type CategorizedTracks<T> = SocketUpdate<T> & {
+  type: 'playlist' | 'saved';
+  keep: string[];
+};
+
 export const actions = {
-  subscribeTracks: createAction<string>('tracks/SUBSCRIBE_TRACKS'),
-  subscribeToTracksIds: createAction<string[]>('tracks/SUBSCRIBE_TRACKS_IDS'),
-  unsubscribeTracks: createAction('tracks/UNSUBSCRIBE_TRACKS'),
-  setTracks: createAction<SocketUpdate<Track[]>>('tracks/SET_TRACKS'),
-  addTrack: createAction<SocketUpdate<Track>>('tracks/ADD_TRACK'),
-  updateTrack: createAction<SocketUpdate<Track>>('tracks/UPDATE_TRACK'),
-  removeTrack: createAction<SocketUpdate<Track>>('tracks/REMOVE_TRACK'),
+  subscribeToPlaylistTracks: createAction<string>('tracks/SUBSCRIBE_PLAYLIST_TRACKS'),
+  unsubscribeFromPlaylistTracks: createAction('tracks/UNSUBSCRIBE_PLAYLIST_TRACKS'),
+  subscribeToSavedTracks: createAction<string[]>('tracks/SUBSCRIBE_SAVED_TRACKS'),
+  setTracks: createAction<CategorizedTracks<Track[]>>('tracks/SET_TRACKS'),
+  addTrack: createAction<CategorizedTracks<Track>>('tracks/ADD_TRACK'),
+  updateTrack: createAction<CategorizedTracks<Track>>('tracks/UPDATE_TRACK'),
+  removeTrack: createAction<CategorizedTracks<Track>>('tracks/REMOVE_TRACK'),
   onOffline: createAction('tracks/ON_OFFLINE'),
 };
 

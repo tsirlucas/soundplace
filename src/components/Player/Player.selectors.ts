@@ -12,8 +12,9 @@ type OtherProps = {
   playerClass: string;
 };
 
-export const mapStateToProps = ({player}: RootState, otherProps: OtherProps) => ({
+export const mapStateToProps = ({player, tracks}: RootState, otherProps: OtherProps) => ({
   player,
+  cached: tracks.saved,
   ...otherProps,
 });
 
@@ -21,7 +22,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {
       saveMusic: storageActions.saveMusic,
-      subscribeTracks: tracksActions.subscribeTracks,
+      subscribeTracks: tracksActions.subscribeToPlaylistTracks,
       play: playerActions.playMusic,
       toggle: playerActions.toggle,
     },

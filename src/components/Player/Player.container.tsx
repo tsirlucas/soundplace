@@ -113,7 +113,9 @@ class PlayerComponent extends Component<Props, {}> {
   getStreamURL = (currentlyPlaying) => {
     if (!currentlyPlaying) return null;
     const {id} = currentlyPlaying;
-    return `${STREAM_SERVER_URL}/${id}`;
+    let url = `${STREAM_SERVER_URL}/${id}`;
+    if (this.props.cached[id]) url = url + '?save=true';
+    return url;
   };
 
   render({isDesktop, scrollbarWidth, width, player, actions, playerClass}: Props) {
@@ -132,7 +134,10 @@ class PlayerComponent extends Component<Props, {}> {
           <PlayerProgress player={this.playerElement} />,
           <div className="player-content-left">
             <div id="playing-details">
-              <div id="playing-cover" style={`background-image: url(${currentlyPlaying.cover.small});`} />
+              <div
+                id="playing-cover"
+                style={`background-image: url(${currentlyPlaying.cover.small});`}
+              />
               <div id="playing-data">
                 <div className="music">
                   <strong>{currentlyPlaying.name}</strong>

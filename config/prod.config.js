@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import WorkboxPlugin from 'workbox-webpack-plugin';
+import {GenerateSW} from 'workbox-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
@@ -22,12 +22,12 @@ export const prodPlugins = [
       to: './assets/report.html',
     },
   ]),
-  new WorkboxPlugin({
+  new GenerateSW({
+    swDest: 'sw.js',
     clientsClaim: true,
     skipWaiting: true,
-    handleFetch: true,
-    navigateFallback: 'index.html',
-    directoryIndex: 'index.html',
+    importWorkboxFrom: 'local',
+    navigateFallback: '/',
     globPatterns: ['**/*.{html,js,css,woff,woff2,eot,svg,png,json}'],
     globIgnores: ['*.map.js'],
     runtimeCaching: [
@@ -35,9 +35,9 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/lh3\.googleusercontent\.com\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'googleusercontent-cache',
-            maxEnteries: 200,
+          cacheName: 'googleusercontent-cache',
+          expiration: {
+            maxEntries: 100000,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
@@ -47,24 +47,25 @@ export const prodPlugins = [
         urlPattern: /^https:\/\/i\.ytimg\.com\//,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'ytimg-cache',
-            maxEnteries: 200,
+          cacheName: 'ytimg-cache',
+          expiration: {
+            maxEntries: 100000,
             maxAgeSeconds: 31536000,
           },
           cacheableResponse: {statuses: [0, 200, 201, 301, 304, 302]},
         },
       },
       {
-        urlPattern: /^https:\/\/api-soundplace\.com\/stream/,
+        urlPattern: /^https:\/\/api-soundplace\.com\/stream\/.*\?save=true/,
         handler: 'cacheFirst',
         options: {
-          cache: {
-            name: 'stream-cache',
-            maxEnteries: 200,
+          cacheName: 'stream-cache',
+          expiration: {
+            maxEntries: 100000,
             maxAgeSeconds: 31536000,
           },
-          cacheableResponse: {statuses: [200, 201]},
+
+          cacheableResponse: {statuses: [0, 200, 201, 206, 301, 304, 302]},
         },
       },
     ],

@@ -17,8 +17,8 @@ type Props = {
   actions: {
     saveMusic: typeof storageActions.saveMusic;
     deleteMusic: typeof storageActions.deleteMusic;
-    subscribeTracks: typeof tracksActions.subscribeTracks;
-    unsubscribeTracks: typeof tracksActions.unsubscribeTracks;
+    subscribeToTracks: typeof tracksActions.subscribeToPlaylistTracks;
+    unsubscribeFromTracks: typeof tracksActions.unsubscribeFromPlaylistTracks;
     play: typeof playerActions.playMusic;
     setList: typeof playerActions.setList;
     toggle: typeof playerActions.toggle;
@@ -29,11 +29,11 @@ export class Tracks extends Component<Props, {}> {
   state = {};
 
   componentDidMount() {
-    this.props.actions.subscribeTracks(this.props.id);
+    this.props.actions.subscribeToTracks(this.props.id);
   }
 
   componentWillUnmount() {
-    this.props.actions.unsubscribeTracks();
+    this.props.actions.unsubscribeFromTracks();
   }
 
   save = (track: TrackType) => {
@@ -63,6 +63,7 @@ export class Tracks extends Component<Props, {}> {
 
   render({tracks, playlist}: Props) {
     if (!tracks.data || !playlist) return null;
+    const playlistTracks = Object.keys(tracks.playlist).map((id) => tracks.data[id]);
 
     return (
       <section id="playlist">
@@ -75,7 +76,7 @@ export class Tracks extends Component<Props, {}> {
         </header>
         <main className="playlist-content">
           <ul className="tracks-list">
-            {Object.values(tracks.data).map((track) => (
+            {Object.values(playlistTracks).map((track) => (
               <Track
                 status={tracks.saved[track.id] ? tracks.saved[track.id].status : 'NOT-SAVED'}
                 track={track}

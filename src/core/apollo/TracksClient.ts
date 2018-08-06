@@ -46,26 +46,26 @@ export class TracksClient {
 
   private getByIds = (ids: string[]) => {
     return this.client
-      .watchQuery<{playlistTracks: Track[]}>({
+      .watchQuery<{tracks: Track[]}>({
         query: GET_TRACKS_BY_IDS,
         variables: {
           ids,
         },
       })
-      .map((res) => ({operation: 'NONE', item: res.data.playlistTracks}));
-  }
+      .map((res) => ({operation: 'NONE', item: res.data.tracks}));
+  };
 
   public subscribeByIds = (ids: string[]) => {
     return Observable.concat(
       this.getByIds(ids),
       this.client
-        .subscribe<{data: {playlistTracks: {operation: string; item: Track}}}>({
+        .subscribe<{data: {tracks: {operation: string; item: Track}}}>({
           query: SUBSCRIBE_TRACKS_BY_IDS,
           variables: {
             ids,
           },
         })
-        .map((res) => res.data.playlistTracks),
+        .map((res) => res.data.tracks),
     );
-  }
+  };
 }

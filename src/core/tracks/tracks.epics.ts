@@ -14,20 +14,21 @@ const map = {
   DELETE: actions.removeTrack,
 };
 
-const tracksEpic: Epic<ActionsValues, RootState> = (action$) =>
-  action$.ofType(actions.subscribeTracks.getType()).mergeMap(({payload}) =>
+
+const playlistTracksEpic: Epic<ActionsValues, RootState> = (action$, store) =>
+  action$.ofType(actions.subscribeToPlaylistTracks.getType()).mergeMap(({payload}) =>
     TracksClient.getInstance()
       .subscribe(payload as string)
-      .map((value) => map[value.operation](value))
-      .takeUntil(action$.ofType(actions.unsubscribeTracks.getType())),
+      .map((value) => map[value.operation]({...value, type: 'playlist', keep: Object.keys(store.getState().tracks.saved)}))
+      .takeUntil(action$.ofType(actions.unsubscribeFromPlaylistTracks.getType())),
   );
 
-const cachedTracksEpic: Epic<ActionsValues, RootState> = (action$) =>
-  action$.ofType(actions.subscribeToTracksIds.getType()).mergeMap(({payload}) =>
+const savedTracksEpic: Epic<ActionsValues, RootState> = (action$, store) =>
+  action$.ofType(actions.subscribeToSavedTracks.getType()).mergeMap(({payload}) =>
     TracksClient.getInstance()
       .subscribeByIds(payload as string[])
-      .map((value) => map[value.operation](value))
-      .takeUntil(action$.ofType(actions.subscribeToTracksIds.getType())),
+      .map((value) => map[value.operation]({...value, type: 'saved', keep: Object.keys(store.getState().tracks.playlist)}))
+      .takeUntil(action$.ofType(actions.subscribeToSavedTracks.getType())),
   );
 
-export default combineEpics(tracksEpic, cachedTracksEpic);
+export default combineEpics(playlistTracksEpic, savedTracksEpic);
