@@ -15,7 +15,7 @@ importScripts("workbox-v3.4.1/workbox-sw.js");
 workbox.setConfig({modulePathPrefix: "workbox-v3.4.1"});
 
 importScripts(
-  "precache-manifest.800c204984db1ac864d4f3098be580c8.js"
+  "precache-manifest.b3f61eb2f43f37a614149683e251f126.js"
 );
 
 workbox.skipWaiting();
@@ -34,4 +34,4 @@ workbox.routing.registerNavigationRoute("/");
 
 workbox.routing.registerRoute(/^https:\/\/lh3\.googleusercontent\.com\//, workbox.strategies.cacheFirst({ cacheName: "googleusercontent-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":100000,"maxAgeSeconds":31536000,"purgeOnQuotaError":false}), new workbox.cacheableResponse.Plugin({"statuses":[0,200,201,301,304,302]})] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/i\.ytimg\.com\//, workbox.strategies.cacheFirst({ cacheName: "ytimg-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":100000,"maxAgeSeconds":31536000,"purgeOnQuotaError":false}), new workbox.cacheableResponse.Plugin({"statuses":[0,200,201,301,304,302]})] }), 'GET');
-workbox.routing.registerRoute(/^https:\/\/api-soundplace\.com\/stream\/.*\?save=true/, workbox.strategies.cacheFirst({ cacheName: "stream-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":100000,"maxAgeSeconds":31536000,"purgeOnQuotaError":false}), new workbox.cacheableResponse.Plugin({"statuses":[0,200,201,206,301,304,302]})] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/api-soundplace\.com\/stream\//, workbox.strategies.cacheFirst({ cacheName: "stream-cache", plugins: [{ cacheWillUpdate: ({ request, response }) => { return caches.match(request.url, { ignoreSearch: true }).then(res => { /* ignore repeated songs */ if (res) { return null; } /* cache only save=true param */ if (request.url.includes('?save=true')) { return response; } /* ignore any other thing */ return null; }); }, cachedResponseWillBeUsed: ({ request, cachedResponse }) => { if (cachedResponse) { return cachedResponse; } /* this will match same url/diff query string where the original failed */ return caches.match(request.url, { ignoreSearch: true }); } }, new workbox.expiration.Plugin({"maxEntries":100000,"maxAgeSeconds":31536000,"purgeOnQuotaError":false}), new workbox.cacheableResponse.Plugin({"statuses":[0,200,201,206,301,304,302]})] }), 'GET');
