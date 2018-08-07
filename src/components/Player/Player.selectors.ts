@@ -12,9 +12,8 @@ type OtherProps = {
   playerClass: string;
 };
 
-export const mapStateToProps = ({player, tracks}: RootState, otherProps: OtherProps) => ({
+export const mapStateToProps = ({player}: RootState, otherProps: OtherProps) => ({
   player,
-  cached: tracks.saved,
   ...otherProps,
 });
 

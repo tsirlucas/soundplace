@@ -7,6 +7,30 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 import postcssPresetEnv from 'postcss-preset-env';
 
+const WBStreamPlugin = {
+  cacheWillUpdate: async ({request, response}) => {
+    // ignore repeated songs
+    if (await caches.match(request.url, {ignoreSearch: true})) {
+      return null;
+    }
+
+    // cache only save=true param
+    if (request.url.includes('?save=true')) {
+      return response;
+    }
+
+    // ignore any other thing
+    return null;
+  },
+  cachedResponseWillBeUsed: ({request, cachedResponse}) => {
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    // this will match same url/diff query string where the original failed
+    return caches.match(request.url, {ignoreSearch: true});
+  },
+};
+
 export const prodPlugins = [
   new CopyWebpackPlugin([
     {
@@ -28,8 +52,6 @@ export const prodPlugins = [
     skipWaiting: true,
     importWorkboxFrom: 'local',
     navigateFallback: '/',
-    globPatterns: ['**/*.{html,js,css,woff,woff2,eot,svg,png,json}'],
-    globIgnores: ['*.map.js'],
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/lh3\.googleusercontent\.com\//,
@@ -56,7 +78,7 @@ export const prodPlugins = [
         },
       },
       {
-        urlPattern: /^https:\/\/api-soundplace\.com\/stream\/.*\?save=true/,
+        urlPattern: /^https:\/\/api-soundplace\.com\/stream\//,
         handler: 'cacheFirst',
         options: {
           cacheName: 'stream-cache',
@@ -66,6 +88,33 @@ export const prodPlugins = [
           },
 
           cacheableResponse: {statuses: [0, 200, 201, 206, 301, 304, 302]},
+          plugins: [
+            {
+              cacheWillUpdate: ({request, response}) => {
+                return caches.match(request.url, {ignoreSearch: true}).then((res) => {
+                  /* ignore repeated songs */
+                  if (res) {
+                    return null;
+                  }
+
+                  /* cache only save=true param */
+                  if (request.url.includes('?save=true')) {
+                    return response;
+                  }
+
+                  /* ignore any other thing */
+                  return null;
+                });
+              },
+              cachedResponseWillBeUsed: ({request, cachedResponse}) => {
+                if (cachedResponse) {
+                  return cachedResponse;
+                }
+                /* this will match same url/diff query string where the original failed */
+                return caches.match(request.url, {ignoreSearch: true});
+              },
+            },
+          ],
         },
       },
     ],

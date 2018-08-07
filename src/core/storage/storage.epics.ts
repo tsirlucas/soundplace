@@ -28,7 +28,9 @@ const getCaches = (keys) =>
 const getCacheRequests = (cachesRes) =>
   Observable.fromPromise(Promise.all(cachesRes.map((cache) => cache.keys())));
 const deleteCacheRequests = (cachesRes, url: string) =>
-  Observable.fromPromise(Promise.all(cachesRes.map((cache) => cache.delete(url))));
+  Observable.fromPromise(
+    Promise.all(cachesRes.map((cache) => cache.delete(url, {ignoreSearch: true}))),
+  );
 const concatRequests = (cachesReq) => cachesReq.reduce((prev, curr) => prev.concat(curr), []);
 const filterSongsReq = (requests) => requests.filter(({url}) => url.includes(STREAM_SERVER_URL));
 
@@ -55,11 +57,17 @@ const parseSongs = (requests): Observable<StoragedTrackRequest[]> =>
 const fetchMusic = (id: string) => {
   return Observable.fromPromise(
     new Promise((res) => {
-      const audio = new Audio(`${STREAM_SERVER_URL}/${id}?save=true`);
+      const audio = new Audio(
+        `${STREAM_SERVER_URL}/${id}?save=true&cacheBursting=${new Date().getTime()}`,
+      );
       audio.playbackRate = 16.0;
       audio.muted = true;
       audio.play();
-      audio.onended = () => res();
+      audio.onended = () => {
+        audio.removeAttribute('src');
+        audio.load();
+        res();
+      };
     }),
   );
 };
@@ -83,7 +91,6 @@ const createCachedSongsProducer = () => {
   let cb: Function;
 
   const emit = () => {
-    // console.log('emitting', cb);
     if (cb) cb(value());
     return Observable.empty<never>();
   };
@@ -102,16 +109,8 @@ const createCachedSongsProducer = () => {
 const cachedSongsProducer = createCachedSongsProducer();
 
 const $cachedSongsObservable: Observable<StoragedTrackRequest[]> = Observable.create((observer) => {
-  // console.log('wat');
   cachedSongsProducer.subscribe((observable) =>
-    observable.subscribe((res) => {
-      // console.log(res);
-      return res
-        .map((arr) => {
-          return observer.next(arr);
-        })
-        .subscribe();
-    }),
+    observable.subscribe((res) => res.map((arr) => observer.next(arr)).subscribe()),
   );
 });
 
@@ -124,7 +123,6 @@ const cachedSongsEpic: Epic<ActionsValues, RootState> = (action$, store) =>
           ...Object.keys(store.getState().tracks.saved),
         ].filter((item, pos, self) => self.indexOf(item) === pos);
 
-        // console.log(requests);
         return Observable.concat(
           Observable.of(actions.requestCachedSongsSuccess(requests)),
           songsToSubs.length
@@ -136,20 +134,17 @@ const cachedSongsEpic: Epic<ActionsValues, RootState> = (action$, store) =>
   );
 
 const saveMusicEpic: Epic<ActionsValues, RootState> = (action$) =>
-  action$.ofType(actions.saveMusic.getType()).mergeMap(({payload}: Actions['saveMusic']) =>
-    fetchMusic(payload.id).mergeMap(() => {
-      // console.log('hey');
-      return cachedSongsProducer.emit();
-    }),
-  );
+  action$
+    .ofType(actions.saveMusic.getType())
+    .mergeMap(({payload}: Actions['saveMusic']) =>
+      fetchMusic(payload.id).mergeMap(cachedSongsProducer.emit),
+    );
 
 const deleteMusicEpic: Epic<ActionsValues, RootState> = (action$) =>
   action$.ofType(actions.deleteMusic.getType()).mergeMap(({payload}) =>
     getCachesKeys()
       .mergeMap(getCaches)
-      .mergeMap((cacheRes) =>
-        deleteCacheRequests(cacheRes, `${STREAM_SERVER_URL}/${payload}?save=true`),
-      )
+      .mergeMap((cacheRes) => deleteCacheRequests(cacheRes, `${STREAM_SERVER_URL}/${payload}`))
       .mergeMap(() =>
         Observable.concat(cachedSongsProducer.emit(), Observable.of(actions.loadStorageStatus())),
       ),

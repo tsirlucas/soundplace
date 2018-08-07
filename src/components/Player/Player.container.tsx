@@ -113,9 +113,7 @@ class PlayerComponent extends Component<Props, {}> {
   getStreamURL = (currentlyPlaying) => {
     if (!currentlyPlaying) return null;
     const {id} = currentlyPlaying;
-    let url = `${STREAM_SERVER_URL}/${id}`;
-    if (this.props.cached[id]) url = url + '?save=true';
-    return url;
+    return `${STREAM_SERVER_URL}/${id}`;
   };
 
   render({isDesktop, scrollbarWidth, width, player, actions, playerClass}: Props) {
