@@ -53,10 +53,7 @@
   bottom: 77px;
   left: 0;
 
-  -moz-transition: width 1.5s ease-in;
-  -webkit-transition: width 1.5s ease-in;
-  -o-transition: width 1.5s ease-in;
-  transition: width 1.5s ease-in;
+  transition: width linear;
 
   &:after {
     content: "";

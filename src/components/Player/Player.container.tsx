@@ -32,11 +32,12 @@ class PlayerComponent extends Component<Props, {}> {
 
     const {list} = this.props.player;
     const currentlyPlaying = list && list[this.props.player.currentId];
-    console.log(currentlyPlaying);
     return (
       <div id="player" style={style} className={playerClass}>
         {currentlyPlaying && [
-          <PlayerProgress onTimeUpdate={PlayerService.getInstance().onTimeUpdate} />,
+          player.duration ? (
+            <PlayerProgress currTime={player.currentTime} duration={player.duration} />
+          ) : null,
           <div className="player-content-left">
             <div id="playing-details">
               <div

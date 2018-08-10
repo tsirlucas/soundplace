@@ -10,7 +10,7 @@ export const actions = {
   toggle: createAction('player/PLAYER_TOGGLE'),
   playMusic: createAction<string>('player/CHANGE_MUSIC'),
   setList: createAction<IndexedTracks>('player/SET_LIST'),
-  updateTime: createAction<number>('player/UPDATE_TIME'),
+  updateTime: createAction<{currentTime: number; duration: number}>('player/UPDATE_TIME'),
 
   initPlayerSuccess: createAction<PlayerState>('player/INIT_PLAYER_SUCCESS'),
   initPlayerError: createAction('player/INIT_PLAYER_ERROR'),

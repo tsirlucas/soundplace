@@ -24,6 +24,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
       subscribeTracks: tracksActions.subscribeToPlaylistTracks,
       play: playerActions.playMusic,
       toggle: playerActions.toggle,
+      updateTime: playerActions.updateTime,
     },
     dispatch,
   ),

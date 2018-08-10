@@ -51,26 +51,29 @@ export class PlayerService {
   };
 
   safePlay = () => {
-    this.setMediaSession();
-
-    // Avoids media session to be closed
-    const currTrack = this.playerState.list[this.playerState.currentId];
-    this.player.pause();
-    const temporaryPlayer = new Audio();
-    temporaryPlayer.preload = 'none';
-    temporaryPlayer.src = this.getStreamURL(currTrack);
-    temporaryPlayer.play().then(() => {
-      this.player.src = '';
-      this.player = temporaryPlayer;
-    });
+    if (this.player.src.includes(this.playerState.currentId)) {
+      this.player.play();
+    } else {
+      // Avoids closing media session
+      const currTrack = this.playerState.list[this.playerState.currentId];
+      this.player.pause();
+      const temporaryPlayer = new Audio();
+      temporaryPlayer.preload = 'none';
+      temporaryPlayer.src = this.getStreamURL(currTrack);
+      temporaryPlayer.addEventListener('ended', this.walk);
+      temporaryPlayer.addEventListener('timeupdate', this.keepStateUpdated);
+      temporaryPlayer.play().then(() => {
+        this.player.src = '';
+        this.player = temporaryPlayer;
+      });
+    }
   };
 
   setPlayer = (player: MapStateToProps['player'], actions: MapDispatchToProps['actions']) => {
     this.actions = actions;
     this.playerState = player;
+    this.setMediaSession();
 
-    this.player.addEventListener('ended', this.walk);
-    this.player.addEventListener('timeupdate', this.keepStateUpdated);
     if (player.isPlaying) {
       this.safePlay();
     } else {
@@ -110,15 +113,15 @@ export class PlayerService {
     return currIndex !== 0;
   };
 
-  onTimeUpdate = (cb: EventListenerOrEventListenerObject) =>
-    this.player.addEventListener('timeupdate', cb);
-
   keepStateUpdated = (e) => {
+    const {currentTime, duration} = e.target as HTMLAudioElement;
+    this.actions.updateTime({currentTime, duration});
     Cookie.set(
       'playerState',
       JSON.stringify({
         ...this.playerState,
-        lastCurrentTime: e.target.currentTime,
+        lastCurrentTime: currentTime,
+        lastDuration: duration,
       }),
       {secure: this.secure},
     );

@@ -9,6 +9,7 @@ export const initialState = {
   list: null as IndexedTracks,
   isPlaying: false,
   currentTime: null as number,
+  duration: null as number,
   currentId: null as string,
 };
 
@@ -23,8 +24,12 @@ const isPlaying = createReducer({}, initialState.isPlaying)
 
 const currentTime = createReducer({}, initialState.currentTime).on(
   actions.updateTime,
-  (_state, payload) => payload,
+  (_state, {currentTime}) => currentTime,
 );
+
+const duration = createReducer({}, initialState.duration)
+  .on(actions.updateTime, (_state, {duration}) => duration)
+  .on(actions.playMusic, () => null);
 
 const list = createReducer({}, initialState.list).on(actions.setList, (_state, payload) => payload);
 
@@ -34,4 +39,5 @@ export const player = combineReducers<PlayerState>({
   currentId,
   isPlaying,
   currentTime,
+  duration,
 });
