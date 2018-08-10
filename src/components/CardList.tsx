@@ -30,9 +30,7 @@ const CardListItem = ({item, open}: ItemProps) => (
         <img data-src={item.cover.medium || 'http://via.placeholder.com/200x200'} alt={item.name} />
       </div>
       <div className="cardlist-item-title">
-        <figcaption>
-          <span>{item.name}</span>
-        </figcaption>
+        <figcaption>{item.name}</figcaption>
       </div>
     </figure>
   </div>

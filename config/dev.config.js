@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import webpack from 'webpack';
 import Dashboard from 'webpack-dashboard/plugin';
+import postcssPresetEnv from 'postcss-preset-env';
 
 export const devPlugins = [
   new BrowserSyncPlugin(
@@ -46,6 +47,17 @@ export const devServerconfig = {
 export const devLoaders = [
   {
     test: /\.(scss|css)$/,
-    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          ident: 'postcss',
+          plugins: () => [postcssPresetEnv()],
+        },
+      },
+      'sass-loader',
+    ],
   },
 ];
