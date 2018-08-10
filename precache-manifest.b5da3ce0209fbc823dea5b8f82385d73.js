@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "assets/img/apple-touch-icon.png"
   },
   {
-    "revision": "befc7bd629557c15fb98",
+    "revision": "2397f60d96451f672243",
     "url": "bundle.js"
   },
   {
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "raven.min.js"
   },
   {
-    "revision": "befc7bd629557c15fb98",
+    "revision": "2397f60d96451f672243",
     "url": "style.css"
   },
   {
