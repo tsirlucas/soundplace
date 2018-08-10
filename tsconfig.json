@@ -33,6 +33,8 @@
       "core/*": ["src/core/*"],
       "models": ["src/models/index.ts"],
       "models/*": ["src/models/*"],
+      "services": ["src/services/index.ts"],
+      "services/*": ["src/services/*"],
       "utils": ["src/utils/index.ts"],
       "utils/*": ["src/utils/*"],
       "style": ["src/style/index.ts"],

@@ -1,8 +1,8 @@
-import Cookie from 'js-cookie';
 import {Component, h} from 'preact';
 import {connect} from 'preact-redux';
 
-import {STREAM_SERVER_URL} from '../../core/api/api.constants';
+import {PlayerService} from 'services';
+
 import {Icon} from '../Icons';
 import {
   mapDispatchToProps,
@@ -12,124 +12,31 @@ import {
 } from './Player.selectors';
 import PlayerProgress from './Progressbar';
 
-const secure = process.env.NODE_ENV === 'production';
-
 type Props = MapStateToProps & MapDispatchToProps;
 
 class PlayerComponent extends Component<Props, {}> {
-  playerElement: HTMLAudioElement;
-
-  componentWillReceiveProps(nextProps: Props) {
-    Cookie.set('playerState', JSON.stringify(nextProps.player), {secure});
+  componentWillMount() {
+    PlayerService.getInstance().setPlayer(this.props.player, this.props.actions);
   }
 
-  componentDidMount() {
-    this.playerElement = document.querySelector('#player-element');
-    const {player} = this.props;
-
-    player.currentTime ? (this.playerElement.currentTime = player.currentTime) : null;
+  componentWillReceiveProps(nextProps) {
+    PlayerService.getInstance().setPlayer(nextProps.player, nextProps.actions);
   }
-
-  componentDidUpdate() {
-    this.setPlayer(this.props.player);
-  }
-
-  setPlayer = (player) => {
-    this.playerElement = document.querySelector('#player-element');
-
-    this.setMediaSession();
-
-    this.playerElement.addEventListener('ended', this.onEnded);
-    this.playerElement.addEventListener('timeupdate', this.onTimeUpdate);
-
-    player.isPlaying ? this.playerElement.play() : this.playerElement.pause();
-  };
-
-  next = () => {
-    const currId = this.props.player.currentId;
-    const list = Object.keys(this.props.player.list);
-    const nextIndex = list.indexOf(currId) + 1;
-    this.props.actions.play(list[nextIndex]);
-  };
-
-  previous = () => {
-    const currId = this.props.player.currentId;
-    const list = Object.keys(this.props.player.list);
-    const nextIndex = list.indexOf(currId) - 1;
-    this.props.actions.play(list[nextIndex]);
-  };
-
-  setMediaSession = () => {
-    if ('mediaSession' in navigator) {
-      const {player} = this.props;
-      const {currentId} = player;
-      const currentlyPlaying = player.list[currentId];
-
-      navigator.mediaSession.metadata = new window['MediaMetadata']({
-        title: currentlyPlaying.name,
-        artwork: [{src: currentlyPlaying.cover.big, type: 'image/png'}],
-      });
-
-      navigator.mediaSession.setActionHandler('play', this.props.actions.toggle);
-      navigator.mediaSession.setActionHandler('pause', this.props.actions.toggle);
-      navigator.mediaSession.setActionHandler(
-        'previoustrack',
-        this.hasPrevious() ? this.previous : null,
-      );
-      navigator.mediaSession.setActionHandler('nexttrack', this.hasNext() ? this.next : null);
-    }
-  };
-
-  onTimeUpdate = (e) => {
-    Cookie.set(
-      'playerState',
-      JSON.stringify({
-        ...this.props.player,
-        lastCurrentTime: e.target.currentTime,
-      }),
-      {secure},
-    );
-  };
-
-  onEnded = () => {
-    if (this.hasNext()) {
-      this.next();
-    }
-  };
-
-  hasPrevious = () => {
-    if (!this.props.player.list) return false;
-    const currId = this.props.player.currentId;
-    return Object.keys(this.props.player.list).indexOf(currId) !== 0;
-  };
-
-  hasNext = () => {
-    if (!this.props.player.list) return false;
-    const currId = this.props.player.currentId;
-    const list = Object.keys(this.props.player.list);
-    return list.indexOf(currId) !== list.length - 1;
-  };
-
-  getStreamURL = (currentlyPlaying) => {
-    if (!currentlyPlaying) return null;
-    const {id} = currentlyPlaying;
-    return `${STREAM_SERVER_URL}/${id}`;
-  };
 
   render({isDesktop, scrollbarWidth, width, player, actions, playerClass}: Props) {
     const parsedWidth = isDesktop ? width - scrollbarWidth : width;
     const style = `width: ${parsedWidth}px;`;
 
-    const hasPrevious = this.hasPrevious();
-    const hasNext = this.hasNext();
+    const hasPrevious = PlayerService.getInstance().hasPrev();
+    const hasNext = PlayerService.getInstance().hasNext();
 
     const {list} = this.props.player;
     const currentlyPlaying = list && list[this.props.player.currentId];
-
+    console.log(currentlyPlaying);
     return (
       <div id="player" style={style} className={playerClass}>
         {currentlyPlaying && [
-          <PlayerProgress player={this.playerElement} />,
+          <PlayerProgress onTimeUpdate={PlayerService.getInstance().onTimeUpdate} />,
           <div className="player-content-left">
             <div id="playing-details">
               <div
@@ -148,7 +55,7 @@ class PlayerComponent extends Component<Props, {}> {
             <div id="player-controls">
               <div
                 className={`prev-button ${!hasPrevious ? 'disabled' : ''}`}
-                onClick={this.hasPrevious() ? this.previous : () => null}
+                onClick={hasPrevious ? PlayerService.getInstance().prev : () => null}
               >
                 <Icon icon="PREVIOUS_BUTTON" size="24" color={hasPrevious ? 'white' : 'gray'} />
               </div>
@@ -161,19 +68,13 @@ class PlayerComponent extends Component<Props, {}> {
               </div>
               <div
                 className={`next-button ${!hasNext ? 'disabled' : ''}`}
-                onClick={this.hasNext() ? this.next : () => null}
+                onClick={hasNext ? PlayerService.getInstance().next : () => null}
               >
                 <Icon icon="SKIP_BUTTON" size="24" color={hasNext ? 'white' : 'gray'} />
               </div>
             </div>
           </div>,
         ]}
-        <audio
-          id="player-element"
-          src={this.getStreamURL(currentlyPlaying)}
-          preload="none"
-          autoPlay
-        />
       </div>
     );
   }

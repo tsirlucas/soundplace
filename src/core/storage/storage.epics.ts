@@ -22,7 +22,8 @@ const estimateStorage = () => {
 };
 
 // TODO Better small functions
-const getCachesKeys = () => Observable.fromPromise(caches.keys());
+const getCachesKeys = () =>
+  window.caches ? Observable.fromPromise(caches.keys()) : Observable.empty<never>();
 const getCaches = (keys) =>
   Observable.fromPromise(Promise.all(keys.map((cacheKey: string) => caches.open(cacheKey))));
 const getCacheRequests = (cachesRes) =>

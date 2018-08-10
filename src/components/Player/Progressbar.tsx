@@ -5,14 +5,14 @@ type State = {
 };
 
 type Props = {
-  player: HTMLAudioElement;
+  onTimeUpdate: (cb: EventListenerOrEventListenerObject) => void;
 };
 
 export default class PlayerProgress extends Component<Props, State> {
   componentWillReceiveProps(nextProps: Props) {
-    nextProps.player.addEventListener('timeupdate', (e) => {
+    nextProps.onTimeUpdate((e) => {
       const {currentTime, duration} = e.target as HTMLAudioElement;
-      const progressPercentage = currentTime / duration * 100;
+      const progressPercentage = (currentTime / duration) * 100;
       this.setState({progressPercentage});
     });
   }
