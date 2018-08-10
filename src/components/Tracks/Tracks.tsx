@@ -45,7 +45,12 @@ export class Tracks extends Component<Props, {}> {
   };
 
   play = (track) => {
-    this.props.actions.setList(this.props.tracks.data);
+    const listIds = Object.keys(this.props.tracks.playlist);
+    const list = listIds.reduce((curr, next) => {
+      curr[next] = this.props.tracks.data[next];
+      return curr;
+    }, {});
+    this.props.actions.setList(list);
     this.props.actions.play(track.id);
   };
 
