@@ -1,6 +1,6 @@
 # Sound Place
 
-A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Spotify and Youtube playlists and songs.
+A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Youtube playlists and songs.
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/tsirlucas/soundplace.svg?token=e89f78d8d624e9199c4384185ba87645ef4309023ffbaaeee1133b0183921fd6&ts=1508702348672)](https://greenkeeper.io/)
 [![build status](https://travis-ci.com/tsirlucas/soundplace.svg?token=ZNhrvg7GyFkRokuwtw6s&branch=master)](https://travis-ci.com/tsirlucas/soundplace) 
