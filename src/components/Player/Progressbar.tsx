@@ -14,10 +14,6 @@ export default class PlayerProgress extends Component<Props, State> {
     return this.state.progressPercentage !== nextState.progressPercentage;
   }
 
-  componentWillMount() {
-    console.log('what');
-  }
-
   componentWillReceiveProps(nextProps: Props) {
     const {currTime, duration} = nextProps;
     const progressPercentage = (currTime / duration) * 100;
