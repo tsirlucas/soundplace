@@ -14,7 +14,7 @@ export const checkAuth = (Route: JSX.Element, isPrivate: boolean, path?: string)
       return Route;
     }
     const from = path ? path : hash.slice(1, -1).split('?')[0];
-    return <Redirect from={from} to="/playlists" />;
+    return from ? <Redirect from={from} to="/playlists" /> : Route;
   }
   const needToRedirect = !hash.includes('/login');
   //If route is private and his not on /login already, user is redirected to app's public root, else user proceeds.

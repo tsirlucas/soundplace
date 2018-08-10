@@ -49,7 +49,6 @@ export class Routes extends Component {
             {checkAuth(
               <AppLayout>
                 <Switch>
-                  <Route path="/" exact={true} component={() => <Redirect to="/playlists" />} />
                   <Route
                     path="/playlists"
                     render={(props) => (
