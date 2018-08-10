@@ -7,6 +7,31 @@
   animation-duration: 300ms;
 }
 
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount + 2; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background-color: #282828;
+  }
+}
+
 #player {
   position: absolute;
   display: flex;
@@ -32,11 +57,10 @@
 
   .music {
     font-size: 1em;
-    padding: 7px 0;
   }
 
   .artist {
-    font-size: 14px;
+    font-size: 15px;
     color: $gray-dark;
   }
 
@@ -112,7 +136,6 @@
 
 #playing-details {
   width: auto;
-  max-width: 250px;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -125,7 +148,7 @@
     display: flex;
     bottom: $bottombar-height;
     left: 0;
-    padding: 5px;
+    padding: 5px 15px;
     height: $bottombar-height;
     background-color: #282828;
     justify-content: space-around;
@@ -148,8 +171,15 @@
       width: 50%;
     }
     .music {
-      font-size: 1em;
+      font-size: 12px;
       padding: 2px 0;
+      margin-bottom: 3px;
+      @include multiLineEllipsis($lineHeight: 12px, $lineCount: 2);
+    }
+
+    .artist {
+      font-size: 12px;
+      color: $gray-dark;
     }
   }
 
