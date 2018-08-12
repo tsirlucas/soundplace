@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "a0e46feb3cc577478b127936e739dd08",
-    "url": "assets/img/apple-touch-icon.png"
+    "revision": "b2dd757049bba29cf086ca386a57b7ec",
+    "url": "assets/img/avatar.jpeg"
   },
   {
-    "revision": "005c5d44362d8ca432cb",
+    "revision": "78d2ecabfea042e407f4",
     "url": "bundle.js"
   },
   {
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "raven.min.js"
   },
   {
-    "revision": "005c5d44362d8ca432cb",
+    "revision": "78d2ecabfea042e407f4",
     "url": "style.css"
   },
   {
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "assets/img/favicon-16x16.png"
   },
   {
-    "revision": "b2dd757049bba29cf086ca386a57b7ec",
-    "url": "assets/img/avatar.jpeg"
+    "revision": "a0e46feb3cc577478b127936e739dd08",
+    "url": "assets/img/apple-touch-icon.png"
   },
   {
     "revision": "cf3fdf7af60a294d6d3f48cb7ad82488",
