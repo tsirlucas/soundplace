@@ -7,31 +7,6 @@
   animation-duration: 300ms;
 }
 
-@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1){
-  overflow: hidden;
-  position: relative;
-  line-height: $lineHeight;
-  max-height: $lineHeight * $lineCount + 2; 
-  text-align: justify;
-  margin-right: -1em;
-  padding-right: 1em;
-  &:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    background-color: #282828;
-  }
-}
-
 #player {
   position: absolute;
   display: flex;
@@ -174,7 +149,7 @@
       font-size: 12px;
       padding: 2px 0;
       margin-bottom: 3px;
-      @include multiLineEllipsis($lineHeight: 12px, $lineCount: 2);
+      @include multiLineEllipsis($width: 50%, $lineHeight: 12px, $lineCount: 2, $bgColor: #282828);
     }
 
     .artist {

@@ -31,7 +31,9 @@ const CardListItem = ({item, open}: ItemProps) => (
       </div>
       <div className="cardlist-item-title">
         <figcaption>
-          <div>{item.name}</div>
+          <div>
+            <span>{item.name}</span>
+          </div>
         </figcaption>
       </div>
     </figure>

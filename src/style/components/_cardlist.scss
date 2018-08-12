@@ -19,7 +19,7 @@
     figure {
       margin: 0;
       padding: 0;
-      max-width: 200px;
+      max-width: 185px;
     }
 
     img {
@@ -28,24 +28,12 @@
       width: auto;
       height: auto;
     }
+  }
 
-    figcaption {
-      padding: 10px;
-      font-weight: 100;
-      font-size: 15px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    span {
-      display: -webkit-box;
-      max-width: 200px;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+  .cardlist-item-title {
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .cardlist-item-cover {
@@ -54,12 +42,23 @@
     align-items: center;
   }
 
-  .cardlist-item-title {
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $black-dark;
+  figcaption div {
+    font-weight: 100;
+    font-size: 15px;
+    @include multiLineEllipsis($width: 140px, $lineHeight: 15px, $lineCount: 2, $bgColor: white);
+    text-align: center;
+    padding-left: 1em;
+    &:before {
+      right: 4px;
+      bottom: 2px;
+    }
+  }
+
+  figcaption div span {
+    text-align: center;
+    word-break: break-all;
+    max-width: 185px;
+    max-height: 15px * 2
   }
 }
 
@@ -72,6 +71,10 @@
       width: 140px;
       height: 190px;
 
+      figure {
+        max-width: 140px !important;
+      }
+
       img {
         display: block;
         max-width: 140px;
@@ -81,25 +84,31 @@
       }
     }
 
+    .cardlist-item-title {
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+    }
+
     .cardlist-item-cover {
       min-height: 140px;
       display: flex;
       align-items: center;
     }
 
-    .cardlist-item-title {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    figcaption div {
+      @include multiLineEllipsis($width: 140px, $lineHeight: 15px, $lineCount: 2, $bgColor: white);
+      text-align: center;
+      padding-left: 1em;
+      &:before {
+        right: 4px;
+        bottom: 2px;
+      }
     }
-
-    figure {
-      max-width: 140px !important;
-    }
-
-    span {
-      width: 140px;
+  
+    figcaption div span {
+      max-width: 110px;
+      max-height: 15px * 2
     }
   }
 }
