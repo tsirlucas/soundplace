@@ -150,6 +150,7 @@
       padding: 2px 0;
       margin-bottom: 3px;
       @include multiLineEllipsis($width: 50%, $lineHeight: 12px, $lineCount: 2, $bgColor: #282828);
+      word-break: break-all;
     }
 
     .artist {
