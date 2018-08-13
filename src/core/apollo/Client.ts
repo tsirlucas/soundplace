@@ -49,7 +49,7 @@ export class Client {
       new RetryLink({
         delay: {
           initial: 300,
-          max: 3000,
+          max: Infinity,
           jitter: true,
         },
         attempts: {
