@@ -9,19 +9,21 @@ import postcssPresetEnv from 'postcss-preset-env';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const WBStreamPlugin = {
-  cacheWillUpdate: async ({request, response}) => {
-    // ignore repeated songs
-    if (await caches.match(request.url, {ignoreSearch: true})) {
+  cacheWillUpdate: ({request, response}) => {
+    caches.match(request.url, {ignoreSearch: true}).then((res) => {
+      // ignore repeated songs
+      if (res) {
+        return null;
+      }
+
+      // cache only save=true param
+      if (request.url.includes('?save=true')) {
+        return response;
+      }
+
+      // ignore any other thing
       return null;
-    }
-
-    // cache only save=true param
-    if (request.url.includes('?save=true')) {
-      return response;
-    }
-
-    // ignore any other thing
-    return null;
+    });
   },
   cachedResponseWillBeUsed: ({request, cachedResponse}) => {
     if (cachedResponse) {
