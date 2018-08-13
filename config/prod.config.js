@@ -6,6 +6,7 @@ import CnameWebpackPlugin from 'cname-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 import postcssPresetEnv from 'postcss-preset-env';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const WBStreamPlugin = {
   cacheWillUpdate: async ({request, response}) => {
@@ -88,33 +89,7 @@ export const prodPlugins = [
           },
 
           cacheableResponse: {statuses: [0, 200, 201, 206, 301, 304, 302]},
-          plugins: [
-            {
-              cacheWillUpdate: ({request, response}) => {
-                return caches.match(request.url, {ignoreSearch: true}).then((res) => {
-                  /* ignore repeated songs */
-                  if (res) {
-                    return null;
-                  }
-
-                  /* cache only save=true param */
-                  if (request.url.includes('?save=true')) {
-                    return response;
-                  }
-
-                  /* ignore any other thing */
-                  return null;
-                });
-              },
-              cachedResponseWillBeUsed: ({request, cachedResponse}) => {
-                if (cachedResponse) {
-                  return cachedResponse;
-                }
-                /* this will match same url/diff query string where the original failed */
-                return caches.match(request.url, {ignoreSearch: true});
-              },
-            },
-          ],
+          plugins: [WBStreamPlugin],
         },
       },
     ],
@@ -139,6 +114,10 @@ export const prodPlugins = [
     domain: 'www.soundplace.io',
   }),
 ];
+
+if (process.env.ANALYZER) {
+  prodPlugins.push(new BundleAnalyzerPlugin());
+}
 
 export const prodLoaders = [
   {
