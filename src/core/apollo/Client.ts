@@ -11,7 +11,8 @@ import {WebSocketLink} from 'apollo-link-ws';
 import {environment} from 'config';
 import Cookie from 'js-cookie';
 import localforage from 'localforage';
-import {Observable} from 'rxjs';
+import {from} from 'rxjs';
+import {filter, take} from 'rxjs/operators';
 
 export class Client {
   private static instance: Client;
@@ -69,12 +70,13 @@ export class Client {
   }
 
   public watchQuery = <T>(options: WatchQueryOptions<OperationVariables>) =>
-    Observable.from(
+    from(
       this.client.watchQuery<T, OperationVariables>({...options, fetchPolicy: 'cache-and-network'}),
-    )
-      .take(2)
-      .filter((res) => !!res.data);
+    ).pipe(
+      take(2),
+      filter((res) => !!res.data),
+    );
 
   public subscribe = <T>(options: SubscriptionOptions<OperationVariables>) =>
-    this.client.subscribe<T, OperationVariables>(options);
+    from(this.client.subscribe<T, OperationVariables>(options));
 }

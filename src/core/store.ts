@@ -3,12 +3,13 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import {createEpicMiddleware} from 'redux-observable';
 
 import {store} from '../main';
-import {rootEpic, RootEpic} from './rootEpic';
+import {rootEpic} from './rootEpic';
 import {rootReducer, RootState} from './rootReducer';
 
 const isProd = process.env.NODE_ENV === 'production';
 
 let middlewares;
+const epicMiddleware = createEpicMiddleware();
 
 if (false) {
   window['Raven'].config('https://e4cb32dd9e394feda33301bd8321f134@sentry.io/208859').install();
@@ -18,9 +19,9 @@ if (false) {
       })
     : undefined;
 
-  middlewares = applyMiddleware(createEpicMiddleware(rootEpic as RootEpic), ravenMiddleware);
+  middlewares = applyMiddleware(epicMiddleware, ravenMiddleware);
 } else {
-  middlewares = applyMiddleware(createEpicMiddleware(rootEpic as RootEpic));
+  middlewares = applyMiddleware(epicMiddleware);
 }
 
 const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
@@ -29,6 +30,7 @@ const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compo
 
 export const configureStore = () => {
   const store = createStore<RootState>(rootReducer, undefined, composeEnhancers(middlewares));
+  epicMiddleware.run(rootEpic);
   return store;
 };
 

@@ -1,6 +1,5 @@
-import {Observable} from 'rxjs';
+import {concat, of, throwError} from 'rxjs';
 
-const httpErrorHandler = (error, handler) =>
-  Observable.concat(Observable.of(handler()), Observable.throw(error));
+const httpErrorHandler = (error, handler) => concat(of(handler()), throwError(error));
 
 export default httpErrorHandler;

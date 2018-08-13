@@ -26,8 +26,6 @@ type Props = {
 };
 
 export class Tracks extends Component<Props, {}> {
-  state = {};
-
   componentDidMount() {
     this.props.actions.subscribeToTracks(this.props.id);
   }

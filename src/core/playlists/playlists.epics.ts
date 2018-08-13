@@ -1,23 +1,32 @@
 import {Epic} from 'redux-observable';
+import {map, mergeMap} from 'rxjs/operators';
 
 import {RootState} from 'core';
 import {PlaylistsClient} from 'core/apollo';
 
-import {ActionsValues} from '../rootActions';
-import {actions} from './playlists.actions';
+import {actions, Actions} from './playlists.actions';
 
-const map = {
+const actionsMap = {
   NONE: actions.setPlaylists,
   INSERT: actions.addPlaylist,
   UPDATE: actions.updatePlaylist,
   DELETE: actions.removePlaylist,
 };
 
-const playlistsEpic: Epic<ActionsValues, RootState> = (action$) =>
-  action$.ofType(actions.subscribePlaylists.getType()).mergeMap(() =>
-    PlaylistsClient.getInstance()
-      .subscribe()
-      .map((value) => map[value.operation](value)),
+type SubsActions =
+  | Actions['setPlaylists']
+  | Actions['addPlaylist']
+  | Actions['updatePlaylist']
+  | Actions['removePlaylist'];
+export type EpicActions = SubsActions | Actions['subscribePlaylists'];
+
+const playlistsEpic: Epic<EpicActions, SubsActions, RootState> = (action$) =>
+  action$.ofType(actions.subscribePlaylists.getType()).pipe(
+    mergeMap(() =>
+      PlaylistsClient.getInstance()
+        .subscribe()
+        .pipe(map((value) => actionsMap[value.operation](value))),
+    ),
   );
 
 export default playlistsEpic;

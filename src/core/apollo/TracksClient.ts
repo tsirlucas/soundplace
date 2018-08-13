@@ -1,4 +1,5 @@
-import {Observable} from 'rxjs';
+import {concat} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {Track} from 'models';
 
@@ -28,10 +29,10 @@ export class TracksClient {
           playlistId,
         },
       })
-      .map((res) => ({operation: 'NONE', item: res.data.playlistTracks}));
+      .pipe(map((res) => ({operation: 'NONE', item: res.data.playlistTracks})));
 
   public subscribe = (playlistId: string) => {
-    return Observable.concat(
+    return concat(
       this.get(playlistId),
       this.client
         .subscribe<{data: {playlistTracks: {operation: string; item: Track}}}>({
@@ -40,7 +41,7 @@ export class TracksClient {
             playlistId,
           },
         })
-        .map((res) => res.data.playlistTracks),
+        .pipe(map((res) => res.data.playlistTracks)),
     );
   };
 
@@ -52,11 +53,11 @@ export class TracksClient {
           ids,
         },
       })
-      .map((res) => ({operation: 'NONE', item: res.data.tracks}));
+      .pipe(map((res) => ({operation: 'NONE', item: res.data.tracks})));
   };
 
   public subscribeByIds = (ids: string[]) => {
-    return Observable.concat(
+    return concat(
       this.getByIds(ids),
       this.client
         .subscribe<{data: {tracks: {operation: string; item: Track}}}>({
@@ -65,7 +66,7 @@ export class TracksClient {
             ids,
           },
         })
-        .map((res) => res.data.tracks),
+        .pipe(map((res) => res.data.tracks)),
     );
   };
 }

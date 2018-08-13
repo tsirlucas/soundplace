@@ -1,4 +1,5 @@
-import {Observable} from 'rxjs';
+import {concat} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {Playlist} from 'models';
 
@@ -23,16 +24,16 @@ export class PlaylistsClient {
   public get = () =>
     this.client
       .watchQuery<{currentUserPlaylists: Playlist[]}>({query: GET_PLAYLISTS})
-      .map((res) => ({operation: 'NONE', item: res.data.currentUserPlaylists}));
+      .pipe(map((res) => ({operation: 'NONE', item: res.data.currentUserPlaylists})));
 
   public subscribe = () => {
-    return Observable.concat(
+    return concat(
       this.get(),
       this.client
         .subscribe<{data: {currentUserPlaylists: {operation: string; item: Playlist}}}>({
           query: SUBSCRIBE_PLAYLISTS,
         })
-        .map((res) => res.data.currentUserPlaylists),
+        .pipe(map((res) => res.data.currentUserPlaylists)),
     );
   };
 }

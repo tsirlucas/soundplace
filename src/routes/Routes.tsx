@@ -62,7 +62,7 @@ export class Routes extends Component {
                         <Route
                           path="/playlists/:playlistId"
                           exact
-                          component={(props) => <Playlist {...props} />}
+                          render={(props) => <Playlist {...props} />}
                         />
                       </div>
                     )}

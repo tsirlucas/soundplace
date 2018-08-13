@@ -2,25 +2,30 @@ import axios from 'axios';
 import {environment} from 'config';
 import Cookie from 'js-cookie';
 import {combineEpics, Epic} from 'redux-observable';
-import {Observable} from 'rxjs';
+import {empty, from, of} from 'rxjs';
+import {catchError, map, mergeMap, takeUntil} from 'rxjs/operators';
 
 import {RootState} from 'core';
 import {UserClient} from 'core/apollo';
 
 import {actions, Actions} from './user.actions';
 
-type EpicActions = Actions['subscribeUser'] | Actions['setUser'];
+export type EpicActions = Actions['subscribeUser'] | Actions['setUser'];
 
-const getUserEpic: Epic<EpicActions, RootState> = (action$) =>
-  action$.ofType(actions.subscribeUser.getType()).mergeMap(() =>
-    UserClient.getInstance()
-      .subscribe()
-      .map(actions.setUser)
-      .takeUntil(action$.ofType(actions.unsubscribeUser.getType())),
+const getUserEpic: Epic<EpicActions, Actions['setUser'], RootState> = (action$) =>
+  action$.ofType(actions.subscribeUser.getType()).pipe(
+    mergeMap(() =>
+      UserClient.getInstance()
+        .subscribe()
+        .pipe(
+          map(actions.setUser),
+          takeUntil(action$.ofType(actions.unsubscribeUser.getType())),
+        ),
+    ),
   );
 
 const mountImportRequest = () => {
-  return Observable.fromPromise(
+  return from(
     axios.get(`${environment.settings.apiUrl}/data/import`, {
       headers: {
         Authorization: Cookie.get('token'),
@@ -29,14 +34,11 @@ const mountImportRequest = () => {
   );
 };
 
-const importEpic: Epic<EpicActions, RootState> = (action$) =>
-  action$
-    .ofType(actions.import.getType())
-    .mergeMap(() =>
-      mountImportRequest().catch(() => {
-        return Observable.of(actions.cancelImport());
-      }),
-    )
-    .mergeMap(() => Observable.empty<never>());
+const importEpic: Epic<EpicActions, Actions['cancelImport'], RootState> = (action$) =>
+  action$.ofType(actions.import.getType()).pipe(
+    mergeMap(() => mountImportRequest()),
+    catchError(() => of(actions.cancelImport())),
+    mergeMap(() => empty()),
+  );
 
 export default combineEpics(importEpic, getUserEpic);

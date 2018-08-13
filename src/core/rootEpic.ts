@@ -1,5 +1,6 @@
 import {combineEpics} from 'redux-observable';
-import {Observable} from 'rxjs';
+import {concat, of} from 'rxjs';
+import {catchError, delay, map, startWith} from 'rxjs/operators';
 
 import {actions} from 'core/api/api.actions';
 import {ERRORS_MAP} from 'core/api/api.constants';
@@ -25,11 +26,12 @@ const handleUncaughtErrors = (error, stream) => {
   if (error.xhr) {
     const errorActionCreator = ERRORS_MAP[error.status];
 
-    return Observable.concat(
-      Observable.of(error)
-        .delay(4000)
-        .map(actions.clearError)
-        .startWith(errorActionCreator(error.xhr.response)),
+    return concat(
+      of(error).pipe(
+        delay(4000),
+        map(actions.clearError),
+        startWith(errorActionCreator(error.xhr.response))
+      ),
       stream,
     );
   }
@@ -40,6 +42,5 @@ const handleUncaughtErrors = (error, stream) => {
   return stream;
 };
 
-export const rootEpic = (action$, store) => {
-  return combinedEpics(action$, store, undefined).catch(handleUncaughtErrors);
-};
+export const rootEpic = (action$, state$) =>
+  combinedEpics(action$, state$, undefined).pipe(catchError(handleUncaughtErrors));

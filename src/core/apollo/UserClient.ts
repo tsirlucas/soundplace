@@ -1,4 +1,5 @@
-import {Observable} from 'rxjs';
+import {concat} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {User} from 'models';
 
@@ -23,14 +24,14 @@ export class UserClient {
   public get = () =>
     this.client
       .watchQuery<{currentUser: User}>({query: GET_USER})
-      .map((res) => res.data.currentUser);
+      .pipe(map((res) => res.data.currentUser));
 
   public subscribe = () => {
-    return Observable.concat(
+    return concat(
       this.get(),
       this.client
         .subscribe<{data: {currentUser: {item: User}}}>({query: SUBSCRIBE_USER})
-        .map((res) => res.data.currentUser.item),
+        .pipe(map((res) => res.data.currentUser.item)),
     );
   };
 }

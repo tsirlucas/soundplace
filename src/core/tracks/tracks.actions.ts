@@ -2,7 +2,7 @@ import {createAction} from 'redux-act';
 
 import {SocketUpdate, Track} from 'models';
 
-type CategorizedTracks<T> = SocketUpdate<T> & {
+export type CategorizedTracks<T> = SocketUpdate<T> & {
   type: 'playlist' | 'saved';
   keep: string[];
 };
