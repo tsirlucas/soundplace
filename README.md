@@ -11,38 +11,28 @@ A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Yout
 
 - [X] [Typescript](https://www.typescriptlang.org)
 - [x] [Preact](https://github.com/developit/preact) as [React](https://github.com/facebook/react) alternative
-- [x] [React Router](https://github.com/ReactTraining/react-router) with some proper logics to create plain-routes even on v4, resulting in only 80kb (not minified and with browser-history included)
+- [x] [React Router](https://github.com/ReactTraining/react-router)
 - [x] [Redux](http://redux.js.org/) to manage application state
 - [x] [redux-observable](https://github.com/redux-observable/redux-observable) as middleware
 - [x] [RxJS](https://github.com/Reactive-Extensions/RxJS) to use observable collections
 - [x] Built with [Webpack](https://github.com/webpack/webpack)
 - [x] Transpiled with [Babel](https://babeljs.io/)
+- [x] [Graphql](https://graphql.org/) realtime subscriptions and cache-then-network strategy with [ApolloClient](https://github.com/apollographql/apollo-client)
 - [x] [Sass](https://github.com/sass/sass) as css preprocessor
 - [x] [gh-pages](https://pages.github.com/) to deploy production environment
 - [x] [Cloudflare](https://www.cloudflare.com) as CDN
 - [x] [Travis](https://travis-ci.com/) Integration
 - [x] [Greenkeeper](https://greenkeeper.io/) Dependency Manager
 - [x] [BundleSize](https://github.com/siddharthkp/bundlesize) < 100kb automatic check on PRs
-- [x] [Lighthouse-CI](https://github.com/ebidel/lighthouse-ci) 100 score automatic check on PRs
 - [x] [Code Climate](https://codeclimate.com/) automatic check on PRs
 - [x] [Sentry](https://sentry.io/) for error tracking
 - [x] [Workbox](https://github.com/GoogleChrome/workbox) to generate service-worker and runtime caching
 - [x] Background player even on blocked screen with [Media Session API](https://developers.google.com/web/updates/2017/02/media-session)
-- [x] Offline strategy using observables to concat cache and API results (first show cached, then automatically updates from network in real-time)
 - [x] Offline strategy to cache songs and let user select what to cache
 - [x] Let user remove songs from cache
 - [x] Offline bar to tell users when they're running offline
-- [x] No requests when there's no connection (falls back to cache-only)
 
-
-
-
-## Phoenix backend
-
-Our backend is a Phoenix application running on a Docker container
-[See the project here](https://github.com/lucasmedeirosleite/sound_place)
-
-## Running locally
+## Running locally (.env needed)
 
 1. Clone the repository: `git clone https://github.com/tsirlucas/soundplace.git`
 2. `cd soundplace`
