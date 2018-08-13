@@ -13,8 +13,9 @@ import configureDevTools from './util/configureDevTools';
 export const store = configureStore();
 
 const getWindowIntel = () => {
-  const child = document.querySelector('#application') as HTMLElement;
-  return {...window, scrollbarWidth: window.innerWidth - child.offsetWidth};
+  const scrEl = document.querySelector('#content') as HTMLElement;
+  const scrollbarWidth = scrEl ? scrEl.offsetWidth - scrEl.clientWidth : 0;
+  return {...window, scrollbarWidth};
 };
 
 store.dispatch(storageActions.subscribeCachedSongs());

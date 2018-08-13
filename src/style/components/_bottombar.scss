@@ -1,10 +1,6 @@
 $bottombar-height: 50px;
 
 .bottom-bar {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: table;
   width: 100%;
   height: $bottombar-height;

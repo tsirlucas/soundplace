@@ -8,13 +8,11 @@
 }
 
 #player {
-  position: absolute;
   display: flex;
-  bottom: 0;
-  left: 0;
+  position: relative;
   z-index: 2;
   padding: 5px;
-  height: 80px;
+  min-height: 80px;
   background-color: #282828;
   justify-content: space-around;
   align-items: center;
@@ -49,7 +47,7 @@
 #player-progress-bar {
   border-top: 4px solid $youtube-red;
   position: absolute;
-  bottom: 77px;
+  top: 0;
   left: 0;
 
   transition: width linear;
@@ -119,12 +117,10 @@
 
 @media (max-width: 765px) {
   #player {
-    position: fixed;
+    position: relative;
     display: flex;
-    bottom: $bottombar-height;
-    left: 0;
     padding: 5px 15px;
-    height: $bottombar-height;
+    min-height: $bottombar-height;
     background-color: #282828;
     justify-content: space-around;
     align-items: center;
@@ -160,7 +156,6 @@
   }
 
   #player-progress-bar {
-    bottom: 48px;
     border-top: 2px solid $youtube-red;
 
     &:after {
@@ -223,21 +218,25 @@
 
 @keyframes showPlayer {
   0% {
-    transform: translateY(200%);
+    margin-top: -80px;
+    transform: translateY(100%);
   }
 
   100% {
+    margin-top: 0px;
     transform: translateY(0%);
   }
 }
 
 @keyframes hidePlayer {
   0% {
+    margin-top: 0px;
     transform: translateY(0%);
   }
 
   100% {
-    transform: translateY(200%);
+    margin-top: -80px;
+    transform: translateY(100%);
   }
 }
 

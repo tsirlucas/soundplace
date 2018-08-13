@@ -8,15 +8,16 @@
 }
 
 html {
-  overflow: hidden;
+  height: 100%;
 }
 
-html, body {
-  width: 100%;
+body {
   height: 100%;
-  overflow-x: hidden;
-  background-color: $gray-light;
+  overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
+  margin: 0px;  /*removes default style*/
+  display: flex;  /*enables flex content for its children*/
   box-sizing: border-box;
+  background-color: $gray-light;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -30,57 +31,42 @@ html, body {
 }
 
 #application, #application > main, .full-height {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-#application #layout {
-  padding: 40px;
-  margin-left: 250px;
+#layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 
-  &.network {
-    animation-name: increasePaddingForNetworkBar;
-    @include layout-animation-properties;
-  }
-
-  &.without-network {
-    animation-name: decreasePaddingForNetworkBar;
-    @include layout-animation-properties;
-  }
-
-  &.showing-player {
-    animation-name: increasePaddingForPlayer;
-    @include layout-animation-properties;
+  #content {
+    display: flex;
+    flex-grow: 1;
+    overflow-y: auto;
+    flex-direction: column;
+    padding: 15px;
   }
 }
 
-@media (max-width: 765px) {
-  #application #layout {
-    padding: 4vh 4vw;
-    margin-left: 0;
-    margin-bottom: 50px;
-    margin-top: 60px;
-    box-sizing: border-box;
+#sidebar-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
 
-    &.network {
-      animation-name: increasePaddingForNetworkBarMobile;
-      @include layout-animation-properties;
-    }
+#player-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 
-    &.without-network {
-      animation-name: decreasePaddingForNetworkBarMobile;
-      @include layout-animation-properties;
-    }
-
-    &.showing-player {
-      animation-name: increasePaddingForPlayerMobile;
-      @include layout-animation-properties;
-    }
-
-    &.network.showing-player {
-      animation-name: increasePaddingForNetworkAndPlayerMobile;
-      @include layout-animation-properties;
-    }
-  }
+.flex-grow-column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 @keyframes increasePaddingForNetworkBar {

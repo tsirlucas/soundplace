@@ -52,8 +52,9 @@ export class Routes extends Component {
                   <Route
                     path="/playlists"
                     render={(props) => (
-                      <div>
+                      <div className="flex-grow-column">
                         <div
+                          className="flex-grow-column"
                           style={props.match.path !== props.location.pathname && 'display: none'}
                         >
                           <Playlists />

@@ -23,17 +23,14 @@ class PlayerComponent extends Component<Props, {}> {
     PlayerService.getInstance().setPlayer(nextProps.player, nextProps.actions);
   }
 
-  render({isDesktop, scrollbarWidth, width, player, actions, playerClass}: Props) {
-    const parsedWidth = isDesktop ? width - scrollbarWidth : width;
-    const style = `width: ${parsedWidth}px;`;
-
+  render({player, actions, playerClass}: Props) {
     const hasPrevious = PlayerService.getInstance().hasPrev();
     const hasNext = PlayerService.getInstance().hasNext();
 
     const {list} = this.props.player;
     const currentlyPlaying = list && list[this.props.player.currentId];
     return (
-      <div id="player" style={style} className={playerClass}>
+      <div id="player" className={playerClass}>
         {currentlyPlaying && [
           player.duration ? (
             <PlayerProgress currTime={player.currentTime} duration={player.duration} />

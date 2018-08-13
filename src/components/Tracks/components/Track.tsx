@@ -17,18 +17,18 @@ type Props = {
 const Track = ({track, onSave, onDelete, play, pause, playing, status}: Props) => (
   <li className="track-item">
     {playing ? (
-      <span className="play-button" onClick={() => pause()}>
+      <span className="play-button" style="cursor:pointer" onClick={() => pause()}>
         <Icon icon="PAUSE_BUTTON" size="32" color="white" />
       </span>
     ) : (
-      <span className="play-button" onClick={() => play(track)}>
+      <span className="play-button" style="cursor:pointer" onClick={() => play(track)}>
         <Icon icon="PLAY_BUTTON" size="32" color="white" />
       </span>
     )}
     <h3 className="track-name">{track.name}</h3>
     <p className="artist-info">{`${track.channel}`}</p>
     <div className="track-actions">
-      <span className="storage-button">
+      <span className="storage-button" style="cursor:pointer">
         <span onClick={() => onDelete(track)}>
           {status === 'DOWNLOADING' && (
             <span className="icon-spinner">

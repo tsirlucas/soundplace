@@ -6,7 +6,6 @@ import {privateRoutes} from 'src/routes/routes.config';
 import {Props as ContainerProps} from '../AppLayout.container';
 
 type Props = {
-  height: number;
   router: ContainerProps['router'];
   user: ContainerProps['user'];
   actions: {
@@ -18,14 +17,6 @@ type Props = {
 };
 
 export class Sidebar extends Component<Props, null> {
-  componentDidMount() {
-    this.props.actions.subscribeUser();
-  }
-
-  componentWillUnmount() {
-    this.props.actions.unsubscribeUser();
-  }
-
   onLoadImageError = (img) => {
     img.src = '/assets/img/avatar.jpeg';
   };
@@ -49,23 +40,22 @@ export class Sidebar extends Component<Props, null> {
                 <Icon icon="SYNC" size="24" color="white" />
               </span>
             ) : (
-              <div onClick={this.props.actions.import}>
+              <div onClick={this.props.actions.import} style="cursor:pointer;">
                 <Icon icon="SYNC" size="24" color="white" />
               </div>
             )}
           </div>
         )}
         <Navigation>
-          {privateRoutes
-            .filter((route) => route.header)
-            .map((route) => (
-              <NavigationItem
-                onClick={() => changeRoute(route.path)}
-                header={route.header}
-                icon={route.icon}
-                active={location.hash.includes(route.path)}
-              />
-            ))}
+          {privateRoutes.filter((route) => route.header).map((route) => (
+            <NavigationItem
+              onClick={() => changeRoute(route.path)}
+              header={route.header}
+              icon={route.icon}
+              active={location.hash.includes(route.path)}
+              disabled={location.hash === `#${route.path}`}
+            />
+          ))}
         </Navigation>
       </aside>
     );
@@ -76,8 +66,8 @@ const Navigation = ({children}: {children?: JSX.Element[]}) => (
   <ul className="brand-nav">{children}</ul>
 );
 
-const NavigationItem = ({header, icon, active, onClick}) => (
-  <li className="brand-nav-item" onClick={onClick}>
+const NavigationItem = ({header, icon, active, onClick, disabled}) => (
+  <li className="brand-nav-item" style={disabled ? 'pointer-events:none;' : ''} onClick={onClick}>
     <div className="brand-nav-icon">
       <Icon icon={icon} size="34" color={active ? 'white' : null} />
     </div>

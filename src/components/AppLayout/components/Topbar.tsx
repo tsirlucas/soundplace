@@ -13,14 +13,6 @@ type Props = {
   };
 };
 export class Topbar extends Component<Props, null> {
-  componentDidMount() {
-    this.props.actions.subscribeUser();
-  }
-
-  componentWillUnmount() {
-    this.props.actions.unsubscribeUser();
-  }
-
   onLoadImageError = (img) => {
     img.src = '/assets/img/avatar.jpeg';
   };

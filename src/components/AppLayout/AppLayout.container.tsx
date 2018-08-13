@@ -18,9 +18,9 @@ export type Props = MapDispatchToProps &
 class AppLayoutComponent extends Component<Props, {}> {
   getNetworkClass = (hasNetwork) => {
     switch (hasNetwork) {
-      case true:
+      case 'NO':
         return 'without-network';
-      case false:
+      case 'YES':
         return 'network';
       default:
         return '';
@@ -31,7 +31,7 @@ class AppLayoutComponent extends Component<Props, {}> {
     switch (true) {
       case !showPlayer:
         return 'hiding-player';
-      case showPlayer:
+      case !!showPlayer:
         return 'showing-player';
       default:
         return '';
@@ -40,6 +40,11 @@ class AppLayoutComponent extends Component<Props, {}> {
 
   componentWillMount() {
     this.props.actions.initPlayer();
+    this.props.userActions.subscribeUser();
+  }
+
+  componentWillUnmount() {
+    this.props.userActions.unsubscribeUser();
   }
 
   render({
@@ -53,41 +58,33 @@ class AppLayoutComponent extends Component<Props, {}> {
     user,
     api,
   }: Props) {
-    const {width, height, scrollbarWidth} = window;
+    const {width} = window;
 
     const isDesktop = width > 765;
     const networkClass = this.getNetworkClass(hasNetwork);
     const playerClass = this.getPlayerClass(showPlayer);
 
-    return (
-      <section id="layout" className={`${networkClass} ${showPlayer ? 'showing-player' : ''}`}>
-        {isDesktop ? (
-          <Sidebar
-            user={user}
-            router={router}
-            height={height}
-            actions={{...routerActions, ...userActions}}
-          />
-        ) : (
-          <Bottombar actions={routerActions} />
-        )}
-        {!isDesktop && <Topbar user={user} actions={userActions} />}
-        <StatusBar error={api.message} hasPlayer={showPlayer} />
-        <Networkbar
-          networkClass={networkClass}
-          width={width}
-          isDesktop={isDesktop}
-          scrollbarWidth={scrollbarWidth}
-        />
+    return isDesktop ? (
+      <section id="player-container">
+        <section id="sidebar-container">
+          <Sidebar user={user} router={router} actions={{...routerActions, ...userActions}} />
+          <section id="layout">
+            <Networkbar networkClass={networkClass} width={width} isDesktop={isDesktop} />
+            <div id="content">{children}</div>
+
+            <StatusBar error={api.message} />
+          </section>
+        </section>
+        {showPlayer && <Player playerClass={playerClass} />}
+      </section>
+    ) : (
+      <section id="layout">
+        <Topbar user={user} actions={userActions} />
+        <Networkbar networkClass={networkClass} width={width} isDesktop={isDesktop} />
         <div id="content">{children}</div>
-        {showPlayer && (
-          <Player
-            width={width}
-            isDesktop={isDesktop}
-            scrollbarWidth={scrollbarWidth}
-            playerClass={playerClass}
-          />
-        )}
+        <StatusBar error={api.message} />
+        {showPlayer && <Player playerClass={playerClass} />}
+        <Bottombar actions={routerActions} />
       </section>
     );
   }

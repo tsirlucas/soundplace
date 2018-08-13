@@ -9,44 +9,40 @@
 
 .network-bar {
   z-index: 1;
-  position: absolute;
-  top: 0;
   padding: 5px;
-  left: $sidebar-width;
   text-align: center;
   color: white;
   background-color: $red;
   opacity: 0;
+  margin-bottom: -28px;
 
   &.network {
-    animation-name: showNetworkBar;
+    animation-name: hideNetworkBar;
     @include network-animation-properties;
   }
 
   &.without-network {
-    animation-name: hideNetworkBar;
+    animation-name: showNetworkBar;
     @include network-animation-properties;
   }
 }
 
 @media (max-width: 765px) {
   .network-bar {
-    position: absolute;
-    top: $topbar-height;
     padding: 5px;
-    left: 0;
     text-align: center;
     color: white;
     background-color: $red;
     opacity: 0;
+    margin-bottom: -28px;
 
     &.network {
-      animation-name: showNetworkBar;
+      animation-name: hideNetworkBar;
       @include network-animation-properties;
     }
 
     &.without-network {
-      animation-name: hideNetworkBar;
+      animation-name: showNetworkBar;
       @include network-animation-properties;
     }
   }
@@ -56,11 +52,13 @@
 @keyframes showNetworkBar {
   0% {
     opacity: 0;
+    margin-bottom: -28px;
     transform: translateY(-100%);
   }
 
   100% {
     opacity: 1;
+    margin-bottom: 0;
     transform: translateY(0%);
   }
 }
@@ -68,11 +66,13 @@
 @keyframes hideNetworkBar {
   0% {
     opacity: 1;
+    margin-bottom: 0;
     transform: translateY(0%);
   }
 
   100% {
     opacity: 0;
+    margin-bottom: -28px;
     transform: translateY(-100%);
   }
 }

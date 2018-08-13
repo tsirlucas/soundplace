@@ -5,7 +5,7 @@ import {actions} from './api.actions';
 
 export const initialState = {
   message: null as string,
-  hasNetwork: true,
+  hasNetwork: '',
 };
 
 const message = createReducer({}, initialState.message)
@@ -14,8 +14,8 @@ const message = createReducer({}, initialState.message)
   .on(actions.notFoundError, () => 'Request not found. Try again.');
 
 const hasNetwork = createReducer({}, initialState.hasNetwork)
-  .on(actions.onOnline, () => true)
-  .on(actions.onOffline, () => false);
+  .on(actions.onOnline, () => 'YES')
+  .on(actions.onOffline, () => 'NO');
 
 export type apiState = typeof initialState;
 export const api = combineReducers<apiState>({
