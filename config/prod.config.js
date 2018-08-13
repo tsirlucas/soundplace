@@ -10,7 +10,7 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const WBStreamPlugin = {
   cacheWillUpdate: ({request, response}) => {
-    caches.match(request.url, {ignoreSearch: true}).then((res) => {
+    return caches.match(request.url, {ignoreSearch: true}).then((res) => {
       // ignore repeated songs
       if (res) {
         return null;
