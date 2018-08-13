@@ -12,17 +12,24 @@ import {environment} from 'config';
 import Cookie from 'js-cookie';
 import localforage from 'localforage';
 import {from} from 'rxjs';
-import {filter, take} from 'rxjs/operators';
+import {filter, mergeMap, take} from 'rxjs/operators';
 
 export class Client {
   private static instance: Client;
-  public client: ApolloClient<NormalizedCacheObject>;
+  private resolver: Function;
+  public client: Promise<ApolloClient<NormalizedCacheObject>> = new Promise(
+    (res) => (this.resolver = res),
+  );
   private socketUrl = `${environment.settings.apiUrl}/graphql`.replace(/http/, 'ws');
 
   private constructor() {
+    this.generateClient();
+  }
+
+  private async generateClient() {
     const cache = new InMemoryCache();
 
-    persistCache({
+    await persistCache({
       cache,
       storage: localforage,
     });
@@ -42,7 +49,7 @@ export class Client {
       new RetryLink({
         delay: {
           initial: 300,
-          max: Infinity,
+          max: 3000,
           jitter: true,
         },
         attempts: {
@@ -53,12 +60,17 @@ export class Client {
       wsLink,
     ]);
 
-    this.client = new ApolloClient({
-      link,
-      cache,
-    });
-
-    this.client.subscribe;
+    this.resolver(
+      new ApolloClient({
+        link,
+        cache,
+        defaultOptions: {
+          query: {
+            fetchPolicy: 'cache-and-network',
+          },
+        },
+      }),
+    );
   }
 
   static getInstance() {
@@ -69,14 +81,24 @@ export class Client {
     return this.instance;
   }
 
-  public watchQuery = <T>(options: WatchQueryOptions<OperationVariables>) =>
-    from(
-      this.client.watchQuery<T, OperationVariables>({...options, fetchPolicy: 'cache-and-network'}),
-    ).pipe(
-      take(2),
-      filter((res) => !!res.data),
-    );
+  public watchQuery = <T>(options: WatchQueryOptions<OperationVariables>) => {
+    return from(
+      this.client.then((client) =>
+        from(
+          client.watchQuery<T, OperationVariables>({
+            ...options,
+            fetchPolicy: 'cache-and-network',
+          }),
+        ).pipe(
+          take(2),
+          filter((res) => !!res.data),
+        ),
+      ),
+    ).pipe(mergeMap((res) => res));
+  };
 
   public subscribe = <T>(options: SubscriptionOptions<OperationVariables>) =>
-    from(this.client.subscribe<T, OperationVariables>(options));
+    from(this.client.then((client) => client.subscribe<T, OperationVariables>(options))).pipe(
+      mergeMap((res) => res),
+    );
 }
