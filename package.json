@@ -102,7 +102,7 @@
     "analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack --mode production",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --mode development",
+    "dev": "webpack-dashboard -- cross-env NODE_ENV=development webpack-dev-server --hot --mode development",
     "lint": "tslint --project .",
     "bundlesize": "bundlesize",
     "staging": "now --alias stg-soundplace --public deploy build/"
