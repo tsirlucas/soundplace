@@ -1,22 +1,15 @@
 import Redirect from 'react-router-dom/Redirect';
-import Cookie from 'js-cookie';
 import {h} from 'preact';
 
-export const isAuthenticated = () => Cookie.get('token');
-
-export const checkAuth = (Route: JSX.Element, isPrivate: boolean, path?: string) => {
-  const isAuthenticated = Cookie.get('token');
+export const checkAuth = (auth: string, Route: JSX.Element) => {
   const {hash} = window.location;
-
-  if (isAuthenticated) {
+  const from = hash.slice(1).split('?')[0];
+  if (auth) {
     //If route is private and user is not on / already, user proceeds, else route is public, redirect user to private root.
-    if (isPrivate) {
-      return Route;
-    }
-    const from = path ? path : hash.slice(1, -1).split('?')[0];
-    return from ? <Redirect from={from} to="/playlists" /> : Route;
+    return Route;
   }
-  const needToRedirect = !hash.includes('/login');
+
+  const needToRedirect = !hash.includes('/callback');
   //If route is private and his not on /login already, user is redirected to app's public root, else user proceeds.
-  return isPrivate && needToRedirect ? <Redirect to="/login" /> : Route;
+  return needToRedirect ? <Redirect from={from} to="/callback" /> : Route;
 };

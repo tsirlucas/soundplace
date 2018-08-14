@@ -1,6 +1,8 @@
 import {Component, h} from 'preact';
 import {connect} from 'preact-redux';
 
+import {browserHistory} from 'src/routes/routes.config';
+
 import {Player} from '../Player';
 import {
   mapDispatchToProps,
@@ -47,17 +49,11 @@ class AppLayoutComponent extends Component<Props, {}> {
     this.props.userActions.unsubscribeUser();
   }
 
-  render({
-    children,
-    hasNetwork,
-    showPlayer,
-    window,
-    router,
-    routerActions,
-    userActions,
-    user,
-    api,
-  }: Props) {
+  swapRoute(path: string) {
+    browserHistory.push(path);
+  }
+
+  render({children, hasNetwork, showPlayer, window, userActions, user, api}: Props) {
     const {width} = window;
 
     const isDesktop = width > 765;
@@ -67,7 +63,7 @@ class AppLayoutComponent extends Component<Props, {}> {
     return isDesktop ? (
       <section id="player-container">
         <section id="sidebar-container">
-          <Sidebar user={user} router={router} actions={{...routerActions, ...userActions}} />
+          <Sidebar user={user} changeRoute={this.swapRoute} actions={userActions} />
           <section id="layout">
             <Networkbar networkClass={networkClass} width={width} isDesktop={isDesktop} />
             <div id="content">{children}</div>
@@ -84,7 +80,7 @@ class AppLayoutComponent extends Component<Props, {}> {
         <div id="content">{children}</div>
         <StatusBar error={api.message} />
         {showPlayer && <Player playerClass={playerClass} />}
-        <Bottombar actions={routerActions} />
+        <Bottombar changeRoute={this.swapRoute} />
       </section>
     );
   }

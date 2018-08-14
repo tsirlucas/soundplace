@@ -6,13 +6,12 @@ import {privateRoutes} from 'src/routes/routes.config';
 import {Props as ContainerProps} from '../AppLayout.container';
 
 type Props = {
-  router: ContainerProps['router'];
+  changeRoute: (path: string) => void;
   user: ContainerProps['user'];
   actions: {
     subscribeUser: ContainerProps['userActions']['subscribeUser'];
     unsubscribeUser: ContainerProps['userActions']['unsubscribeUser'];
     import: ContainerProps['userActions']['import'];
-    changeRoute: ContainerProps['routerActions']['changeRoute'];
   };
 };
 
@@ -22,8 +21,6 @@ export class Sidebar extends Component<Props, null> {
   };
 
   render({user}: Props) {
-    const {changeRoute} = this.props.actions;
-
     return (
       <aside id="sidebar">
         {user && (
@@ -49,7 +46,7 @@ export class Sidebar extends Component<Props, null> {
         <Navigation>
           {privateRoutes.filter((route) => route.header).map((route) => (
             <NavigationItem
-              onClick={() => changeRoute(route.path)}
+              onClick={() => this.props.changeRoute(route.path)}
               header={route.header}
               icon={route.icon}
               active={location.hash.includes(route.path)}

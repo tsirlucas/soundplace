@@ -8,6 +8,7 @@ export const actions = {
   import: createAction('user/IMPORT'),
   cancelImport: createAction('user/CANCEL_IMPORT'),
   setUser: createAction<User>('user/SET_USER'),
+  setToken: createAction<string>('user/SET_TOKEN'),
 };
 
 type ActionsType = typeof actions;

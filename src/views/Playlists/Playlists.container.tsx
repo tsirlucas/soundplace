@@ -22,7 +22,7 @@ class PlaylistsComponent extends Component<Props, {}> {
   }
 
   onOpen = (track) => {
-    this.props.actions.changeRoute(`/playlists/${track.id}`);
+    this.context.router.history.push(`/playlists/${track.id}`);
   };
 
   render({playlists}: Props) {

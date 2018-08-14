@@ -2,7 +2,6 @@ import {h} from 'preact';
 import {Provider} from 'preact-redux';
 
 import {actions as apiActions} from 'core/api';
-import {actions as storageActions} from 'core/storage';
 import {configureStore} from 'core/store';
 import {actions as windowActions} from 'core/window';
 
@@ -18,7 +17,6 @@ const getWindowIntel = () => {
   return {...window, scrollbarWidth};
 };
 
-store.dispatch(storageActions.subscribeCachedSongs());
 store.dispatch(windowActions.onResize(getWindowIntel()));
 
 if (!window.navigator.onLine) {

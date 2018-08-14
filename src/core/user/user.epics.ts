@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {environment} from 'config';
-import Cookie from 'js-cookie';
+import localforage from 'localforage';
 import {combineEpics, Epic} from 'redux-observable';
 import {empty, from, of} from 'rxjs';
 import {catchError, map, mergeMap, takeUntil} from 'rxjs/operators';
@@ -26,11 +26,13 @@ const getUserEpic: Epic<EpicActions, Actions['setUser'], RootState> = (action$) 
 
 const mountImportRequest = () => {
   return from(
-    axios.get(`${environment.settings.apiUrl}/data/import`, {
-      headers: {
-        Authorization: Cookie.get('token'),
-      },
-    }),
+    localforage.getItem('token').then((token) =>
+      axios.get(`${environment.settings.apiUrl}/data/import`, {
+        headers: {
+          Authorization: token,
+        },
+      }),
+    ),
   );
 };
 

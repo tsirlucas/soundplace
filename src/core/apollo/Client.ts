@@ -9,7 +9,6 @@ import {ApolloLink} from 'apollo-link';
 import {RetryLink} from 'apollo-link-retry';
 import {WebSocketLink} from 'apollo-link-ws';
 import {environment} from 'config';
-import Cookie from 'js-cookie';
 import localforage from 'localforage';
 import {from} from 'rxjs';
 import {filter, mergeMap, take} from 'rxjs/operators';
@@ -39,8 +38,8 @@ export class Client {
       options: {
         reconnect: true,
         timeout: 30000,
-        connectionParams: () => ({
-          authorization: Cookie.get('token'),
+        connectionParams: async () => ({
+          authorization: await localforage.getItem('token'),
         }),
       },
     });

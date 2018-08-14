@@ -10,7 +10,8 @@ export const initialState = {
 };
 
 const data = createReducer({}, initialState.data)
-  .on(actions.setUser, (_state, payload) => payload)
+  .on(actions.setUser, (state, payload) => ({...state, ...payload}))
+  .on(actions.setToken, (state, payload) => ({...state, token: payload}))
   .on(actions.import, (state) => ({...state, importing: true}))
   .on(actions.cancelImport, (state) => ({...state, importing: false}));
 

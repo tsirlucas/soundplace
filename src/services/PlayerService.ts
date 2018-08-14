@@ -1,4 +1,4 @@
-import Cookie from 'js-cookie';
+import localforage from 'localforage';
 
 import {MapDispatchToProps, MapStateToProps} from 'components/Player/Player.selectors';
 import {STREAM_SERVER_URL} from 'core/api/api.constants';
@@ -6,7 +6,6 @@ import {Track} from 'src/models';
 
 export class PlayerService {
   private static instance: PlayerService;
-  private secure = process.env.NODE_ENV === 'production';
   private player: HTMLAudioElement;
   private playerState: MapStateToProps['player'];
   private actions: MapDispatchToProps['actions'];
@@ -44,10 +43,6 @@ export class PlayerService {
     if (!currentlyPlaying) return null;
     const {id} = currentlyPlaying;
     return `${STREAM_SERVER_URL}/${id}`;
-  };
-
-  updateCache = () => {
-    Cookie.set('playerState', JSON.stringify(this.playerState), {secure: this.secure});
   };
 
   safePlay = () => {
@@ -116,14 +111,13 @@ export class PlayerService {
   keepStateUpdated = (e) => {
     const {currentTime, duration} = e.target as HTMLAudioElement;
     this.actions.updateTime({currentTime, duration});
-    Cookie.set(
+    localforage.setItem(
       'playerState',
       JSON.stringify({
         ...this.playerState,
         lastCurrentTime: currentTime,
         lastDuration: duration,
       }),
-      {secure: this.secure},
     );
   };
 

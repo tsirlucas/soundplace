@@ -1,6 +1,6 @@
-import Cookie from 'js-cookie';
+import localforage from 'localforage';
 import {Epic} from 'redux-observable';
-import {of} from 'rxjs';
+import {from, of} from 'rxjs';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 
 import {RootState} from 'core';
@@ -8,7 +8,7 @@ import {RootState} from 'core';
 import {actions, Actions} from './player.actions';
 import {PlayerState} from './player.reducer';
 
-const cachedPlayerState = () => JSON.parse(Cookie.get('playerState') || null) as PlayerState;
+const cachedPlayerState = () => from(localforage.getItem('playerState') as Promise<PlayerState>);
 
 type EpicActions =
   | Actions['initPlayer']
@@ -18,7 +18,7 @@ type EpicActions =
 const initPlayerEpic: Epic<EpicActions, EpicActions, RootState> = (action$) =>
   action$.ofType(actions.initPlayer.getType()).pipe(
     mergeMap(() =>
-      of(cachedPlayerState()).pipe(
+      cachedPlayerState().pipe(
         map(actions.initPlayerSuccess),
         catchError(() => of(actions.initPlayerError())),
       ),

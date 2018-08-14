@@ -1,7 +1,5 @@
 import gql from 'graphql-tag';
 
-import {Client} from './Client';
-
 export const GET_USER = gql`
   query {
     currentUser {
@@ -120,5 +118,3 @@ export const SUBSCRIBE_TRACKS_BY_IDS = gql`
     }
   }
 `;
-
-Client.getInstance().subscribe;
