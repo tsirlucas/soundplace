@@ -67,7 +67,6 @@ class CallbackComponent extends Component<Props> {
     if (!splitedPath.length) history.push('playlists');
 
     splitedPath.reduce((currPath, nextPath) => {
-      console.log(currPath, nextPath);
       history.push(currPath + nextPath);
       return currPath.concat(nextPath + '/');
     }, '/');

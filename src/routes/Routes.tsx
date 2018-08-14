@@ -46,7 +46,9 @@ class RoutesComponent extends Component<Props> {
 
   componentWillMount() {
     this.setState({lastPath: window.location.hash.slice(1)});
-    browserHistory.replace('/callback');
+    if (browserHistory.location.pathname !== '/callback') {
+      browserHistory.replace('/callback');
+    }
 
     browserHistory.listen(() => {
       const pageElement = document.querySelector('#content');
