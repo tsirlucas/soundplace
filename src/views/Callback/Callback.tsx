@@ -19,21 +19,36 @@ class CallbackComponent extends Component<Props> {
     const {route} = this.context.router;
     const params = queryString.parse(route.location.search);
     if (!!params['token']) {
-      localforage.setItem('token', params['token']).then(() => {
-        this.props.actions.setToken(params['token']);
-        this.context.router.history.replace('/playlists');
-        this.props.actions.subscribeCachedSongs();
-      });
+      this.handleAuthCallback(params['token']);
     } else {
-      localforage.getItem('token').then((token: string) => {
-        if (token) {
-          this.props.actions.setToken(token);
-          this.context.router.history.replace('/playlists');
-          this.props.actions.subscribeCachedSongs();
-        } else {
-          this.context.router.history.replace('/login');
-        }
-      });
+      this.checkStoragedToken();
+    }
+  }
+
+  checkStoragedToken() {
+    localforage.getItem('token').then((token: string) => {
+      if (token) {
+        this.props.actions.setToken(token);
+      } else {
+        this.context.router.history.replace('/login');
+      }
+    });
+  }
+
+  handleAuthCallback(token) {
+    localforage.setItem('token', token).then(() => {
+      this.props.actions.setToken(token);
+    });
+  }
+
+  componentWillReceiveProps({token}: Props) {
+    if (token && token !== this.props.token) {
+      if (this.props.from.includes('callback') || this.props.from.includes('login')) {
+        this.context.router.history.replace('/playlists');
+      } else {
+        this.returnToPrevRoute();
+      }
+      this.props.actions.subscribeCachedSongs();
     }
   }
 
@@ -52,6 +67,7 @@ class CallbackComponent extends Component<Props> {
     if (!splitedPath.length) history.push('playlists');
 
     splitedPath.reduce((currPath, nextPath) => {
+      console.log(currPath, nextPath);
       history.push(currPath + nextPath);
       return currPath.concat(nextPath + '/');
     }, '/');
