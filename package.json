@@ -21,7 +21,7 @@
     "localforage": "1.5.7",
     "normalize.css": "8.0.0",
     "preact": "8.2.9",
-    "preact-compat": "3.18.2",
+    "preact-compat": "3.18.3",
     "preact-redux": "2.0.1",
     "query-string": "5.1.1",
     "raven-for-redux": "1.1.1",
