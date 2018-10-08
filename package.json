@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "2.1.0",
-    "@types/node": "10.5.8",
+    "@types/node": "10.11.4",
     "@types/wicg-mediasession": "1.0.2",
     "awesome-typescript-loader": "5.2.0",
     "babel-core": "6.26.3",
