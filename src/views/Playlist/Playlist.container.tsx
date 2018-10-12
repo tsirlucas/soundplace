@@ -1,6 +1,5 @@
-import {h} from 'preact';
-import {connect} from 'preact-redux';
-
+import React from 'react';
+import {connect} from 'react-redux';
 import {Tracks} from 'components/Tracks';
 
 import {mapDispatchToProps, mapStateToProps} from './Playlist.selectors';

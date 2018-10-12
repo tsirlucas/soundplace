@@ -6,10 +6,10 @@ import {actions as tracksActions} from 'core/tracks';
 import {RootState} from 'src/core';
 
 type OtherProps = {
-  isDesktop: boolean;
-  scrollbarWidth: number;
-  width: number;
-  playerClass: string;
+  isDesktop?: boolean;
+  scrollbarWidth?: number;
+  width?: number;
+  playerClass?: string;
 };
 
 export const mapStateToProps = ({player}: RootState, otherProps: OtherProps) => ({

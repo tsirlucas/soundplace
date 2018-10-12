@@ -1,6 +1,6 @@
 # Sound Place
 
-A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Youtube playlists and songs.
+A React/Redux/RxJS/redux-observable PWA where you can manage and listen to Youtube playlists and songs.
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/tsirlucas/soundplace.svg?token=e89f78d8d624e9199c4384185ba87645ef4309023ffbaaeee1133b0183921fd6&ts=1508702348672)](https://greenkeeper.io/)
 [![build status](https://travis-ci.com/tsirlucas/soundplace.svg?token=ZNhrvg7GyFkRokuwtw6s&branch=master)](https://travis-ci.com/tsirlucas/soundplace) 
@@ -10,7 +10,7 @@ A Preact/Redux/RxJS/redux-observable PWA where you can manage and listen to Yout
 ## Features and toolbelt
 
 - [X] [Typescript](https://www.typescriptlang.org)
-- [x] [Preact](https://github.com/developit/preact) as [React](https://github.com/facebook/react) alternative
+- [x] [React](https://github.com/facebook/react)
 - [x] [React Router](https://github.com/ReactTraining/react-router)
 - [x] [Redux](http://redux.js.org/) to manage application state
 - [x] [redux-observable](https://github.com/redux-observable/redux-observable) as middleware

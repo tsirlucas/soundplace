@@ -1,5 +1,4 @@
-import {h} from 'preact';
-
+import React from 'react';
 import {Cover} from 'models';
 
 type Item = {
@@ -19,7 +18,8 @@ type ItemProps = {
 
 const CardList = ({items, open}: ListProps) => (
   <section className="cardlist-container">
-    {items && Object.values(items).map((item) => <CardListItem item={item} open={open} />)}
+    {items &&
+      Object.values(items).map((item, i) => <CardListItem key={i} item={item} open={open} />)}
   </section>
 );
 

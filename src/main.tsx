@@ -1,6 +1,5 @@
-import {h} from 'preact';
-import {Provider} from 'preact-redux';
-
+import React from 'react';
+import {Provider} from 'react-redux';
 import {actions as apiActions} from 'core/api';
 import {configureStore} from 'core/store';
 import {actions as windowActions} from 'core/window';

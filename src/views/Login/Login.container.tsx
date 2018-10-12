@@ -1,5 +1,4 @@
-import {h} from 'preact';
-
+import React from 'react';
 import {Button} from '../../components/Button';
 import {YOUTUBE_AUTH} from '../../core/api/api.constants';
 

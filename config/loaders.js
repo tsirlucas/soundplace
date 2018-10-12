@@ -13,6 +13,6 @@ export const loaders = [
       },
       'awesome-typescript-loader',
     ],
-    include: [path.resolve('src'), path.resolve('node_modules/preact-compat/src')],
+    include: [path.resolve('src')],
   },
 ];

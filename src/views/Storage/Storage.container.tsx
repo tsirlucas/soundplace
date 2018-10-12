@@ -1,6 +1,5 @@
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {Icon} from 'components';
 
 import {formatBytes} from '../../util/formatBytes';
@@ -30,7 +29,8 @@ class StorageComponent extends Component<Props, {}> {
     });
   };
 
-  render({storage, tracks, actions}: Props) {
+  render() {
+    const {storage, tracks, actions} = this.props;
     const {storageInfo} = storage;
     const cachedSongs = tracks.data
       ? Object.keys(tracks.saved).map((key) => ({
@@ -54,14 +54,17 @@ class StorageComponent extends Component<Props, {}> {
     return (
       <section id="storage">
         <ul className="chart-skills">
-          {dataArray.map((item) => (
-            <li style={`transform: rotate(${item.percent * 1.8}deg); border-color: ${item.color};`}>
-              <span style={`transform: rotate(-${item.percent * 1.8}deg);`}>{item.label}</span>
+          {dataArray.map((item, i) => (
+            <li
+              key={i}
+              style={{transform: `rotate(${item.percent * 1.8}deg)`, borderColor: `${item.color}`}}
+            >
+              <span style={{transform: `rotate(-${item.percent * 1.8}deg)`}}>{item.label}</span>
             </li>
           ))}
         </ul>
 
-        <div style="text-align: center;">
+        <div style={{textAlign: 'center'}}>
           <h2>
             Using {formatBytes(storageInfo.usage)} of {formatBytes(storageInfo.quota)}.{' '}
             {formatBytes(storageInfo.free)} free
@@ -72,8 +75,8 @@ class StorageComponent extends Component<Props, {}> {
         <br />
         <div className="tracks-list">
           {cachedSongs &&
-            cachedSongs.filter((item) => item.name).map((item) => (
-              <li className="track-item">
+            cachedSongs.filter((item) => item.name).map((item, i) => (
+              <li className="track-item" key={i}>
                 <h3 className="track-name">{item.name}</h3>
                 <p className="artist-info">{item.channel}</p>
                 <p className="artist-info">{item.size}</p>

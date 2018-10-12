@@ -1,14 +1,10 @@
-import {h} from 'preact';
-
-interface EventHandler<E extends Event> {
-  (event: E): void;
-}
+import React, {MouseEvent} from 'react';
 
 interface Props {
   href?: string;
   className?: string;
-  onClick?: EventHandler<MouseEvent>;
-  children?: Element;
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
+  children?: Element | string;
 }
 
 export const Button = (props: Props) => (
