@@ -1,6 +1,7 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 import localforage from 'localforage';
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
 import queryString from 'query-string';
 
 import {Icon} from 'src/components';
@@ -12,12 +13,12 @@ import {
   MapStateToProps,
 } from './Callback.selectors';
 
-type Props = MapDispatchToProps & MapStateToProps & {from: string};
+type Props = MapDispatchToProps & MapStateToProps & {from: string} & RouteComponentProps;
 
 class CallbackComponent extends Component<Props> {
   componentWillMount() {
-    const {route} = this.context.router;
-    const params = queryString.parse(route.location.search);
+    const {location} = this.props;
+    const params = queryString.parse(location.search);
     if (!!params['token']) {
       this.handleAuthCallback(params['token']);
     } else {
@@ -30,7 +31,7 @@ class CallbackComponent extends Component<Props> {
       if (token) {
         this.props.actions.setToken(token);
       } else {
-        this.context.router.history.replace('/login');
+        this.props.history.replace('/login');
       }
     });
   }
@@ -44,7 +45,7 @@ class CallbackComponent extends Component<Props> {
   componentWillReceiveProps({token}: Props) {
     if (token && token !== this.props.token) {
       if (this.props.from.includes('callback') || this.props.from.includes('login')) {
-        this.context.router.history.replace('/playlists');
+        this.props.history.replace('/playlists');
       } else {
         this.returnToPrevRoute();
       }
@@ -53,7 +54,7 @@ class CallbackComponent extends Component<Props> {
   }
 
   returnToPrevRoute() {
-    const {history} = this.context.router;
+    const {history} = this.props;
 
     const hash = this.props.from;
 
@@ -86,4 +87,4 @@ class CallbackComponent extends Component<Props> {
 export const Callback = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CallbackComponent);
+)(withRouter(CallbackComponent));

@@ -1,5 +1,5 @@
+import React from 'react';
 import Redirect from 'react-router-dom/Redirect';
-import {h} from 'preact';
 
 export const checkAuth = (auth: string, Route: JSX.Element) => {
   const {hash} = window.location;

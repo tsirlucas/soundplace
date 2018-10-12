@@ -1,5 +1,4 @@
-import {Component, h} from 'preact';
-
+import React, {Component} from 'react';
 import {RootState} from 'core';
 import {actions as playerActions} from 'core/player';
 import {actions as storageActions} from 'core/storage';
@@ -64,7 +63,8 @@ export class Tracks extends Component<Props, {}> {
     return false;
   };
 
-  render({tracks, playlist}: Props) {
+  render() {
+    const {tracks, playlist} = this.props;
     if (!tracks.data || !playlist) return null;
     const playlistTracks = Object.keys(tracks.playlist).map((id) => tracks.data[id]);
 
@@ -73,14 +73,15 @@ export class Tracks extends Component<Props, {}> {
         <header className="playlist-header">
           <div
             className="playlist-image"
-            style={`background-image: url(${playlist.cover.medium})`}
+            style={{backgroundImage: `url(${playlist.cover.medium})`}}
           />
           <h1 className="playlist-name">{playlist.name}</h1>
         </header>
         <main className="playlist-content">
           <ul className="tracks-list">
-            {Object.values(playlistTracks).map((track) => (
+            {Object.values(playlistTracks).map((track, i) => (
               <Track
+                key={i}
                 status={tracks.saved[track.id] ? tracks.saved[track.id].status : 'NOT-SAVED'}
                 track={track}
                 play={this.play}

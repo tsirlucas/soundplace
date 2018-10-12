@@ -1,6 +1,5 @@
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {browserHistory} from 'src/routes/routes.config';
 
 import {Player} from '../Player';
@@ -14,7 +13,7 @@ import {Bottombar, Networkbar, Sidebar, StatusBar, Topbar} from './components';
 
 export type Props = MapDispatchToProps &
   MapStateToProps & {
-    children: HTMLElement;
+    children: JSX.Element;
   };
 
 class AppLayoutComponent extends Component<Props, {}> {
@@ -53,7 +52,8 @@ class AppLayoutComponent extends Component<Props, {}> {
     browserHistory.push(path);
   }
 
-  render({children, hasNetwork, showPlayer, window, userActions, user, api}: Props) {
+  render() {
+    const {children, hasNetwork, showPlayer, window, userActions, user, api} = this.props;
     const {width} = window;
 
     const isDesktop = width > 765;

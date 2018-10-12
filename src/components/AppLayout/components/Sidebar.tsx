@@ -1,5 +1,4 @@
-import {Component, h} from 'preact';
-
+import React, {Component} from 'react';
 import {Icon} from 'components/Icons/Icons';
 import {privateRoutes} from 'src/routes/routes.config';
 
@@ -20,7 +19,9 @@ export class Sidebar extends Component<Props, null> {
     img.src = '/assets/img/avatar.jpeg';
   };
 
-  render({user}: Props) {
+  render() {
+    const {user} = this.props;
+
     return (
       <aside id="sidebar">
         {user && (
@@ -37,15 +38,16 @@ export class Sidebar extends Component<Props, null> {
                 <Icon icon="SYNC" size="24" color="white" />
               </span>
             ) : (
-              <div onClick={this.props.actions.import} style="cursor:pointer;">
+              <div onClick={this.props.actions.import} style={{cursor: 'pointer'}}>
                 <Icon icon="SYNC" size="24" color="white" />
               </div>
             )}
           </div>
         )}
         <Navigation>
-          {privateRoutes.filter((route) => route.header).map((route) => (
+          {privateRoutes.filter((route) => route.header).map((route, i) => (
             <NavigationItem
+              key={i}
               onClick={() => this.props.changeRoute(route.path)}
               header={route.header}
               icon={route.icon}
@@ -64,10 +66,14 @@ const Navigation = ({children}: {children?: JSX.Element[]}) => (
 );
 
 const NavigationItem = ({header, icon, active, onClick, disabled}) => (
-  <li className="brand-nav-item" style={disabled ? 'pointer-events:none;' : ''} onClick={onClick}>
+  <li
+    className="brand-nav-item"
+    style={disabled ? {pointerEvents: 'none'} : null}
+    onClick={onClick}
+  >
     <div className="brand-nav-icon">
       <Icon icon={icon} size="34" color={active ? 'white' : null} />
     </div>
-    <span style={active ? 'color: white' : null}>{header}</span>
+    <span style={active ? {color: 'white'} : null}>{header}</span>
   </li>
 );

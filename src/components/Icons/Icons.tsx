@@ -1,5 +1,4 @@
-import {h} from 'preact';
-
+import React from 'react';
 import {icons} from './Icons.constants';
 
 type Props = {
@@ -25,10 +24,10 @@ export const Icon = (props: Props) => {
       height={`${props.size}`}
       viewBox={`0 0 24 24`}
       xmlns="http://www.w3.org/2000/svg"
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      stroke-linejoin="round"
-      stroke-miterlimit="1.414"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      strokeLinejoin="round"
+      strokeMiterlimit="1.414"
     >
       <path style={styles.path} d={icons[props.icon]} />
     </svg>

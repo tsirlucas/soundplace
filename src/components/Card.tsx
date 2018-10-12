@@ -1,3 +1,5 @@
-import {h} from 'preact';
+import React from 'react';
 
-export const Card = ({children}: {children: Element}) => <section className="card">{children}</section>;
+export const Card = ({children}: {children: Element}) => (
+  <section className="card">{children}</section>
+);

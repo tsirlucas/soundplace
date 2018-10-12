@@ -1,4 +1,4 @@
-import {Component, h} from 'preact';
+import React, {Component} from 'react';
 
 type State = {
   progressPercentage: number;
@@ -10,6 +10,9 @@ type Props = {
 };
 
 export default class PlayerProgress extends Component<Props, State> {
+  state = {
+    progressPercentage: 0,
+  };
   shouldComponentUpdate(_nextProps, nextState) {
     return this.state.progressPercentage !== nextState.progressPercentage;
   }
@@ -20,8 +23,9 @@ export default class PlayerProgress extends Component<Props, State> {
     this.setState({progressPercentage});
   }
 
-  render(_props, {progressPercentage}) {
-    const style = `width: ${progressPercentage || 0}%;`;
+  render() {
+    const {progressPercentage} = this.state;
+    const style = {width: `${progressPercentage}%`};
 
     return <div id="player-progress-bar" style={style} />;
   }

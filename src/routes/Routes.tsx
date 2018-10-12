@@ -1,10 +1,9 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import HashRouter from 'react-router-dom/HashRouter';
 import Redirect from 'react-router-dom/Redirect';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
-
 import {AppLayout, PublicLayout} from 'components';
 import {Callback} from 'src/views/Callback/Callback';
 import {Login} from 'views/Login';
@@ -81,7 +80,11 @@ class RoutesComponent extends Component<Props> {
                         <div className="flex-grow-column">
                           <div
                             className="flex-grow-column"
-                            style={props.match.path !== props.location.pathname && 'display: none'}
+                            style={
+                              props.match.path !== props.location.pathname
+                                ? {display: 'none'}
+                                : null
+                            }
                           >
                             <Playlists />
                           </div>

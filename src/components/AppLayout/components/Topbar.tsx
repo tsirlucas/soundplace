@@ -1,5 +1,4 @@
-import {Component, h} from 'preact';
-
+import React, {Component} from 'react';
 import {Icon} from 'components';
 
 import {Props as ContainerProps} from '../AppLayout.container';
@@ -21,7 +20,7 @@ export class Topbar extends Component<Props, null> {
     const {user} = this.props;
 
     return (
-      <div class="top-bar">
+      <div className="top-bar">
         {user && (
           <div id="brand">
             <img

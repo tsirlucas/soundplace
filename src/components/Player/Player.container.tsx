@@ -1,6 +1,5 @@
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {PlayerService} from 'services';
 
 import {Icon} from '../Icons';
@@ -23,7 +22,8 @@ class PlayerComponent extends Component<Props, {}> {
     PlayerService.getInstance().setPlayer(nextProps.player, nextProps.actions);
   }
 
-  render({player, actions, playerClass}: Props) {
+  render() {
+    const {player, actions, playerClass} = this.props;
     const hasPrevious = PlayerService.getInstance().hasPrev();
     const hasNext = PlayerService.getInstance().hasNext();
 
@@ -39,7 +39,7 @@ class PlayerComponent extends Component<Props, {}> {
             <div id="playing-details">
               <div
                 id="playing-cover"
-                style={`background-image: url(${currentlyPlaying.cover.small});`}
+                style={{backgroundImage: `url(${currentlyPlaying.cover.small})`}}
               />
               <div id="playing-data">
                 <div className="music">

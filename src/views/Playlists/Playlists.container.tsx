@@ -1,6 +1,6 @@
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 import CardList from '../../components/CardList';
 import {lazyLoadImages} from '../../util/intersectionObserver';
 import {
@@ -10,7 +10,7 @@ import {
   MapStateToProps,
 } from './Playlists.selectors';
 
-type Props = MapStateToProps & MapDispatchToProps;
+type Props = MapStateToProps & MapDispatchToProps & RouteComponentProps;
 
 class PlaylistsComponent extends Component<Props, {}> {
   componentDidMount() {
@@ -22,15 +22,15 @@ class PlaylistsComponent extends Component<Props, {}> {
   }
 
   onOpen = (track) => {
-    this.context.router.history.push(`/playlists/${track.id}`);
+    this.props.history.push(`/playlists/${track.id}`);
   };
 
-  render({playlists}: Props) {
-    return <CardList items={playlists} open={this.onOpen} />;
+  render() {
+    return <CardList items={this.props.playlists} open={this.onOpen} />;
   }
 }
 
 export const Playlists = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(PlaylistsComponent);
+)(withRouter(PlaylistsComponent));

@@ -1,4 +1,4 @@
-import {h} from 'preact';
+import React from 'react';
 
 type Props = {
   networkClass: string;
@@ -8,7 +8,7 @@ type Props = {
 
 export const Networkbar = ({networkClass, width, isDesktop}: Props) => {
   const parsedWidth = isDesktop ? width - 250 : width;
-  const style = `width: ${parsedWidth}px;`;
+  const style = {width: `${parsedWidth}px`};
 
   return (
     <section className={`network-bar ${networkClass}`} style={style}>
