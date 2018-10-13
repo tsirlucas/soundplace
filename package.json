@@ -49,7 +49,7 @@
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-env": "1.7.0",
     "brotli-webpack-plugin": "1.0.0",
-    "browser-sync": "2.24.6",
+    "browser-sync": "2.24.7",
     "browser-sync-webpack-plugin": "2.2.2",
     "bundlesize": "0.17.0",
     "cname-webpack-plugin": "1.0.3",
