@@ -367,21 +367,27 @@ apollo-cache-persist@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/apollo-cache-persist/-/apollo-cache-persist-0.1.1.tgz#e6cfe1983b998982a679aaf05241d3ed395edb1e"
 
+apollo-cache@1.1.18:
+  version "1.1.18"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.18.tgz#384a7e1e39414fd2a09c80d5295d36f15c85b9ab"
+  dependencies:
+    apollo-utilities "^1.0.22"
+
 apollo-cache@^1.1.14:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.14.tgz#c7d54cdbc7f544161f78fa5e4bae56650e22f7ad"
   dependencies:
     apollo-utilities "^1.0.18"
 
-apollo-client@2.3.8:
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.3.8.tgz#0384a7210eb601ab88b1c13750da076fc9255b95"
+apollo-client@2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.3.tgz#261749c531eda367a1e2a3c5def024abb09add6e"
   dependencies:
     "@types/zen-observable" "^0.8.0"
-    apollo-cache "^1.1.14"
+    apollo-cache "1.1.18"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.18"
+    apollo-utilities "1.0.22"
     symbol-observable "^1.0.2"
     zen-observable "^0.8.0"
   optionalDependencies:
@@ -413,6 +419,12 @@ apollo-link@1.2.2, apollo-link@^1.0.0, apollo-link@^1.2.2:
     "@types/graphql" "0.12.6"
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.9"
+
+apollo-utilities@1.0.22, apollo-utilities@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.22.tgz#0e11350d1220d83ae1c784115d0fa18bdc549a60"
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
 
 apollo-utilities@^1.0.0:
   version "1.0.17"
