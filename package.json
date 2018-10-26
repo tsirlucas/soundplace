@@ -18,7 +18,7 @@
     "graphql": "0.13.2",
     "graphql-tag": "2.9.2",
     "history": "4.7.2",
-    "localforage": "1.5.7",
+    "localforage": "1.7.3",
     "normalize.css": "8.0.0",
     "query-string": "5.1.1",
     "raven-for-redux": "1.1.1",
