@@ -84,11 +84,7 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/wicg-mediasession/-/wicg-mediasession-1.0.2.tgz#c6488b01a935407d0dd8b7f9a5639d1255e96c28"
 
-"@types/zen-observable@0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
-
-"@types/zen-observable@^0.8.0":
+"@types/zen-observable@0.8.0", "@types/zen-observable@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
 
@@ -393,12 +389,12 @@ apollo-link-dedup@^1.0.0:
   dependencies:
     apollo-link "^1.2.2"
 
-apollo-link-retry@2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/apollo-link-retry/-/apollo-link-retry-2.2.4.tgz#63fadf06fcd6975ad0914d8f0146be5f950f6539"
+apollo-link-retry@2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/apollo-link-retry/-/apollo-link-retry-2.2.5.tgz#7c92170ea502685e96db32538f5ad070ddd007be"
   dependencies:
-    "@types/zen-observable" "0.5.3"
-    apollo-link "^1.2.2"
+    "@types/zen-observable" "0.8.0"
+    apollo-link "^1.2.3"
 
 apollo-link-ws@1.0.8:
   version "1.0.8"
@@ -413,6 +409,13 @@ apollo-link@1.2.2, apollo-link@^1.0.0, apollo-link@^1.2.2:
     "@types/graphql" "0.12.6"
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.9"
+
+apollo-link@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.3.tgz#9bd8d5fe1d88d31dc91dae9ecc22474d451fb70d"
+  dependencies:
+    apollo-utilities "^1.0.0"
+    zen-observable-ts "^0.8.10"
 
 apollo-utilities@^1.0.0:
   version "1.0.17"
@@ -8339,6 +8342,12 @@ yargs@~3.10.0:
 yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
+
+zen-observable-ts@^0.8.10:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.10.tgz#18e2ce1c89fe026e9621fd83cc05168228fce829"
+  dependencies:
+    zen-observable "^0.8.0"
 
 zen-observable-ts@^0.8.9:
   version "0.8.9"
