@@ -56,7 +56,7 @@
     "copy-webpack-plugin": "4.5.2",
     "cross-env": "5.2.0",
     "css-loader": "1.0.0",
-    "dotenv-webpack": "1.5.7",
+    "dotenv-webpack": "1.6.0",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "gh-pages": "1.2.0",
     "html-webpack-inline-source-plugin": "0.0.10",
