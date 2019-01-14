@@ -7745,9 +7745,10 @@ utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
 
-utility-types@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-2.0.0.tgz#3c9fe26914a1c7b8aff690e8f941e76b091d3149"
+utility-types@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.3.0.tgz#0b903e4f3a889b2e85ff9f613e30ef935ae2a30a"
+  integrity sha512-Vi/imV4Cx0TdCNE9Qx2AvRMlyNFDrXmOgY/MtiRn6tAT+s428b8Efe3mWW0yO2G7NhPm2kRv4wqIBbqsA+JudQ==
 
 utils-merge@1.0.1:
   version "1.0.1"
