@@ -51,7 +51,7 @@
     "brotli-webpack-plugin": "1.0.0",
     "browser-sync": "2.24.6",
     "browser-sync-webpack-plugin": "2.2.2",
-    "bundlesize": "0.17.0",
+    "bundlesize": "0.17.1",
     "cname-webpack-plugin": "1.0.3",
     "copy-webpack-plugin": "4.5.2",
     "cross-env": "5.2.0",
