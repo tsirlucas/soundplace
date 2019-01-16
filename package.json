@@ -15,7 +15,7 @@
     "apollo-link": "1.2.2",
     "apollo-link-retry": "2.2.4",
     "apollo-link-ws": "1.0.8",
-    "graphql": "0.13.2",
+    "graphql": "14.1.1",
     "graphql-tag": "2.9.2",
     "history": "4.7.2",
     "localforage": "1.5.7",
