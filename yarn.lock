@@ -28,9 +28,10 @@
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.1.tgz#66849a23ceef917b57f0787c885f41ce03480f5c"
 
-"@types/js-cookie@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.1.0.tgz#a8916246aa994db646c66d54c854916213300a51"
+"@types/js-cookie@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.1.tgz#aa6f6d5e5aaf7d97959e9fa938ac2501cf1a76f4"
+  integrity sha512-VIVurImEhQ95jxtjs8baVU5qCzVfwYfuMrpXwdRykJ5MCI5iY7/jB4cDSgwBVeYqeXrhT7GfJUwoDOmN0OMVCA==
 
 "@types/node@*":
   version "10.11.7"
