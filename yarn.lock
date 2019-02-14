@@ -80,9 +80,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/wicg-mediasession@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/wicg-mediasession/-/wicg-mediasession-1.0.2.tgz#c6488b01a935407d0dd8b7f9a5639d1255e96c28"
+"@types/wicg-mediasession@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/wicg-mediasession/-/wicg-mediasession-1.0.3.tgz#1a86bb99bd288a96f7645455195f19677a2bddd7"
+  integrity sha512-lijaDXKIEHeyauPVvrlFY899FiIFEFFIYqAgpqgSVhsBUWV5tijbacB1raFObQ024W/Nu1Kd/bys0/v5mqVv/g==
 
 "@types/zen-observable@0.5.3":
   version "0.5.3"
