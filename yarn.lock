@@ -5103,9 +5103,10 @@ normalize.css@8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.0.tgz#14ac5e461612538a4ce9be90a7da23f86e718493"
 
-now@11.3.8:
-  version "11.3.8"
-  resolved "https://registry.yarnpkg.com/now/-/now-11.3.8.tgz#8a92eda141c665b5a909579bdfe56e97ce64ed24"
+now@14.0.3:
+  version "14.0.3"
+  resolved "https://registry.yarnpkg.com/now/-/now-14.0.3.tgz#193f7c5469d8f39b786ab2986323e11038b7c2a4"
+  integrity sha512-tBYUe5x4OUL592l5oZRBcX9gFREcfcW9RRZCr2eu+lIHqxmpVQQwf0LG/wpCup+4Zr2+nmyxWixmULlMCZT6ww==
 
 npm-bundled@^1.0.1:
   version "1.0.3"
