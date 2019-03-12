@@ -31,7 +31,7 @@
     "redux-act": "1.7.4",
     "redux-observable": "1.0.0",
     "rxjs": "6.2.2",
-    "subscriptions-transport-ws": "0.9.14",
+    "subscriptions-transport-ws": "0.9.16",
     "workbox-webpack-plugin": "https://github.com/tsirlucas/workbox.git#workbox-webpack-plugin-temporary"
   },
   "devDependencies": {
