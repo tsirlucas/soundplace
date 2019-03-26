@@ -6307,9 +6307,10 @@ redux-act@1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/redux-act/-/redux-act-1.7.4.tgz#0dd7c6daaca98649540a3d42c259814b048bd8e1"
 
-redux-observable@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-1.0.0.tgz#780ff2455493eedcef806616fe286b454fd15d91"
+redux-observable@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-1.1.0.tgz#323a8fe53e89fdb519be2807b55f08e21c13e6f1"
+  integrity sha512-G0nxgmTZwTK3Z3KoQIL8VQu9n0YCUwEP3wc3zxKQ8zAZm+iYkoZvBqAnBJfLi4EsD1E64KR4s4jFH/dFXpV9Og==
 
 redux@3.7.2:
   version "3.7.2"
