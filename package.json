@@ -23,7 +23,7 @@
     "query-string": "5.1.1",
     "raven-for-redux": "1.1.1",
     "raven-js": "3.26.4",
-    "react": "^16.5.2",
+    "react": "^16.8.6",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "4.3.1",
