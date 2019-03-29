@@ -20,6 +20,11 @@
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
 
+"@types/bytes@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/bytes/-/bytes-3.0.0.tgz#549eeacd0a8fecfaa459334583a4edcee738e6db"
+  integrity sha512-ZF43+CIIlzngQe8/Zo7L1kpY9W8O6rO006VDz3c5iM21ddtXWxCEyOXyft+q4pVF2tGqvrVuVrEDH1+gJEi1fQ==
+
 "@types/graphql@0.12.6":
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.6.tgz#3d619198585fcabe5f4e1adfb5cf5f3388c66c13"
@@ -5103,9 +5108,12 @@ normalize.css@8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.0.tgz#14ac5e461612538a4ce9be90a7da23f86e718493"
 
-now@11.3.8:
-  version "11.3.8"
-  resolved "https://registry.yarnpkg.com/now/-/now-11.3.8.tgz#8a92eda141c665b5a909579bdfe56e97ce64ed24"
+now@14.2.4:
+  version "14.2.4"
+  resolved "https://registry.yarnpkg.com/now/-/now-14.2.4.tgz#f7768954cf242886bb5c618b9b63b9d8f6c7438b"
+  integrity sha512-HfMwF7iwGvv/pBzu9snIwe9r70G7FaA3BBvgChMey5s0HeSfvOJYCP16WC11/ANyV4OOkGHWPSGlMwYCaPRFww==
+  dependencies:
+    "@types/bytes" "3.0.0"
 
 npm-bundled@^1.0.1:
   version "1.0.3"
