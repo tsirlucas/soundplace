@@ -64,7 +64,7 @@
     "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
     "node-sass": "4.9.3",
     "now": "11.3.8",
-    "postcss": "7.0.2",
+    "postcss": "7.0.15",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "5.3.0",
     "react-hot-loader": "4.3.4",
