@@ -35,7 +35,7 @@
     "workbox-webpack-plugin": "https://github.com/tsirlucas/workbox.git#workbox-webpack-plugin-temporary"
   },
   "devDependencies": {
-    "@types/js-cookie": "2.1.0",
+    "@types/js-cookie": "2.2.4",
     "@types/node": "10.5.8",
     "@types/react": "^16.4.16",
     "@types/react-dom": "^16.0.9",
