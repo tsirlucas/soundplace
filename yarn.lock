@@ -36,9 +36,10 @@
   version "10.11.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.7.tgz#0e75ca9357d646ca754016ca1d68a127ad7e7300"
 
-"@types/node@10.5.8":
-  version "10.5.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.8.tgz#6f14ccecad1d19332f063a6a764f8907801fece0"
+"@types/node@12.12.13":
+  version "12.12.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.13.tgz#9790d9bbb99cda1ff077bcef37bee3d60281c175"
+  integrity sha512-fXr0NLUGMwrKj7Achj/jQfnZco024Lbmn5AT7uG846gb+mPL/zxh3mXTnadf4fLJM/tFWVauIadQ/uCa8LCzkg==
 
 "@types/prop-types@*":
   version "15.5.6"
