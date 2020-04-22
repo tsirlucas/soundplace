@@ -7497,11 +7497,12 @@ tslint-config-prettier@1.14.0:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.14.0.tgz#860b36634e53f4c70c64c51ff3ef7fd9bbab7676"
 
-tslint-react@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.6.0.tgz#7f462c95c4a0afaae82507f06517ff02942196a1"
+tslint-react@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-5.0.0.tgz#d0ae644e8163bdd3e134012e9353094904e8dd44"
+  integrity sha512-/IbcSmoBPlFic8kQaRfQ4knTY4mivwo5LVzvozvX6Dyu2ynEnrh1dIcR2ujjyp/IodXqY/H5GbxFxSMo/Kf2Hg==
   dependencies:
-    tsutils "^2.13.1"
+    tsutils "^3.17.1"
 
 tslint@5.10.0:
   version "5.10.0"
@@ -7520,9 +7521,16 @@ tslint@5.10.0:
     tslib "^1.8.0"
     tsutils "^2.12.1"
 
-tsutils@^2.12.1, tsutils@^2.13.1:
+tsutils@^2.12.1:
   version "2.27.1"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.27.1.tgz#ab0276ac23664f36ce8fd4414daec4aebf4373ee"
+  dependencies:
+    tslib "^1.8.1"
+
+tsutils@^3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.17.1.tgz#ed719917f11ca0dee586272b2ac49e015a2dd759"
+  integrity sha512-kzeQ5B8H3w60nFY2g8cJIuH7JDpsALXySGtwGJ0p2LSjLgay3NdIpqq5SoOBe46bKDW2iq25irHCr8wjomUS2g==
   dependencies:
     tslib "^1.8.1"
 
